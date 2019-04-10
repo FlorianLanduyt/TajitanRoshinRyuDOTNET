@@ -25,16 +25,6 @@ namespace PROJ20_G20_DOTNET.Data {
                 "Belg", Graad.DAN5, Functie.BEHEERDER));
                 _dbContext.SaveChanges();
             }
-            /*
-             
-            new Lid("Tim", "Geldof", DateTime.Now.Subtract(new TimeSpan(16500, 0, 0, 0, 0)),
-                "97.07.17-001.23",
-                "0479330959", "051303050", "Izegem", "Winkelhoekstraat",
-                "52", "8870", "tim.geldof@outlook.com",
-                "Wachtwoord", "Izegem", "Man",
-                "Belg", Graad.DAN5, Functie.BEHEERDER)
-
-             */
         }
     }
 }

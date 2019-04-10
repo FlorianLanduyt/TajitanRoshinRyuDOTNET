@@ -13,7 +13,7 @@ namespace PROJ2_G20_.NET.Data.Repositories {
 
         public InschrijvingRepository(JiuJitsuDbContext context) {
             _context = context;
-            //_Inschrijvingen = _context.Inschrijvingen;
+            _inschrijvingen = _context.Inschrijvingen;
 
         }
 

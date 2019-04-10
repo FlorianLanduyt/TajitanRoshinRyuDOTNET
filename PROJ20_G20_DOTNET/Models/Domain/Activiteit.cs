@@ -12,6 +12,7 @@ namespace PROJ2_G20_.NET.Models.Domain {
         public DateTime EindDatum { get; set; }
         public DateTime UitersteInschrijvingsDatum { get; set; }
         public string GsmNummer { get; set; }
+        public string Email { get; set; }
         public string NaamLocatie { get; set; }
         public string Straat { get; set; }
         public string Stad { get; set; }
@@ -20,7 +21,7 @@ namespace PROJ2_G20_.NET.Models.Domain {
         public string BusNummer { get; private set; }
         public int MaxAantalDeelnemers { get; set; }
         public int AantalDeelnemers { get; set; }
-        public bool IsVolzet => MaxAantalDeelnemers == AantalDeelnemers;
+        public bool IsVolzet { get; set; }
         public int Id { get; set; }
 
         public ICollection<ActiviteitInschrijving> Inschrijvingen { get; private set; }
@@ -34,7 +35,7 @@ namespace PROJ2_G20_.NET.Models.Domain {
 
         public Activiteit(string naam,
             Formule formule, DateTime beginDatum, DateTime eindDatum, DateTime uitersteInschrijvingsDatum,
-            string gsmNummer, string naamLocatie, string straat, string stad, string postcode,
+            string gsmNummer, string email, string naamLocatie, string straat, string stad, string postcode,
             string huisNummer, string busNummer, int maxAantalDeelnemers, int aantalDeelnemers) : this() {
             
             Naam = naam;
@@ -43,6 +44,7 @@ namespace PROJ2_G20_.NET.Models.Domain {
             EindDatum = eindDatum;
             UitersteInschrijvingsDatum = uitersteInschrijvingsDatum;
             GsmNummer = gsmNummer;
+            Email = email;
             NaamLocatie = naamLocatie;
             Straat = straat;
             Stad = stad;
@@ -51,6 +53,7 @@ namespace PROJ2_G20_.NET.Models.Domain {
             BusNummer = busNummer ?? null;
             MaxAantalDeelnemers = maxAantalDeelnemers;
             AantalDeelnemers = aantalDeelnemers;
+            IsVolzet = MaxAantalDeelnemers == AantalDeelnemers;
         } 
         #endregion
     }

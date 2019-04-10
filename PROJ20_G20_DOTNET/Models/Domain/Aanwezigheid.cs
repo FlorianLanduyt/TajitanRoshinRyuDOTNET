@@ -7,11 +7,9 @@ namespace PROJ2_G20_.NET.Models.Domain {
 
         #region Properties
         public Lid Lid { get; set; }
-        [Column("LID_ID")]
         public int LidId { get; set; }
 
         public Activiteit Activiteit { get; set; }
-        [Column("ACTIVITEIT_ID")]
         public int ActiviteitId { get; set; }
 
         public int Id { get; set; }

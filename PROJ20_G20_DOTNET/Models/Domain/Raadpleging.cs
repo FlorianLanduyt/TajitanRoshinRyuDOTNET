@@ -11,11 +11,9 @@ namespace PROJ2_G20_.NET.Models.Domain {
         public int Id { get; set; }
         public int AantalRaadplegingen { get; set; }
         public Lid Lid { get; set; }
-        [Column("LID_ID")]
         public int LidId { get; set; }
 
         public Oefening Oefening { get; set; }
-        [Column("OEFENING_ID")]
         public int OefeningId { get; set; }
         //public IList<DateTime> Tijdstippen { get; set; }
         #endregion

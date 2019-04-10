@@ -10,12 +10,14 @@ namespace PROJ2_G20_.NET.Models.Domain {
         public int Id { get; set; }
         public string Titel { get; set; }
         public string UrlVideo { get; set; }
+        public string UrlAfbeelding { get; set; }
         public string Tekst { get; set; }
         public int AantalRaadplegingen { get; set; }
         public DateTime LaatsteRaadpleging { get; set; }
 
         public Graad Graad { get; set; }
         public Thema Thema { get; set; }
+        public int ThemaId { get; set; } // enkel voor mapping nodig
         #endregion
 
         #region Constructors

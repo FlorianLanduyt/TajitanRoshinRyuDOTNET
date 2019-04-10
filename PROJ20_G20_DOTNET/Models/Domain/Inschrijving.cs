@@ -5,6 +5,7 @@ namespace PROJ2_G20_.NET.Models.Domain {
 
         #region Properties
         public Lid Lid { get; set; }
+        public int LidId { get; set; } // voor mapping met juiste column name
         public Formule Formule { get; set; }
         public DateTime Tijdstip { get; set; }
         public int Id { get; set; }
