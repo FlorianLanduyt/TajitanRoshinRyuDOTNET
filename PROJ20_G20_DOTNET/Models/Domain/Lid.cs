@@ -7,6 +7,7 @@ namespace PROJ2_G20_.NET.Models.Domain {
         public string Voornaam { get; set; }
         public string Achternaam { get; set; }
         public string RijksregisterNummer { get; set; }
+        public string Nationaliteit { get; set; }
         public DateTime DatumEersteTraining { get; set; }
         public DateTime GeboorteDatum { get; set; }
         public string GsmNr { get; set; }
@@ -33,32 +34,28 @@ namespace PROJ2_G20_.NET.Models.Domain {
         #endregion
 
         #region Constructors
-        public Lid(string voornaam, string achternaam, string rijksregisterNummer,
-            DateTime datumEersteTraining, DateTime geboorteDatum, string gsmNr, string vasteTelefoonNr,
-            string stad, string straat, string huisNr, string bus, string postCode, string email,
-            string wachtwoord, string emailVader, string emailMoeder, string geboortePlaats,
-            string geslacht, string beroep, int puntenAantal, Graad graad, Functie functie) {
+        public Lid(string voornaam, string achternaam, DateTime geboortedatum,
+            string rijksregisterNr,
+            string gsmNr, string vasteTelefoonNr, string stad, string straat,
+            string huisNr, string postcode, string email,
+            string wachtwoord, string geboorteplaats, string geslacht,
+            string nationaliteit, Graad graad, Functie functie) {
 
             Voornaam = voornaam;
             Achternaam = achternaam;
-            RijksregisterNummer = rijksregisterNummer;
-            DatumEersteTraining = datumEersteTraining;
-            GeboorteDatum = geboorteDatum;
+            RijksregisterNummer = rijksregisterNr;
+            GeboorteDatum = geboortedatum;
             GsmNr = gsmNr;
+            Nationaliteit = nationaliteit;
             VasteTelefoonNr = vasteTelefoonNr;
             Stad = stad;
             Straat = straat;
             HuisNr = huisNr;
-            Bus = bus;
-            PostCode = postCode;
+            PostCode = postcode;
             Email = email;
             Wachtwoord = wachtwoord;
-            EmailVader = emailVader;
-            EmailMoeder = emailMoeder;
-            GeboortePlaats = geboortePlaats;
+            GeboortePlaats = geboorteplaats;
             Geslacht = geslacht;
-            Beroep = beroep;
-            PuntenAantal = puntenAantal;
             Graad = graad;
             Functie = functie;
         }

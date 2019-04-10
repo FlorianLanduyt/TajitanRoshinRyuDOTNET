@@ -1,20 +1,16 @@
-﻿using System;
+﻿using PROJ20_G20_DOTNET.Models.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace PROJ2_G20_.NET.Models.Domain {
     public class Activiteit {
-        #region Fields
-        private readonly int _id;
-        private bool _isVolzet;
-        private readonly IList<Inschrijving> _inschrijvingen;
-        #endregion
 
         #region Properties
         public string Naam { get; set; }
         public Formule Formule { get; set; }
         public DateTime BeginDatum { get; set; }
         public DateTime EindDatum { get; set; }
-        public DateTime UitersteInschrijfDatum { get; set; }
+        public DateTime UitersteInschrijvingsDatum { get; set; }
         public string GsmNummer { get; set; }
         public string NaamLocatie { get; set; }
         public string Straat { get; set; }
@@ -24,30 +20,28 @@ namespace PROJ2_G20_.NET.Models.Domain {
         public string BusNummer { get; private set; }
         public int MaxAantalDeelnemers { get; set; }
         public int AantalDeelnemers { get; set; }
+        public bool IsVolzet => MaxAantalDeelnemers == AantalDeelnemers;
+        public int Id { get; set; }
 
-        public int Id => _id;
-
-        public IEnumerable<Inschrijving> Inschrijvingen { get => _inschrijvingen; }
+        public ICollection<ActiviteitInschrijving> Inschrijvingen { get; private set; }
 
         #endregion
 
         #region Constructors
         protected Activiteit() {
-
+            Inschrijvingen = new List<ActiviteitInschrijving>();
         }
 
         public Activiteit(string naam,
-            Formule formule, DateTime beginDatum, DateTime eindDatum, DateTime uitersteInschrijfDatum,
+            Formule formule, DateTime beginDatum, DateTime eindDatum, DateTime uitersteInschrijvingsDatum,
             string gsmNummer, string naamLocatie, string straat, string stad, string postcode,
-            string huisNummer, string busNummer, int maxAantalDeelnemers, int aantalDeelnemers,
-            List<Inschrijving> inschrijvingen) {
+            string huisNummer, string busNummer, int maxAantalDeelnemers, int aantalDeelnemers) : this() {
             
-            _inschrijvingen = inschrijvingen;
             Naam = naam;
             Formule = formule;
             BeginDatum = beginDatum;
             EindDatum = eindDatum;
-            UitersteInschrijfDatum = uitersteInschrijfDatum;
+            UitersteInschrijvingsDatum = uitersteInschrijvingsDatum;
             GsmNummer = gsmNummer;
             NaamLocatie = naamLocatie;
             Straat = straat;
@@ -57,7 +51,6 @@ namespace PROJ2_G20_.NET.Models.Domain {
             BusNummer = busNummer ?? null;
             MaxAantalDeelnemers = maxAantalDeelnemers;
             AantalDeelnemers = aantalDeelnemers;
-            _isVolzet = MaxAantalDeelnemers - AantalDeelnemers <= 0 ? true : false;
         } 
         #endregion
     }

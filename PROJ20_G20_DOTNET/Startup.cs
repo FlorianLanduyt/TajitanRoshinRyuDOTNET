@@ -34,23 +34,24 @@ namespace PROJ20_G20_DOTNET
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            services.AddScoped<DbInitializer>();
 
             services.AddScoped<IActiviteitRepository, ActiviteitRepository>();
             services.AddScoped<ILidRepository, LidRepository>();
             services.AddScoped<IAanwezigheidRepository, AanwezigheidRepository>();
             services.AddScoped<IInschrijvingRepository, InschrijvingRepository>();
 
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<JiuJitsuDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<JiuJitsuDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, DbInitializer dbInitializer)
         {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
@@ -72,6 +73,7 @@ namespace PROJ20_G20_DOTNET
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            dbInitializer.InitializeData();
         }
     }
 }

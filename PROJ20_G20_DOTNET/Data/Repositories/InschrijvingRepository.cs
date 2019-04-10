@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PROJ2_G20_.NET.Models.Domain;
+using PROJ20_G20_DOTNET.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace PROJ2_G20_.NET.Data.Repositories {
     public class InschrijvingRepository : IInschrijvingRepository {
-        private readonly ApplicationDbContext _context;
+        private readonly JiuJitsuDbContext _context;
         private readonly DbSet<Inschrijving> _inschrijvingen;
 
-        public InschrijvingRepository(ApplicationDbContext context) {
+        public InschrijvingRepository(JiuJitsuDbContext context) {
             _context = context;
             //_Inschrijvingen = _context.Inschrijvingen;
 

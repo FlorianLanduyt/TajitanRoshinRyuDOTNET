@@ -7,7 +7,7 @@ namespace PROJ2_G20_.NET.Models.Domain {
     public class Oefening {
 
         #region Properties
-        public int Id { get; private set; }
+        public int Id { get; set; }
         public string Titel { get; set; }
         public string UrlVideo { get; set; }
         public string Tekst { get; set; }

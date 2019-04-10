@@ -14,6 +14,6 @@ namespace PROJ2_G20_.NET.Models.Domain {
         STAGE,
         EXAMEN,
         PROEF,
-        UITSTAP;
+        UITSTAP
     }
 }
