@@ -12,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using PROJ20_G20_DOTNET.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PROJ2_G20_.NET.Data.Repositories;
+using PROJ2_G20_.NET.Models.Domain;
 
 namespace PROJ20_G20_DOTNET
 {
@@ -32,6 +34,11 @@ namespace PROJ20_G20_DOTNET
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            services.AddScoped<IActiviteitRepository, ActiviteitRepository>();
+            services.AddScoped<ILidRepository, LidRepository>();
+            services.AddScoped<IAanwezigheidRepository, AanwezigheidRepository>();
+            services.AddScoped<IInschrijvingRepository, InschrijvingRepository>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
