@@ -31,10 +31,10 @@ namespace PROJ20_G20_DOTNET.Controllers
         public IActionResult Edit(int id)
         {
             Lid lid = _lidRepository.GetBy(id);
-            if (lid == null)
-            {
+            if (lid == null) {
                 return NotFound();
             }
+            ViewData["IsEdit"] = true;
             ViewData["Graden"] = GetGradenAsSelectList();
             ViewData["Functies"] = GetFunctiesAsSelectList();
             return View(new LidEditViewModel(lid));
@@ -43,18 +43,27 @@ namespace PROJ20_G20_DOTNET.Controllers
         [HttpPost]
         public IActionResult Edit(int id, LidEditViewModel lidEditViewModel)
         {
-            Lid lid = _lidRepository.GetBy(id);
-            if (lid == null)
-            {
-                return NotFound();
+            if (ModelState.IsValid) {
+                try {
+                    Lid lid = _lidRepository.GetBy(id);
+                    MapLidEditViewModelToLid(lid, lidEditViewModel);
+                    _lidRepository.SaveChanges();
+                    TempData["Success"] = $"{lid.Voornaam} {lid.Achternaam} is succesvol gewijzigd!";
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex) {
+                    ModelState.AddModelError("", ex.Message);
+                }
             }
-            MapLidEditViewModelToLid(lid, lidEditViewModel);
-            _lidRepository.SaveChanges();
-            return RedirectToAction(nameof(Index));
+            ViewData["IsEdit"] = true;
+            ViewData["Graden"] = GetGradenAsSelectList();
+            ViewData["Functies"] = GetFunctiesAsSelectList();
+            return View(nameof(Edit), lidEditViewModel);
         }
 
         public IActionResult Create()
         {
+            ViewData["IsEdit"] = false;
             ViewData["Graden"] = GetGradenAsSelectList();
             ViewData["Functies"] = GetFunctiesAsSelectList();
             return View(nameof(Edit), new LidEditViewModel());
@@ -63,62 +72,70 @@ namespace PROJ20_G20_DOTNET.Controllers
         [HttpPost]
         public IActionResult Create(LidEditViewModel lidEditViewModel)
         {
-            Lid lid = new Lid(lidEditViewModel.Voornaam, lidEditViewModel.Achternaam, lidEditViewModel.GeboorteDatum,
-                lidEditViewModel.RijksregisterNummer, lidEditViewModel.GsmNr, lidEditViewModel.VasteTelefoonNr,
-                lidEditViewModel.Stad, lidEditViewModel.Straat, lidEditViewModel.HuisNr, lidEditViewModel.PostCode,
-                lidEditViewModel.Email, lidEditViewModel.Wachtwoord, lidEditViewModel.GeboortePlaats, lidEditViewModel.Geslacht,
-                lidEditViewModel.Nationaliteit, lidEditViewModel.Graad, lidEditViewModel.Functie);
+            if (ModelState.IsValid) {
+                try {
+                    Lid lid = new Lid(lidEditViewModel.Voornaam, lidEditViewModel.Achternaam, lidEditViewModel.GeboorteDatum,
+                                lidEditViewModel.RijksregisterNummer, lidEditViewModel.GsmNr, lidEditViewModel.VasteTelefoonNr,
+                                lidEditViewModel.Stad, lidEditViewModel.Straat, lidEditViewModel.HuisNr, lidEditViewModel.PostCode,
+                                lidEditViewModel.Email, lidEditViewModel.Wachtwoord, lidEditViewModel.GeboortePlaats, lidEditViewModel.Geslacht,
+                                lidEditViewModel.Nationaliteit, lidEditViewModel.Graad, lidEditViewModel.Functie);
 
-            _lidRepository.Add(lid);
-            _lidRepository.SaveChanges();
-            return RedirectToAction(nameof(Index));
+                    TempData["Success"] = $"{lid.Voornaam} {lid.Achternaam} is succesvol aangemaakt!";
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex) {
+                    ModelState.AddModelError("", ex.Message);
+                }
+            }
+            ViewData["IsEdit"] = false;
+            ViewData["Graden"] = GetGradenAsSelectList();
+            ViewData["Functies"] = GetFunctiesAsSelectList();
+            return View(nameof(Edit), lidEditViewModel);
         }
 
         public IActionResult Delete(int id)
         {
             Lid lid = _lidRepository.GetBy(id);
-            if (lid == null)
-            {
+            if (lid == null) {
                 return NotFound();
             }
-            ViewData[nameof(Lid.Voornaam)] = _lidRepository.GetBy(id).Voornaam;
+            ViewData["Name"] = lid.Voornaam + " " + lid.Achternaam;
             return View();
         }
 
         [HttpPost, ActionName("Delete")]
-        public IActionResult DeleteBehavior(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            Lid lid = null;
-            try
-            {
-                lid = _lidRepository.GetBy(id);
-                _lidRepository.Delete(lid);
-                _lidRepository.SaveChanges();
-                TempData["Message"] = $"{lid.Voornaam} {lid.Achternaam} is succevol verwijderd";
+            if (ModelState.IsValid) {
+                try {
+                    Lid lid = _lidRepository.GetBy(id);
+                    _lidRepository.Delete(lid);
+                    _lidRepository.SaveChanges();
+                    TempData["Success"] = $"{lid.Voornaam} {lid.Achternaam} is succesvol verwijderd!";
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex) {
+                    ModelState.AddModelError("", ex.Message);
+                }
             }
-            catch (Exception e)
-            {
-                TempData["Error"] = $"Er is een fout opgetreden bij het verwijderen van {lid?.Voornaam} {lid?.Achternaam}";
-            }
-
-            return RedirectToAction(nameof(Index));
+            Lid lid2 = _lidRepository.GetBy(id);
+            ViewData["Name"] = lid2.Voornaam + " " + lid2.Achternaam;
+            return View(nameof(Delete));
         }
 
         public SelectList GetFunctiesAsSelectList()
         {
-            return new SelectList(Enum.GetValues(typeof(Functie)).Cast<Functie>().Select(v => new SelectListItem
-            {
+            return new SelectList(Enum.GetValues(typeof(Functie)).Cast<Functie>().Select(v => new SelectListItem {
                 Text = v.ToString(),
                 Value = ((int)v).ToString()
             }
             ).ToList(), "Value", "Text");
-            
+
         }
 
         public SelectList GetGradenAsSelectList()
         {
-            return new SelectList(Enum.GetValues(typeof(Graad)).Cast<Graad>().Select(v => new SelectListItem
-            {
+            return new SelectList(Enum.GetValues(typeof(Graad)).Cast<Graad>().Select(v => new SelectListItem {
                 Text = v.ToString(),
                 Value = ((int)v).ToString()
             }

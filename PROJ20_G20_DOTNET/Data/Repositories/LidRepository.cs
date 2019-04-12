@@ -25,7 +25,7 @@ namespace PROJ20_G20_DOTNET.Data.Repositories {
         }
 
         public IEnumerable<Lid> GetAll() {
-            return _leden.ToList();
+            return _leden.OrderBy(l=>l.Achternaam).ThenBy(l=>l.Voornaam).ToList();
         }
 
         public Lid GetBy(int id) {

@@ -1,7 +1,13 @@
 ﻿
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Verwijderen";
 }
 
-<h2>Delete</h2>
+<div>
+    <h2>Ben je zeker dat je @ViewData["Name"] wilt verwijderen?</h2>
+    <form method="post">
+        <button type="submit" class="btn btn-primary">Ja</button>
+        <button asp-action="Index" class="btn btn-default">Nee</button>
+    </form>
+</div>
 

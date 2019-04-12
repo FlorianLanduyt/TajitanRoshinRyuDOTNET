@@ -4,4 +4,43 @@
     ViewData["Title"] = "Leden";
 }
 
+<div>
+    @if (TempData["Success"] != null) {
+        <br />
+        <p class="alert alert-success">@TempData["Success"]</p>
+    }
+    else if (TempData["Error"] != null) {
+        <br />
+        <p class="alert alert-danger">@TempData["Error"]</p>
+    }
+    <h2>Leden</h2>
+    <form>
+        <button asp-action="Create" class="btn btn-default">Voeg lid toe</button>
+    </form>
+    <br />
+    <div>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>Familienaam</th>
+                <th>Voornaam</th>
+                <th>Geboortedatum</th>
+                <th></th>
+            </tr>
+
+            @foreach (var Lid in Model) {
+                <tr>
+                    <td>@Lid.Achternaam</td>
+                    <td>@Lid.Voornaam</td>
+                    <td>@Lid.GeboorteDatum.ToShortDateString()</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@Lid.Id">Details</a> |
+                        <a asp-action="Edit" asp-route-id="@Lid.Id">Wijzig</a> |
+                        <a asp-action="Delete" asp-route-id="@Lid.Id">Verwijder</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
 
