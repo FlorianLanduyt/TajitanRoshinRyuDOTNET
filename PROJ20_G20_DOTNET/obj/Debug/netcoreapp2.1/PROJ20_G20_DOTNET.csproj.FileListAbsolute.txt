@@ -134,3 +134,4 @@ D:\School\2YS2\Projecten2\.NET\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp
 D:\School\2YS2\Projecten2\.NET\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Lid\Index.g.cshtml.cs
 D:\School\2YS2\Projecten2\.NET\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Lid\Edit.g.cshtml.cs
 D:\School\2YS2\Projecten2\.NET\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Lid\Delete.g.cshtml.cs
+D:\School\2YS2\Projecten2\.NET\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Lid\Details.g.cshtml.cs

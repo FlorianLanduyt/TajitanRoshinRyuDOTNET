@@ -5,111 +5,111 @@
 }
 
 <div>
-    <h2>Wijzigen</h2>
+    <h2>@((bool)ViewData["IsEdit"]?"Wijzigen":"Lid toevoegen")</h2>
     <form method="post">
         <div class="form-group">
             <label asp-for="Voornaam"></label>
             <input asp-for="Voornaam" class="form-control" />
-            <span asp-validation-for="Voornaam" class="text text-warning"></span>
+            <span asp-validation-for="Voornaam" class="text text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="Achternaam"></label>
             <input asp-for="Achternaam" class="form-control" />
-            <span asp-validation-for="Achternaam" class="text text-warning"></span>
+            <span asp-validation-for="Achternaam" class="text text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="RijksregisterNummer"></label>
             <input asp-for="RijksregisterNummer" class="form-control" />
-            <span asp-validation-for="RijksregisterNummer" class="text text-warning"></span>
+            <span asp-validation-for="RijksregisterNummer" class="text text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="Nationaliteit"></label>
             <input asp-for="Nationaliteit" class="form-control" />
-            <span asp-validation-for="Nationaliteit" class="text text-warning"></span>
+            <span asp-validation-for="Nationaliteit" class="text text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="GeboorteDatum"></label>
             <input asp-for="GeboorteDatum" class="form-control" />
-            <span asp-validation-for="GeboorteDatum" class="text text-warning"></span>
+            <span asp-validation-for="GeboorteDatum" class="text text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="GsmNr"></label>
             <input asp-for="GsmNr" class="form-control" />
-            <span asp-validation-for="GsmNr" class="text text-warning"></span>
+            <span asp-validation-for="GsmNr" class="text text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="VasteTelefoonNr"></label>
             <input asp-for="VasteTelefoonNr" class="form-control" />
-            <span asp-validation-for="VasteTelefoonNr" class="text text-warning"></span>
+            <span asp-validation-for="VasteTelefoonNr" class="text text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="Stad"></label>
             <input asp-for="Stad" class="form-control" />
-            <span asp-validation-for="Stad" class="text text-warning"></span>
+            <span asp-validation-for="Stad" class="text text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="Straat"></label>
             <input asp-for="Straat" class="form-control" />
-            <span asp-validation-for="Straat" class="text text-warning"></span>
+            <span asp-validation-for="Straat" class="text text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="HuisNr"></label>
             <input asp-for="HuisNr" class="form-control" />
-            <span asp-validation-for="HuisNr" class="text text-warning"></span>
+            <span asp-validation-for="HuisNr" class="text text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="Bus"></label>
             <input asp-for="Bus" class="form-control" />
-            <span asp-validation-for="Bus" class="text text-warning"></span>
+            <span asp-validation-for="Bus" class="text text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="PostCode"></label>
             <input asp-for="PostCode" class="form-control" />
-            <span asp-validation-for="PostCode" class="text text-warning"></span>
+            <span asp-validation-for="PostCode" class="text text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="Email"></label>
             <input asp-for="Email" class="form-control" />
-            <span asp-validation-for="Email" class="text text-warning"></span>
+            <span asp-validation-for="Email" class="text text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="EmailVader"></label>
             <input asp-for="EmailVader" class="form-control" />
-            <span asp-validation-for="EmailVader" class="text text-warning"></span>
+            <span asp-validation-for="EmailVader" class="text text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="EmailMoeder"></label>
             <input asp-for="EmailMoeder" class="form-control" />
-            <span asp-validation-for="EmailMoeder" class="text text-warning"></span>
+            <span asp-validation-for="EmailMoeder" class="text text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="GeboortePlaats"></label>
             <input asp-for="GeboortePlaats" class="form-control" />
-            <span asp-validation-for="GeboortePlaats" class="text text-warning"></span>
+            <span asp-validation-for="GeboortePlaats" class="text text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="Geslacht"></label>
             <input asp-for="Geslacht" class="form-control" />
-            <span asp-validation-for="Geslacht" class="text text-warning"></span>
+            <span asp-validation-for="Geslacht" class="text text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="Beroep"></label>
             <input asp-for="Beroep" class="form-control" />
-            <span asp-validation-for="Beroep" class="text text-warning"></span>
+            <span asp-validation-for="Beroep" class="text text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="Graad"></label>
             <select asp-for="Graad" asp-items="(@ViewData["Graden"] as SelectList)">
                 <option value="">-- kies een graad --</option>
             </select>
-            <span asp-validation-for="Graad" class="text text-warning"></span>
+            <span asp-validation-for="Graad" class="text text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="Functie"></label>
             <select asp-for="Functie" asp-items="(@ViewData["Functies"] as SelectList)">
                 <option value="">-- kies een functie --</option>
             </select>
-            <span asp-validation-for="Functie" class="text text-warning"></span>
+            <span asp-validation-for="Functie" class="text text-danger"></span>
         </div>
         <div>
             <button type="submit" class="btn btn-primary">Opslaan</button>

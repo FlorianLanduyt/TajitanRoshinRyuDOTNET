@@ -27,7 +27,15 @@ namespace PROJ20_G20_DOTNET.Controllers
             return View(leden);
         }
 
-        //HttpGet
+        public IActionResult Details(int id)
+        {
+            Lid lid = _lidRepository.GetBy(id);
+            if (lid == null) {
+                return NotFound();
+            }
+            return View(lid);
+        }
+
         public IActionResult Edit(int id)
         {
             Lid lid = _lidRepository.GetBy(id);

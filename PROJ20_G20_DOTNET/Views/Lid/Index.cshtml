@@ -24,7 +24,7 @@
                 <th>Familienaam</th>
                 <th>Voornaam</th>
                 <th>Geboortedatum</th>
-                <th></th>
+                <th class="text-right">Acties</th>
             </tr>
 
             @foreach (var Lid in Model) {
@@ -32,7 +32,7 @@
                     <td>@Lid.Achternaam</td>
                     <td>@Lid.Voornaam</td>
                     <td>@Lid.GeboorteDatum.ToShortDateString()</td>
-                    <td>
+                    <td class="text-right">
                         <a asp-action="Details" asp-route-id="@Lid.Id">Details</a> |
                         <a asp-action="Edit" asp-route-id="@Lid.Id">Wijzig</a> |
                         <a asp-action="Delete" asp-route-id="@Lid.Id">Verwijder</a>
