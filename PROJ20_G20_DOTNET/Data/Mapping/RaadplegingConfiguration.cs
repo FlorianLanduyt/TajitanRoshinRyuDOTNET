@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PROJ2_G20_.NET.Models.Domain;
+using PROJ20_G20_DOTNET.Models.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;

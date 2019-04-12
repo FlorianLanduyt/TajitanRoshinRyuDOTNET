@@ -1,7 +1,9 @@
 ﻿using System;
 
-namespace PROJ2_G20_.NET.Models.Domain {
-    public class Lid {
+namespace PROJ20_G20_DOTNET.Models.Domain
+{
+    public class Lid
+    {
 
         #region Properties
         public string Voornaam { get; set; }
@@ -39,7 +41,8 @@ namespace PROJ2_G20_.NET.Models.Domain {
             string gsmNr, string vasteTelefoonNr, string stad, string straat,
             string huisNr, string postcode, string email,
             string wachtwoord, string geboorteplaats, string geslacht,
-            string nationaliteit, Graad graad, Functie functie) {
+            string nationaliteit, Graad graad, Functie functie)
+        {
 
             Voornaam = voornaam;
             Achternaam = achternaam;
@@ -60,7 +63,8 @@ namespace PROJ2_G20_.NET.Models.Domain {
             Functie = functie;
         }
 
-        protected Lid() {
+        protected Lid()
+        {
         }
 
 

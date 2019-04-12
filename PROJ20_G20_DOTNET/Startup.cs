@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PROJ20_G20_DOTNET.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PROJ2_G20_.NET.Data.Repositories;
-using PROJ2_G20_.NET.Models.Domain;
+using PROJ20_G20_DOTNET.Models.Domain;
+using PROJ20_G20_DOTNET.Data.Repositories;
 
 namespace PROJ20_G20_DOTNET
 {
@@ -34,18 +29,25 @@ namespace PROJ20_G20_DOTNET
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.AddScoped<DbInitializer>();
 
+            #region DBContext config
+            services.AddDbContext<JiuJitsuDbContext>(options =>
+                    options.UseSqlServer(
+                        Configuration.GetConnectionString("DefaultConnection")));
+            #endregion
+
+            #region Identity config
+            services.AddDefaultIdentity<IdentityUser>()
+                    .AddEntityFrameworkStores<JiuJitsuDbContext>();
+            #endregion
+
+            #region DBInitializer & Repository injection
+            services.AddScoped<DbInitializer>();
             services.AddScoped<IActiviteitRepository, ActiviteitRepository>();
             services.AddScoped<ILidRepository, LidRepository>();
             services.AddScoped<IAanwezigheidRepository, AanwezigheidRepository>();
-            services.AddScoped<IInschrijvingRepository, InschrijvingRepository>();
-
-            services.AddDbContext<JiuJitsuDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<JiuJitsuDbContext>();
+            services.AddScoped<IInschrijvingRepository, InschrijvingRepository>(); 
+            #endregion
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -58,7 +60,7 @@ namespace PROJ20_G20_DOTNET
                 app.UseDatabaseErrorPage();
             }
             else {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Shared/Error");
                 app.UseHsts();
             }
 
@@ -70,8 +72,8 @@ namespace PROJ20_G20_DOTNET
 
             app.UseMvc(routes => {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    name: "defaultRoute",
+                    template: "{controller=Lid}/{action=Index}/{id?}");
             });
             dbInitializer.InitializeData();
         }

@@ -1,4 +1,4 @@
-﻿namespace PROJ2_G20_.NET.Models.Domain {
+﻿namespace PROJ20_G20_DOTNET.Models.Domain {
     public enum Graad {
         KYU1,
         KYU2,

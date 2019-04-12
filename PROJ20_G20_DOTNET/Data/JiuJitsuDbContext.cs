@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using PROJ2_G20_.NET.Models.Domain;
 using PROJ20_G20_DOTNET.Data.Mapping;
 using PROJ20_G20_DOTNET.Models.Domain;
 
