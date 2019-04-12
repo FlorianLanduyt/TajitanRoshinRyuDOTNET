@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace PROJ2_G20_.NET.Models.Domain {
+namespace PROJ20_G20_DOTNET.Models.Domain {
     public class Activiteit {
 
         #region Properties

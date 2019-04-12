@@ -1,19 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PROJ2_G20_.NET.Models.Domain;
 using PROJ20_G20_DOTNET.Data;
+using PROJ20_G20_DOTNET.Models.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PROJ2_G20_.NET.Data.Repositories {
+namespace PROJ20_G20_DOTNET.Data.Repositories {
     public class LidRepository : ILidRepository {
         private readonly JiuJitsuDbContext _context;
         private readonly DbSet<Lid> _leden;
 
         public LidRepository(JiuJitsuDbContext context) {
             _context = context;
-            //_leden = _context.Leden;
+            _leden = context.Leden;
         }
 
         public void Add(Lid lid) {

@@ -1,10 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PROJ2_G20_.NET.Models.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using PROJ20_G20_DOTNET.Models.Domain;
 
 namespace PROJ20_G20_DOTNET.Data.Mapping {
     public class ActiviteitConfiguration : IEntityTypeConfiguration<Activiteit> {
