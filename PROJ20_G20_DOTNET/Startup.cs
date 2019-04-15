@@ -41,12 +41,16 @@ namespace PROJ20_G20_DOTNET
                     .AddEntityFrameworkStores<JiuJitsuDbContext>();
             #endregion
 
+            #region Authentication config
+
+            #endregion
+
             #region DBInitializer & Repository injection
-            services.AddScoped<DbInitializer>();
             services.AddScoped<IActiviteitRepository, ActiviteitRepository>();
             services.AddScoped<ILidRepository, LidRepository>();
             services.AddScoped<IAanwezigheidRepository, AanwezigheidRepository>();
-            services.AddScoped<IInschrijvingRepository, InschrijvingRepository>(); 
+            services.AddScoped<IInschrijvingRepository, InschrijvingRepository>();
+            services.AddScoped<DbInitializer>();
             #endregion
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -75,6 +79,7 @@ namespace PROJ20_G20_DOTNET
                     name: "defaultRoute",
                     template: "{controller=Lid}/{action=Index}/{id?}");
             });
+
             dbInitializer.InitializeData();
         }
     }

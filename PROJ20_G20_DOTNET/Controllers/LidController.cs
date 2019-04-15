@@ -87,7 +87,8 @@ namespace PROJ20_G20_DOTNET.Controllers
                                 lidEditViewModel.Stad, lidEditViewModel.Straat, lidEditViewModel.HuisNr, lidEditViewModel.PostCode,
                                 lidEditViewModel.Email, lidEditViewModel.Wachtwoord, lidEditViewModel.GeboortePlaats, lidEditViewModel.Geslacht,
                                 lidEditViewModel.Nationaliteit, lidEditViewModel.Graad, lidEditViewModel.Functie);
-
+                    _lidRepository.Add(lid);
+                    _lidRepository.SaveChanges();
                     TempData["Success"] = $"{lid.Voornaam} {lid.Achternaam} is succesvol aangemaakt!";
                     return RedirectToAction(nameof(Index));
                 }
@@ -150,7 +151,7 @@ namespace PROJ20_G20_DOTNET.Controllers
             ).ToList(), "Value", "Text");
         }
 
-        public void MapLidEditViewModelToLid(Lid lid, LidEditViewModel lidEditViewModel)
+        private void MapLidEditViewModelToLid(Lid lid, LidEditViewModel lidEditViewModel)
         {
             lid.Voornaam = lidEditViewModel.Voornaam;
             lid.Achternaam = lidEditViewModel.Achternaam;
