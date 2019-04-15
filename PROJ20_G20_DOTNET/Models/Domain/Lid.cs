@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using PROJ20_G20_DOTNET.Helpers;
 using System;
+using System.Security.Cryptography;
 
 namespace PROJ20_G20_DOTNET.Models.Domain
 {
@@ -37,6 +39,10 @@ namespace PROJ20_G20_DOTNET.Models.Domain
         #endregion
 
         #region Constructors
+        protected Lid()
+        {
+        }
+
         public Lid(string voornaam, string achternaam, DateTime geboortedatum,
             string rijksregisterNr,
             string gsmNr, string vasteTelefoonNr, string stad, string straat,
@@ -57,19 +63,12 @@ namespace PROJ20_G20_DOTNET.Models.Domain
             HuisNr = huisNr;
             PostCode = postcode;
             Email = email;
-            Wachtwoord = wachtwoord;
+            Wachtwoord = PasswordHashingHelper.HashPassword(wachtwoord);
             GeboortePlaats = geboorteplaats;
             Geslacht = geslacht;
             Graad = graad;
             Functie = functie;
         }
-
-        protected Lid()
-        {
-        }
-
-
-
         #endregion
     }
 }

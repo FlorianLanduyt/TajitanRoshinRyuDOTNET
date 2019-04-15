@@ -73,7 +73,6 @@ namespace PROJ20_G20_DOTNET.Data.Mapping {
                 .HasColumnName("VASTETELEFOONNR");
             builder.Property(l => l.Wachtwoord)
                 .IsRequired()
-                .HasMaxLength(11)
                 .HasColumnName("WACHTWOORD");
             builder.Property(l => l.Graad)
                 .HasColumnName("GRAAD");
