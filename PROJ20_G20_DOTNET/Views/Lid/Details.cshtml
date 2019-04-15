@@ -24,11 +24,24 @@
         <label>E-mail moeder: @(Model.EmailMoeder != null ? @Model.EmailMoeder : "/")</label><br />
         <br />
         <label>Beroep: @(Model.Beroep != null ? @Model.Beroep : "/")</label><br />
+        <div id="passwordDiv">
+            <button id="btnToonWachtwoord" class="btn btn-default"
+                    onclick="
+                    const passDiv = document.getElementById('passwordDiv');
+                    passDiv.removeChild(document.getElementById('btnToonWachtwoord'));
+                    const lblWachtwoord = document.createElement('label');
+                    const wwText = document.createTextNode('Wachtwoord: @Model.Wachtwoord');
+                    lblWachtwoord.appendChild(wwText);
+                    passDiv.appendChild(lblWachtwoord);">
+                Toon wachtwoord
+            </button><br />
+        </div>
         <br />
     </div>
     <form>
         <button asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-default">Wijzig</button>
         <button asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-default">Verwijder</button>
+        <button asp-action="Index" class="btn btn-default">Terug</button>
     </form>
 </div>
 

@@ -42,7 +42,6 @@ namespace PROJ20_G20_DOTNET.Controllers
             if (lid == null) {
                 return NotFound();
             }
-            ViewData["IsEdit"] = true;
             ViewData["Graden"] = GetGradenAsSelectList();
             ViewData["Functies"] = GetFunctiesAsSelectList();
             return View(new LidEditViewModel(lid));
@@ -63,40 +62,6 @@ namespace PROJ20_G20_DOTNET.Controllers
                     ModelState.AddModelError("", ex.Message);
                 }
             }
-            ViewData["IsEdit"] = true;
-            ViewData["Graden"] = GetGradenAsSelectList();
-            ViewData["Functies"] = GetFunctiesAsSelectList();
-            return View(nameof(Edit), lidEditViewModel);
-        }
-
-        public IActionResult Create()
-        {
-            ViewData["IsEdit"] = false;
-            ViewData["Graden"] = GetGradenAsSelectList();
-            ViewData["Functies"] = GetFunctiesAsSelectList();
-            return View(nameof(Edit), new LidEditViewModel());
-        }
-
-        [HttpPost]
-        public IActionResult Create(LidEditViewModel lidEditViewModel)
-        {
-            if (ModelState.IsValid) {
-                try {
-                    Lid lid = new Lid(lidEditViewModel.Voornaam, lidEditViewModel.Achternaam, lidEditViewModel.GeboorteDatum,
-                                lidEditViewModel.RijksregisterNummer, lidEditViewModel.GsmNr, lidEditViewModel.VasteTelefoonNr,
-                                lidEditViewModel.Stad, lidEditViewModel.Straat, lidEditViewModel.HuisNr, lidEditViewModel.PostCode,
-                                lidEditViewModel.Email, lidEditViewModel.Wachtwoord, lidEditViewModel.GeboortePlaats, lidEditViewModel.Geslacht,
-                                lidEditViewModel.Nationaliteit, lidEditViewModel.Graad, lidEditViewModel.Functie);
-                    _lidRepository.Add(lid);
-                    _lidRepository.SaveChanges();
-                    TempData["Success"] = $"{lid.Voornaam} {lid.Achternaam} is succesvol aangemaakt!";
-                    return RedirectToAction(nameof(Index));
-                }
-                catch (Exception ex) {
-                    ModelState.AddModelError("", ex.Message);
-                }
-            }
-            ViewData["IsEdit"] = false;
             ViewData["Graden"] = GetGradenAsSelectList();
             ViewData["Functies"] = GetFunctiesAsSelectList();
             return View(nameof(Edit), lidEditViewModel);
@@ -176,6 +141,5 @@ namespace PROJ20_G20_DOTNET.Controllers
             lid.Graad = lidEditViewModel.Graad;
             lid.Functie = lidEditViewModel.Functie;
         }
-
     }
 }
