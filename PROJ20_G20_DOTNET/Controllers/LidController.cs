@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PROJ20_G20_DOTNET.Models.Domain;
@@ -8,6 +9,7 @@ using PROJ20_G20_DOTNET.Models.ViewModels;
 
 namespace PROJ20_G20_DOTNET.Controllers
 {
+    [Authorize(Policy = "Lid")]
     public class LidController : Controller
     {
         private ILidRepository _lidRepository;
