@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PROJ20_G20_DOTNET.Models.Domain;
 using PROJ20_G20_DOTNET.Data.Repositories;
+using System.Security.Claims;
 
 namespace PROJ20_G20_DOTNET
 {
@@ -41,8 +42,10 @@ namespace PROJ20_G20_DOTNET
                     .AddEntityFrameworkStores<JiuJitsuDbContext>();
             #endregion
 
-            #region Authentication config
-
+            #region Auth config
+            services.AddAuthorization(options => {
+                options.AddPolicy("Lid", policy => policy.RequireClaim(ClaimTypes.Role, "lid"));
+            });
             #endregion
 
             #region DBInitializer & Repository injection
@@ -69,7 +72,9 @@ namespace PROJ20_G20_DOTNET
             }
 
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
+
             app.UseCookiePolicy();
 
             app.UseAuthentication();
@@ -80,7 +85,7 @@ namespace PROJ20_G20_DOTNET
                     template: "{controller=Lid}/{action=Index}/{id?}");
             });
 
-            dbInitializer.InitializeData();
+            dbInitializer.InitializeData().Wait();
         }
     }
 }

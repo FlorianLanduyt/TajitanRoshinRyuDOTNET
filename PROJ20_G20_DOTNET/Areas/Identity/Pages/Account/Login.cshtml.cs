@@ -36,22 +36,23 @@ namespace PROJ20_G20_DOTNET.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage = "E-mail is verplicht")]
             [EmailAddress]
+            [Display(Name = "E-mail")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Wachtwoord is verplicht")]
             [DataType(DataType.Password)]
+            [Display(Name = "Wachtwoord")]
             public string Password { get; set; }
 
-            [Display(Name = "Remember me?")]
+            [Display(Name = "Herinner mij?")]
             public bool RememberMe { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
         {
-            if (!string.IsNullOrEmpty(ErrorMessage))
-            {
+            if (!string.IsNullOrEmpty(ErrorMessage)) {
                 ModelState.AddModelError(string.Empty, ErrorMessage);
             }
 
@@ -69,28 +70,23 @@ namespace PROJ20_G20_DOTNET.Areas.Identity.Pages.Account
         {
             returnUrl = returnUrl ?? Url.Content("~/");
 
-            if (ModelState.IsValid)
-            {
+            if (ModelState.IsValid) {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
-                if (result.Succeeded)
-                {
-                    _logger.LogInformation("User logged in.");
+                if (result.Succeeded) {
+                    _logger.LogInformation("Gebruiker succesvol aangemeld.");
                     return LocalRedirect(returnUrl);
                 }
-                if (result.RequiresTwoFactor)
-                {
+                if (result.RequiresTwoFactor) {
                     return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
                 }
-                if (result.IsLockedOut)
-                {
-                    _logger.LogWarning("User account locked out.");
+                if (result.IsLockedOut) {
+                    _logger.LogWarning("Gebruiker is locked-out.");
                     return RedirectToPage("./Lockout");
                 }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                else {
+                    ModelState.AddModelError(string.Empty, "Ongeldige aanmeldpoging.");
                     return Page();
                 }
             }
