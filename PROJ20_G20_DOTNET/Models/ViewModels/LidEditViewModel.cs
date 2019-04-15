@@ -85,7 +85,7 @@ namespace PROJ20_G20_DOTNET.Models.ViewModels
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Wachtwoord is verplicht")]
-        [Display(Name = "Wachtwoord*")]
+        [Display(Name = "Wachtwoord")]
         [DataType(DataType.Text)]
         [StringLength(11, ErrorMessage = "Wachtwoord mag max. 11 karakters bevatten")]
         public string Wachtwoord { get; set; }

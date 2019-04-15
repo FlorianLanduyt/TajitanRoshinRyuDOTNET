@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using PROJ20_G20_DOTNET.Models.Domain;
 
 namespace PROJ20_G20_DOTNET.Areas.Identity.Pages.Account
 {
@@ -17,11 +18,13 @@ namespace PROJ20_G20_DOTNET.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly ILidRepository _lidRepository;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger, ILidRepository lidRepository)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _lidRepository = lidRepository;
         }
 
         [BindProperty]
@@ -73,21 +76,26 @@ namespace PROJ20_G20_DOTNET.Areas.Identity.Pages.Account
             if (ModelState.IsValid) {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
-                if (result.Succeeded) {
-                    _logger.LogInformation("Gebruiker succesvol aangemeld.");
-                    return LocalRedirect(returnUrl);
-                }
-                if (result.RequiresTwoFactor) {
-                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
-                }
-                if (result.IsLockedOut) {
-                    _logger.LogWarning("Gebruiker is locked-out.");
-                    return RedirectToPage("./Lockout");
-                }
-                else {
-                    ModelState.AddModelError(string.Empty, "Ongeldige aanmeldpoging.");
-                    return Page();
+
+                if (ModelState.IsValid) {
+                    // This doesn't count login failures towards account lockout
+                    // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+                    var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
+                    if (result.Succeeded) {
+                        _logger.LogInformation("Gebruiker succesvol aangemeld.");
+                        return LocalRedirect(returnUrl);
+                    }
+                    if (result.RequiresTwoFactor) {
+                        return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
+                    }
+                    if (result.IsLockedOut) {
+                        _logger.LogWarning("Gebruiker is locked-out.");
+                        return RedirectToPage("./Lockout");
+                    }
+                    else {
+                        ModelState.AddModelError(string.Empty, "Ongeldige aanmeldpoging.");
+                        return Page();
+                    }
                 }
             }
 

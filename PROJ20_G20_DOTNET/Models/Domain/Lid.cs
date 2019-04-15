@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using PROJ20_G20_DOTNET.Helpers;
 using System;
 using System.Security.Cryptography;
 
@@ -63,7 +62,7 @@ namespace PROJ20_G20_DOTNET.Models.Domain
             HuisNr = huisNr;
             PostCode = postcode;
             Email = email;
-            Wachtwoord = PasswordHashingHelper.HashPassword(wachtwoord);
+            Wachtwoord = wachtwoord;
             GeboortePlaats = geboorteplaats;
             Geslacht = geslacht;
             Graad = graad;

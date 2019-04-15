@@ -36,6 +36,11 @@ namespace PROJ20_G20_DOTNET.Data.Repositories
             return _leden.SingleOrDefault(l => l.Id == id);
         }
 
+        public Lid GetByEmail(string email)
+        {
+            return _leden.SingleOrDefault(l => l.Email.Equals(email));
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();
