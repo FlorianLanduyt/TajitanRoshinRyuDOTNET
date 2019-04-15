@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.Authentication;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PROJ20_G20_DOTNET.Models.Domain;
@@ -13,10 +17,14 @@ namespace PROJ20_G20_DOTNET.Controllers
     public class LidController : Controller
     {
         private ILidRepository _lidRepository;
+        private UserManager<IdentityUser> _userManager;
+        private SignInManager<IdentityUser> _signInManager;
 
-        public LidController(ILidRepository lidRepository)
+        public LidController(ILidRepository lidRepository, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _lidRepository = lidRepository;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         public IActionResult Index()
@@ -29,24 +37,34 @@ namespace PROJ20_G20_DOTNET.Controllers
             return View(leden);
         }
 
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
             Lid lid = _lidRepository.GetBy(id);
             if (lid == null) {
                 return NotFound();
             }
-            return View(lid);
+            IdentityUser user = await GetSignedInUserAsync();
+            if (user.Email.Equals(lid.Email)) {
+                return View(lid);
+            }
+            TempData["Error"] = "Je bent niet gemachtigd om deze actie uit te voeren.";
+            return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
             Lid lid = _lidRepository.GetBy(id);
             if (lid == null) {
                 return NotFound();
             }
-            ViewData["Graden"] = GetGradenAsSelectList();
-            ViewData["Functies"] = GetFunctiesAsSelectList();
-            return View(new LidEditViewModel(lid));
+            IdentityUser user = await GetSignedInUserAsync();
+            if (user.Email.Equals(lid.Email)) {
+                ViewData["Graden"] = GetGradenAsSelectList();
+                ViewData["Functies"] = GetFunctiesAsSelectList();
+                return View(new LidEditViewModel(lid));
+            }
+            TempData["Error"] = "Je bent niet gemachtigd om deze actie uit te voeren.";
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpPost]
@@ -55,6 +73,7 @@ namespace PROJ20_G20_DOTNET.Controllers
             if (ModelState.IsValid) {
                 try {
                     Lid lid = _lidRepository.GetBy(id);
+                    UpdateUser(lid, lidEditViewModel).Wait();
                     MapLidEditViewModelToLid(lid, lidEditViewModel);
                     _lidRepository.SaveChanges();
                     TempData["Success"] = $"{lid.Voornaam} {lid.Achternaam} is succesvol gewijzigd!";
@@ -69,14 +88,19 @@ namespace PROJ20_G20_DOTNET.Controllers
             return View(nameof(Edit), lidEditViewModel);
         }
 
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             Lid lid = _lidRepository.GetBy(id);
             if (lid == null) {
                 return NotFound();
             }
-            ViewData["Name"] = lid.Voornaam + " " + lid.Achternaam;
-            return View();
+            IdentityUser user = await GetSignedInUserAsync();
+            if (user.Email.Equals(lid.Email)) {
+                ViewData["Name"] = lid.Voornaam + " " + lid.Achternaam;
+                return View();
+            }
+            TempData["Error"] = "Je bent niet gemachtigd om deze actie uit te voeren.";
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpPost, ActionName("Delete")]
@@ -85,6 +109,7 @@ namespace PROJ20_G20_DOTNET.Controllers
             if (ModelState.IsValid) {
                 try {
                     Lid lid = _lidRepository.GetBy(id);
+                    DeleteUser(lid).Wait();
                     _lidRepository.Delete(lid);
                     _lidRepository.SaveChanges();
                     TempData["Success"] = $"{lid.Voornaam} {lid.Achternaam} is succesvol verwijderd!";
@@ -143,5 +168,32 @@ namespace PROJ20_G20_DOTNET.Controllers
             lid.Graad = lidEditViewModel.Graad;
             lid.Functie = lidEditViewModel.Functie;
         }
+
+        #region User async methods
+        private async Task<IdentityUser> GetSignedInUserAsync()
+        {
+            return await _userManager.GetUserAsync(HttpContext.User);
+        }
+
+        private async Task UpdateUser(Lid lid, LidEditViewModel lidEditViewModel)
+        {
+            IdentityUser user = await _userManager.FindByEmailAsync(lid.Email);
+            user.Email = lidEditViewModel.Email;
+            user.UserName = lidEditViewModel.Email;
+            await _userManager.ChangePasswordAsync(user, lid.Wachtwoord, lidEditViewModel.Wachtwoord);
+        }
+
+        private async Task DeleteUser(Lid lid)
+        {
+            IdentityUser user = await _userManager.FindByEmailAsync(lid.Email);
+            await _userManager.DeleteAsync(user);
+            await SignOutUser();
+        }
+
+        private async Task SignOutUser()
+        {
+            await _signInManager.SignOutAsync();
+        }
+        #endregion
     }
 }
