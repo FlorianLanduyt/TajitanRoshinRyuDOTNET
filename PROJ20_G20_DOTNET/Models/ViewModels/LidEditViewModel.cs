@@ -131,7 +131,7 @@ namespace PROJ20_G20_DOTNET.Models.ViewModels
         {
             Voornaam = lid.Voornaam;
             Achternaam = lid.Achternaam;
-            RijksregisterNummer = lid.Achternaam;
+            RijksregisterNummer = lid.RijksregisterNummer;
             Nationaliteit = lid.Nationaliteit;
             DatumEersteTraining = lid.DatumEersteTraining;
             GeboorteDatum = lid.GeboorteDatum;
