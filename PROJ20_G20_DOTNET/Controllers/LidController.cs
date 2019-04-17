@@ -81,6 +81,7 @@ namespace PROJ20_G20_DOTNET.Controllers
                 }
                 catch (Exception ex) {
                     ModelState.AddModelError("", ex.Message);
+                    ViewData["Error"] = ex.Message;
                 }
             }
             ViewData["Graden"] = GetGradenAsSelectList();

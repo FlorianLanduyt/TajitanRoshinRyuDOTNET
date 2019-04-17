@@ -23,14 +23,14 @@ namespace PROJ20_G20_DOTNET.Data
         {
             _dbContext.Database.EnsureDeleted();
             if (_dbContext.Database.EnsureCreated()) {
-                Lid lid1 = new Lid("Tim", "Geldof", DateTime.Now.Subtract(new TimeSpan(16500, 0, 0, 0, 0)),
+                Lid lid1 = new Lid("Tim", "Geldof", new DateTime(1997,07,17),
                 "97.07.17-001.23",
                 "0479330959", "051303050", "Izegem", "Winkelhoekstraat",
                 "52", "8870", "tim.geldof@outlook.com",
                 "P@ssword1", "Izegem", "Man",
                 "Belg", Graad.DAN5, Functie.BEHEERDER);
 
-                Lid lid2 = new Lid("Tybo", "Vanderstraeten", DateTime.Now.Subtract(new TimeSpan(16500, 0, 0, 0, 0)),
+                Lid lid2 = new Lid("Tybo", "Vanderstraeten", new DateTime(1999,12,8),
                     "99.12.08-173.04", "0477441465", "051303054", "Gent", "Korenmarkt", "21", "9000", "tybo.vanderstraeten@outlook.com",
                     "P@ssword1", "Gent", "Man", "Belg", Graad.DAN3, Functie.LID);
 

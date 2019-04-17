@@ -74,10 +74,6 @@ C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcore
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\PROJ20_G20_DOTNET.TagHelpers.output.cache
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\PROJ20_G20_DOTNET.RazorCoreGenerate.cache
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ViewStart.g.cshtml.cs
-C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
-C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.g.cshtml.cs
-C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
-C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
@@ -178,3 +174,11 @@ D:\School\TweedeJaar\TweedeSemester\ProjectenII\ASP.NET\dotnet-g20\PROJ20_G20_DO
 D:\School\TweedeJaar\TweedeSemester\ProjectenII\ASP.NET\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Lid\Details.g.cshtml.cs
 D:\School\TweedeJaar\TweedeSemester\ProjectenII\ASP.NET\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Lid\Edit.g.cshtml.cs
 D:\School\TweedeJaar\TweedeSemester\ProjectenII\ASP.NET\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Lid\Index.g.cshtml.cs
+C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Login.g.cshtml.cs
+C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\_ViewImports.g.cshtml.cs
+C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.g.cshtml.cs
+C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ViewImports.g.cshtml.cs
+C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Lid\Delete.g.cshtml.cs
+C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Lid\Details.g.cshtml.cs
+C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Lid\Edit.g.cshtml.cs
+C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Lid\Index.g.cshtml.cs
