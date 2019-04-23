@@ -15,12 +15,12 @@ namespace PROJ20_G20_DOTNET.Models.Domain {
 
         public Oefening Oefening { get; set; }
         public int OefeningId { get; set; }
-        //public IList<DateTime> Tijdstippen { get; set; }
+        public ICollection<RaadplegingsTijdstip> Tijdstippen { get; set; }
         #endregion
 
         #region Constructors
         protected Raadpleging() {
-          //  Tijdstippen = new List<DateTime>();
+            Tijdstippen = new List<RaadplegingsTijdstip>();
         }
 
         public Raadpleging(Lid lid, Oefening oefening) : this(){

@@ -79,6 +79,7 @@ namespace PROJ20_G20_DOTNET.Data.Mapping {
             builder.Property(l => l.Functie)
                 .HasColumnName("FUNCTIE")
                 .IsRequired();
+            builder.Ignore(l => l.LeeftijdsCategorieën);
         }
     }
 }

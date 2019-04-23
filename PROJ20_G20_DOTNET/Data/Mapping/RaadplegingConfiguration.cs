@@ -15,9 +15,11 @@ namespace PROJ20_G20_DOTNET.Data.Mapping {
             builder.Property(r => r.Id).HasColumnName("ID");
             builder.HasOne(r => r.Lid).WithMany().HasForeignKey(r => r.LidId);
             builder.HasOne(r => r.Oefening).WithMany().HasForeignKey(r => r.OefeningId);
+            builder.HasMany(r => r.Tijdstippen).WithOne().HasForeignKey(tijdstip => tijdstip.Id);
             builder.Property(r => r.LidId).HasColumnName("LID_ID");
             builder.Property(r => r.OefeningId).HasColumnName("OEFENING_ID");
             builder.Property(r => r.AantalRaadplegingen).HasColumnName("AANTALRAADPLEGINGEN");
+            builder.Property(r => r.Tijdstippen).HasColumnName("RAADPLEGINGSTIJDSTIP_ID");
         }
     }
 }

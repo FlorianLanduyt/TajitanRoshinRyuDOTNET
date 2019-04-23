@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 
@@ -21,7 +22,6 @@ namespace PROJ20_G20_DOTNET.Models.Domain {
         private string _emailMoeder;
         private string _geboorteplaats;
         private string _geslacht;
-
 
 
         #region Properties
@@ -398,6 +398,20 @@ namespace PROJ20_G20_DOTNET.Models.Domain {
                     }
                 }
 
+            }
+        }
+        public string LeeftijdsCategorieën {
+            get {
+                int leeftijd = DateTime.Now.Year - GeboorteDatum.Year;
+                if (leeftijd <= 15) {
+                    if (leeftijd < 10) {
+                        return "L6_15";
+                    } else {
+                        return "L6_15-L10-15";
+                    }
+                } else {
+                    return "L15_PLUS";
+                }
             }
         }
         public string Beroep { get; set; }
