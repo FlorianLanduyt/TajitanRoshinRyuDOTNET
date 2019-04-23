@@ -1,9 +1,7 @@
 ﻿using System;
 
-namespace PROJ20_G20_DOTNET.Models.Domain
-{
-    public class Inschrijving
-    {
+namespace PROJ20_G20_DOTNET.Models.Domain {
+    public class Inschrijving {
 
         private Lid _lid;
         private DateTime _tijdstip;
@@ -26,8 +24,7 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                 return _tijdstip;
             }
             set {
-                if(value == null)
-                {
+                if (value == null) {
                     throw new ArgumentException("Tijdstip mag niet leeg zijn.");
                 }
                 _tijdstip = value;
@@ -37,12 +34,10 @@ namespace PROJ20_G20_DOTNET.Models.Domain
         #endregion
 
         #region Constructors
-        protected Inschrijving()
-        {
+        protected Inschrijving() {
         }
 
-        public Inschrijving(Lid lid, Formule formule, DateTime tijdstip)
-        {
+        public Inschrijving(Lid lid, Formule formule, DateTime tijdstip) {
             Lid = lid;
             Formule = formule;
             Tijdstip = tijdstip;

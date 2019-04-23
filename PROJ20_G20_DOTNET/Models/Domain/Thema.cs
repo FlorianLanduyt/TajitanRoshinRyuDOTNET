@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace PROJ20_G20_DOTNET.Models.Domain
-{
-    public class Thema
-    {
+namespace PROJ20_G20_DOTNET.Models.Domain {
+    public class Thema {
 
         private string _naam;
 
@@ -15,33 +13,25 @@ namespace PROJ20_G20_DOTNET.Models.Domain
             }
 
             set {
-                if (value != null)
-                {
+                if (value != null) {
                     string naam = value.Trim();
                     if (naam.Length > 20) // 
                     {
                         throw new ArgumentException("Naam mag max. 20 karakters bevatten");
                     }
-                    if (naam.Contains(" "))
-                    {
+                    if (naam.Contains(" ")) {
                         string tempnaam = naam.Replace(" ", "");
-                        if(Regex.Match(tempnaam, ".*[\\d\\W].*").Success)
-                        {
+                        if (Regex.Match(tempnaam, ".*[\\d\\W].*").Success) {
                             throw new ArgumentException("Naam mag enkel letters bevatten.");
                         }
 
-                    }
-                    else
-                    {
-                        if (Regex.Match(value, ".*[\\d\\W].*").Success)
-                        {
+                    } else {
+                        if (Regex.Match(value, ".*[\\d\\W].*").Success) {
                             throw new ArgumentException("Naam mag enkel letters bevatten.");
                         }
                     }
                     _naam = value;
-                }
-                else
-                {
+                } else {
                     throw new ArgumentException("Naam mag niet leeg zijn.");
                 }
             }
@@ -52,8 +42,7 @@ namespace PROJ20_G20_DOTNET.Models.Domain
         #region Properties
         protected Thema() { }
 
-        public Thema(string naam)
-        {
+        public Thema(string naam) {
             Naam = naam;
         }
 

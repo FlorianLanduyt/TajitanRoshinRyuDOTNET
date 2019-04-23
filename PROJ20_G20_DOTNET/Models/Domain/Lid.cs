@@ -3,10 +3,8 @@ using System;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 
-namespace PROJ20_G20_DOTNET.Models.Domain
-{
-    public class Lid
-    {
+namespace PROJ20_G20_DOTNET.Models.Domain {
+    public class Lid {
         private string _voornaam;
         private string _achternaam;
         private string _rijksregisternummer;
@@ -32,20 +30,14 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                 return _voornaam;
             }
             set {
-                if (value != null)
-                {
-                    if (value.Contains(' '))
-                    {
+                if (value != null) {
+                    if (value.Contains(' ')) {
                         string tempVoornaam = value.Replace(" ", "");
-                        if (Regex.Match(tempVoornaam, ".*[\\d\\W].*").Success)
-                        {
+                        if (Regex.Match(tempVoornaam, ".*[\\d\\W].*").Success) {
                             throw new ArgumentException("Voornaam mag enkel letters bevatten.");
                         }
-                    }
-                    else
-                    {
-                        if (Regex.Match(value, ".*[\\d\\W].*").Success)
-                        {
+                    } else {
+                        if (Regex.Match(value, ".*[\\d\\W].*").Success) {
                             throw new ArgumentException("Voornaam mag enkel letters bevatten.");
                         }
                     }
@@ -58,20 +50,14 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                 return _achternaam;
             }
             set {
-                if (value != null)
-                {
-                    if (value.Contains(' '))
-                    {
+                if (value != null) {
+                    if (value.Contains(' ')) {
                         string tempAchternaam = value.Replace(" ", "");
-                        if (Regex.Match(tempAchternaam, ".*[\\d\\W].*").Success)
-                        {
+                        if (Regex.Match(tempAchternaam, ".*[\\d\\W].*").Success) {
                             throw new ArgumentException("Familienaam mag enkel letters bevatten.");
                         }
-                    }
-                    else
-                    {
-                        if (Regex.Match(value, ".*[\\d\\W].*").Success)
-                        {
+                    } else {
+                        if (Regex.Match(value, ".*[\\d\\W].*").Success) {
                             throw new ArgumentException("Familienaam mag enkel letters bevatten.");
                         }
                     }
@@ -84,8 +70,7 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                 return _rijksregisternummer;
             }
             set {
-                if (value != null)
-                {
+                if (value != null) {
                     string nrZonderTekens = value.Replace(".", "").Replace("-", "");
                     string gebdatum = nrZonderTekens.Substring(0, 6);
                     string geslacht = nrZonderTekens.Substring(6, 3);
@@ -99,17 +84,13 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                     //Checken of geboortedatumdeel correct is
                     string yearGeboor = Convert.ToString(GeboorteDatum.Year).Substring(2, 2);
                     string gebdatumjaar = gebdatum.Substring(0, 2);
-                    if (Convert.ToString(GeboorteDatum.Year).Substring(2, 2).Equals(gebdatum.Substring(0, 2)))
-                    {
-                        switch (GeboorteDatum.Month)
-                        {
+                    if (Convert.ToString(GeboorteDatum.Year).Substring(2, 2).Equals(gebdatum.Substring(0, 2))) {
+                        switch (GeboorteDatum.Month) {
                             case 10:
                             case 11:
                             case 12:
-                                if (Convert.ToString(GeboorteDatum.Month).Equals(gebdatum.Substring(2, 2)))
-                                {
-                                    switch (GeboorteDatum.Month)
-                                    {
+                                if (Convert.ToString(GeboorteDatum.Month).Equals(gebdatum.Substring(2, 2))) {
+                                    switch (GeboorteDatum.Month) {
                                         case 1:
                                         case 2:
                                         case 3:
@@ -128,10 +109,8 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                                 }
                                 break;
                             default:
-                                if (Convert.ToString(GeboorteDatum.Month).Equals(gebdatum.Substring(3, 1)))
-                                {
-                                    switch (GeboorteDatum.Month)
-                                    {
+                                if (Convert.ToString(GeboorteDatum.Month).Equals(gebdatum.Substring(3, 1))) {
+                                    switch (GeboorteDatum.Month) {
                                         case 1:
                                         case 2:
                                         case 3:
@@ -152,21 +131,15 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                         }
                     }
                     //Controlegetal check
-                    if (GeboorteDatum.Year < 2000)
-                    {
+                    if (GeboorteDatum.Year < 2000) {
                         controleCorrect = (97 - (Convert.ToInt32(String.Concat(gebdatum, geslacht)) % 97)) == Convert.ToInt32(controlegetal);
-                    }
-                    else
-                    {
+                    } else {
                         controleCorrect = (97 - (Convert.ToInt32(String.Concat("2", gebdatum, geslacht)) % 97)) == Convert.ToInt32(controlegetal);
                     }
                     //Alle booleans checken
-                    if (gebDatumCorrect && geslachtCorrect && controleCorrect)
-                    {
+                    if (gebDatumCorrect && geslachtCorrect && controleCorrect) {
                         _rijksregisternummer = value;
-                    }
-                    else
-                    {
+                    } else {
                         throw new ArgumentException("Rijksregisternummer is niet correct.");
                     }
                 }
@@ -177,20 +150,14 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                 return _nationaliteit;
             }
             set {
-                if (value != null)
-                {
-                    if (value.Contains(' '))
-                    {
+                if (value != null) {
+                    if (value.Contains(' ')) {
                         string tempAchternaam = value.Replace(" ", "");
-                        if (Regex.Match(tempAchternaam, ".*[\\d\\W].*").Success)
-                        {
+                        if (Regex.Match(tempAchternaam, ".*[\\d\\W].*").Success) {
                             throw new ArgumentException("Nationaliteit mag enkel letters bevatten.");
                         }
-                    }
-                    else
-                    {
-                        if (Regex.Match(value, ".*[\\d\\W].*").Success)
-                        {
+                    } else {
+                        if (Regex.Match(value, ".*[\\d\\W].*").Success) {
                             throw new ArgumentException("Nationaliteit mag enkel letters bevatten.");
                         }
                     }
@@ -205,10 +172,8 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                 return _geboortedatum;
             }
             set {
-                if (value != null)
-                {
-                    if (DateTime.Today.AddYears(-5).CompareTo(value) < 0)
-                    {
+                if (value != null) {
+                    if (DateTime.Today.AddYears(-5).CompareTo(value) < 0) {
                         throw new ArgumentException("Lid moet minstens 5 jaar oud zijn.");
                     }
                     _geboortedatum = value;
@@ -220,55 +185,40 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                 return _gsmNr;
             }
             set {
-                if (value != null)
-                {
+                if (value != null) {
                     string gsmnr = value.Trim();
-                    if (gsmnr.Contains(' '))
-                    {
+                    if (gsmnr.Contains(' ')) {
                         string gsmnrWithoutSpaces = gsmnr.Replace(" ", "");
                         char ee = gsmnrWithoutSpaces.ToCharArray()[0];
-                        if (gsmnrWithoutSpaces.ToCharArray()[0] == '+')
-                        {
+                        if (gsmnrWithoutSpaces.ToCharArray()[0] == '+') {
                             string gsmrtemp = gsmnrWithoutSpaces.Replace("+", "");
-                            if (Regex.Match(gsmrtemp, ".*[a-zA-Z\\W].*").Success)
-                            {
+                            if (Regex.Match(gsmrtemp, ".*[a-zA-Z\\W].*").Success) {
                                 throw new ArgumentException("GSM-nummer mag enkel cijfers of +32 gevolgd door cijfers bevatten");
                             }
 
-                        }
-                        else
-                        {
+                        } else {
                             throw new ArgumentException("GSM-nummer mag enkel cijfers of +32 gevolgd door cijfers bevatten");
                         }
 
-                        if (!Regex.Match(gsmnrWithoutSpaces, "(([+]32){1}[0-9]{9})|([0-9]{10})").Success)
-                        {
+                        if (!Regex.Match(gsmnrWithoutSpaces, "(([+]32){1}[0-9]{9})|([0-9]{10})").Success) {
                             throw new ArgumentException("GSM-nummer is niet correct.");
                         }
-                    }
-                    else
-                    {
+                    } else {
 
-                        if (gsmnr.ToCharArray()[0] == '+')
-                        {
+                        if (gsmnr.ToCharArray()[0] == '+') {
                             string gsmrtemp = gsmnr.Replace("+", "");
-                            if (Regex.Match(gsmrtemp, ".*[a-zA-Z\\W].*").Success)
-                            {
+                            if (Regex.Match(gsmrtemp, ".*[a-zA-Z\\W].*").Success) {
+                                throw new ArgumentException("GSM-nummer mag enkel cijfers of +32 gevolgd door cijfers bevatten");
+                            }
+
+                        } else {
+                            if (Regex.Match(gsmnr, ".*[a-zA-Z\\W].*").Success) {
                                 throw new ArgumentException("GSM-nummer mag enkel cijfers of +32 gevolgd door cijfers bevatten");
                             }
 
                         }
-                        else
-                        {
-                            if (Regex.Match(gsmnr, ".*[a-zA-Z\\W].*").Success)
-                            {
-                                throw new ArgumentException("GSM-nummer mag enkel cijfers of +32 gevolgd door cijfers bevatten");
-                            }
 
-                        }
-
-                        if (!Regex.Match(gsmnr, "(([+]32){1}[0-9]{9})|([0-9]{10})").Success)
-                        {
+                        if (!Regex.Match(gsmnr, "(([+]32){1}[0-9]{9})|([0-9]{10})").Success) {
                             throw new ArgumentException("GSM-nummer is niet correct.");
                         }
                     }
@@ -281,10 +231,8 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                 return _vasteTelefoonNr;
             }
             set {
-                if (value != null)
-                {
-                    if (Regex.Match(value, "[0-9]{9}").Success)
-                    {
+                if (value != null) {
+                    if (Regex.Match(value, "[0-9]{9}").Success) {
                         _vasteTelefoonNr = value;
                     }
                 }
@@ -297,21 +245,15 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                 return _stad;
             }
             set {
-                if (value != null)
-                {
+                if (value != null) {
                     string stad = value.Trim();
-                    if (value.Contains(' '))
-                    {
+                    if (value.Contains(' ')) {
                         string tempstad = stad.Replace(" ", "");
-                        if (Regex.Match(tempstad, ".*[\\d\\W].*").Success)
-                        {
+                        if (Regex.Match(tempstad, ".*[\\d\\W].*").Success) {
                             throw new ArgumentException("Stad mag enkel letters bevatten.");
                         }
-                    }
-                    else
-                    {
-                        if (Regex.Match(stad, ".*[\\d\\W].*").Success)
-                        {
+                    } else {
+                        if (Regex.Match(stad, ".*[\\d\\W].*").Success) {
                             throw new ArgumentException("Stad mag enkel letters bevatten.");
                         }
                     }
@@ -322,21 +264,15 @@ namespace PROJ20_G20_DOTNET.Models.Domain
         public string Straat {
             get { return _straat; }
             set {
-                if (value != null)
-                {
+                if (value != null) {
                     string straat = value.Trim();
-                    if (value.Contains(' '))
-                    {
+                    if (value.Contains(' ')) {
                         string tempstraat = straat.Replace(" ", "");
-                        if (Regex.Match(tempstraat, ".*[\\d\\W].*").Success)
-                        {
+                        if (Regex.Match(tempstraat, ".*[\\d\\W].*").Success) {
                             throw new ArgumentException("Straat mag enkel letters bevatten.");
                         }
-                    }
-                    else
-                    {
-                        if (Regex.Match(straat, ".*[\\d\\W].*").Success)
-                        {
+                    } else {
+                        if (Regex.Match(straat, ".*[\\d\\W].*").Success) {
                             throw new ArgumentException("Straat mag enkel letters bevatten.");
                         }
                     }
@@ -349,11 +285,9 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                 return _huisnr;
             }
             set {
-                if (value != null)
-                {
+                if (value != null) {
                     string huisnr = value.Trim();
-                    if (!Regex.Match(huisnr, "\\d{1,5}").Success)
-                    {
+                    if (!Regex.Match(huisnr, "\\d{1,5}").Success) {
                         throw new ArgumentException("Huisnummer mag geen letters/symbolen bevatten.");
                     }
                     _huisnr = value;
@@ -367,11 +301,9 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                 return _postcode;
             }
             set {
-                if (value != null)
-                {
+                if (value != null) {
                     string postcode = value.Trim();
-                    if (!Regex.Match(postcode, "[0-9]{4}").Success)
-                    {
+                    if (!Regex.Match(postcode, "[0-9]{4}").Success) {
                         throw new ArgumentException("Postcode moet 4 cijfers bevatten.");
                     }
                     _postcode = value;
@@ -383,11 +315,9 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                 return _email;
             }
             set {
-                if (value != null)
-                {
+                if (value != null) {
                     string email = value.Trim();
-                    if (!Regex.Match(email, "\\b[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}\\b").Success)
-                    {
+                    if (!Regex.Match(email, "\\b[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}\\b").Success) {
                         throw new ArgumentException("Emailadres is niet correct.");
                     }
                     _email = value;
@@ -399,11 +329,9 @@ namespace PROJ20_G20_DOTNET.Models.Domain
             get { return _emailVader; }
 
             set {
-                if (value != null)
-                {
+                if (value != null) {
                     string emailVader = value.Trim();
-                    if (!Regex.Match(emailVader, "\\b[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}\\b").Success)
-                    {
+                    if (!Regex.Match(emailVader, "\\b[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}\\b").Success) {
                         throw new ArgumentException("Emailadres vader is niet correct.");
                     }
                     _emailVader = value;
@@ -415,11 +343,9 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                 return _emailMoeder;
             }
             set {
-                if (value != null)
-                {
+                if (value != null) {
                     string emailMoeder = value.Trim();
-                    if (!Regex.Match(emailMoeder, "\\b[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}\\b").Success)
-                    {
+                    if (!Regex.Match(emailMoeder, "\\b[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}\\b").Success) {
                         throw new ArgumentException("Emailadres moeder is niet correct.");
                     }
                     _emailMoeder = value;
@@ -434,36 +360,25 @@ namespace PROJ20_G20_DOTNET.Models.Domain
             }
 
             set {
-                if (value != null)
-                {
-                    if (value.Contains(" "))
-                    {
+                if (value != null) {
+                    if (value.Contains(" ")) {
                         string geboorteplaats = value.Replace(" ", "");
-                        if (geboorteplaats.Contains("-"))
-                        {
+                        if (geboorteplaats.Contains("-")) {
                             geboorteplaats = geboorteplaats.Replace("-", "");
-                            if (Regex.Match(geboorteplaats, ".*[\\d\\W].*").Success)
-                            {
+                            if (Regex.Match(geboorteplaats, ".*[\\d\\W].*").Success) {
                                 throw new ArgumentException("Geboorteplaats mag enkel letters bevatten.");
                             }
 
                         }
-                    }
-                    else
-                    {
-                        if (value.Contains("-"))
-                        {
+                    } else {
+                        if (value.Contains("-")) {
                             string geboorteplaats = value.Replace("-", "");
-                            if (Regex.Match(geboorteplaats, ".*[\\d\\W].*").Success)
-                            {
+                            if (Regex.Match(geboorteplaats, ".*[\\d\\W].*").Success) {
                                 throw new ArgumentException("Geboorteplaats mag enkel letters bevatten.");
                             }
 
-                        }
-                        else
-                        {
-                            if (Regex.Match(value, ".*[\\d\\W].*").Success)
-                            {
+                        } else {
+                            if (Regex.Match(value, ".*[\\d\\W].*").Success) {
                                 throw new ArgumentException("Geboorteplaats mag enkel letters bevatten.");
                             }
                         }
@@ -475,14 +390,10 @@ namespace PROJ20_G20_DOTNET.Models.Domain
         public string Geslacht {
             get { return _geslacht; }
             set {
-                if (value != null)
-                {
-                    if (value.Equals("MAN", StringComparison.InvariantCultureIgnoreCase) || value.Equals("VROUW", StringComparison.InvariantCultureIgnoreCase))
-                    {
+                if (value != null) {
+                    if (value.Equals("MAN", StringComparison.InvariantCultureIgnoreCase) || value.Equals("VROUW", StringComparison.InvariantCultureIgnoreCase)) {
                         _geslacht = value;
-                    }
-                    else
-                    {
+                    } else {
                         throw new ArgumentException("Geslacht is niet correct.");
                     }
                 }
@@ -500,8 +411,7 @@ namespace PROJ20_G20_DOTNET.Models.Domain
         #endregion
 
         #region Constructors
-        protected Lid()
-        {
+        protected Lid() {
         }
 
         public Lid(string voornaam, string achternaam, DateTime geboortedatum,
@@ -509,8 +419,7 @@ namespace PROJ20_G20_DOTNET.Models.Domain
             string gsmNr, string vasteTelefoonNr, string stad, string straat,
             string huisNr, string postcode, string email,
             string wachtwoord, string geboorteplaats, string geslacht,
-            string nationaliteit, Graad graad, Functie functie)
-        {
+            string nationaliteit, Graad graad, Functie functie) {
 
             Voornaam = voornaam;
             Achternaam = achternaam;
