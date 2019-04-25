@@ -454,5 +454,12 @@ namespace PROJ20_G20_DOTNET.Models.Domain {
             RijksregisterNummer = rijksregisterNr;
         }
         #endregion
-    }
+
+	#region Test
+	private void Foo()
+	{
+		throw new ArgumentException("John Doe is Foo");
+	}
+	#endregion
+    
 }
