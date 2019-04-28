@@ -45,6 +45,9 @@ namespace PROJ20_G20_DOTNET.Controllers
         {
             Lid lid = _lidRepository.GetBy(id2);
             Activiteit activiteit = _activiteitRepository.GetBy(id);
+            ActiviteitInschrijving activiteitInschrijving =
+                activiteit.ActiviteitInschrijvingen.SingleOrDefault(ai => ai.ActiviteitId == id && ai.Inschrijving.LidId == id2);
+            activiteitInschrijving.IsAanwezig = true;
             Aanwezigheid aanwezigheid = new Aanwezigheid(lid, activiteit);
             _aanwezigheidRepository.Add(aanwezigheid);
             _aanwezigheidRepository.SaveChanges();

@@ -8,16 +8,23 @@
     <h2>Aanwezigheden voor @Model.Naam</h2><br />
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
         @foreach (var ActiviteitInschrijving in Model.ActiviteitInschrijvingen) {
-            <div class="aanwezigFalse">
-                <p class="aanwezigLidName"><strong>@ActiviteitInschrijving.Inschrijving.Lid.Achternaam @ActiviteitInschrijving.Inschrijving.Lid.Voornaam</strong></p>
-                <form method="post">
-                    <button class="btn btn-primary" type="submit" asp-action="VoegAanwezigheidToe"
-                            asp-route-id="@ActiviteitInschrijving.Activiteit.Id"
-                            asp-route-id2="@ActiviteitInschrijving.Inschrijving.Lid.Id">
-                        Aanwezig
-                    </button>
-                </form>
-            </div>
+            @if (!ActiviteitInschrijving.IsAanwezig) {
+                <div class="aanwezigFalse">
+                    <p class="aanwezigLidName"><strong>@ActiviteitInschrijving.Inschrijving.Lid.Achternaam @ActiviteitInschrijving.Inschrijving.Lid.Voornaam</strong></p>
+                    <form method="post">
+                        <button class="btn btn-primary" type="submit" asp-action="VoegAanwezigheidToe"
+                                asp-route-id="@ActiviteitInschrijving.Activiteit.Id"
+                                asp-route-id2="@ActiviteitInschrijving.Inschrijving.Lid.Id">
+                            Aanwezig
+                        </button>
+                    </form>
+                </div>
+            }
+            else {
+                <div class="aanwezigTrue">
+                    <p class="aanwezigLidName"><strong>@ActiviteitInschrijving.Inschrijving.Lid.Achternaam @ActiviteitInschrijving.Inschrijving.Lid.Voornaam</strong></p>
+                </div>
+            }
         }
     </div>
 </div>

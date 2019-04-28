@@ -8,5 +8,6 @@ namespace PROJ20_G20_DOTNET.Models.Domain
     public interface IActiviteitInschrijvingRepository
     {
         IEnumerable<ActiviteitInschrijving> GetAll();
+        ActiviteitInschrijving GetBy(int activiteitId,int inschrijvingId);
     }
 }

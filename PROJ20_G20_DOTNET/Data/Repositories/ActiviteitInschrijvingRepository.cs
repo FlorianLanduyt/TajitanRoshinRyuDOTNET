@@ -23,5 +23,11 @@ namespace PROJ20_G20_DOTNET.Data.Repositories
             return _activiteitInschrijvingen
                 .ToList();
         }
+
+        public ActiviteitInschrijving GetBy(int activiteitId, int inschrijvingId)
+        {
+            return _activiteitInschrijvingen
+                .SingleOrDefault(ai => ai.ActiviteitId == activiteitId && ai.InschrijvingId == inschrijvingId);
+        }
     }
 }

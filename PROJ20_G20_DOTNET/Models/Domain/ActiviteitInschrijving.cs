@@ -9,6 +9,8 @@
         public Inschrijving Inschrijving { get; set; }
         public int InschrijvingId { get; set; }
 
+        public bool IsAanwezig { get; set; }
+
         public ActiviteitInschrijving()
         {
 
@@ -20,6 +22,7 @@
             Inschrijving = inschrijving;
             ActiviteitId = activiteit.Id;
             InschrijvingId = inschrijving.Id;
+            IsAanwezig = false;
         }
     }
 }
