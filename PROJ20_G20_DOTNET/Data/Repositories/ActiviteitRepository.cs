@@ -31,12 +31,16 @@ namespace PROJ20_G20_DOTNET.Data.Repositories
 
         public IEnumerable<Activiteit> GetAll()
         {
-            return _activiteiten.ToList();
+            return _activiteiten
+                .Include(a => a.Inschrijvingen)
+                .ToList();
         }
 
         public Activiteit GetBy(int id)
         {
-            return _activiteiten.SingleOrDefault(a => a.Id == id);
+            return _activiteiten
+                .Include(a => a.Inschrijvingen)
+                .SingleOrDefault(a => a.Id == id);
         }
 
         public void SaveChanges()

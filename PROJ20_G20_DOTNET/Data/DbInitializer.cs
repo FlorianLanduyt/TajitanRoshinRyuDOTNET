@@ -53,6 +53,21 @@ namespace PROJ20_G20_DOTNET.Data
                 _dbContext.Activiteiten.Add(act1);
                 _dbContext.Activiteiten.Add(act2);
                 #endregion
+
+                #region Inschrijvingen
+                Inschrijving inschrijving1 = new Inschrijving(lid2, act1.Formule, DateTime.Now);
+                Inschrijving inschrijving2 = new Inschrijving(lid2, act2.Formule, DateTime.Now);
+                Inschrijving inschrijving3 = new Inschrijving(lid1, act1.Formule, DateTime.Now);
+                Inschrijving inschrijving4 = new Inschrijving(lid1, act2.Formule, DateTime.Now);
+
+                _dbContext.Inschrijvingen.Add(inschrijving1);
+                _dbContext.Inschrijvingen.Add(inschrijving2);
+                act1.AddInschrijving(inschrijving1);
+                act2.AddInschrijving(inschrijving2);
+                act1.AddInschrijving(inschrijving3);
+                act2.AddInschrijving(inschrijving4);
+                #endregion
+
                 _dbContext.SaveChanges();
 
             }

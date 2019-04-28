@@ -87,7 +87,7 @@ namespace PROJ20_G20_DOTNET
             app.UseMvc(routes => {
                 routes.MapRoute(
                     name: "defaultRoute",
-                    template: "{controller=Lid}/{action=Index}/{id?}");
+                    template: "{controller=Lid}/{action=Index}/{id?}/{id2?}");
             });
 
             dbInitializer.InitializeData().Wait();

@@ -14,7 +14,7 @@ namespace PROJ20_G20_DOTNET.Data.Mapping {
             builder.Property(ai => ai.InschrijvingId).HasColumnName("inschrijven_ID"); // Lijkt raar, staat ook zo in java db
             builder.HasKey(ai => new { ai.ActiviteitId, ai.InschrijvingId });
 
-            builder.HasOne(ai => ai.Activiteit).WithMany(a => a.Inschrijvingen).HasForeignKey(ai => ai.ActiviteitId).OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(ai => ai.Activiteit).WithMany(a => a.ActiviteitInschrijvingen).HasForeignKey(ai => ai.ActiviteitId).OnDelete(DeleteBehavior.Cascade);
             builder.HasOne(ai => ai.Inschrijving).WithMany().HasForeignKey(ai => ai.InschrijvingId).OnDelete(DeleteBehavior.Cascade);
         }
     }

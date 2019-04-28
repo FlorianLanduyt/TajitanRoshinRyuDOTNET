@@ -5,15 +5,15 @@
 }
 
 <div>
-    <h2>Klik op uw naam om u aanwezig te zetten.</h2>
-    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+    <h2>Aanwezigheden</h2><br />
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
         @foreach (var Lid in Model) {
-            <div class="lidAanwezigFalse">
-                <h1>@Lid.Achternaam @Lid.Voornaam</h1>
+            <div class="aanwezigFalse">
+                <p class="aanwezigLidName"><strong>@Lid.Achternaam @Lid.Voornaam</strong></p>
                 <form method="post">
-                    <button type="submit" asp-action="VoegAanwezigheidToe" class="btn btn-primary">Aanwezig</button>
+                    <button class="btn btn-primary" type="submit" asp-action="VoegAanwezigheidToe" asp-route-id="1" asp-route-id2="2">Aanwezig</button>
                 </form>
             </div>
         }
     </div>
-</div>foreach
+</div>

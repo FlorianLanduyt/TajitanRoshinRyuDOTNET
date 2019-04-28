@@ -36,18 +36,19 @@ namespace PROJ20_G20_DOTNET.Controllers
 
         public IActionResult IndexAanwezigheden(int activiteitId)
         {
-            IEnumerable<Lid> ingeschrevenLeden =
-                _activiteitInschrijvingRepository
-                .GetAll()
-                .Where(ai => ai.ActiviteitId == activiteitId)
-                .Select(ai => ai.Inschrijving.Lid);
-            return View(ingeschrevenLeden);
+            //Activiteit activiteit =
+            //    _activiteitRepository.GetBy(activiteitId);
+            IEnumerable<Lid> leden = _lidRepository.GetAll().ToList();
+            return View(leden);
         }
 
-        //[HttpPost]
-        //public IActionResult VoegAanwezigheidToe(int activiteitId, int lidId)
-        //{
-
-        //}
+        [HttpPost]
+        public IActionResult VoegAanwezigheidToe(int activiteitId, int lidId)
+        {
+            Aanwezigheid aanwezigheid = new Aanwezigheid(_lidRepository.GetBy(lidId), _activiteitRepository.GetBy(activiteitId));
+            _aanwezigheidRepository.Add(aanwezigheid);
+            _aanwezigheidRepository.SaveChanges();
+            return View(nameof(IndexAanwezigheden), activiteitId);
+        }
     }
 }

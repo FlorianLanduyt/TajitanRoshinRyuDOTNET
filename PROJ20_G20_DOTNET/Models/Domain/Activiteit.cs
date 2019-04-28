@@ -1,6 +1,7 @@
 ﻿using PROJ20_G20_DOTNET.Models.Domain;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace PROJ20_G20_DOTNET.Models.Domain
@@ -30,6 +31,7 @@ namespace PROJ20_G20_DOTNET.Models.Domain
         private int _maxAantalDeelnemers;
         private int _aantalDeelnemers;
         private bool _isVolzet;
+
         #endregion
 
 
@@ -283,14 +285,15 @@ namespace PROJ20_G20_DOTNET.Models.Domain
         }
         public int Id { get; set; }
 
-        public ICollection<ActiviteitInschrijving> Inschrijvingen { get; private set; }
+        public ICollection<ActiviteitInschrijving> ActiviteitInschrijvingen { get; set; }
+        public IList<Inschrijving> Inschrijvingen => ActiviteitInschrijvingen.Select(ai => ai.Inschrijving).ToList();
 
         #endregion
 
         #region Constructors
         protected Activiteit()
         {
-            Inschrijvingen = new List<ActiviteitInschrijving>();
+            ActiviteitInschrijvingen = new List<ActiviteitInschrijving>();
         }
 
         public Activiteit(string naam,
@@ -298,7 +301,7 @@ namespace PROJ20_G20_DOTNET.Models.Domain
             string gsmNummer, string email, string naamLocatie, string straat, string stad, string postcode,
             string huisNummer, string busNummer, int maxAantalDeelnemers) : this()
         {
-
+            ActiviteitInschrijvingen = new List<ActiviteitInschrijving>();
             Naam = naam;
             Formule = formule;
             BeginDatum = beginDatum;
@@ -314,6 +317,14 @@ namespace PROJ20_G20_DOTNET.Models.Domain
             BusNummer = busNummer ?? null;
             MaxAantalDeelnemers = maxAantalDeelnemers;
             IsVolzet = MaxAantalDeelnemers == AantalDeelnemers;
+        }
+        #endregion
+
+        #region Methods
+        public void AddInschrijving(Inschrijving inschrijving)
+        {
+            ActiviteitInschrijving ai = new ActiviteitInschrijving(this, inschrijving);
+            ActiviteitInschrijvingen.Add(ai);
         }
         #endregion
     }
