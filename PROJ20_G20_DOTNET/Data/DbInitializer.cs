@@ -45,10 +45,10 @@ namespace PROJ20_G20_DOTNET.Data
                 #region Activiteiten
                 Activiteit act1 = new Activiteit("Testactiviteit een", Formule.EXAMEN, new DateTime(2020, 8, 12), new DateTime(2020, 8, 13),
                     new DateTime(2020, 7, 15), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
-                    "20", "5", 50, 0);
+                    "20", "5", 50);
                 Activiteit act2 = new Activiteit("Testactiviteit twee", Formule.UITSTAP, new DateTime(2020, 9, 12), new DateTime(2020, 9, 13),
                    new DateTime(2020, 8, 15), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
-                   "20", "5", 50, 0);
+                   "20", "5", 50);
 
                 _dbContext.Activiteiten.Add(act1);
                 _dbContext.Activiteiten.Add(act2);
