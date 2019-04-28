@@ -8,7 +8,6 @@ namespace PROJ20_G20_DOTNET.Data.Repositories
 {
     public class AanwezigheidRepository : IAanwezigheidRepository
     {
-
         private readonly JiuJitsuDbContext _context;
         private readonly DbSet<Aanwezigheid> _aanwezigheden;
 

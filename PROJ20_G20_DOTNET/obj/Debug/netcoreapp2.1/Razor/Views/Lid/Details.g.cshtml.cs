@@ -265,12 +265,12 @@ Write(Model.Voornaam);
             WriteLiteral("</label><br />\r\n        <br />\r\n    </div>\r\n    ");
             EndContext();
             BeginContext(1241, 299, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c71d7445c33f4fc997d35e43692aa8be", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ab96787d2c24da8ba4e79d5d7b86c49", async() => {
                 BeginContext(1247, 10, true);
                 WriteLiteral("\r\n        ");
                 EndContext();
                 BeginContext(1257, 90, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e360c05f0f904f58aff55a252d6713de", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "40461ef3d0ee489bbf78b628b38916e1", async() => {
                     BeginContext(1332, 6, true);
                     WriteLiteral("Wijzig");
                     EndContext();
@@ -306,7 +306,7 @@ Write(Model.Voornaam);
                 WriteLiteral("\r\n        ");
                 EndContext();
                 BeginContext(1357, 95, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd499369284247029f3b8f0fe94342dd", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "19be62558c604e499ff14b1264709c31", async() => {
                     BeginContext(1434, 9, true);
                     WriteLiteral("Verwijder");
                     EndContext();
@@ -342,7 +342,7 @@ Write(Model.Voornaam);
                 WriteLiteral("\r\n        ");
                 EndContext();
                 BeginContext(1462, 65, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a73d0a08e9b24d94ae204b4f24269dfa", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2979a302dabc468190070029a706a7dd", async() => {
                     BeginContext(1513, 5, true);
                     WriteLiteral("Terug");
                     EndContext();
