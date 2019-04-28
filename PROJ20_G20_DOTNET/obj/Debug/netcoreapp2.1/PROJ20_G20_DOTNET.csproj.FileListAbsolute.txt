@@ -262,3 +262,4 @@ E:\School\2YS2\Projecten2\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\P
 E:\School\2YS2\Projecten2\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\PROJ20_G20_DOTNET.csproj.CopyComplete
 E:\School\2YS2\Projecten2\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Aanwezigheid\Index.g.cshtml.cs
 E:\School\2YS2\Projecten2\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Aanwezigheid\IndexAanwezigheden.g.cshtml.cs
+E:\School\2YS2\Projecten2\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs

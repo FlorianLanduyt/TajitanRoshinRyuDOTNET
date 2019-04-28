@@ -13,7 +13,6 @@ using PROJ20_G20_DOTNET.Models.ViewModels;
 
 namespace PROJ20_G20_DOTNET.Controllers
 {
-    [Authorize(Policy = "Beheerder")]
     public class LidController : Controller
     {
         private ILidRepository _lidRepository;
@@ -49,6 +48,16 @@ namespace PROJ20_G20_DOTNET.Controllers
             }
             TempData["Error"] = "Je bent niet gemachtigd om deze actie uit te voeren.";
             return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> DetailsGebruiker()
+        {
+            IdentityUser signedInUser = await GetSignedInUserAsync();
+            Lid lid = _lidRepository.GetAll().SingleOrDefault(l => l.Email.Equals(signedInUser.Email));
+            if (lid == null) {
+                return NotFound();
+            }
+            return View(nameof(Details), lid);
         }
 
         public async Task<IActionResult> Edit(int id)

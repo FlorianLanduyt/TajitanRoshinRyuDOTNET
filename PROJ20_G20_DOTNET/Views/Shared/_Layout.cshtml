@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/custom.css" />
+        <link rel="stylesheet" href="~/css/start.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -30,25 +31,25 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Lid" asp-action="Index" class="navbar-brand">Taijitan Roshin Ryu</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Startpagina</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @if ((await AuthorizationService.AuthorizeAsync(User, "Beheerder")).Succeeded) {
                         <li><a asp-area="" asp-controller="Lid" asp-action="Index">Leden</a></li>
-                        <li><a asp-area="" asp-controller="Lid" asp-action="Details" asp-route-id="">Mijn gegevens</a></li>
+                        <li><a asp-area="" asp-controller="Lid" asp-action="DetailsGebruiker">Mijn gegevens</a></li>
                         <li><a asp-area="" asp-controller="" asp-action="">Lesmateriaal</a></li>
                         <li><a asp-area="" asp-controller="Aanwezigheid" asp-action="Index">Aanwezigheid</a></li>
                     }
                     else if ((await AuthorizationService.AuthorizeAsync(User, "Trainer")).Succeeded) {
-                        <li><a asp-area="" asp-controller="Lid" asp-action="Details">Mijn gegevens</a></li>
+                        <li><a asp-area="" asp-controller="Lid" asp-action="DetailsGebruiker">Mijn gegevens</a></li>
                         <li><a asp-area="" asp-controller="" asp-action="">Lesmateriaal</a></li>
                         <li><a asp-area="" asp-controller="Aanwezigheid" asp-action="Index">Aanwezigheid</a></li>
                     }
                     else if ((await AuthorizationService.AuthorizeAsync(User, "Lid")).Succeeded ||
                     (await AuthorizationService.AuthorizeAsync(User, "Proeflid")).Succeeded ||
                     (await AuthorizationService.AuthorizeAsync(User, "Gast")).Succeeded) {
-                        <li><a asp-area="" asp-controller="Lid" asp-action="Details" asp-route-id="">Mijn gegevens</a></li>
+                        <li><a asp-area="" asp-controller="Lid" asp-action="DetailsGebruiker">Mijn gegevens</a></li>
                         <li><a asp-area="" asp-controller="" asp-action="">Lesmateriaal</a></li>
                     }
                 </ul>
@@ -62,8 +63,8 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; 2019 - Taijitan Roshin Ryu</p>
+        <footer class="text-center">
+            <p>&copy; 2019 - Taijitan Roshin Ryu - All rights reserved.</p>
         </footer>
     </div>
 

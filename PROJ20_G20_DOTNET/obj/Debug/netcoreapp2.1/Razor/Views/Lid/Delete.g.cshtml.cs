@@ -74,12 +74,12 @@ using PROJ20_G20_DOTNET.Models;
             WriteLiteral(" wilt verwijderen?</h2>\r\n    ");
             EndContext();
             BeginContext(130, 173, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fc39c75d27f34442a53853cafc88f8b5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "520ee23344ee41baa36f0afd1d0ad044", async() => {
                 BeginContext(150, 77, true);
                 WriteLiteral("\r\n        <button type=\"submit\" class=\"btn btn-primary\">Ja</button>\r\n        ");
                 EndContext();
                 BeginContext(227, 63, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "769238f0c236452f9d82e7310d61e27b", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4ac9976e98384fe280ed787b6df77e52", async() => {
                     BeginContext(278, 3, true);
                     WriteLiteral("Nee");
                     EndContext();
