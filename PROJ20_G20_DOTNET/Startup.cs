@@ -33,8 +33,8 @@ namespace PROJ20_G20_DOTNET
 
             #region DBContext config
             services.AddDbContext<JiuJitsuDbContext>(options =>
-                    options.UseSqlServer(
-                        Configuration.GetConnectionString("DefaultConnection")));
+            //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("TyboDesktopConnection")));
             #endregion
 
             #region Identity config
@@ -45,6 +45,10 @@ namespace PROJ20_G20_DOTNET
             #region Auth config
             services.AddAuthorization(options => {
                 options.AddPolicy("Lid", policy => policy.RequireClaim(ClaimTypes.Role, "lid"));
+                options.AddPolicy("Beheerder", policy => policy.RequireClaim(ClaimTypes.Role, "beheerder"));
+                options.AddPolicy("Trainer", policy => policy.RequireClaim(ClaimTypes.Role, "trainer"));
+                options.AddPolicy("Proeflid", policy => policy.RequireClaim(ClaimTypes.Role, "proeflid"));
+                options.AddPolicy("Gast", policy => policy.RequireClaim(ClaimTypes.Role, "gast"));
             });
             #endregion
 

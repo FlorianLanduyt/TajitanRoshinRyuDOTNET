@@ -13,7 +13,7 @@ using PROJ20_G20_DOTNET.Models.ViewModels;
 
 namespace PROJ20_G20_DOTNET.Controllers
 {
-    [Authorize(Policy = "Lid")]
+    [Authorize(Policy = "Beheerder")]
     public class LidController : Controller
     {
         private ILidRepository _lidRepository;

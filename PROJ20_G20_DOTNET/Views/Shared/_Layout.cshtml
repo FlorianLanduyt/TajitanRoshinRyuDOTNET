@@ -32,11 +32,18 @@
                 <a asp-area="" asp-controller="Lid" asp-action="Index" class="navbar-brand">Taijitan Roshin Ryu</a>
             </div>
             <div class="navbar-collapse collapse">
-                @if ((await AuthorizationService.AuthorizeAsync(User, "Lid")).Succeeded) {
-                    <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav">
+                    @if ((await AuthorizationService.AuthorizeAsync(User, "Beheerder")).Succeeded) {
                         <li><a asp-area="" asp-controller="Lid" asp-action="Index">Leden</a></li>
-                    </ul>
-                }
+                        <li><a asp-area="" asp-controller="Aanwezigheid" asp-action="Index">Aanwezigheid</a></li>
+                    }
+                    else {
+                        <li><a asp-area="" asp-controller="Lid" asp-action="Details" asp-route-id="">Gegevens</a></li>
+                    }
+                    @*@if ((await AuthorizationService.AuthorizeAsync(User, "Trainer")).Succeeded) {
+                        <li><a asp-area="" asp-controller="Aanwezigheid" asp-action="Index">Aanwezigheid</a></li>
+                    }*@
+                </ul>
                 <partial name="_LoginPartial" />
             </div>
         </div>

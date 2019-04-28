@@ -23,14 +23,15 @@ namespace PROJ20_G20_DOTNET.Data
         {
             _dbContext.Database.EnsureDeleted();
             if (_dbContext.Database.EnsureCreated()) {
-                Lid lid1 = new Lid("Tim", "Geldof", new DateTime(1997,07,17),
-                "97.07.17-001.23",
-                "0479330959", "051303050", "Izegem", "Winkelhoekstraat",
-                "52", "8870", "tim.geldof@outlook.com",
-                "P@ssword1", "Izegem", "Man",
-                "Belg", Graad.DAN5, Functie.BEHEERDER);
+                #region Leden
+                Lid lid1 = new Lid("Tim", "Geldof", new DateTime(1997, 07, 17),
+        "97.07.17-001.23",
+        "0479330959", "051303050", "Izegem", "Winkelhoekstraat",
+        "52", "8870", "tim.geldof@outlook.com",
+        "P@ssword1", "Izegem", "Man",
+        "Belg", Graad.DAN5, Functie.BEHEERDER);
 
-                Lid lid2 = new Lid("Tybo", "Vanderstraeten", new DateTime(1999,12,8),
+                Lid lid2 = new Lid("Tybo", "Vanderstraeten", new DateTime(1999, 12, 8),
                     "99.12.08-173.04", "0477441465", "051303054", "Gent", "Korenmarkt", "21", "9000", "tybo.vanderstraeten@outlook.com",
                     "P@ssword1", "Gent", "Man", "Belg", Graad.DAN3, Functie.LID);
 
@@ -39,7 +40,19 @@ namespace PROJ20_G20_DOTNET.Data
 
                 await CreateUser(lid1);
                 await CreateUser(lid2);
+                #endregion
 
+                #region Activiteiten
+                Activiteit act1 = new Activiteit("Testactiviteit een", Formule.EXAMEN, new DateTime(2020, 8, 12), new DateTime(2020, 8, 13),
+                    new DateTime(2020, 7, 15), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
+                    "20", "5", 50, 0);
+                Activiteit act2 = new Activiteit("Testactiviteit twee", Formule.UITSTAP, new DateTime(2020, 9, 12), new DateTime(2020, 9, 13),
+                   new DateTime(2020, 8, 15), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
+                   "20", "5", 50, 0);
+
+                _dbContext.Activiteiten.Add(act1);
+                _dbContext.Activiteiten.Add(act2);
+                #endregion
                 _dbContext.SaveChanges();
 
             }
@@ -53,7 +66,7 @@ namespace PROJ20_G20_DOTNET.Data
             };
 
             await _userManager.CreateAsync(user, lid.Wachtwoord);
-            await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "lid"));
+            await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, lid.Functie.ToString().ToLower()));
 
             _dbContext.SaveChanges();
         }

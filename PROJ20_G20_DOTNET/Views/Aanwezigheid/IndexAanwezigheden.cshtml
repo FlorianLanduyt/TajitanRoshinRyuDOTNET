@@ -1,0 +1,19 @@
+﻿@model IEnumerable<PROJ20_G20_DOTNET.Models.Domain.Lid>
+
+@{
+    ViewData["Title"] = "Aanwezigheden";
+}
+
+<div>
+    <h2>Klik op uw naam om u aanwezig te zetten.</h2>
+    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+        @foreach (var Lid in Model) {
+            <div class="lidAanwezigFalse">
+                <h1>@Lid.Achternaam @Lid.Voornaam</h1>
+                <form method="post">
+                    <button type="submit" asp-action="VoegAanwezigheidToe" class="btn btn-primary">Aanwezig</button>
+                </form>
+            </div>
+        }
+    </div>
+</div>foreach

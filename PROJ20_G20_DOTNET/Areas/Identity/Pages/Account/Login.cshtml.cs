@@ -18,13 +18,11 @@ namespace PROJ20_G20_DOTNET.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
-        private readonly ILidRepository _lidRepository;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger, ILidRepository lidRepository)
+        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger)
         {
             _signInManager = signInManager;
             _logger = logger;
-            _lidRepository = lidRepository;
         }
 
         [BindProperty]

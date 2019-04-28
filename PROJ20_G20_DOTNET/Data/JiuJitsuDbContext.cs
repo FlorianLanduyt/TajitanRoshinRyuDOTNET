@@ -15,7 +15,7 @@ namespace PROJ20_G20_DOTNET.Data
         public DbSet<Inschrijving> Inschrijvingen { get; set; }
         public DbSet<Lid> Leden { get; set; }
         public DbSet<Oefening> Oefeneningen { get; set; }
-        public DbSet<Raadpleging> Raadplegingen { get; set; }
+        //public DbSet<Raadpleging> Raadplegingen { get; set; }
         public DbSet<Thema> Themas { get; set; }
 
         public JiuJitsuDbContext(DbContextOptions<JiuJitsuDbContext> options)
@@ -30,7 +30,7 @@ namespace PROJ20_G20_DOTNET.Data
             builder.ApplyConfiguration(new InschrijvingConfiguration());
             builder.ApplyConfiguration(new LidConfiguration());
             builder.ApplyConfiguration(new OefeningConfiguration());
-            builder.ApplyConfiguration(new RaadplegingConfiguration());
+            //builder.ApplyConfiguration(new RaadplegingConfiguration());
             builder.ApplyConfiguration(new ThemaConfiguration());
         }
     }
