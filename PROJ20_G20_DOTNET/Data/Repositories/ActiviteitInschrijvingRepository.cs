@@ -21,8 +21,6 @@ namespace PROJ20_G20_DOTNET.Data.Repositories
         public IEnumerable<ActiviteitInschrijving> GetAll()
         {
             return _activiteitInschrijvingen
-                .Include(ai => ai.Activiteit)
-                .Include(ai => ai.Inschrijving).ThenInclude(i => i.Lid)
                 .ToList();
         }
     }

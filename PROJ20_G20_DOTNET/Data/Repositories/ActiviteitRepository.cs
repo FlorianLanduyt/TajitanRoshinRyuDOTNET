@@ -32,14 +32,16 @@ namespace PROJ20_G20_DOTNET.Data.Repositories
         public IEnumerable<Activiteit> GetAll()
         {
             return _activiteiten
-                .Include(a => a.Inschrijvingen)
+                .Include(a => a.ActiviteitInschrijvingen).ThenInclude(ai => ai.Activiteit)
+                .Include(a => a.ActiviteitInschrijvingen).ThenInclude(ai => ai.Inschrijving).ThenInclude(i=>i.Lid)
                 .ToList();
         }
 
         public Activiteit GetBy(int id)
         {
             return _activiteiten
-                .Include(a => a.Inschrijvingen)
+                .Include(a => a.ActiviteitInschrijvingen).ThenInclude(ai => ai.Activiteit)
+                .Include(a => a.ActiviteitInschrijvingen).ThenInclude(ai => ai.Inschrijving).ThenInclude(i=>i.Lid)
                 .SingleOrDefault(a => a.Id == id);
         }
 

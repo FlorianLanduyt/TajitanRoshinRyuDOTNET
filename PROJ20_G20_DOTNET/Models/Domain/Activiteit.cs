@@ -274,7 +274,7 @@ namespace PROJ20_G20_DOTNET.Models.Domain
         public int AantalDeelnemers {
             get { return _aantalDeelnemers; }
             private set {
-                _aantalDeelnemers = Inschrijvingen.Count;
+                _aantalDeelnemers = ActiviteitInschrijvingen.Count;
             }
         }
         public bool IsVolzet {
@@ -286,7 +286,6 @@ namespace PROJ20_G20_DOTNET.Models.Domain
         public int Id { get; set; }
 
         public ICollection<ActiviteitInschrijving> ActiviteitInschrijvingen { get; set; }
-        public IList<Inschrijving> Inschrijvingen => ActiviteitInschrijvingen.Select(ai => ai.Inschrijving).ToList();
 
         #endregion
 

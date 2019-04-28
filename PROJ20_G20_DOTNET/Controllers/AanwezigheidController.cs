@@ -34,21 +34,23 @@ namespace PROJ20_G20_DOTNET.Controllers
             return View(activiteiten);
         }
 
-        public IActionResult IndexAanwezigheden(int activiteitId)
+        public IActionResult IndexAanwezigheden(int id)
         {
-            //Activiteit activiteit =
-            //    _activiteitRepository.GetBy(activiteitId);
-            IEnumerable<Lid> leden = _lidRepository.GetAll().ToList();
-            return View(leden);
+            Activiteit activiteit = _activiteitRepository.GetBy(id);
+            return View(activiteit);
         }
 
         [HttpPost]
-        public IActionResult VoegAanwezigheidToe(int activiteitId, int lidId)
+        public IActionResult VoegAanwezigheidToe(int id, int id2)
         {
-            Aanwezigheid aanwezigheid = new Aanwezigheid(_lidRepository.GetBy(lidId), _activiteitRepository.GetBy(activiteitId));
+            Lid lid = _lidRepository.GetBy(id2);
+            Activiteit activiteit = _activiteitRepository.GetBy(id);
+            Aanwezigheid aanwezigheid = new Aanwezigheid(lid, activiteit);
             _aanwezigheidRepository.Add(aanwezigheid);
             _aanwezigheidRepository.SaveChanges();
-            return View(nameof(IndexAanwezigheden), activiteitId);
+            return View(nameof(IndexAanwezigheden), activiteit);
         }
+
+
     }
 }

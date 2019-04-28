@@ -28,7 +28,8 @@ namespace PROJ20_G20_DOTNET.Models.Domain {
         public int Id { get; set; }
         public int PuntenAantal {
             get { return _puntenAantal; }
-            private set => BerekenPuntenAantal();
+            //private set => BerekenPuntenAantal();
+            set { _puntenAantal = value; }
         }
         #endregion
 
