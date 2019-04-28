@@ -162,12 +162,12 @@ using PROJ20_G20_DOTNET.Models;
             WriteLiteral("</td>\r\n                    <td class=\"text-right\">\r\n                        ");
             EndContext();
             BeginContext(968, 304, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0729f3a73dbf47cbb57e89ab6507947a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d2bef9ff7c564b7f980ce6caeaf095aa", async() => {
                 BeginContext(974, 30, true);
                 WriteLiteral("\r\n                            ");
                 EndContext();
                 BeginContext(1004, 58, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "604335d8337f4d7788feeb08b27e52b6", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d05f0d8ff4b34203a9d597b15a987c9e", async() => {
                     BeginContext(1051, 7, true);
                     WriteLiteral("Details");
                     EndContext();
@@ -202,7 +202,7 @@ using PROJ20_G20_DOTNET.Models;
                 WriteLiteral(" |\r\n                            ");
                 EndContext();
                 BeginContext(1094, 54, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d3d2f2b826ad4180a49ee15c23a60b78", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c8082081a23c4b13bbcaa62499424931", async() => {
                     BeginContext(1138, 6, true);
                     WriteLiteral("Wijzig");
                     EndContext();
@@ -237,7 +237,7 @@ using PROJ20_G20_DOTNET.Models;
                 WriteLiteral(" |\r\n                            ");
                 EndContext();
                 BeginContext(1180, 59, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "550d08f0c8d24c57b1311b9e8b90e9da", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e86b58dc3eb94747a2f3c2556ccd79ec", async() => {
                     BeginContext(1226, 9, true);
                     WriteLiteral("Verwijder");
                     EndContext();
