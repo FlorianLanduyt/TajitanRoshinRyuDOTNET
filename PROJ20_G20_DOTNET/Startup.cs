@@ -44,12 +44,16 @@ namespace PROJ20_G20_DOTNET
 
             #region Auth config
             services.AddAuthorization(options => {
+                //Function policies
                 options.AddPolicy("Lid", policy => policy.RequireClaim(ClaimTypes.Role, "lid"));
                 options.AddPolicy("Beheerder", policy => policy.RequireClaim(ClaimTypes.Role, "beheerder"));
                 options.AddPolicy("Trainer", policy => policy.RequireClaim(ClaimTypes.Role, "trainer"));
                 options.AddPolicy("Proeflid", policy => policy.RequireClaim(ClaimTypes.Role, "proeflid"));
                 options.AddPolicy("Gast", policy => policy.RequireClaim(ClaimTypes.Role, "gast"));
-                options.AddPolicy("Authorized", policy => policy.RequireClaim(ClaimTypes.Role, "authorized"));
+
+                //Action policies
+                options.AddPolicy("ViewAttendings", policy => policy.RequireClaim(ClaimTypes.Role, "viewAttendings"));
+                options.AddPolicy("ViewPersonalDetails", policy => policy.RequireClaim(ClaimTypes.Role, "viewPersonalDetails"));
             });
             #endregion
 

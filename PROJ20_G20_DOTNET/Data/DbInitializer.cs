@@ -82,9 +82,10 @@ namespace PROJ20_G20_DOTNET.Data
 
             await _userManager.CreateAsync(user, lid.Wachtwoord);
             await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, lid.Functie.ToString().ToLower()));
-            await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "authorized"));
-            if (lid.Functie.Equals(Functie.BEHEERDER)) {
-                await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "trainer"));
+            await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "viewPersonalDetails"));
+
+            if (lid.Functie.Equals(Functie.BEHEERDER) || lid.Functie.Equals(Functie.TRAINER)) {
+                await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "viewAttendings"));
             }
 
             _dbContext.SaveChanges();

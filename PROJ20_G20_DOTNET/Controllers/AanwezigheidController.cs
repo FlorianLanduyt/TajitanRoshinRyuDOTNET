@@ -8,7 +8,7 @@ using PROJ20_G20_DOTNET.Models.Domain;
 
 namespace PROJ20_G20_DOTNET.Controllers
 {
-    [Authorize(Policy = "Trainer")]
+    [Authorize(Policy = "ViewAttendings")]
     public class AanwezigheidController : Controller
     {
         private ILidRepository _lidRepository;
@@ -51,7 +51,7 @@ namespace PROJ20_G20_DOTNET.Controllers
             Aanwezigheid aanwezigheid = new Aanwezigheid(lid, activiteit);
             _aanwezigheidRepository.Add(aanwezigheid);
             _aanwezigheidRepository.SaveChanges();
-            return View(nameof(Aanwezigheden), activiteit);
+            return RedirectToAction(nameof(Aanwezigheden), activiteit);
         }
 
 
