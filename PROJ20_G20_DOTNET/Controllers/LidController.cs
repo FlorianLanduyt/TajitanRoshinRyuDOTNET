@@ -73,7 +73,6 @@ namespace PROJ20_G20_DOTNET.Controllers
             lid.Achternaam = lidEditViewModel.Achternaam;
             lid.RijksregisterNummer = lidEditViewModel.RijksregisterNummer;
             lid.Nationaliteit = lidEditViewModel.Nationaliteit;
-            lid.DatumEersteTraining = lidEditViewModel.DatumEersteTraining;
             lid.GeboorteDatum = lidEditViewModel.GeboorteDatum;
             lid.GsmNr = lidEditViewModel.GsmNr;
             lid.VasteTelefoonNr = lidEditViewModel.VasteTelefoonNr;

@@ -5,7 +5,8 @@
 }
 
 <div>
-    <h2>Aanwezigheden voor @Model.Naam</h2><br />
+    <h2>Aanwezigheden voor @Model.Naam</h2>
+    <hr />
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
         @foreach (var ActiviteitInschrijving in Model.ActiviteitInschrijvingen) {
             @if (!ActiviteitInschrijving.IsAanwezig) {
