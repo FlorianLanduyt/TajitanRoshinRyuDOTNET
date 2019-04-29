@@ -31,25 +31,21 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Startpagina</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Taijitan Roshin Ryu</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @if ((await AuthorizationService.AuthorizeAsync(User, "Beheerder")).Succeeded) {
-                        <li><a asp-area="" asp-controller="Lid" asp-action="Index">Leden</a></li>
-                        <li><a asp-area="" asp-controller="Lid" asp-action="DetailsGebruiker">Mijn gegevens</a></li>
                         <li><a asp-area="" asp-controller="" asp-action="">Lesmateriaal</a></li>
                         <li><a asp-area="" asp-controller="Aanwezigheid" asp-action="Index">Aanwezigheid</a></li>
                     }
                     else if ((await AuthorizationService.AuthorizeAsync(User, "Trainer")).Succeeded) {
-                        <li><a asp-area="" asp-controller="Lid" asp-action="DetailsGebruiker">Mijn gegevens</a></li>
                         <li><a asp-area="" asp-controller="" asp-action="">Lesmateriaal</a></li>
                         <li><a asp-area="" asp-controller="Aanwezigheid" asp-action="Index">Aanwezigheid</a></li>
                     }
                     else if ((await AuthorizationService.AuthorizeAsync(User, "Lid")).Succeeded ||
                     (await AuthorizationService.AuthorizeAsync(User, "Proeflid")).Succeeded ||
                     (await AuthorizationService.AuthorizeAsync(User, "Gast")).Succeeded) {
-                        <li><a asp-area="" asp-controller="Lid" asp-action="DetailsGebruiker">Mijn gegevens</a></li>
                         <li><a asp-area="" asp-controller="" asp-action="">Lesmateriaal</a></li>
                     }
                 </ul>

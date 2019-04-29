@@ -1,7 +1,7 @@
-﻿@model IEnumerable<PROJ20_G20_DOTNET.Models.Domain.Lid>
+﻿@model PROJ20_G20_DOTNET.Models.Domain.Lid
 
 @{
-    ViewData["Title"] = "Leden";
+    ViewData["Title"] = "Gegevens";
 }
 
 <div>
@@ -13,33 +13,31 @@
         <br />
         <p class="alert alert-danger">@TempData["Error"]</p>
     }
-    <h2>Leden</h2>
-    <br />
+    <h2>@Model.Voornaam @Model.Achternaam</h2>
     <div>
-        <table class="table table-bordered table-striped">
-            <tr>
-                <th>Familienaam</th>
-                <th>Voornaam</th>
-                <th>Geboortedatum</th>
-                <th class="text-right">Acties</th>
-            </tr>
-
-            @foreach (var Lid in Model) {
-
-                <tr>
-                    <td>@Lid.Achternaam</td>
-                    <td>@Lid.Voornaam</td>
-                    <td>@Lid.GeboorteDatum.ToShortDateString()</td>
-                    <td class="text-right">
-                        <form>
-                            <a asp-action="Details" asp-route-id="@Lid.Id">Details</a> |
-                            <a asp-action="Edit" asp-route-id="@Lid.Id">Wijzig</a> |
-                            <a asp-action="Delete" asp-route-id="@Lid.Id">Verwijder</a>
-                        </form>
-                    </td>
-                </tr>
-            }
-        </table>
+        <h3>@Model.Functie | @Model.Graad | @Model.PuntenAantal punten</h3>
+        <div>
+            <label>Geboortedatum: @Model.GeboorteDatum.ToShortDateString()</label><br />
+            <label>Geboorteplaats: @Model.GeboortePlaats</label><br />
+            <label>Geslacht: @Model.Geslacht</label><br />
+            <label>Nationaliteit: @Model.Nationaliteit</label><br />
+            <br />
+            <label>@Model.Straat @Model.HuisNr @(Model.Bus != null ? Model.Bus : "")</label><br />
+            <label>@Model.PostCode @Model.Stad.ToUpper()</label><br />
+            <br />
+            <label>GSM: @Model.GsmNr</label><br />
+            <label>TEL: @(Model.VasteTelefoonNr != null ? Model.VasteTelefoonNr : "/")</label><br />
+            <br />
+            <label>E-mail: @Model.Email</label><br />
+            <label>E-mail vader: @(Model.EmailVader != null ? Model.EmailVader : "/")</label><br />
+            <label>E-mail moeder: @(Model.EmailMoeder != null ? @Model.EmailMoeder : "/")</label><br />
+            <br />
+            <label>Beroep: @(Model.Beroep != null ? @Model.Beroep : "/")</label><br />
+            <br />
+        </div>
+        <form>
+            <button asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-default">Wijzigen</button>
+        </form>
     </div>
 </div>
 

@@ -23,38 +23,14 @@ namespace PROJ20_G20_DOTNET.Controllers
             _signInManager = signInManager;
         }
 
-        public IActionResult Index()
-        {
-            IEnumerable<Lid> leden = _lidRepository
-                .GetAll()
-                .OrderBy(lid => lid.Achternaam)
-                .OrderBy(lid => lid.Voornaam)
-                .ToList();
-            return View(leden);
-        }
-
-        public async Task<IActionResult> Details(int id)
-        {
-            Lid lid = _lidRepository.GetBy(id);
-            if (lid == null) {
-                return NotFound();
-            }
-            IdentityUser user = await GetSignedInUserAsync();
-            if (user.Email.Equals(lid.Email)) {
-                return View(lid);
-            }
-            TempData["Error"] = "Je bent niet gemachtigd om deze actie uit te voeren.";
-            return RedirectToAction(nameof(Index));
-        }
-
-        public async Task<IActionResult> DetailsGebruiker()
+        public async Task<IActionResult> Index()
         {
             IdentityUser signedInUser = await GetSignedInUserAsync();
             Lid lid = _lidRepository.GetAll().SingleOrDefault(l => l.Email.Equals(signedInUser.Email));
             if (lid == null) {
                 return NotFound();
             }
-            return View(nameof(Details), lid);
+            return View(lid);
         }
 
         public async Task<IActionResult> Edit(int id)
@@ -69,7 +45,7 @@ namespace PROJ20_G20_DOTNET.Controllers
                 ViewData["Functies"] = GetFunctiesAsSelectList();
                 return View(new LidEditViewModel(lid));
             }
-            TempData["Error"] = "Je bent niet gemachtigd om deze actie uit te voeren.";
+            TempData["Error"] = "Je kan deze actie niet uitvoeren op dit moment.";
             return RedirectToAction(nameof(Index));
         }
 
@@ -93,42 +69,6 @@ namespace PROJ20_G20_DOTNET.Controllers
             ViewData["Graden"] = GetGradenAsSelectList();
             ViewData["Functies"] = GetFunctiesAsSelectList();
             return View(nameof(Edit), lidEditViewModel);
-        }
-
-        public async Task<IActionResult> Delete(int id)
-        {
-            Lid lid = _lidRepository.GetBy(id);
-            if (lid == null) {
-                return NotFound();
-            }
-            IdentityUser user = await GetSignedInUserAsync();
-            if (user.Email.Equals(lid.Email)) {
-                ViewData["Name"] = lid.Voornaam + " " + lid.Achternaam;
-                return View();
-            }
-            TempData["Error"] = "Je bent niet gemachtigd om deze actie uit te voeren.";
-            return RedirectToAction(nameof(Index));
-        }
-
-        [HttpPost, ActionName("Delete")]
-        public IActionResult DeleteConfirmed(int id)
-        {
-            if (ModelState.IsValid) {
-                try {
-                    Lid lid = _lidRepository.GetBy(id);
-                    DeleteUser(lid).Wait();
-                    _lidRepository.Delete(lid);
-                    _lidRepository.SaveChanges();
-                    TempData["Success"] = $"{lid.Voornaam} {lid.Achternaam} is succesvol verwijderd!";
-                    return RedirectToAction(nameof(Index));
-                }
-                catch (Exception ex) {
-                    ModelState.AddModelError("", ex.Message);
-                }
-            }
-            Lid lid2 = _lidRepository.GetBy(id);
-            ViewData["Name"] = lid2.Voornaam + " " + lid2.Achternaam;
-            return View(nameof(Delete));
         }
 
         public SelectList GetFunctiesAsSelectList()
@@ -188,18 +128,6 @@ namespace PROJ20_G20_DOTNET.Controllers
             user.Email = lidEditViewModel.Email;
             user.UserName = lidEditViewModel.Email;
             //await _userManager.ChangePasswordAsync(user, lid.Wachtwoord, lidEditViewModel.Wachtwoord);
-        }
-
-        private async Task DeleteUser(Lid lid)
-        {
-            IdentityUser user = await _userManager.FindByEmailAsync(lid.Email);
-            await _userManager.DeleteAsync(user);
-            await SignOutUser();
-        }
-
-        private async Task SignOutUser()
-        {
-            await _signInManager.SignOutAsync();
         }
         #endregion
     }

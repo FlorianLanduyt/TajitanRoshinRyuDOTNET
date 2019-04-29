@@ -34,7 +34,7 @@ namespace PROJ20_G20_DOTNET.Controllers
             return View(activiteiten);
         }
 
-        public IActionResult IndexAanwezigheden(int id)
+        public IActionResult Aanwezigheden(int id)
         {
             Activiteit activiteit = _activiteitRepository.GetBy(id);
             return View(activiteit);
@@ -51,7 +51,7 @@ namespace PROJ20_G20_DOTNET.Controllers
             Aanwezigheid aanwezigheid = new Aanwezigheid(lid, activiteit);
             _aanwezigheidRepository.Add(aanwezigheid);
             _aanwezigheidRepository.SaveChanges();
-            return View(nameof(IndexAanwezigheden), activiteit);
+            return View(nameof(Aanwezigheden), activiteit);
         }
 
 
