@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Principal;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -169,7 +166,7 @@ namespace PROJ20_G20_DOTNET.Controllers
             lid.Bus = lidEditViewModel.Bus;
             lid.PostCode = lidEditViewModel.PostCode;
             lid.Email = lidEditViewModel.Email;
-            lid.Wachtwoord = lidEditViewModel.Wachtwoord;
+            //lid.Wachtwoord = lidEditViewModel.Wachtwoord;
             lid.EmailVader = lidEditViewModel.EmailVader;
             lid.EmailMoeder = lidEditViewModel.EmailMoeder;
             lid.GeboortePlaats = lidEditViewModel.GeboortePlaats;
@@ -190,7 +187,7 @@ namespace PROJ20_G20_DOTNET.Controllers
             IdentityUser user = await _userManager.FindByEmailAsync(lid.Email);
             user.Email = lidEditViewModel.Email;
             user.UserName = lidEditViewModel.Email;
-            await _userManager.ChangePasswordAsync(user, lid.Wachtwoord, lidEditViewModel.Wachtwoord);
+            //await _userManager.ChangePasswordAsync(user, lid.Wachtwoord, lidEditViewModel.Wachtwoord);
         }
 
         private async Task DeleteUser(Lid lid)

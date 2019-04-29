@@ -84,11 +84,11 @@ namespace PROJ20_G20_DOTNET.Models.ViewModels
         [DataType(DataType.Text)]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Wachtwoord is verplicht")]
-        [Display(Name = "Wachtwoord")]
-        [DataType(DataType.Text)]
-        [StringLength(11, ErrorMessage = "Wachtwoord mag max. 11 karakters bevatten")]
-        public string Wachtwoord { get; set; }
+        //[Required(ErrorMessage = "Wachtwoord is verplicht")]
+        //[Display(Name = "Wachtwoord")]
+        //[DataType(DataType.Text)]
+        //[StringLength(11, ErrorMessage = "Wachtwoord mag max. 11 karakters bevatten")]
+        //public string Wachtwoord { get; set; }
 
         [Display(Name = "E-mailadres vader")]
         [DataType(DataType.Text)]
@@ -143,7 +143,7 @@ namespace PROJ20_G20_DOTNET.Models.ViewModels
             Bus = lid.Bus;
             PostCode = lid.PostCode;
             Email = lid.Email;
-            Wachtwoord = lid.Wachtwoord;
+            //Wachtwoord = lid.Wachtwoord;
             EmailVader = lid.EmailVader;
             EmailMoeder = lid.EmailMoeder;
             GeboortePlaats = lid.GeboortePlaats;
