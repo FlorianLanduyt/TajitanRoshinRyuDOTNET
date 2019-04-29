@@ -9,6 +9,7 @@ using PROJ20_G20_DOTNET.Models.Domain;
 
 namespace PROJ20_G20_DOTNET.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         public IActionResult Index()

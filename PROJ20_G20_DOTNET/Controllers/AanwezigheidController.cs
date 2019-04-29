@@ -8,7 +8,7 @@ using PROJ20_G20_DOTNET.Models.Domain;
 
 namespace PROJ20_G20_DOTNET.Controllers
 {
-    [Authorize(Policy = "Beheerder")]
+    [Authorize(Policy = "Trainer")]
     public class AanwezigheidController : Controller
     {
         private ILidRepository _lidRepository;

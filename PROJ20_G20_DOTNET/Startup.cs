@@ -49,6 +49,7 @@ namespace PROJ20_G20_DOTNET
                 options.AddPolicy("Trainer", policy => policy.RequireClaim(ClaimTypes.Role, "trainer"));
                 options.AddPolicy("Proeflid", policy => policy.RequireClaim(ClaimTypes.Role, "proeflid"));
                 options.AddPolicy("Gast", policy => policy.RequireClaim(ClaimTypes.Role, "gast"));
+                options.AddPolicy("Authorized", policy => policy.RequireClaim(ClaimTypes.Role, "authorized"));
             });
             #endregion
 
