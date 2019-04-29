@@ -5,6 +5,14 @@
 }
 
 <div>
+    @if (TempData["Success"] != null) {
+        <br />
+        <p class="alert alert-success">@TempData["Success"]</p>
+    }
+    else if (TempData["Error"] != null) {
+        <br />
+        <p class="alert alert-danger">@TempData["Error"]</p>
+    }
     <h2>Aanwezigheden voor @Model.Naam</h2>
     <hr />
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">

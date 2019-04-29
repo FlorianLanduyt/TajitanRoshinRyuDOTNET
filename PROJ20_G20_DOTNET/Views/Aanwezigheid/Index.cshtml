@@ -11,6 +11,7 @@
         <tr>
             <th>Naam activiteit</th>
             <th>Datum</th>
+            <th>Tijdstip</th>
             <th>Formule</th>
             <th></th>
         </tr>
@@ -18,7 +19,8 @@
         @foreach (var Activiteit in Model) {
             <tr>
                 <td>@Activiteit.Naam</td>
-                <td>@Activiteit.BeginDatum</td>
+                <td>@Activiteit.BeginDatum.ToShortDateString()</td>
+                <td>@Activiteit.BeginDatum.ToShortTimeString()</td>
                 <td>@Activiteit.Formule</td>
                 <td class="text-right">
                     <form>
