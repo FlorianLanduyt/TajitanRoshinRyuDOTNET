@@ -41,8 +41,6 @@ namespace PROJ20_G20_DOTNET.Controllers
             }
             IdentityUser user = await GetSignedInUserAsync();
             if (user.Email.Equals(lid.Email)) {
-                ViewData["Graden"] = GetGradenAsSelectList();
-                ViewData["Functies"] = GetFunctiesAsSelectList();
                 return View(new LidEditViewModel(lid));
             }
             TempData["Error"] = "Je kan deze actie niet uitvoeren op dit moment.";
@@ -66,28 +64,7 @@ namespace PROJ20_G20_DOTNET.Controllers
                     ViewData["Error"] = ex.Message;
                 }
             }
-            ViewData["Graden"] = GetGradenAsSelectList();
-            ViewData["Functies"] = GetFunctiesAsSelectList();
             return View(nameof(Edit), lidEditViewModel);
-        }
-
-        public SelectList GetFunctiesAsSelectList()
-        {
-            return new SelectList(Enum.GetValues(typeof(Functie)).Cast<Functie>().Select(v => new SelectListItem {
-                Text = v.ToString(),
-                Value = ((int)v).ToString()
-            }
-            ).ToList(), "Value", "Text");
-
-        }
-
-        public SelectList GetGradenAsSelectList()
-        {
-            return new SelectList(Enum.GetValues(typeof(Graad)).Cast<Graad>().Select(v => new SelectListItem {
-                Text = v.ToString(),
-                Value = ((int)v).ToString()
-            }
-            ).ToList(), "Value", "Text");
         }
 
         private void MapLidEditViewModelToLid(Lid lid, LidEditViewModel lidEditViewModel)
@@ -106,14 +83,11 @@ namespace PROJ20_G20_DOTNET.Controllers
             lid.Bus = lidEditViewModel.Bus;
             lid.PostCode = lidEditViewModel.PostCode;
             lid.Email = lidEditViewModel.Email;
-            //lid.Wachtwoord = lidEditViewModel.Wachtwoord;
             lid.EmailVader = lidEditViewModel.EmailVader;
             lid.EmailMoeder = lidEditViewModel.EmailMoeder;
             lid.GeboortePlaats = lidEditViewModel.GeboortePlaats;
             lid.Geslacht = lidEditViewModel.Geslacht;
             lid.Beroep = lidEditViewModel.Beroep;
-            lid.Graad = lidEditViewModel.Graad;
-            lid.Functie = lidEditViewModel.Functie;
         }
 
         #region User async methods
@@ -127,7 +101,6 @@ namespace PROJ20_G20_DOTNET.Controllers
             IdentityUser user = await _userManager.FindByEmailAsync(lid.Email);
             user.Email = lidEditViewModel.Email;
             user.UserName = lidEditViewModel.Email;
-            //await _userManager.ChangePasswordAsync(user, lid.Wachtwoord, lidEditViewModel.Wachtwoord);
         }
         #endregion
     }

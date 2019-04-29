@@ -97,27 +97,6 @@
             <input asp-for="Beroep" class="form-control" />
             <span asp-validation-for="Beroep" class="text text-danger"></span>
         </div>
-        <div class="form-group">
-            <label asp-for="Graad"></label>
-            <br />
-            <select asp-for="Graad" asp-items="(@ViewData["Graden"] as SelectList)" class="form-control">
-                <option value="">-- kies een graad --</option>
-            </select>
-            <span asp-validation-for="Graad" class="text text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Functie"></label>
-            <br />
-            <select asp-for="Functie" asp-items="(@ViewData["Functies"] as SelectList)" class="form-control">
-                <option value="">-- kies een functie --</option>
-            </select>
-            <span asp-validation-for="Functie" class="text text-danger"></span>
-        </div>
-        @*<div class="form-group">
-            <label asp-for="Wachtwoord"></label>
-            <input asp-for="Wachtwoord" class="form-control" />
-            <span asp-validation-for="Wachtwoord" class="text text-danger"></span>
-        </div>*@
         <div>
             <button type="submit" class="btn btn-primary">Opslaan</button>
             <button asp-action="Index" class="btn btn-default">Annuleren</button>

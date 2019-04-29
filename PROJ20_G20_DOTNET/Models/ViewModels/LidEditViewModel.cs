@@ -84,12 +84,6 @@ namespace PROJ20_G20_DOTNET.Models.ViewModels
         [DataType(DataType.Text)]
         public string Email { get; set; }
 
-        //[Required(ErrorMessage = "Wachtwoord is verplicht")]
-        //[Display(Name = "Wachtwoord")]
-        //[DataType(DataType.Text)]
-        //[StringLength(11, ErrorMessage = "Wachtwoord mag max. 11 karakters bevatten")]
-        //public string Wachtwoord { get; set; }
-
         [Display(Name = "E-mailadres vader")]
         [DataType(DataType.Text)]
         public string EmailVader { get; set; }
@@ -114,14 +108,6 @@ namespace PROJ20_G20_DOTNET.Models.ViewModels
         [StringLength(50, ErrorMessage = "Beroep mag max. 50 karakters bevatten")]
         public string Beroep { get; set; }
 
-        [Required(ErrorMessage = "Graad is verplicht")]
-        [Display(Name = "Graad*")]
-        public Graad Graad { get; set; }
-
-        [Required(ErrorMessage = "Functie is verplicht")]
-        [Display(Name = "Functie*")]
-        public Functie Functie { get; set; }
-
         public LidEditViewModel()
         {
 
@@ -143,14 +129,11 @@ namespace PROJ20_G20_DOTNET.Models.ViewModels
             Bus = lid.Bus;
             PostCode = lid.PostCode;
             Email = lid.Email;
-            //Wachtwoord = lid.Wachtwoord;
             EmailVader = lid.EmailVader;
             EmailMoeder = lid.EmailMoeder;
             GeboortePlaats = lid.GeboortePlaats;
             Geslacht = lid.Geslacht;
             Beroep = lid.Beroep;
-            Graad = lid.Graad;
-            Functie = lid.Functie;
         }
     }
 }
