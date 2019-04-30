@@ -176,8 +176,6 @@ C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcore
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\_ViewImports.g.cshtml.cs
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.g.cshtml.cs
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ViewImports.g.cshtml.cs
-C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Lid\Delete.g.cshtml.cs
-C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Lid\Details.g.cshtml.cs
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Lid\Edit.g.cshtml.cs
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Lid\Index.g.cshtml.cs
 C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\bin\Debug\netcoreapp2.1\PROJ20_G20_DOTNET.deps.json
@@ -262,3 +260,6 @@ E:\School\2YS2\Projecten2\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\R
 D:\School\TweedeJaar\TweedeSemester\ProjectenII\ASP.NET\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Aanwezigheid\Aanwezigheden.g.cshtml.cs
 D:\School\TweedeJaar\TweedeSemester\ProjectenII\ASP.NET\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Aanwezigheid\Index.g.cshtml.cs
 D:\School\TweedeJaar\TweedeSemester\ProjectenII\ASP.NET\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
+C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Aanwezigheid\Aanwezigheden.g.cshtml.cs
+C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Aanwezigheid\Index.g.cshtml.cs
+C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
