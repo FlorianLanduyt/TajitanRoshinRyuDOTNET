@@ -59,5 +59,24 @@ namespace PROJ20_G20_DOTNET.Controllers
             TempData["Error"] = "Aanwezig plaatsen is mislukt!";
             return View(nameof(Aanwezigheden), _activiteitRepository.GetBy(id));
         }
-    }
+        [HttpPost]
+        public IActionResult VerwijderActiviteit(int id, int id2) {
+            try {
+                Lid lid = _lidRepository.GetBy(id2);
+                Activiteit activiteit = _activiteitRepository.GetBy(id);
+                ActiviteitInschrijving activiteitInschrijving =
+                    activiteit.ActiviteitInschrijvingen.SingleOrDefault(ai => ai.ActiviteitId == id && ai.Inschrijving.LidId == id2);
+                activiteitInschrijving.IsAanwezig = false;
+                Aanwezigheid aanwezigheid = _aanwezigheidRepository.GetAll().Where(aw => aw.LidId == id2 && aw.ActiviteitId == id).SingleOrDefault();
+                _aanwezigheidRepository.Delete(aanwezigheid);
+                _aanwezigheidRepository.SaveChanges();
+                TempData["Success"] = $"{lid.Voornaam} {lid.Achternaam} is succesvol afwezig geplaatst!";
+                return RedirectToAction(nameof(Aanwezigheden), activiteit);
+            } catch (Exception ex) {
+            }
+            TempData["Error"] = "Aanwezig plaatsen is mislukt!";
+            return View(nameof(Aanwezigheden), _activiteitRepository.GetBy(id));
+
+        }
+     }
 }

@@ -33,8 +33,8 @@ namespace PROJ20_G20_DOTNET
 
             #region DBContext config
             services.AddDbContext<JiuJitsuDbContext>(options =>
-            //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            options.UseSqlServer(Configuration.GetConnectionString("TyboDesktopConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //options.UseSqlServer(Configuration.GetConnectionString("TyboDesktopConnection")));
             #endregion
 
             #region Identity config

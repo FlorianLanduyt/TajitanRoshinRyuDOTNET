@@ -32,6 +32,13 @@
             else {
                 <div class="aanwezigTrue">
                     <p class="aanwezigLidName"><strong>@ActiviteitInschrijving.Inschrijving.Lid.Achternaam @ActiviteitInschrijving.Inschrijving.Lid.Voornaam</strong></p>
+                    <form method="post">
+                        <button class="btn btn-primary" type="submit" asp-action="VerwijderActiviteit"
+                                asp-route-id="@ActiviteitInschrijving.Activiteit.Id"
+                                asp-route-id2="@ActiviteitInschrijving.Inschrijving.Lid.Id">
+                            Afwezig
+                        </button>
+                    </form>
                 </div>
             }
         }
