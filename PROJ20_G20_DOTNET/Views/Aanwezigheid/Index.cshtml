@@ -7,6 +7,19 @@
 <div>
     <h2>Activiteiten</h2>
     <hr />
+    <div>
+        <form method="post">
+            <label for=" BeginDatum" class="control-label">Begindatum</label>
+            <input type="date" name="BeginDatum" id="BeginDatum" />
+            <label for="EindDatum" class="control-label">Einddatum</label>
+            <input type="date" name="EindDatum" id="EindDatum" />
+            <label for="Naam" class="control-label">Naam</label>
+            <input type="text" name="Naam" id="Naam" />
+            <button class="btn btn-primary" type="submit" asp-action="Index">
+                Filter
+            </button>
+        </form>
+    </div>
     <table class="table table-bordered table-striped">
         <tr>
             <th>Naam activiteit</th>

@@ -32,10 +32,37 @@ namespace PROJ20_G20_DOTNET.Controllers
             IEnumerable<Activiteit> activiteiten = _activiteitRepository.GetAll().OrderBy(a => a.BeginDatum).ToList();
             return View(activiteiten);
         }
+        [HttpPost]
+        public IActionResult Index(string BeginDatum, string EindDatum, string Naam) {
+            string activiteitNaam = Naam ?? "";
+            DateTime start, eind;
+            if (BeginDatum == null) { start = new DateTime(1970,1,1); } else { start = Convert.ToDateTime(BeginDatum); } // Als je niets ingeeft bij data zal hij de range tussen 1970(vaak gebruikte start defaultdate) en huidige datum + 50 jaar zetten
+            if (EindDatum == null) { eind = DateTime.Today.AddYears(50); } else { eind = Convert.ToDateTime(EindDatum); }
+
+            IEnumerable<Activiteit> activiteiten = _activiteitRepository
+                .GetAll()
+                .Where(
+                    ac => ac.BeginDatum >= start && 
+                    ac.BeginDatum <= eind &&
+                    ac.Naam.Contains(activiteitNaam, StringComparison.CurrentCultureIgnoreCase));
+
+            return View(activiteiten);
+        }
 
         public IActionResult Aanwezigheden(int id)
         {
             Activiteit activiteit = _activiteitRepository.GetBy(id);
+            return View(activiteit);
+        }
+        [HttpPost]
+        public IActionResult Aanwezigheden(int id, string Naam) {
+            string naamFilter = Naam ?? "";
+            Activiteit activiteit = _activiteitRepository.GetBy(id);
+            activiteit.ActiviteitInschrijvingen = activiteit.ActiviteitInschrijvingen
+                .Where(
+                    ai => ai.Inschrijving.Lid.Voornaam.Contains(naamFilter, StringComparison.CurrentCultureIgnoreCase) 
+                    || ai.Inschrijving.Lid.Achternaam.Contains(naamFilter, StringComparison.CurrentCultureIgnoreCase))
+                .ToList();
             return View(activiteit);
         }
 

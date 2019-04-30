@@ -8,13 +8,21 @@
     @if (TempData["Success"] != null) {
         <br />
         <p class="alert alert-success">@TempData["Success"]</p>
-    }
-    else if (TempData["Error"] != null) {
+    } else if (TempData["Error"] != null) {
         <br />
         <p class="alert alert-danger">@TempData["Error"]</p>
     }
     <h2>Aanwezigheden voor @Model.Naam</h2>
     <hr />
+    <div>
+        <form method="post">
+            <label for="Naam" class="control-label">Naam</label>
+            <input type="text" name="Naam" id="Naam" />
+            <button class="btn btn-primary" type="submit" asp-action="Aanwezigheden">
+                Filter
+            </button>
+        </form>
+    </div>
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
         @foreach (var ActiviteitInschrijving in Model.ActiviteitInschrijvingen) {
             @if (!ActiviteitInschrijving.IsAanwezig) {
@@ -28,8 +36,7 @@
                         </button>
                     </form>
                 </div>
-            }
-            else {
+            } else {
                 <div class="aanwezigTrue">
                     <p class="aanwezigLidName"><strong>@ActiviteitInschrijving.Inschrijving.Lid.Achternaam @ActiviteitInschrijving.Inschrijving.Lid.Voornaam</strong></p>
                     <form method="post">
@@ -44,3 +51,4 @@
         }
     </div>
 </div>
+
