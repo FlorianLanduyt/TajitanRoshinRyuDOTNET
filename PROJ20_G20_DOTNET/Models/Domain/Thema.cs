@@ -15,6 +15,10 @@ namespace PROJ20_G20_DOTNET.Models.Domain {
             set {
                 if (value != null) {
                     string naam = value.Trim();
+                    if(naam == "")
+                    {
+                        throw new ArgumentException("Naam mag niet leeg zijn");
+                    }
                     if (naam.Length > 20) // 
                     {
                         throw new ArgumentException("Naam mag max. 20 karakters bevatten");
@@ -39,8 +43,8 @@ namespace PROJ20_G20_DOTNET.Models.Domain {
         public int Id { get; set; }
         #endregion
 
-        #region Properties
-        protected Thema() { }
+        #region Constructors
+        public Thema() { }
 
         public Thema(string naam) {
             Naam = naam;
