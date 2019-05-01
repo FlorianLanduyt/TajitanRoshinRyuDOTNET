@@ -1,0 +1,4 @@
+C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET.Tests\obj\Debug\netcoreapp2.2\PROJ20_G20_DOTNET.Tests.csprojAssemblyReference.cache
+C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET.Tests\obj\Debug\netcoreapp2.2\PROJ20_G20_DOTNET.Tests.csproj.CoreCompileInputs.cache
+C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET.Tests\obj\Debug\netcoreapp2.2\PROJ20_G20_DOTNET.Tests.AssemblyInfoInputs.cache
+C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET.Tests\obj\Debug\netcoreapp2.2\PROJ20_G20_DOTNET.Tests.AssemblyInfo.cs
