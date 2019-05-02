@@ -10,7 +10,9 @@
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        @*<link rel="stylesheet" href="~/lib/bootstrap-4.3.1-dist/css/bootstrap.css" />*@
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/home.css" />
         <link rel="stylesheet" href="~/css/aanwezigheid.css" />
         <link rel="stylesheet" href="~/css/start.css" />
         <link rel="stylesheet" href="~/css/lidEditForm.css" />
@@ -21,6 +23,7 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -39,14 +42,12 @@
                     @if ((await AuthorizationService.AuthorizeAsync(User, "Beheerder")).Succeeded) {
                         <li><a asp-area="" asp-controller="" asp-action="">Lesmateriaal</a></li>
                         <li><a asp-area="" asp-controller="Aanwezigheid" asp-action="Index">Aanwezigheid</a></li>
-                    }
-                    else if ((await AuthorizationService.AuthorizeAsync(User, "Trainer")).Succeeded) {
+                    } else if ((await AuthorizationService.AuthorizeAsync(User, "Trainer")).Succeeded) {
                         <li><a asp-area="" asp-controller="" asp-action="">Lesmateriaal</a></li>
                         <li><a asp-area="" asp-controller="Aanwezigheid" asp-action="Index">Aanwezigheid</a></li>
-                    }
-                    else if ((await AuthorizationService.AuthorizeAsync(User, "Lid")).Succeeded ||
-                    (await AuthorizationService.AuthorizeAsync(User, "Proeflid")).Succeeded ||
-                    (await AuthorizationService.AuthorizeAsync(User, "Gast")).Succeeded) {
+                    } else if ((await AuthorizationService.AuthorizeAsync(User, "Lid")).Succeeded ||
+                      (await AuthorizationService.AuthorizeAsync(User, "Proeflid")).Succeeded ||
+                      (await AuthorizationService.AuthorizeAsync(User, "Gast")).Succeeded) {
                         <li><a asp-area="" asp-controller="" asp-action="">Lesmateriaal</a></li>
                     }
                 </ul>
@@ -68,6 +69,7 @@
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        @*<script src="~/lib/bootstrap-4.3.1-dist/js/bootstrap.js"></script>*@
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">

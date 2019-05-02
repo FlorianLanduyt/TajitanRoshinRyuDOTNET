@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<PROJ20_G20_DOTNET.Models.Domain.Activiteit>
 
+
 @{
     ViewData["Title"] = "Aanwezigheden";
 }
@@ -7,8 +8,8 @@
 <div>
     <h2>Activiteiten</h2>
     <hr />
-    <div>
-        <form method="post">
+    <div class="test">
+        <form method="post" class="test">
             <label for=" BeginDatum" class="control-label">Begindatum</label>
             <input type="date" name="BeginDatum" id="BeginDatum" />
             <label for="EindDatum" class="control-label">Einddatum</label>
@@ -20,27 +21,29 @@
             </button>
         </form>
     </div>
-    <table class="table table-bordered table-striped">
-        <tr>
-            <th>Naam activiteit</th>
-            <th>Datum</th>
-            <th>Tijdstip</th>
-            <th>Formule</th>
-            <th></th>
-        </tr>
+    <div class="limiter">
+        <div class="table-container">
+            <div class="tabelWrap">
+                <table class="tabel">
+                    <tr class="rij header">
+                        <th class="cell">Naam activiteit</th>
+                        <th class="cell">Datum</th>
+                        <th class="cell">Tijdstip</th>
+                        <th class="cell">Formule</th>
+                    </tr>
 
-        @foreach (var Activiteit in Model) {
-            <tr>
-                <td>@Activiteit.Naam</td>
-                <td>@Activiteit.BeginDatum.ToShortDateString()</td>
-                <td>@Activiteit.BeginDatum.ToShortTimeString()</td>
-                <td>@Activiteit.Formule</td>
-                <td class="text-right">
-                    <form>
-                        <a asp-action="Aanwezigheden" asp-route-id="@Activiteit.Id">Aanwezigheden</a>
-                    </form>
-                </td>
-            </tr>
-        }
-    </table>
+                    @foreach (var Activiteit in Model) {
+                        <tr onclick="location.href = '@(Url.Action("Aanwezigheden", "Aanwezigheid", new { Id = Activiteit.Id }))'" class="rij">
+                            <td class="cell">@Activiteit.Naam</td>
+                            <td class="cell">@Activiteit.BeginDatum.ToShortDateString()</td>
+                            <td class="cell">@Activiteit.BeginDatum.ToShortTimeString()</td>
+                            <td class="cell">@Activiteit.Formule</td>
+
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
+

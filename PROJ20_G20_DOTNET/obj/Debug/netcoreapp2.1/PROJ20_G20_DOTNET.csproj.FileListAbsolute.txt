@@ -189,7 +189,6 @@ C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\ne
 C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\PROJ20_G20_DOTNET.csproj.CoreCompileInputs.cache
 C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\PROJ20_G20_DOTNET.RazorAssemblyInfo.cache
 C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\PROJ20_G20_DOTNET.RazorAssemblyInfo.cs
-C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\PROJ20_G20_DOTNET.AssemblyInfoInputs.cache
 C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\PROJ20_G20_DOTNET.AssemblyInfo.cs
 C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\PROJ20_G20_DOTNET.TagHelpers.input.cache
@@ -200,8 +199,6 @@ C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\ne
 C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.g.cshtml.cs
 C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ViewImports.g.cshtml.cs
 C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ViewStart.g.cshtml.cs
-C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Lid\Delete.g.cshtml.cs
-C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Lid\Details.g.cshtml.cs
 C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Lid\Edit.g.cshtml.cs
 C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Lid\Index.g.cshtml.cs
 C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
@@ -263,3 +260,7 @@ D:\School\TweedeJaar\TweedeSemester\ProjectenII\ASP.NET\dotnet-g20\PROJ20_G20_DO
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Aanwezigheid\Aanwezigheden.g.cshtml.cs
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Aanwezigheid\Index.g.cshtml.cs
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
+C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Aanwezigheid\Aanwezigheden.g.cshtml.cs
+C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Aanwezigheid\Index.g.cshtml.cs
+C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
+C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs

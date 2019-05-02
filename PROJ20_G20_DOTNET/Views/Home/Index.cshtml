@@ -1,13 +1,33 @@
-﻿@{
+﻿@model List<string>
+@{
     ViewData["Title"] = "Startpagina";
 }
-
-<div class="home">
-    <br />
-    <br />
-    <h1>Taijitan Roshin Ryu</h1>
-    <br />
-    <br />
-    <br />
-    <img class="headerImage" src="~/images/BeginSchermImage.png" />
+<div class="container"><h3 class="title">Kies een optie</h3></div>
+<div class="container ">
+    <div class="row row-flex row-flex-wrap centerDiv">
+        <div class="#buiten">
+            @foreach (var item in Model) {
+                <div class="col-md-3 kaart #binnen">
+                    <div class="well icoon">
+                        <img class="lijstImg centerDiv" src="~/images/@(@item).png" />
+                        <button asp-controller="Home" asp-action="@item" class="btn btn-default knop">@item</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 </div>
+
+<hr>
+
+
+
+@*<div  class="home">
+        <br />
+        <br />
+        <h1>Taijitan Roshin Ryu</h1>
+        <br />
+        <br />
+        <br />
+        <img class="headerImage" src="~/images/BeginSchermImage.png" />
+    </div>*@
