@@ -1,18 +1,4 @@
-﻿
-
-/*.row-flex, .row-flex > div[class*='col-'] {
-    display: -webkit-box, -ms-flexbox;
-    display: -moz-box, -webkit-flex, flex;
-    flex: 1 1 auto;
-}
-
-.row-flex-wrap {
-    -webkit-flex-flow: row wrap;
-    align-content: flex-start;
-    flex: 0;
-}*/
-
-.row-flex {
+﻿.row-flex {
     margin: -.2px;
 }
 

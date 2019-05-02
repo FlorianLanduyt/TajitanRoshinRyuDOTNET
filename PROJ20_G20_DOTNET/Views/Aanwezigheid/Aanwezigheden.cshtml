@@ -24,11 +24,11 @@
                 </button>
         </form>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="aanwezighedenWrapper">
         @foreach (var ActiviteitInschrijving in Model.ActiviteitInschrijvingen) {
             @if (!ActiviteitInschrijving.IsAanwezig) {
-                <div class="aanwezigFalse">
-                    <p class="aanwezigLidName"><strong>@ActiviteitInschrijving.Inschrijving.Lid.Achternaam @ActiviteitInschrijving.Inschrijving.Lid.Voornaam</strong></p>
+                <div class="aanwezigFalse aanwezigKaart">
+                    <p class="aanwezigLidName">@ActiviteitInschrijving.Inschrijving.Lid.Achternaam @ActiviteitInschrijving.Inschrijving.Lid.Voornaam</p>
                     <form method="post">
                         <button class="btn btn-primary" type="submit" asp-action="VoegAanwezigheidToe"
                                 asp-route-id="@ActiviteitInschrijving.Activiteit.Id"
@@ -38,8 +38,8 @@
                     </form>
                 </div>
             } else {
-                <div class="aanwezigTrue">
-                    <p class="aanwezigLidName"><strong>@ActiviteitInschrijving.Inschrijving.Lid.Achternaam @ActiviteitInschrijving.Inschrijving.Lid.Voornaam</strong></p>
+                <div class="aanwezigTrue aanwezigKaart">
+                    <p class="aanwezigLidName">@ActiviteitInschrijving.Inschrijving.Lid.Achternaam @ActiviteitInschrijving.Inschrijving.Lid.Voornaam</p>
                     <form method="post">
                         <button class="btn btn-primary" type="submit" asp-action="VerwijderActiviteit"
                                 asp-route-id="@ActiviteitInschrijving.Activiteit.Id"
