@@ -67,7 +67,6 @@ C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcore
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\PROJ20_G20_DOTNET.csproj.CoreCompileInputs.cache
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\PROJ20_G20_DOTNET.RazorAssemblyInfo.cache
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\PROJ20_G20_DOTNET.RazorAssemblyInfo.cs
-C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\PROJ20_G20_DOTNET.AssemblyInfoInputs.cache
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\PROJ20_G20_DOTNET.AssemblyInfo.cs
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\PROJ20_G20_DOTNET.TagHelpers.input.cache
@@ -260,7 +259,11 @@ D:\School\TweedeJaar\TweedeSemester\ProjectenII\ASP.NET\dotnet-g20\PROJ20_G20_DO
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Aanwezigheid\Aanwezigheden.g.cshtml.cs
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Aanwezigheid\Index.g.cshtml.cs
 C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
+<<<<<<< HEAD
 C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Aanwezigheid\Aanwezigheden.g.cshtml.cs
 C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Aanwezigheid\Index.g.cshtml.cs
 C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
 C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+=======
+C:\Users\robdeputter\Source\Repos\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+>>>>>>> 0ceaf3fbe70b01bb5336cdc179ed25b6040532b7

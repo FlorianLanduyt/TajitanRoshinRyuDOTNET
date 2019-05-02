@@ -71,7 +71,7 @@ using PROJ20_G20_DOTNET.Models;
             WriteLiteral("                <div class=\"col-md-3 kaart #binnen\">\r\n                    <div class=\"well icoon\">\r\n                        ");
             EndContext();
             BeginContext(417, 62, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "0381285106674d5c8831002a7ff15ef5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "11d49d07c59e44bdaf4e95ed751fa991", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -98,7 +98,7 @@ AddHtmlAttributeValue("", 463, @item, 463, 8, false);
             WriteLiteral("\r\n                        ");
             EndContext();
             BeginContext(505, 92, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2477dcf0c39a4cf7a4f40438bbe39595", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "54182d4b45884369a7140943448ddb06", async() => {
                 BeginContext(584, 4, false);
 #line 13 "C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\Views\Home\Index.cshtml"
                                                                                                  Write(item);

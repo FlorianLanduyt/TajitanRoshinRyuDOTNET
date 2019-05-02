@@ -24,6 +24,7 @@ namespace PROJ20_G20_DOTNET.Models.Domain
         private string _emailMoeder;
         private string _geboorteplaats;
         private string _geslacht;
+        private string _bus;
 
 
         #region Properties
@@ -203,6 +204,14 @@ namespace PROJ20_G20_DOTNET.Models.Domain
             set {
                 if (value != null)
                 {
+                    if(value == "")
+                    {
+                        throw new ArgumentException("Nationaliteit mag niet leeg zijn");
+                    }
+                    if(value.Length > 50)
+                    {
+                        throw new ArgumentException("Nationaliteit mag maximum 50 karakters bevatten");
+                    }
                     if (value.Contains(' '))
                     {
                         string tempAchternaam = value.Replace(" ", "");
@@ -219,6 +228,10 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                         }
                     }
                     _nationaliteit = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Nationaliteit mag niet leeg zijn");
                 }
             }
         }
@@ -251,6 +264,10 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                 if (value != null)
                 {
                     string gsmnr = value.Trim();
+                    if(gsmnr == "")
+                    {
+                        throw new ArgumentException("GSM-nummer mag niet leeg zijn");
+                    }
                     if (gsmnr.Contains(' '))
                     {
                         string gsmnrWithoutSpaces = gsmnr.Replace(" ", "");
@@ -302,8 +319,13 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                     }
                     _gsmNr = value;
                 }
+                else
+                {
+                    throw new ArgumentException("GSM-nummer mag niet leeg zijn");
+                }
             }
         }
+
         public string VasteTelefoonNr {
             get {
                 return _vasteTelefoonNr;
@@ -311,12 +333,24 @@ namespace PROJ20_G20_DOTNET.Models.Domain
             set {
                 if (value != null)
                 {
+                    if(value.Length > 9)
+                    {
+                        throw new ArgumentException("Vaste telefoonummer mag max. 9 karakters bevatten");
+                    }
                     if (Regex.Match(value, "[0-9]{9}").Success)
                     {
                         _vasteTelefoonNr = value;
                     }
+                    else
+                    {
+                        throw new ArgumentException("Vaste telefoonummer is niet correct!");
+                    }
                 }
-                _vasteTelefoonNr = "";
+                else
+                {
+                    _vasteTelefoonNr = "";
+                }
+                
 
             }
         }
@@ -403,6 +437,14 @@ namespace PROJ20_G20_DOTNET.Models.Domain
             set {
                 if (value != null)
                 {
+                    if(value == "")
+                    {
+                        throw new ArgumentException("Huisnummer mag niet leeg zijn!");
+                    }
+                    if(value.Length > 5)
+                    {
+                        throw new ArgumentException("Huisnummer mag maximum 5 karakters bevatten");
+                    }
                     string huisnr = value.Trim();
                     if (!Regex.Match(huisnr, "\\d{1,5}").Success)
                     {
@@ -411,9 +453,27 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                     _huisnr = value;
 
                 }
+                else
+                {
+                    throw new ArgumentException("Huisnummer mag niet leeg zijn!");
+                }
             }
         }
-        public string Bus { get; set; } //alle nodige validatie wordt al gedaan in de viewmodel
+        public string Bus {
+            get {
+                return _bus;
+            }
+            set {
+                if(value != null)
+                {
+                    if(value.Length > 5)
+                    {
+                        throw new ArgumentException("Bus mag max. 5 karakters bevatten");
+                    }
+                    _bus = value;
+                }
+            }
+        } //alle nodige validatie wordt al gedaan in de viewmodel
         public string PostCode {
             get {
                 return _postcode;
@@ -421,12 +481,25 @@ namespace PROJ20_G20_DOTNET.Models.Domain
             set {
                 if (value != null)
                 {
+                    if(value == "")
+                    {
+                        throw new ArgumentException("Postcode mag niet leeg zijn");
+                    }
+
                     string postcode = value.Trim();
+                    if(postcode.Length > 4)
+                    {
+                        throw new ArgumentException("Postcode is te lang");
+                    }
                     if (!Regex.Match(postcode, "[0-9]{4}").Success)
                     {
                         throw new ArgumentException("Postcode moet 4 cijfers bevatten.");
                     }
                     _postcode = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Postcode mag niet leeg zijn");
                 }
             }
         }
@@ -437,12 +510,25 @@ namespace PROJ20_G20_DOTNET.Models.Domain
             set {
                 if (value != null)
                 {
+                    
                     string email = value.Trim();
+                    if(email.Contains(" "))
+                    {
+                        throw new ArgumentException("Email mag geen spaties bevatten");
+                    }
+                    if(email == "")
+                    {
+                        throw new ArgumentException("Email mag niet leeg zijn");
+                    }
                     if (!Regex.Match(email, "\\b[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}\\b").Success)
                     {
                         throw new ArgumentException("Emailadres is niet correct.");
                     }
                     _email = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Email mag niet leeg zijn");
                 }
             }
         }
@@ -454,6 +540,10 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                 if (value != null)
                 {
                     string emailVader = value.Trim();
+                    if(emailVader.Contains(" "))
+                    {
+                        throw new ArgumentException("Email vader mag geen spaties bevatten");
+                    }
                     if (!Regex.Match(emailVader, "\\b[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}\\b").Success)
                     {
                         throw new ArgumentException("Emailadres vader is niet correct.");
@@ -470,6 +560,10 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                 if (value != null)
                 {
                     string emailMoeder = value.Trim();
+                    if(emailMoeder.Contains(" "))
+                    {
+                        throw new ArgumentException("Email moeder mag geen spaties bevatten");
+                    }
                     if (!Regex.Match(emailMoeder, "\\b[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}\\b").Success)
                     {
                         throw new ArgumentException("Emailadres moeder is niet correct.");
@@ -531,7 +625,7 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                 {
                     if (value.Equals("MAN", StringComparison.InvariantCultureIgnoreCase) || value.Equals("VROUW", StringComparison.InvariantCultureIgnoreCase))
                     {
-                        _geslacht = value;
+                        _geslacht = value.ToUpper();
                     }
                     else
                     {
@@ -567,7 +661,6 @@ namespace PROJ20_G20_DOTNET.Models.Domain
         public int Id { get; set; }
         public Graad Graad { get; set; }
         public Functie Functie { get; set; }
-
 
         #endregion
 

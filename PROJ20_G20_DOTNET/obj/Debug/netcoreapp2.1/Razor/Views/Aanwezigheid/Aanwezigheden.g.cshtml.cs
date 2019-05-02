@@ -124,12 +124,12 @@ using PROJ20_G20_DOTNET.Models;
             WriteLiteral("</h2>\r\n    <hr />\r\n    <div>\r\n        ");
             EndContext();
             BeginContext(439, 334, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "42448f7b892a4c4f836c7148319dba85", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4a87071556fe41a6afb871a7dccc084c", async() => {
                 BeginContext(459, 169, true);
                 WriteLiteral("\r\n                <label for=\"Naam\" class=\"control-label\">Naam</label>\r\n            <br />\r\n                <input type=\"text\" name=\"Naam\" id=\"Naam\" />\r\n                ");
                 EndContext();
                 BeginContext(628, 128, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "11595d94df194ee89eac580b2bce6f81", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4578621c33524c72bc491f28b29825e6", async() => {
                     BeginContext(701, 46, true);
                     WriteLiteral("\r\n                    Filter\r\n                ");
                     EndContext();
@@ -206,12 +206,12 @@ using PROJ20_G20_DOTNET.Models;
             WriteLiteral("</strong></p>\r\n                    ");
             EndContext();
             BeginContext(1218, 406, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9d43814637424798bb2c0a463e189097", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fabd64493c904de5bf3e75d82180e5a5", async() => {
                 BeginContext(1238, 26, true);
                 WriteLiteral("\r\n                        ");
                 EndContext();
                 BeginContext(1264, 331, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0d5f3bbdcf344a09b21783f4ef96031a", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "38e9c63143a144cca8196e0c0e96a707", async() => {
                     BeginContext(1522, 64, true);
                     WriteLiteral("\r\n                            Aanwezig\r\n                        ");
                     EndContext();
@@ -304,12 +304,12 @@ using PROJ20_G20_DOTNET.Models;
             WriteLiteral("</strong></p>\r\n                    ");
             EndContext();
             BeginContext(1907, 405, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ebde2319b0f6435392eb4fea9168b25b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5dab5efaf30f467281caf61186b46480", async() => {
                 BeginContext(1927, 26, true);
                 WriteLiteral("\r\n                        ");
                 EndContext();
                 BeginContext(1953, 330, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9a93486c040c4a9b9a519a1963312a27", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "582793317aa94d79a2351f73b18b12cb", async() => {
                     BeginContext(2211, 63, true);
                     WriteLiteral("\r\n                            Afwezig\r\n                        ");
                     EndContext();

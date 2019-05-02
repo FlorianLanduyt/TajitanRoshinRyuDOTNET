@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace PROJ20_G20_DOTNET.Models.Domain {
     public class Oefening {
@@ -24,8 +25,29 @@ namespace PROJ20_G20_DOTNET.Models.Domain {
             set {
                 if (value != null) {
                     string titel = value.Trim();
+                    if(titel == "")
+                    {
+                        throw new ArgumentException("Titel mag niet leeg zijn");
+                    }
                     if (titel.Length > _maxLengteTitel)
+                    {
                         throw new ArgumentException($"Titel mag maximum {_maxLengteTitel.ToString()} karakters lang zijn.");
+                    }
+                    if(value.Contains(" "))
+                    {
+                        string tempTitel = titel.Replace(" ", "");
+                        if(Regex.Match(tempTitel, ".*[\\d\\W].*").Success)
+                        {
+                            throw new ArgumentException("Titel mag enkel letters bevatten.");
+                        }
+
+                    }else
+                    {
+                        if (Regex.Match(titel, ".*[\\d\\W].*").Success)
+                        {
+                            throw new ArgumentException("Titel mag enkel letters bevatten.");
+                        }
+                    }
                     _titel = value;
                 } else
                     throw new ArgumentException("Titel mag niet leeg zijn.");
@@ -36,6 +58,10 @@ namespace PROJ20_G20_DOTNET.Models.Domain {
             get { return _urlVideo; }
             set {
                 if (value != null) {
+                    if(value.Trim() == "")
+                    {
+                        throw new ArgumentException("Video url mag niet leeg zijn.");
+                    }
                     if (value.Trim().Length > _maxLengteUrl)
                         throw new ArgumentException($"Vido url mag maximum {_maxLengteUrl.ToString()} karakters lang zijn.");
                     _urlVideo = value;
@@ -48,6 +74,10 @@ namespace PROJ20_G20_DOTNET.Models.Domain {
             get { return _urlAfbeelding; }
             set {
                 if (value != null) {
+                    if(value.Trim() == "")
+                    {
+                        throw new ArgumentException("Afbeelding url mag niet leeg zijn");
+                    }
                     if (value.Trim().Length > _maxLengteUrl)
                         throw new ArgumentException($"Afbeelding url mag maximum {_maxLengteUrl.ToString()} karakters lang zijn.");
                     _urlAfbeelding = value;
@@ -84,7 +114,7 @@ namespace PROJ20_G20_DOTNET.Models.Domain {
         public Thema Thema {
             get { return _thema; }
             set {
-                if (!value.Equals(null))
+                if (value != null)
                     _thema = value;
                 else
                     throw new ArgumentException("Thema mag niet leeg zijn");
@@ -94,7 +124,7 @@ namespace PROJ20_G20_DOTNET.Models.Domain {
         #endregion
 
         #region Constructors
-        protected Oefening() {
+        public Oefening() {
 
         }
 

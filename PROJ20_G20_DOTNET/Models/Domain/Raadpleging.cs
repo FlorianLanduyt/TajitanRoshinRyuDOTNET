@@ -19,7 +19,7 @@ namespace PROJ20_G20_DOTNET.Models.Domain {
         #endregion
 
         #region Constructors
-        protected Raadpleging() {
+        public Raadpleging() {
             Tijdstippen = new List<RaadplegingsTijdstip>();
         }
 
@@ -29,7 +29,7 @@ namespace PROJ20_G20_DOTNET.Models.Domain {
             Oefening = oefening;
             OefeningId = oefening.Id;
             AantalRaadplegingen = 0;
-        } 
+        }
         #endregion
 
     }

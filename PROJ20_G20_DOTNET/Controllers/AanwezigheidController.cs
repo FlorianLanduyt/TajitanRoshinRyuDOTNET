@@ -32,6 +32,7 @@ namespace PROJ20_G20_DOTNET.Controllers
             IEnumerable<Activiteit> activiteiten = _activiteitRepository.GetAll().OrderBy(a => a.BeginDatum).ToList();
             return View(activiteiten);
         }
+
         [HttpPost]
         public IActionResult Index(string BeginDatum, string EindDatum, string Naam) {
             string activiteitNaam = Naam ?? "";
@@ -42,9 +43,9 @@ namespace PROJ20_G20_DOTNET.Controllers
             IEnumerable<Activiteit> activiteiten = _activiteitRepository
                 .GetAll()
                 .Where(
-                    ac => ac.BeginDatum >= start && 
+                    ac => ac.BeginDatum >= start &&
                     ac.BeginDatum <= eind &&
-                    ac.Naam.Contains(activiteitNaam, StringComparison.CurrentCultureIgnoreCase));
+                    ac.Naam.Contains(activiteitNaam, StringComparison.CurrentCultureIgnoreCase)).ToList();
 
             return View(activiteiten);
         }
@@ -54,6 +55,7 @@ namespace PROJ20_G20_DOTNET.Controllers
             Activiteit activiteit = _activiteitRepository.GetBy(id);
             return View(activiteit);
         }
+
         [HttpPost]
         public IActionResult Aanwezigheden(int id, string Naam) {
             string naamFilter = Naam ?? "";
@@ -73,7 +75,7 @@ namespace PROJ20_G20_DOTNET.Controllers
                 Lid lid = _lidRepository.GetBy(id2);
                 Activiteit activiteit = _activiteitRepository.GetBy(id);
                 ActiviteitInschrijving activiteitInschrijving =
-                    activiteit.ActiviteitInschrijvingen.SingleOrDefault(ai => ai.ActiviteitId == id && ai.Inschrijving.LidId == id2);
+                    activiteit.ActiviteitInschrijvingen.SingleOrDefault(ai => ai.ActiviteitId == id && ai.Inschrijving.Lid.Id == id2);
                 activiteitInschrijving.IsAanwezig = true;
                 Aanwezigheid aanwezigheid = new Aanwezigheid(lid, activiteit);
                 _aanwezigheidRepository.Add(aanwezigheid);

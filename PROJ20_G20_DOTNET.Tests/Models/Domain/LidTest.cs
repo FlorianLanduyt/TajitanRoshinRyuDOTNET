@@ -156,5 +156,217 @@ namespace PROJ20_G20_DOTNET.Tests.Models.Domain
 
         #endregion
 
+        #region Testen Huisnummer
+        [Theory]
+        [InlineData("13")]
+        [InlineData("114")]
+        [InlineData("1")]
+        public void NewLid_HuisnummerCorrect_CreatesLid(string huisnummer)
+        {
+            _lid = new Lid { HuisNr = huisnummer };
+            Assert.Equal(huisnummer, _lid.HuisNr);
+        }
+
+        [Theory]
+        [InlineData("1233456")]
+        [InlineData("74aaaa")]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData("aaaa")]
+        [InlineData("/*@-")]
+        public void NewLid_HuisnummerFout_ArgumentException(string huisnummer)
+        {
+            Assert.Throws<ArgumentException>(() => _lid = new Lid() { HuisNr = huisnummer });
+        }
+        #endregion
+
+        #region Testen Bus
+        [Theory]
+        [InlineData("15")]
+        [InlineData("18a")]
+        public void NewLid_BusCorrect_CreatesLid(string bus)
+        {
+            _lid = new Lid() { Bus = bus };
+            Assert.Equal(bus, _lid.Bus);
+        }
+
+        [Theory]
+        [InlineData("123455")]
+        [InlineData("aaaaaaa")]
+        [InlineData("123aaaa")]
+        public void NewLid_BusFout_ArgumentException(string bus)
+        {
+            Assert.Throws<ArgumentException>(() => _lid = new Lid() { Bus = bus });
+        }
+        #endregion
+
+        #region Testen Postcode
+        [Theory]
+        [InlineData("9451")]
+        [InlineData("9000")]
+        public void NewLid_PostcodeCorrect_CreatesLid(string postcode)
+        {
+            _lid = new Lid() { PostCode = postcode };
+            Assert.Equal(postcode, _lid.PostCode);
+        }
+
+        [Theory]
+        [InlineData("55555")]
+        [InlineData("74aa")]
+        [InlineData("aaaa")]
+        [InlineData("74@-")]
+        [InlineData("/*@-")]
+        [InlineData("")]
+        [InlineData(null)]
+        public void NewLid_PostcodeFout_ArgumentException(string postcode)
+        {
+            Assert.Throws<ArgumentException>(() => _lid = new Lid() { PostCode = postcode });
+        }
+        #endregion
+
+        #region Testen Email
+        [Theory]
+        [InlineData("robdeputter@hotmail.com")]
+        [InlineData("robdp@gmail.com")]
+        public void NewLid_EmailCorrect_CreatesLid(string email)
+        {
+            _lid = new Lid() { Email = email };
+            Assert.Equal(email, _lid.Email);
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData("Rob Deputter@hotmail.com")]
+        public void NewLid_EmailFout_ArgumentException(string email)
+        {
+            Assert.Throws<ArgumentException>(() => _lid = new Lid() { Email = email });
+        }
+        #endregion
+
+        #region Testen Email vader
+        [Theory]
+        [InlineData("robdeputter@hotmail.com")]
+        [InlineData("robdp@gmail.com")]
+        public void NewLid_EmailVaderCorrect_CreatesLid(string email)
+        {
+            _lid = new Lid() { EmailVader = email };
+            Assert.Equal(email, _lid.EmailVader);
+        }
+
+        [Theory]
+        [InlineData("Rob Deputter@hotmail.com")]
+        public void NewLid_EmailVaderFout_ArgumentException(string email)
+        {
+            Assert.Throws<ArgumentException>(() => _lid = new Lid() { EmailVader = email });
+        }
+        #endregion
+
+        #region Testen Email moeder
+        [Theory]
+        [InlineData("robdeputter@hotmail.com")]
+        [InlineData("robdp@gmail.com")]
+        public void NewLid_EmailMoederCorrect_CreatesLid(string email)
+        {
+            _lid = new Lid() { EmailMoeder = email };
+            Assert.Equal(email, _lid.EmailMoeder);
+        }
+
+        [Theory]
+        [InlineData("Rob Deputter@hotmail.com")]
+        public void NewLid_EmailMoederFout_ArgumentException(string email)
+        {
+            Assert.Throws<ArgumentException>(() => _lid = new Lid() { EmailMoeder = email });
+        }
+        #endregion
+
+        #region Testen Geboorteplaats
+        [Theory]
+        [InlineData("Aalst")]
+        [InlineData("Gent")]
+        public void NewLid_GeboorteplaatsCorrect_CreatesLid(string geboorteplaats)
+        {
+            _lid = new Lid() { GeboortePlaats = geboorteplaats };
+            Assert.Equal(geboorteplaats, _lid.GeboortePlaats);
+        }
+
+        [Theory]
+        [InlineData("azezae12345")]
+        [InlineData("15515")]
+        [InlineData("aze@ze-*/151")]
+        [InlineData("@@/*-+$^")]
+        public void NewLid_GeboorteplaatsFout_ArgumentException(string geboorteplaats)
+        {
+            Assert.Throws<ArgumentException>(() => _lid = new Lid() { GeboortePlaats = geboorteplaats });
+        }
+        #endregion
+
+        #region Testen gsmnummer
+        [Theory]
+        [InlineData("0476456851")]
+        [InlineData("+32476456851")]
+        public void NewLid_GsmNummerCorrect_CreatesLid(string gsmnummer)
+        {
+            _lid = new Lid() { GsmNr = gsmnummer };
+            Assert.Equal(gsmnummer, _lid.GsmNr);
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData("aaaaa12345")]
+        [InlineData("aaaaaaaaaa")]
+        [InlineData("@@@@@12345")]
+        [InlineData("@@@@@@@@@@")]
+        public void NewLid_GsmnummerFout_ArgumentException(string gsmnummer)
+        {
+            Assert.Throws<ArgumentException>(() => _lid = new Lid() { GsmNr = gsmnummer });
+        }
+        #endregion
+
+        #region Testen nationaliteit
+        [Theory]
+        [InlineData("Belg")]
+        [InlineData("Vietna mees")]
+        public void NewLid_NationaliteitCorrect_CreatesLid(string nationaliteit)
+        {
+            _lid = new Lid() { Nationaliteit = nationaliteit };
+            Assert.Equal(nationaliteit, _lid.Nationaliteit);
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")]
+        [InlineData("sdfqsfq123")]
+        [InlineData("12356")]
+        [InlineData("aze@ze-*/151")]
+        [InlineData("@@/*-+$^")]
+        public void NewLid_NationaliteitFout_CreatesLid(string nationaliteit)
+        {
+            Assert.Throws<ArgumentException>(() => _lid = new Lid() { Nationaliteit = nationaliteit });
+        }
+
+        #endregion
+
+        #region Testen vaste telefoonnummer
+        [Theory]
+        [InlineData("053833670")]
+        public void NewLid_TelefoonnummerCorrect_CreatesLid(string telefoonnummer)
+        {
+            _lid = new Lid() { VasteTelefoonNr = telefoonnummer };
+            Assert.Equal(telefoonnummer, _lid.VasteTelefoonNr);
+        }
+
+        [Theory]
+        [InlineData("053833670aaa")]
+        [InlineData("aaaaaaaaa")]
+        [InlineData("053aaaaaa")]
+        public void NewLid_TelefoonummerFout_ArgumentException(string telefoonnummer)
+        {
+            Assert.Throws<ArgumentException>(() => _lid = new Lid() { VasteTelefoonNr = telefoonnummer });
+        }
+        #endregion
+
     }
 }
