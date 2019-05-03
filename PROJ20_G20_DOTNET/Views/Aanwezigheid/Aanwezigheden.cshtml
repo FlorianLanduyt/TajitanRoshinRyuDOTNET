@@ -16,38 +16,33 @@
     <hr />
     <div>
         <form method="post">
-                <label for="Naam" class="control-label">Naam</label>
+            <label for="Naam" class="control-label">Naam</label>
             <br />
-                <input type="text" name="Naam" id="Naam" />
-                <button class="btn btn-primary" type="submit" asp-action="Aanwezigheden">
-                    Filter
-                </button>
+            <input type="text" name="Naam" id="Naam" />
+            <button class="btn btn-primary" type="submit" asp-action="Aanwezigheden">
+                Filter
+            </button>
         </form>
     </div>
     <div class="aanwezighedenWrapper">
         @foreach (var ActiviteitInschrijving in Model.ActiviteitInschrijvingen) {
             @if (!ActiviteitInschrijving.IsAanwezig) {
-                <div class="aanwezigFalse aanwezigKaart">
-                    <p class="aanwezigLidName">@ActiviteitInschrijving.Inschrijving.Lid.Achternaam @ActiviteitInschrijving.Inschrijving.Lid.Voornaam</p>
-                    <form method="post">
-                        <button class="btn btn-primary" type="submit" asp-action="VoegAanwezigheidToe"
-                                asp-route-id="@ActiviteitInschrijving.Activiteit.Id"
-                                asp-route-id2="@ActiviteitInschrijving.Inschrijving.Lid.Id">
-                            Aanwezig
-                        </button>
-                    </form>
-                </div>
+                <form method="post" class="aanwezigFalse aanwezigKaart">
+                    <button class="knopKaart" type="submit" asp-action="VoegAanwezigheidToe"
+                            asp-route-id="@ActiviteitInschrijving.Activiteit.Id"
+                            asp-route-id2="@ActiviteitInschrijving.Inschrijving.Lid.Id">
+                        <p class="aanwezigLidName">@ActiviteitInschrijving.Inschrijving.Lid.Achternaam @ActiviteitInschrijving.Inschrijving.Lid.Voornaam</p>
+                    </button>
+                </form>
             } else {
-                <div class="aanwezigTrue aanwezigKaart">
-                    <p class="aanwezigLidName">@ActiviteitInschrijving.Inschrijving.Lid.Achternaam @ActiviteitInschrijving.Inschrijving.Lid.Voornaam</p>
-                    <form method="post">
-                        <button class="btn btn-primary" type="submit" asp-action="VerwijderActiviteit"
-                                asp-route-id="@ActiviteitInschrijving.Activiteit.Id"
-                                asp-route-id2="@ActiviteitInschrijving.Inschrijving.Lid.Id">
-                            Afwezig
-                        </button>
-                    </form>
-                </div>
+                <form method="post" class="aanwezigTrue aanwezigKaart" >
+                    <button class="knopKaart" type="submit" asp-action="VerwijderActiviteit"
+                                    asp-route-id="@ActiviteitInschrijving.Activiteit.Id"
+                                    asp-route-id2="@ActiviteitInschrijving.Inschrijving.Lid.Id" >
+                        <p class="aanwezigLidName">@ActiviteitInschrijving.Inschrijving.Lid.Achternaam @ActiviteitInschrijving.Inschrijving.Lid.Voornaam</p>
+                        
+                    </button>
+                </form>
             }
         }
     </div>

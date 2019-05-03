@@ -202,6 +202,7 @@ input {
 .aanwezighedenWrapper {
     max-width: 124.6rem;
     width: 100%;
+    height:100%;
     display: flex;
     -webkit-box-pack: justify;
     flex-wrap: wrap;
@@ -236,4 +237,12 @@ input {
 
 .aanwezigKaart:hover{
     transform:scale(1.03,1.03);
+}
+
+.knopKaart {
+    border:none;
+    background-color:transparent;
+}
+button:focus {
+    outline: 0;
 }

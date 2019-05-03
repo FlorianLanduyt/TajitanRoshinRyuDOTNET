@@ -37,3 +37,4 @@ C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\ne
 C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\PROJ20_G20_DOTNET.dll
 C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\PROJ20_G20_DOTNET.pdb
 C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\PROJ20_G20_DOTNET.csproj.CopyComplete
+C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\obj\Debug\netcoreapp2.1\PROJ20_G20_DOTNET.csprojAssemblyReference.cache
