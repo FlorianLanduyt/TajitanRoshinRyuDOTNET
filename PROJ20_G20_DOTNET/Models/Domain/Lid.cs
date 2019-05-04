@@ -104,6 +104,8 @@ namespace PROJ20_G20_DOTNET.Models.Domain
                 }
             }
         }
+        public Functie Functie { get; set; }
+
         public string RijksregisterNummer {
             get {
                 return _rijksregisternummer;
@@ -660,7 +662,6 @@ namespace PROJ20_G20_DOTNET.Models.Domain
 
         public int Id { get; set; }
         public Graad Graad { get; set; }
-        public Functie Functie { get; set; }
 
         #endregion
 
@@ -694,6 +695,18 @@ namespace PROJ20_G20_DOTNET.Models.Domain
             Graad = graad;
             Functie = functie;
             RijksregisterNummer = rijksregisterNr;
+        }
+        public Lid(string voornaam, string achternaam, string email, string gsmNr, Functie functie) {
+            Voornaam = voornaam;
+            Achternaam = achternaam;
+            Email = email;
+            GsmNr = gsmNr;
+            Functie = functie;
+            HuisNr = "1";
+            Straat = "gast";
+            Stad = "gast";
+            PostCode = "1000";
+
         }
         #endregion
 

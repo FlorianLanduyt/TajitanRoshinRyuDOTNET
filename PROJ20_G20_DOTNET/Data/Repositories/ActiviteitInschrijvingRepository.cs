@@ -29,5 +29,12 @@ namespace PROJ20_G20_DOTNET.Data.Repositories
             return _activiteitInschrijvingen
                 .SingleOrDefault(ai => ai.ActiviteitId == activiteitId && ai.InschrijvingId == inschrijvingId);
         }
+
+        public void Add(ActiviteitInschrijving ai) {
+            _activiteitInschrijvingen.Add(ai);
+        }
+        public void SaveChanges() {
+            _dbContext.SaveChanges();
+        }
     }
 }

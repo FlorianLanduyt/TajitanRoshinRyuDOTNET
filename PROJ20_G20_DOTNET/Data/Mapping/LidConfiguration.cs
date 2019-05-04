@@ -33,14 +33,11 @@ namespace PROJ20_G20_DOTNET.Data.Mapping {
                 .HasColumnName("EMAILVADER");
             builder.Property(l => l.GeboortePlaats)
                 .HasMaxLength(50)
-                .IsRequired()
                 .HasColumnName("GEBOORTEPLAATS");
             builder.Property(l => l.Nationaliteit)
                 .HasMaxLength(50)
-                .IsRequired()
                 .HasColumnName("NATIONALITEIT");
             builder.Property(l => l.Geslacht)
-                .IsRequired()
                 .HasColumnName("GESLACHT");
             builder.Property(l => l.PuntenAantal)
                 .HasColumnName("PUNTENAANTAL");
@@ -50,29 +47,23 @@ namespace PROJ20_G20_DOTNET.Data.Mapping {
                 .HasColumnName("GSMNR");
             builder.Property(l => l.HuisNr)
                 .HasMaxLength(5)
-                .IsRequired()
                 .HasColumnName("HUISNR");
             builder.Property(l => l.PostCode)
                 .HasMaxLength(4)
-                .IsRequired()
                 .HasColumnName("POSTCODE");
             builder.Property(l => l.RijksregisterNummer)
-                .IsRequired()
                 .HasMaxLength(15)
                 .HasColumnName("RIJKSREGISTERNR");
             builder.Property(l => l.Stad)
                 .HasMaxLength(50)
-                .IsRequired()
                 .HasColumnName("STAD");
             builder.Property(l => l.Straat)
                 .HasMaxLength(50)
-                .IsRequired()
                 .HasColumnName("STRAAT");
             builder.Property(l => l.VasteTelefoonNr)
-                .HasMaxLength(10)
+                .HasMaxLength(12)
                 .HasColumnName("VASTETELEFOONNR");
             builder.Property(l => l.Wachtwoord)
-                .IsRequired()
                 .HasColumnName("WACHTWOORD");
             builder.Property(l => l.Graad)
                 .HasColumnName("GRAAD");

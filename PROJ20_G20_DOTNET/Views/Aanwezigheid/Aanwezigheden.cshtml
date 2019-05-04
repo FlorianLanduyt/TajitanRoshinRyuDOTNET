@@ -81,10 +81,10 @@
                 } else {
                     <form method="post" class="aanwezigTrue aanwezigKaart">
                         @*<div>
-                            <a onclick="document.getElementById('myform').submit();">
-                                <img class="foto" src="~/images/@(@ActiviteitInschrijving.Inschrijving.Lid.Geslacht.ToString()) .png" />
-                            </a>
-                        </div>*@
+                                <a onclick="document.getElementById('myform').submit();">
+                                    <img class="foto" src="~/images/@(@ActiviteitInschrijving.Inschrijving.Lid.Geslacht.ToString()) .png" />
+                                </a>
+                            </div>*@
                         <button class="knopKaart" type="submit" asp-action="VerwijderActiviteit"
                                 asp-route-id="@ActiviteitInschrijving.Activiteit.Id"
                                 asp-route-id2="@ActiviteitInschrijving.Inschrijving.Lid.Id">
@@ -96,4 +96,36 @@
         </div>
     </div>
 </div>
+<div>
+    <button onclick="toggleShow()">Voeg een gast toe</button>
+</div>
+<div id="voegGastToe">
+    <form method="post" asp-action="VoegGastToe" asp-route-id="@Model.Id">
+        <label for="Voornaam" class="control-label">Voornaam</label>
+        <input type="text" name="Voornaam" id="Voornaam" />
+
+        <label for="Achternaam" class="control-label">Achternaam</label>
+        <input type="text" name="Achternaam" id="Achternaam" />
+
+        <label for="Email" class="control-label">E-mail</label>
+        <input type="text" name="Email" id="Email" />
+
+        <label for="Gsm" class="control-label">Gsm nummer</label>
+        <input type="text" name="Gsm" id="Gsm" />
+
+        <button class="btn btn-primary" type="submit">
+            Voeg Gast Toe
+        </button>
+    </form>
+</div>
+<script>
+    function toggleShow() {
+        var x = document.getElementById("voegGastToe");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
 

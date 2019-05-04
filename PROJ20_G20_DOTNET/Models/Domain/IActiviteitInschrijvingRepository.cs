@@ -9,5 +9,7 @@ namespace PROJ20_G20_DOTNET.Models.Domain
     {
         IEnumerable<ActiviteitInschrijving> GetAll();
         ActiviteitInschrijving GetBy(int activiteitId,int inschrijvingId);
+        void Add(ActiviteitInschrijving ai);
+        void SaveChanges();
     }
 }
