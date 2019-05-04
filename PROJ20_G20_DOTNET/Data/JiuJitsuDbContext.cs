@@ -14,7 +14,7 @@ namespace PROJ20_G20_DOTNET.Data
         public DbSet<ActiviteitInschrijving> ActiviteitInschrijvingen { get; set; }
         public DbSet<Inschrijving> Inschrijvingen { get; set; }
         public DbSet<Lid> Leden { get; set; }
-        public DbSet<Oefening> Oefeneningen { get; set; }
+        public DbSet<Oefening> Oefeningen { get; set; }
         //public DbSet<Raadpleging> Raadplegingen { get; set; }
         public DbSet<Thema> Themas { get; set; }
 

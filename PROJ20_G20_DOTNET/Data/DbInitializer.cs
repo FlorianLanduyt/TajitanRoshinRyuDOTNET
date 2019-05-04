@@ -211,6 +211,25 @@ namespace PROJ20_G20_DOTNET.Data
                 act5.AddInschrijving(inschrijving26);
                 #endregion
 
+                #region Oefeningen
+                Oefening oefening1 = new Oefening("Salto", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Test tekst", DateTime.Now, Graad.KYU1, new Thema("Testthema"));
+                Oefening oefening2 = new Oefening("Blokken", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Test tekst", DateTime.Now, Graad.DAN5, new Thema("Testthema"));
+                Oefening oefening3 = new Oefening("Vallen", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Test tekst", DateTime.Now, Graad.DAN4, new Thema("Testthema"));
+                Oefening oefening4 = new Oefening("Aanvallen", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Test tekst", DateTime.Now, Graad.DAN1, new Thema("Testthema"));
+                Oefening oefening5 = new Oefening("Verdedigen", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Test tekst", DateTime.Now, Graad.DAN2, new Thema("Testthema"));
+                Oefening oefening6 = new Oefening("Passieve agressieve aanval", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Test tekst", DateTime.Now, Graad.DAN2, new Thema("Testthema"));
+                Oefening oefening7 = new Oefening("noscopethreesixty", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Test tekst", DateTime.Now, Graad.DAN2, new Thema("Testthema"));
+
+
+                _dbContext.Oefeningen.Add(oefening1);
+                _dbContext.Oefeningen.Add(oefening2);
+                _dbContext.Oefeningen.Add(oefening3);
+                _dbContext.Oefeningen.Add(oefening4);
+                _dbContext.Oefeningen.Add(oefening5);
+                _dbContext.Oefeningen.Add(oefening6);
+                _dbContext.Oefeningen.Add(oefening7);
+                #endregion
+
                 _dbContext.SaveChanges();
 
             }
