@@ -230,6 +230,11 @@ namespace PROJ20_G20_DOTNET.Data
                 _dbContext.Oefeningen.Add(oefening7);
                 #endregion
 
+
+                #region Raadplegingen
+                Raadpleging raadpleging1 = new Raadpleging(lid1, oefening1);
+                _dbContext.Raadplegingen.Add(raadpleging1);
+                #endregion
                 _dbContext.SaveChanges();
 
             }

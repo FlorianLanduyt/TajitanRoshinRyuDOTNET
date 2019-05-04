@@ -23,6 +23,7 @@ namespace PROJ20_G20_DOTNET.Models.Domain {
                 }
             }
         }
+        public int RaadplegingId { get; set; }
         #endregion
         #region Constructors
         protected RaadplegingsTijdstip() {

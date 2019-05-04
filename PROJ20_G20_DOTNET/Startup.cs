@@ -65,6 +65,8 @@ namespace PROJ20_G20_DOTNET
             services.AddScoped<IActiviteitInschrijvingRepository, ActiviteitInschrijvingRepository>();
             services.AddScoped<IGraadRepository, GraadRepository>();
             services.AddScoped<IOefeningRepository, OefeningRepository>();
+            services.AddScoped<IRaadplegingRepository, RaadplegingRepository>();
+
             services.AddScoped<DbInitializer>();
             #endregion
 
