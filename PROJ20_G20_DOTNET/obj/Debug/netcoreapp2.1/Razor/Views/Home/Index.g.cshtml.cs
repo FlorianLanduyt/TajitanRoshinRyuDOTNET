@@ -61,7 +61,7 @@ using PROJ20_G20_DOTNET.Models;
             WriteLiteral("\r\n<div class=\"home\">\r\n    <br />\r\n    <br />\r\n    <h1>Taijitan Roshin Ryu</h1>\r\n    <br />\r\n    <br />\r\n    <br />\r\n    ");
             EndContext();
             BeginContext(167, 63, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "5b954fbde72948848c2d9eb463a58c93", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "3ecfddefdaef45e297051bce023f5971", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
