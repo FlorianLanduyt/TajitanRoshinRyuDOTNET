@@ -116,12 +116,12 @@ using PROJ20_G20_DOTNET.Models;
             WriteLiteral("</td>\r\n            <td class=\"text-right\">\r\n                ");
             EndContext();
             BeginContext(609, 137, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a89d168e299c470d9be0c611e4660f98", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "33ba43fae08c444a99b5a23007f1572a", async() => {
                 BeginContext(615, 22, true);
                 WriteLiteral("\r\n                    ");
                 EndContext();
                 BeginContext(637, 84, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "011bf43596a84dae9cc90826d978d881", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "34276e57f9b442dbbcb3e457618ce2e4", async() => {
                     BeginContext(699, 18, true);
                     WriteLiteral("Raadpleeg oefening");
                     EndContext();
@@ -181,12 +181,12 @@ using PROJ20_G20_DOTNET.Models;
             WriteLiteral("    </table>\r\n    ");
             EndContext();
             BeginContext(811, 94, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "05548108fa1744af9bb731a875f60790", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f2e993d3440c49f994753b17f507735b", async() => {
                 BeginContext(817, 10, true);
                 WriteLiteral("\r\n        ");
                 EndContext();
                 BeginContext(827, 65, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8b0d92b057c54ad78d317f1869ce6ae8", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "221c62eea0ae48b1a9684bcf33761c1b", async() => {
                     BeginContext(878, 5, true);
                     WriteLiteral("Terug");
                     EndContext();
