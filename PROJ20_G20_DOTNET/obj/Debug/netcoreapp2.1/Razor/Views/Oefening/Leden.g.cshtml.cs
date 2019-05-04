@@ -103,12 +103,12 @@ using PROJ20_G20_DOTNET.Models;
             WriteLiteral("</td>\r\n                <td class=\"text-right\">\r\n                    ");
             EndContext();
             BeginContext(617, 139, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f53cb2b3b3c94fcfac56ff4c41591d12", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "483ccc50185647e6bfeac2066b26cd4d", async() => {
                 BeginContext(623, 26, true);
                 WriteLiteral("\r\n                        ");
                 EndContext();
                 BeginContext(649, 78, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d3d17547bf0d43789ede01ab599e6d70", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "160381112f594278a9f38e91157e1a03", async() => {
                     BeginContext(706, 17, true);
                     WriteLiteral("Bekijk oefeningen");
                     EndContext();

@@ -30,8 +30,12 @@ namespace PROJ20_G20_DOTNET.Controllers
 
             IEnumerable<Oefening> oefeningen =
                 _oefeningRepository.GetAll()
-                .Where(oef => (int)oef.Graad <= (int)graadLid)
+                .Where(oef => oef.Graad.CompareTo(graadLid) <= 0)
+                .OrderBy(oef => oef.Graad)
+                .ThenBy(oef => oef.Thema.Naam)
+                .ThenBy(oef => oef.Titel)
                 .ToList();
+            ViewData["LidNaam"] = $"{lid.Voornaam} {lid.Achternaam}";
             return View(oefeningen);
         }
 

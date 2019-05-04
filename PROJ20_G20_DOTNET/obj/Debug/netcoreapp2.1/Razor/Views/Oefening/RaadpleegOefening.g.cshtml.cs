@@ -116,12 +116,12 @@ WriteAttributeValue("", 271, Model.UrlVideo, 271, 15, false);
             WriteLiteral("\r\n            frameborder=\"0\"\r\n            allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\"\r\n            allowfullscreen></iframe><br />\r\n    ");
             EndContext();
             BeginContext(459, 111, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a6f5e54d7af64aa2ba47d3f46f525cff", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4f016f0ea6a42d0b567e01b3fee1d61", async() => {
                 BeginContext(465, 10, true);
                 WriteLiteral("\r\n        ");
                 EndContext();
                 BeginContext(475, 82, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0acb123daa384907baea0e8cb4482ea8", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "efeba5b00b3f48d0a1da226db4414295", async() => {
                     BeginContext(543, 5, true);
                     WriteLiteral("Terug");
                     EndContext();
