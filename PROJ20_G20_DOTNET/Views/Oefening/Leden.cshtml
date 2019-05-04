@@ -1,0 +1,33 @@
+﻿@model IEnumerable<PROJ20_G20_DOTNET.Models.Domain.Lid>
+
+@{
+    ViewData["Title"] = "Leden";
+}
+
+<div>
+    <h2>Leden</h2>
+    <hr />
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Familienaam</th>
+            <th>Voornaam</th>
+            <th>Geboortedatum</th>
+            <th></th>
+        </tr>
+
+        @foreach (var Lid in Model) {
+            <tr>
+                <td>@Lid.Achternaam</td>
+                <td>@Lid.Voornaam</td>
+                <td>@Lid.GeboorteDatum.ToShortDateString()</td>
+                <td class="text-right">
+                    <form>
+                        <a asp-action="ToonOefeningenLid" asp-route-id="@Lid.Id">Bekijk oefeningen</a>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
