@@ -1,0 +1,34 @@
+﻿@model IEnumerable<PROJ20_G20_DOTNET.Models.Domain.Oefening>
+
+@{
+    ViewData["Title"] = "Oefeningen";
+}
+
+<div>
+    <h2>Oefeningen voor @ViewData["LidNaam"]</h2>
+    <hr />
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Naam</th>
+            <th>Graad</th>
+            <th>Categorie</th>
+            <th></th>
+        </tr>
+
+        @foreach (var Oefening in Model) {
+        <tr>
+            <td>@Oefening.Titel</td>
+            <td>@Oefening.Graad</td>
+            <td>@Oefening.Thema.Naam</td>
+            <td class="text-right">
+                <form>
+                    <a asp-action="RaadpleegOefening" asp-route-id="@Oefening.Id">Raadpleeg oefening</a>
+                </form>
+            </td>
+        </tr>
+        }
+    </table>
+    <form>
+        <button asp-action="Leden" class="btn btn-default">Terug</button>
+    </form>
+</div>

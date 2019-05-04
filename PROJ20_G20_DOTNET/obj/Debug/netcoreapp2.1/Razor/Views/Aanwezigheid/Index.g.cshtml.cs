@@ -188,9 +188,35 @@ WriteAttributeValue("", 1568, Url.Action("Aanwezigheden", "Aanwezigheid", new { 
             BeginContext(1908, 52, true);
             WriteLiteral("</td>\r\n                            <td class=\"cell\">");
             EndContext();
+<<<<<<< HEAD
             BeginContext(1961, 18, false);
 #line 45 "C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\Views\Aanwezigheid\Index.cshtml"
                                         Write(Activiteit.Formule);
+=======
+            BeginContext(752, 138, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c0a2bfbcec364690a8a396dad7adc5f3", async() => {
+                BeginContext(758, 26, true);
+                WriteLiteral("\r\n                        ");
+                EndContext();
+                BeginContext(784, 77, false);
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3e0516e9df1d423896f6e7b4d9144d99", async() => {
+                    BeginContext(844, 13, true);
+                    WriteLiteral("Aanwezigheden");
+                    EndContext();
+                }
+                );
+                __Microsoft_AspNetCore_Mvc_TagHelpers_AnchorTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper>();
+                __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_TagHelpers_AnchorTagHelper);
+                __Microsoft_AspNetCore_Mvc_TagHelpers_AnchorTagHelper.Action = (string)__tagHelperAttribute_0.Value;
+                __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_0);
+                if (__Microsoft_AspNetCore_Mvc_TagHelpers_AnchorTagHelper.RouteValues == null)
+                {
+                    throw new InvalidOperationException(InvalidTagHelperIndexerAssignment("asp-route-id", "Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper", "RouteValues"));
+                }
+                BeginWriteTagHelperAttribute();
+#line 27 "E:\School\2YS2\Projecten2\dotnet-g20\PROJ20_G20_DOTNET\Views\Aanwezigheid\Index.cshtml"
+                                                        WriteLiteral(Activiteit.Id);
+>>>>>>> UC3
 
 #line default
 #line hidden

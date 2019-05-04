@@ -62,6 +62,7 @@ using PROJ20_G20_DOTNET.Models;
             BeginContext(68, 133, true);
             WriteLiteral("<div class=\"container\"><h3 class=\"title\">Kies een optie!</h3></div>\r\n<hr />\r\n\r\n<div class=\"container \">\r\n    <div class=\"row-flex\">\r\n");
             EndContext();
+<<<<<<< HEAD
 #line 10 "C:\Users\florianlanduyt\source\project\dotnet-g20\PROJ20_G20_DOTNET\Views\Home\Index.cshtml"
              foreach (var item in Model) {
 
@@ -72,6 +73,10 @@ using PROJ20_G20_DOTNET.Models;
             EndContext();
             BeginContext(361, 62, false);
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "942bc2448c164d14b94fcb8586a19573", async() => {
+=======
+            BeginContext(167, 63, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "5b6a84a8e53b43a98e3ebd013121c04c", async() => {
+>>>>>>> UC3
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

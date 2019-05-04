@@ -182,9 +182,25 @@ using PROJ20_G20_DOTNET.Models;
 
 #line default
 #line hidden
+<<<<<<< HEAD
                     EndContext();
                     BeginContext(2795, 30, true);
                     WriteLiteral("</p>\r\n                        ");
+=======
+            EndContext();
+            BeginContext(821, 35, true);
+            WriteLiteral("</strong></p>\r\n                    ");
+            EndContext();
+            BeginContext(856, 406, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f0b6455a87e5426097afc43cb0007de1", async() => {
+                BeginContext(876, 26, true);
+                WriteLiteral("\r\n                        ");
+                EndContext();
+                BeginContext(902, 331, false);
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "30fd4536ac2743cea170b413a9d2a8a3", async() => {
+                    BeginContext(1160, 64, true);
+                    WriteLiteral("\r\n                            Aanwezig\r\n                        ");
+>>>>>>> UC3
                     EndContext();
                 }
                 );
