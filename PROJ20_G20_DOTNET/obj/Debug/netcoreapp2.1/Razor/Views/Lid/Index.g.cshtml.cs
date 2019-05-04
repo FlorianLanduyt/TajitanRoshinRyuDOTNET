@@ -311,12 +311,12 @@ using PROJ20_G20_DOTNET.Models;
             WriteLiteral("</label><br />\r\n            <br />\r\n        </div>\r\n        ");
             EndContext();
             BeginContext(1610, 129, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a4c5a4ee64b24feea3a82b3660ba5965", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "efbe26f17ced4fa4a5bf8d0498b83a86", async() => {
                 BeginContext(1616, 14, true);
                 WriteLiteral("\r\n            ");
                 EndContext();
                 BeginContext(1630, 92, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "96c376faf9204041b3b0ac91c54c604a", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5ad6981edb8941db9d7367c38a487d9f", async() => {
                     BeginContext(1705, 8, true);
                     WriteLiteral("Wijzigen");
                     EndContext();

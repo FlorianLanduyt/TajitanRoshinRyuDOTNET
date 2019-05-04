@@ -1,0 +1,20 @@
+﻿@model PROJ20_G20_DOTNET.Models.Domain.Oefening
+
+@{
+    ViewData["Title"] = Model.Titel;
+}
+
+<div>
+    <h2>@Model.Graad | @Model.Thema.Naam | @Model.Titel</h2>
+    <hr />
+    <p>@Model.Tekst</p>
+    <iframe width="560"
+            height="315"
+            src=@Model.UrlVideo
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe><br />
+    <form>
+        <button asp-action="Index" class="btn btn-default">Terug</button>
+    </form>
+</div>

@@ -74,12 +74,12 @@ using PROJ20_G20_DOTNET.Models;
             WriteLiteral("        <div>\r\n            ");
             EndContext();
             BeginContext(216, 125, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f264c3f468a44509821d5b5b97de6f8b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b93cfb9bd4bb4ca684e17eb53b297096", async() => {
                 BeginContext(222, 18, true);
                 WriteLiteral("\r\n                ");
                 EndContext();
                 BeginContext(240, 80, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "37c7c58ff5b94c749a7208ad13533f92", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1c766f727d954da280b4ec41e22ea783", async() => {
                     BeginContext(311, 5, false);
 #line 13 "E:\School\2YS2\Projecten2\dotnet-g20\PROJ20_G20_DOTNET\Views\Graad\Index.cshtml"
                                                                                  Write(Graad);

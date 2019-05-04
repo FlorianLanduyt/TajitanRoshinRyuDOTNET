@@ -21,5 +21,11 @@ namespace PROJ20_G20_DOTNET.Controllers
             ViewData["Graad"] = graad;
             return View(oefeningen);
         }
+
+        public IActionResult RaadpleegOefening(int id)
+        {
+            Oefening oefening = _oefeningRepository.GetById(id);
+            return View(oefening);
+        }
     }
 }
