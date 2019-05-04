@@ -69,7 +69,7 @@ using PROJ20_G20_DOTNET.Models;
             WriteLiteral("\r\n<div>\r\n    <h2>Activiteiten</h2>\r\n    <hr />\r\n    <div class=\"test\">\r\n        ");
             EndContext();
             BeginContext(197, 843, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a9fe3668e4574eaa9cc5b5043cdf2ad9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4d1cd83c3ed84fffb126e1869d121a5d", async() => {
                 BeginContext(230, 151, true);
                 WriteLiteral("\r\n\r\n            <label for=\"BeginDatum\" class=\"control-label\">Begindatum</label>\r\n            <input type=\"date\" name=\"BeginDatum\" id=\"BeginDatum\" />\r\n");
                 EndContext();
@@ -82,7 +82,7 @@ using PROJ20_G20_DOTNET.Models;
             ");
                 EndContext();
                 BeginContext(911, 112, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7960ea3e4cb24c5aabd1223eec274876", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1d64a6c59bdb46c3bbf209bfa8e1aa1d", async() => {
                     BeginContext(976, 38, true);
                     WriteLiteral("\r\n                Filter\r\n            ");
                     EndContext();

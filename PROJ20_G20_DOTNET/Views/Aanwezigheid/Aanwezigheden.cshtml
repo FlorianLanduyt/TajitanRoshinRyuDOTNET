@@ -6,12 +6,12 @@
 
 <div>
     @*@if (TempData["Success"] != null) {
-        <br />
-        <p class="alert alert-success">@TempData["Success"]</p>
-    } else if (TempData["Error"] != null) {
-        <br />
-        <p class="alert alert-danger">@TempData["Error"]</p>
-    }*@
+            <br />
+            <p class="alert alert-success">@TempData["Success"]</p>
+        } else if (TempData["Error"] != null) {
+            <br />
+            <p class="alert alert-danger">@TempData["Error"]</p>
+        }*@
 
     <div class="container">
         <h2 class="titleAanwezigheden">Wie is er aanwezig voor <strong class="vetKleur">@Model.Naam?</strong></h2>
@@ -63,22 +63,32 @@
         <div class="row-flex">
             @foreach (var ActiviteitInschrijving in Model.ActiviteitInschrijvingen) {
                 @if (!ActiviteitInschrijving.IsAanwezig) {
+
+
                     <form method="post" class="aanwezigFalse aanwezigKaart">
-                        @*<img class="foto" src="~/images/man.png" />*@
+                        @*<div>
+                                <a onclick="document.getElementById('myform').id.submit();">
+                                    <img class="foto" src="~/images/@(@ActiviteitInschrijving.Inschrijving.Lid.Geslacht.ToString()).png" />
+                                </a>
+                            </div>*@
                         <button class="knopKaart" type="submit" asp-action="VoegAanwezigheidToe"
                                 asp-route-id="@ActiviteitInschrijving.Activiteit.Id"
                                 asp-route-id2="@ActiviteitInschrijving.Inschrijving.Lid.Id">
                             <p class="aanwezigLidName">@ActiviteitInschrijving.Inschrijving.Lid.Achternaam @ActiviteitInschrijving.Inschrijving.Lid.Voornaam</p>
                         </button>
                     </form>
+
                 } else {
                     <form method="post" class="aanwezigTrue aanwezigKaart">
-                        @*<img class="foto" src="~/images/man.png" />*@
+                        @*<div>
+                            <a onclick="document.getElementById('myform').submit();">
+                                <img class="foto" src="~/images/@(@ActiviteitInschrijving.Inschrijving.Lid.Geslacht.ToString()) .png" />
+                            </a>
+                        </div>*@
                         <button class="knopKaart" type="submit" asp-action="VerwijderActiviteit"
                                 asp-route-id="@ActiviteitInschrijving.Activiteit.Id"
                                 asp-route-id2="@ActiviteitInschrijving.Inschrijving.Lid.Id">
                             <p class="aanwezigLidName">@ActiviteitInschrijving.Inschrijving.Lid.Achternaam @ActiviteitInschrijving.Inschrijving.Lid.Voornaam</p>
-
                         </button>
                     </form>
                 }

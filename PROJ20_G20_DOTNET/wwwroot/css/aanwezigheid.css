@@ -290,7 +290,7 @@ input {
 
 .aanwezigKaart {
     display: inline-block;
-    position:relative;
+    position: relative;
     box-sizing: border-box;
     box-shadow: rgba(0,0,0,0.1) 0px 2px 7px;
     flex-wrap: wrap;
@@ -299,15 +299,16 @@ input {
     flex-direction: column;
     min-width: 200px;
     width: 22.9%;
-    height: 170px;
+    height: 200px;
     background: rgb(240, 241, 243);
     border: 1px solid rgba(118, 114, 110, 0.1);
     border-image: initial;
     border-radius: 1rem;
-    
     margin: 1rem;
     transition: ease 0.4s;
     position: relative;
+    justify-content: center;
+    align-items: center;
 }
 
     .aanwezigKaart:hover {
@@ -355,7 +356,7 @@ input {
 /*Knop in de Afwezigheidkaart*/
 .knopKaart {
     position:absolute;
-    display: block;
+    display: inline-block;
     width: 100%;
     height:100%;
     border: none;
@@ -367,8 +368,14 @@ input {
 
 /*foto in de Afwezigheidkaart*/
 .foto {
-    display: inline-block;
-    text-align: center;
-    height: 100px;
-    transition: 0.4s ease;
+    cursor:pointer;
+    position:relative;
+    display: block;
+    max-width: 100px;
+    border-radius: 50%;
+    margin: 20px auto 10px auto;
+}
+
+a {
+    cursor:pointer;
 }
