@@ -9,7 +9,9 @@
     <hr />
     @foreach (var Graad in Model) {
         <div>
-            <a asp-controller="Oefening" asp-action="Index">@Graad</a>
+            <form>
+                <a asp-controller="Oefening" asp-action="Index" asp-route-id="@Graad">@Graad</a>
+            </form>
         </div>
     }
 </div>

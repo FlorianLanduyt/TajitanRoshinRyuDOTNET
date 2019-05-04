@@ -67,6 +67,10 @@ namespace PROJ20_G20_DOTNET.Data
                 act1.AddInschrijving(inschrijving3);
                 #endregion
 
+                #region Oefeningen
+                Oefening oefening1 = new Oefening("Testoefening", "www.youtube.com/test", "Test tekst", DateTime.Now, Graad.KYU1, new Thema("Testthema"));
+                _dbContext.Oefeningen.Add(oefening1);
+                #endregion
                 _dbContext.SaveChanges();
 
             }
