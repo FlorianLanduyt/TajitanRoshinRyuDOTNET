@@ -65,6 +65,7 @@ namespace PROJ20_G20_DOTNET.Controllers
                     ai => ai.Inschrijving.Lid.Voornaam.Contains(naamFilter, StringComparison.CurrentCultureIgnoreCase) 
                     || ai.Inschrijving.Lid.Achternaam.Contains(naamFilter, StringComparison.CurrentCultureIgnoreCase))
                 .ToList();
+
             return View(activiteit);
         }
 

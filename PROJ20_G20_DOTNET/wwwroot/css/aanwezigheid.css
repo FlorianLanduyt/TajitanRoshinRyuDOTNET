@@ -1,4 +1,5 @@
-﻿@font-face {
+﻿/* /////////////ALGEMEEN////////////// */
+@font-face {
     font-family: Poppins-Regular;
     src: url('../fonts/Poppins/Poppins-Regular.ttf');
 }
@@ -12,7 +13,6 @@
 * {
     margin: 0px;
     padding: 0px;
-    box-sizing: border-box;
 }
 
 body, html {
@@ -20,13 +20,20 @@ body, html {
     font-family: sans-serif;
 }
 
-
+button:focus {
+    outline: 0;
+}
 
 .test {
     padding-bottom: 10px;
 }
 
-/*////////////////TABEL////////////////*/
+/*////////////////INDEX////////////////*/
+
+/*------ Tabel ---------*/
+
+/*Tabel zelf*/
+
 .limiter {
     width: 100%;
     margin-top: 0 auto;
@@ -60,17 +67,29 @@ body, html {
     margin: 0;
 }
 
+/* Rij */
+
 .rij {
     display: table-row;
     background: #fff;
 }
 
-.rij.header {
-     color: #ffffff;
-     background: #996888;
+    .rij.header {
+        color: #ffffff;
+        background: #996888;
+    }
+
+.table, .rij {
+    width: 100% !important;
+}
+
+    .rij:not(.header):hover {
+        background-color: #ececff;
+        cursor: pointer;
     }
 
 
+/* Cell */
 .cell {
     display: table-cell;
 }
@@ -105,89 +124,216 @@ body, html {
     border-bottom: 1px solid #f2f2f2;
 }
 
-
-
-.rij .cell:nth-child(3) {
-    width: 250px;
-}
-
-.rij .cell:nth-child(4) {
-    width: 190px;
-}
-
-
-.table, .rij {
-    width: 100% !important;
-}
-
-.rij:not(.header):hover {
-        background-color: #ececff;
-        cursor: pointer;
+    .rij .cell:nth-child(3) {
+        width: 250px;
     }
 
-
-
-
-.label {
-    position: absolute;
-    top: 16px;
-    left: 0;
-    font-size: 16px;
-    color: #9098A9 ;
-    font-weight: 500 ;
-    transform-origin: 0 0;
-    transition: all .2s ease;
-}
-
-.border {
-    position: absolute;
-    bottom: 0 ;
-    left: 0 ;
-    height: 2px ;
-    width: 100%;
-    background: #0077FF;
-    transform: scaleX(0) ;
-    transform-origin: 0 0 ;
-    transition: all .15s ease;
-}
-
-/* --------- Input -----------*/
-
-/*.inp {
-    -webkit-appearance: none;
-    position: relative;
-    margin: auto;
-    width: 100%;
-    max-width: 250px;
-    border-bottom: 2px solid #C8CCD4;
-}
-
-input {
-    width: 100%;
-    border: 0;
-    padding: 12px 0;
-    height: 48px;
-    font-size: 16px;
-    font-weight: 500;
-    
-    transition: all .15s ease;
-}
-
-    inp:hover {
-        background: #ececff;
+    .rij .cell:nth-child(4) {
+        width: 190px;
     }
 
-
-
-.inp input:focus + span {
-    color: #07f;
-    transform: translateY(-26px) scale(0.75);
-}*/
 
 
 /*//////////////AANWEZIGHEDEN/////////////*/
+.titleAanwezigheden {
+    text-align: center;
+    padding-bottom: 0px;
+}
+
+.vetKleur {
+    color: #996888;
+}
+
+
+/*------- Inputfields ---------*/
+.volledigeForm {
+    padding-left: 27px;
+    padding-bottom: 10px;
+    width: 100%;
+    height: 60px;
+}
+
+input {
+    box-sizing: border-box;
+    font-size: 15px;
+    vertical-align: top;
+}
+
+.wrapper {
+    position: relative;
+    height: 40px;
+    font-size: 0;
+    top: 50%;
+    text-align:center;
+}
+
+.search {
+    padding: 0 30px;
+    font-size: 16px;
+    max-width: 400px;
+    height: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px 0 0 10px;  
+    outline-width:0;
+}
+
+.submit {
+    cursor: pointer;
+    border: none;
+    font-size: 15px;
+    background-color: #996888;
+    color: black;
+    border-radius: 0 10px 10px 0;
+    padding: 0px 30px;
+    color: white;
+    height: 40px;
+    background-size: 35px 35px;
+    outline-width: 0;
+    transition: ease 0.4s;
+}
+    .submit:hover {
+        background-color: #B6C8C0;
+    }
+
+.filterKnop {
+    padding: 10px 10px;
+    position: relative;
+    margin: 3px 10px;
+    width: 100px;
+    overflow: hidden;
+    align-content: center;
+    background-color: #996888;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+    transition: ease 0.4s;
+}
+
+    .filterKnop:hover {
+        background-color: #B6C8C0;
+    }
+
+.inp {
+    position: relative;
+    float: left;
+    margin: auto;
+    width: 24%;
+    min-width: 200px;
+    max-width: 280px;
+}
+
+    .inp .label {
+        position: absolute;
+        top: 16px;
+        left: 0;
+        font-size: 15px;
+        color: #9098a9;
+        font-weight: 500;
+        transform-origin: 0 0;
+        transition: all 0.3s ease;
+    }
+
+    .inp .border {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        background: #07f;
+        transform: scaleX(0);
+        transform-origin: 0 0;
+        transition: all 0.35s ease;
+    }
+
+    .inp input {
+        -webkit-appearance: none;
+        width: 100%;
+        border: 0;
+        padding: 12px 0;
+        height: 48px;
+        font-size: 16px;
+        font-weight: 500;
+        border-bottom: 2px solid #c8ccd4;
+        background: none;
+        border-radius: 0;
+        color: black;
+        transition: all 0.15s ease;
+    }
+
+        .inp input:focus {
+            background-color: none;
+            outline: none;
+            border-bottom: #B6C8C0;
+        }
+
+            .inp input:focus + span {
+                transform: translateY(-26px) scale(0.75);
+            }
+
+        .inp input:hover {
+            background: rgba(34,50,84,0.03);
+        }
+
+        .inp input:focus + span + .border {
+            transform: scaleX(1);
+        }
+
+
+
+
+
+/*------- Aanwezigheidkaart ---------*/
+.row-flex {
+    margin: -.2px;
+}
+
+.aanwezigKaart {
+    display: inline-block;
+    position:relative;
+    box-sizing: border-box;
+    box-shadow: rgba(0,0,0,0.1) 0px 2px 7px;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: column;
+    min-width: 200px;
+    width: 22.9%;
+    height: 170px;
+    background: rgb(240, 241, 243);
+    border: 1px solid rgba(118, 114, 110, 0.1);
+    border-image: initial;
+    border-radius: 1rem;
+    
+    margin: 1rem;
+    transition: ease 0.4s;
+    position: relative;
+}
+
+    .aanwezigKaart:hover {
+        transform: scale(1.03,1.03);
+    }
+
+    .aanwezigKaart.aanwezigFalse {
+        border-top: 0.5rem solid #E54B4B;
+    }
+
+        .aanwezigKaart.aanwezigFalse:hover {
+            border-top: 0.5rem solid #923030;
+            color: #923030;
+        }
+
+    .aanwezigKaart.aanwezigTrue {
+        border-top: 0.5rem solid #A5D0A8;
+    }
+
+        .aanwezigKaart.aanwezigTrue:hover {
+            border-top: 0.5rem solid #6A856B;
+            color: #6A856B;
+        }
+
 .aanwezigFalse {
-    border-top: 0.5rem solid red;
+    border-top: 0.5rem solid #E54B4B;
 }
 
 .aanwezigTrue {
@@ -198,51 +344,31 @@ input {
     font-size: 1.5em;
 }
 
+/*Alles in de kaart*/
 
-.aanwezighedenWrapper {
-    max-width: 124.6rem;
+.allesInKaart {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+/*Knop in de Afwezigheidkaart*/
+.knopKaart {
+    position:absolute;
+    display: block;
     width: 100%;
     height:100%;
-    display: flex;
-    -webkit-box-pack: justify;
-    flex-wrap: wrap;
-    margin: 0px auto;
+    border: none;
+    background-color: transparent;
 }
 
-.aanwezigKaart {
-    box-sizing: border-box;
-    box-shadow: rgba(0,0,0,0.1) 0px 2px 7px;
-    display: flex;
-    flex-wrap: wrap;
-    -webkit-box-align: center;
-    align-items: center;
-    flex-direction: column;
-    width: 25%;
-    background: rgb(240, 241, 243);
-    border: 1px solid rgba(118, 114, 110, 0.1);
-    border-image: initial;
-    border-radius: 1rem;
-    padding: 6rem 0px;
-    margin: 1rem;
-    transition: ease 0.4s;
-}
-
-    .aanwezigKaart.aanwezigFalse {
-        border-top: 0.5rem solid red;
+    .knopKaart:hover {
     }
 
-    .aanwezigKaart.aanwezigTrue {
-        border-top: 0.5rem solid green;
-    }
-
-.aanwezigKaart:hover{
-    transform:scale(1.03,1.03);
-}
-
-.knopKaart {
-    border:none;
-    background-color:transparent;
-}
-button:focus {
-    outline: 0;
+/*foto in de Afwezigheidkaart*/
+.foto {
+    display: inline-block;
+    text-align: center;
+    height: 100px;
+    transition: 0.4s ease;
 }

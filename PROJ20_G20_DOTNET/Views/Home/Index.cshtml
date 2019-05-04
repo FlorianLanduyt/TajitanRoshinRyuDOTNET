@@ -2,19 +2,19 @@
 @{
     ViewData["Title"] = "Startpagina";
 }
-<div class="container"><h3 class="title">Kies een optie</h3></div>
+<div class="container"><h3 class="title">Kies een optie!</h3></div>
+<hr />
+
 <div class="container ">
-    <div class="row row-flex row-flex-wrap centerDiv">
-        <div class="#buiten">
+    <div class="row-flex">
             @foreach (var item in Model) {
-                <div class="col-md-3 kaart #binnen">
+                <div class="col-md-3 kaart">
                     <div class="well icoon">
                         <img class="lijstImg centerDiv" src="~/images/@(@item).png" />
                         <button asp-controller="Home" asp-action="@item" class="btn btn-default knop">@item</button>
                     </div>
                 </div>
             }
-        </div>
     </div>
 </div>
 

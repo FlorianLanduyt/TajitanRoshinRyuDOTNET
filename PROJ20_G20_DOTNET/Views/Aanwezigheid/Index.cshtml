@@ -14,10 +14,10 @@
             <label for="BeginDatum" class="control-label">Begindatum</label>
             <input type="date" name="BeginDatum" id="BeginDatum" />
             @*<label for="BeginDatum" class="inp">
-                <input type="date" id="inp" placeholder="&nbsp;">
-                <span class="label"></span>
-                <span class="border"></span>
-            </label>*@
+                    <input type="date" id="inp" placeholder="&nbsp;">
+                    <span class="label"></span>
+                    <span class="border"></span>
+                </label>*@
 
             <label for="EindDatum" class="control-label">Einddatum</label>
             <input type="date" name="EindDatum" id="EindDatum" />
@@ -29,7 +29,6 @@
         </form>
     </div>
     <div class="limiter">
-        <div class="table-container">
             <div class="tabelWrap">
                 <table class="tabel">
                     <tr class="rij header">
@@ -38,7 +37,6 @@
                         <th class="cell">Tijdstip</th>
                         <th class="cell">Formule</th>
                     </tr>
-
                     @foreach (var Activiteit in Model) {
                         <tr onclick="location.href = '@(Url.Action("Aanwezigheden", "Aanwezigheid", new { Id = Activiteit.Id }))'" class="rij">
                             <td class="cell">@Activiteit.Naam</td>
@@ -50,7 +48,6 @@
                     }
                 </table>
             </div>
-        </div>
     </div>
 </div>
 

@@ -1,7 +1,21 @@
-﻿.row-flex {
+﻿/*/////////////INDEX///////////*/
+
+/*------- Titel -------*/
+
+.title {
+    text-align: center;
+    padding-bottom:0px;
+}
+
+/*------- Modules -------*/
+
+/*Algemeen*/
+
+.row-flex {
     margin: -.2px;
 }
 
+/* Module */
 .kaart {
     display: inline-block;
     transition: 0.4s ease;
@@ -13,59 +27,7 @@
     transform: scale(1.03, 1.03);
 }
 
-.knop {
-    text-align: center;
-    background-color: #996888;
-    display: inline-block;
-    margin-top: 100px;
-    color: white;
-    transition: 0.2s ease;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 0.2em 0.7em;
-    height: 50px;
-    width: 150px;
-}
-
-.knop:before {
-        line-height: 1;
-        position: relative;
-        -webkit-font-smoothing: antialiased;
-    }
-
-.knop:after {
-    z-index: -1;
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    transition: all 0.3s;
-}
-
-
-.knop:hover {
-    background-color: #B6C8C0;
-}
-
-.title{
-    text-align:center;
-    padding-bottom:20px;
-}
-.centerDiv {
-    text-align: center;
-}
-
-#buiten {
-    position:relative;
-    display: -webkit-box;
-    -webkit-box-pack: center;
-    -webkit-box-align: center;
-}
-
-#binnen {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-
+/*Knop en afbeelding*/
 .icoon {
     display: table-cell;
     height: 500px;
@@ -81,16 +43,45 @@
         border-top: 0.4rem solid #B6C8C0;
     }
 
-/*.icoon:hover .knop {
-    background-color: #B6C8C0;
-    color: black;
- }*/
-
+/*Afbeelding*/
 .lijstImg {
     display: inline-block;
     text-align:center;
     height: 150px;
     transition: 0.4s ease;
 }
+
+/*Knop */
+
+.knop {
+    text-align: center;
+    background-color: #996888;
+    display: inline-block;
+    margin-top: 100px;
+    color: white;
+    transition: 0.2s ease;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0.2em 0.7em;
+    height: 50px;
+    width: 150px;
+}
+
+    .knop:before {
+        line-height: 1;
+        position: relative;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .knop:after {
+        z-index: -1;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        transition: all 0.3s;
+    }
+
+
+    .knop:hover {
+        background-color: #B6C8C0;
+    }
 
 
