@@ -111,20 +111,29 @@ namespace PROJ20_G20_DOTNET.Controllers
         }
         [HttpPost]
         public IActionResult VoegGastToe(int id, AddGastOfProeflidViewModel viewModel) {
-            Lid lid = new Lid(viewModel.Voornaam, viewModel.Achternaam, viewModel.Email, viewModel.Gsm, Functie.GAST);
-            _lidRepository.Add(lid);
-            _lidRepository.SaveChanges();
+            try {
+                Lid lid = new Lid(viewModel.Voornaam, viewModel.Achternaam, viewModel.Email, viewModel.Gsm, Functie.GAST);
+                _lidRepository.Add(lid);
+                _lidRepository.SaveChanges();
 
-            Activiteit activiteit = _activiteitRepository.GetBy(id);
-            Inschrijving inschrijving = new Inschrijving(lid, activiteit.Formule, DateTime.Now);
-            _inschrijvingRepository.Add(inschrijving);
-            _inschrijvingRepository.SaveChanges();
-            ActiviteitInschrijving activiteitInschrijving = new ActiviteitInschrijving(activiteit, inschrijving);
-            activiteitInschrijving.IsAanwezig = true;
-            _activiteitInschrijvingRepository.Add(activiteitInschrijving);
-            _activiteitInschrijvingRepository.SaveChanges();
+                Activiteit activiteit = _activiteitRepository.GetBy(id);
+                Inschrijving inschrijving = new Inschrijving(lid, activiteit.Formule, DateTime.Now);
+                _inschrijvingRepository.Add(inschrijving);
+                _inschrijvingRepository.SaveChanges();
+                ActiviteitInschrijving activiteitInschrijving = new ActiviteitInschrijving(activiteit, inschrijving);
+                activiteitInschrijving.IsAanwezig = true;
+                _activiteitInschrijvingRepository.Add(activiteitInschrijving);
+                _activiteitInschrijvingRepository.SaveChanges();
 
-            return RedirectToAction(nameof(Aanwezigheden), activiteit);
+                return RedirectToAction(nameof(Aanwezigheden), activiteit);
+            } catch(Exception ex) { }
+            TempData["Error"] = "Gast toevoegen is mislukt!";
+            return View(nameof(Aanwezigheden), _activiteitRepository.GetBy(id));
+
+        }
+        public IActionResult NietIngeschrevenLeden() {
+
+            return null;
         }
     }
 }
