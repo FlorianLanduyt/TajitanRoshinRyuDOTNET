@@ -131,8 +131,8 @@ namespace PROJ20_G20_DOTNET.Controllers
             return View(nameof(Aanwezigheden), _activiteitRepository.GetBy(id));
 
         }
-        public IActionResult NietIngeschrevenLeden() {
-
+        public IActionResult NietIngeschrevenLeden(int id) {
+            IEnumerable<Lid> leden = _lidRepository.GetAll().Select();
             return null;
         }
     }

@@ -1,7 +1,26 @@
-﻿
+﻿@model PROJ20_G20_DOTNET.Models.Domain.Lid
+
 @{
     ViewData["Title"] = "NietIngeschrevenLeden";
 }
 
-<h2>NietIngeschrevenLeden</h2>
-
+<h2>Voeg niet ingeschreven lid toe</h2>
+<div class="container">
+    <div class="row-flex">
+        @foreach (var ActiviteitInschrijving in Model.ActiviteitInschrijvingen) {
+                <form method="post" class="aanwezigFalse aanwezigKaart">
+                    @*<div>
+                            <a onclick="document.getElementById('myform').id.submit();">
+                                <img class="foto" src="~/images/@(@ActiviteitInschrijving.Inschrijving.Lid.Geslacht.ToString()).png" />
+                            </a>
+                        </div>*@
+                    <button class="knopKaart" type="submit" asp-action="VoegNietIngeschrevenLidToe"
+                            asp-route-id="@ActiviteitInschrijving.Activiteit.Id"
+                            asp-route-id2="@ActiviteitInschrijving.Inschrijving.Lid.Id">
+                        <p class="aanwezigLidName">@ActiviteitInschrijving.Inschrijving.Lid.Achternaam @ActiviteitInschrijving.Inschrijving.Lid.Voornaam</p>
+                    </button>
+                </form>
+        }
+    </div>
+</div>
+</div>
