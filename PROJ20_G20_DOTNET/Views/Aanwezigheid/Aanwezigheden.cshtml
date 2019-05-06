@@ -52,7 +52,7 @@
         <div class="volledigeForm">
             <div class="body">
                 <div class="wrapper">
-                    <input class="search" type="text" name="Naam" id="Naam" />
+                    <input class="search" type="text" name="Naam" id="Naam" value="@ViewBag.Naam"/>
                     <button class="submit" type="submit" asp-action="Aanwezigheden">Zoek</button>
                 </div>
             </div>
@@ -118,6 +118,7 @@
         </button>
     </form>
 </div>
+<a asp-action="NietIngeschrevenLeden" asp-route-id="@Model.Id">Voeg niet ingeschreven lid toe</a>
 <script>
     function toggleShow() {
         var x = document.getElementById("voegGastToe");

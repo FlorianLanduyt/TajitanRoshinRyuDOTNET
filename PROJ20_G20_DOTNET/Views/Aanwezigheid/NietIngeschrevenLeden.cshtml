@@ -1,0 +1,30 @@
+﻿@model PROJ20_G20_DOTNET.Models.ViewModels.LedenActiviteitViewModel
+
+@{
+    ViewData["Title"] = "NietIngeschrevenLeden";
+}
+
+<h2>Voeg niet ingeschreven lid toe</h2>
+<form method="post">
+    <div class="volledigeForm">
+        <div class="body">
+            <div class="wrapper">
+                <input class="search" type="text" name="Naam" id="Naam" />
+                <button class="submit" type="submit" asp-route-id="@Model.Activiteit.Id"  asp-action="NietIngeschrevenLedenGefilterd">Zoek</button>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="container">
+    <div class="row-flex">
+        @foreach (var Lid in Model.Leden) {
+            <form method="post" class="aanwezigFalse aanwezigKaart">
+                <button class="knopKaart" type="submit" asp-action="NietIngeschrevenLeden"
+                        asp-route-id="@Model.Activiteit.Id"
+                        asp-route-id2="@Lid.Id">
+                    <p class="aanwezigLidName">@Lid.Achternaam @Lid.Voornaam</p>
+                </button>
+            </form>
+        }
+    </div>
+</div>
