@@ -10,7 +10,7 @@
         <div class="body">
             <div class="wrapper">
                 <input class="search" type="text" name="Naam" id="Naam" />
-                <button class="submit" type="submit" asp-action="NietIngeschrevenLeden">Zoek</button>
+                <button class="submit" type="submit" asp-route-id="@Model.Activiteit.Id"  asp-action="NietIngeschrevenLedenGefilterd">Zoek</button>
             </div>
         </div>
     </div>

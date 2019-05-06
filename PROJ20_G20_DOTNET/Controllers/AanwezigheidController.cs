@@ -140,12 +140,20 @@ namespace PROJ20_G20_DOTNET.Controllers
             return View(ledenActiviteitViewModel);
         }
         [HttpPost]
-        public IActionResult NietIngeschrevenLeden(int id, string Naam) {
+        public IActionResult NietIngeschrevenLedenGefilterd(int id, string Naam) {
+            string naamFilter = Naam ?? "";
             Activiteit activiteit = _activiteitRepository.GetBy(id);
             IEnumerable<Lid> reedsIngeschrevenLeden = activiteit.ActiviteitInschrijvingen.Select(ai => ai.Inschrijving).Select(i => i.Lid);
-            IEnumerable<Lid> nietIngeschrevenLeden = _lidRepository.GetAll().Except(reedsIngeschrevenLeden);
+            IEnumerable<Lid> nietIngeschrevenLeden = _lidRepository.GetAll().Except(reedsIngeschrevenLeden).Where(
+                    lid => lid.Voornaam.Contains(naamFilter, StringComparison.CurrentCultureIgnoreCase)
+                    || lid.Achternaam.Contains(naamFilter, StringComparison.CurrentCultureIgnoreCase))
+                .ToList(); ;
             LedenActiviteitViewModel ledenActiviteitViewModel = new LedenActiviteitViewModel(activiteit, nietIngeschrevenLeden);
-            return View(ledenActiviteitViewModel);
+            return View(nameof(NietIngeschrevenLeden),ledenActiviteitViewModel);
+            //.Where(
+            //ai => ai.Inschrijving.Lid.Voornaam.Contains(naamFilter, StringComparison.CurrentCultureIgnoreCase)
+            // || ai.Inschrijving.Lid.Achternaam.Contains(naamFilter, StringComparison.CurrentCultureIgnoreCase))
+            //    .ToList();
         }
 
         [HttpPost]
