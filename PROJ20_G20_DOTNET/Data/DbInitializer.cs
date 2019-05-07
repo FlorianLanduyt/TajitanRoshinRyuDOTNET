@@ -63,7 +63,7 @@ namespace PROJ20_G20_DOTNET.Data
                 Lid lid9 = new Lid("Siska", "Schoeters", new DateTime(1998, 05, 2),
                     "98.05.02-002.91", "0477441465", "051303054", "Gent", "Korenmarkt", "21", "9000", "siska.pieters@outlook.com",
                     "P@ssword1", "Gent", "Vrouw", "Belg", Graad.KYU1, Functie.LID);
-                
+
 
                 _dbContext.Leden.Add(lid1);
                 _dbContext.Leden.Add(lid2);
@@ -248,9 +248,12 @@ namespace PROJ20_G20_DOTNET.Data
             await _userManager.CreateAsync(user, lid.Wachtwoord);
             await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, lid.Functie.ToString().ToLower()));
             await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "viewPersonalDetails"));
+            await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "viewHome"));
+            await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "viewExercisesOwn"));
 
             if (lid.Functie.Equals(Functie.BEHEERDER) || lid.Functie.Equals(Functie.TRAINER)) {
                 await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "viewAttendings"));
+                await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "viewExercisesAllMembers"));
             }
 
             _dbContext.SaveChanges();

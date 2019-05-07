@@ -4,7 +4,7 @@
 
 .title {
     text-align: center;
-    padding-bottom:0px;
+    padding-bottom: 0px;
 }
 
 /*------- Modules -------*/
@@ -20,12 +20,11 @@
     display: inline-block;
     transition: 0.4s ease;
     padding-left: 0px;
-    
 }
 
-.kaart:hover {
-    transform: scale(1.03, 1.03);
-}
+    .kaart:hover {
+        transform: scale(1.03, 1.03);
+    }
 
 /*Knop en afbeelding*/
 .icoon {
@@ -35,7 +34,7 @@
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0.2em 0.7em;
     border-top: 0.4rem solid #996888;
-    border-radius:10px;
+    border-radius: 10px;
     transition: 0.2s ease;
 }
 
@@ -46,7 +45,7 @@
 /*Afbeelding*/
 .lijstImg {
     display: inline-block;
-    text-align:center;
+    text-align: center;
     height: 150px;
     transition: 0.4s ease;
 }
@@ -83,5 +82,3 @@
     .knop:hover {
         background-color: #B6C8C0;
     }
-
-

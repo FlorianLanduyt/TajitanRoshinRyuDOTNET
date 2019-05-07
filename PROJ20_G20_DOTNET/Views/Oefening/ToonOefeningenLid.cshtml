@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<PROJ20_G20_DOTNET.Models.Domain.Oefening>
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
 
 @{
     ViewData["Title"] = "Oefeningen";
@@ -16,19 +18,28 @@
         </tr>
 
         @foreach (var Oefening in Model) {
-        <tr>
-            <td>@Oefening.Titel</td>
-            <td>@Oefening.Graad</td>
-            <td>@Oefening.Thema.Naam</td>
-            <td class="text-right">
-                <form>
-                    <a asp-action="RaadpleegOefening" asp-route-id="@Oefening.Id">Raadpleeg oefening</a>
-                </form>
-            </td>
-        </tr>
+            <tr>
+                <td>@Oefening.Titel</td>
+                <td>@Oefening.Graad</td>
+                <td>@Oefening.Thema.Naam</td>
+                <td class="text-right">
+                    <form>
+                        <a asp-action="RaadpleegOefening" asp-route-id="@Oefening.Id" asp-route-id2="@ViewData["LidId"]">Raadpleeg oefening</a>
+                    </form>
+                </td>
+            </tr>
         }
     </table>
-    <form>
-        <button asp-action="Leden" class="btn btn-default">Terug</button>
-    </form>
+    @if ((await AuthorizationService.AuthorizeAsync(User, "Beheerder")).Succeeded ||
+               (await AuthorizationService.AuthorizeAsync(User, "Trainer")).Succeeded) {
+        <form>
+            <button asp-action="Leden" class="btn btn-default">Terug</button>
+        </form>}
+    else if ((await AuthorizationService.AuthorizeAsync(User, "Lid")).Succeeded ||
+        (await AuthorizationService.AuthorizeAsync(User, "Proeflid")).Succeeded ||
+        (await AuthorizationService.AuthorizeAsync(User, "Gast")).Succeeded) {
+        <form>
+            <button asp-controller="Home" asp-action="Index" class="btn btn-default">Terug</button>
+        </form>
+    }
 </div>
