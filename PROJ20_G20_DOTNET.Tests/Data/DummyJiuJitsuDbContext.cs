@@ -1,7 +1,6 @@
 ﻿using PROJ20_G20_DOTNET.Models.Domain;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace PROJ20_G20_DOTNET.Tests
 {
@@ -16,9 +15,12 @@ namespace PROJ20_G20_DOTNET.Tests
         public Inschrijving Inschrijving2 { get; }
         public Inschrijving Inschrijving3 { get; }
 
+        public Aanwezigheid TimAct2 { get; }
+
         public IEnumerable<Lid> Leden { get; }
         public IEnumerable<Activiteit> Activiteiten { get; }
         public IEnumerable<Inschrijving> Inschrijvingen { get; }
+        public IEnumerable<Aanwezigheid> Aanwezigheden { get; }
 
 
 
@@ -50,13 +52,13 @@ namespace PROJ20_G20_DOTNET.Tests
             #endregion
 
             #region Activiteiten
-             Act1 = new Activiteit("Testactiviteit een", Formule.EXAMEN, new DateTime(2020, 8, 12), new DateTime(2020, 8, 13),
-                        new DateTime(2020, 7, 15), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
-                        "20", "5", 50)
+            Act1 = new Activiteit("Testactiviteit een", Formule.EXAMEN, new DateTime(2020, 8, 12), new DateTime(2020, 8, 13),
+                       new DateTime(2020, 7, 15), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
+                       "20", "5", 50)
             { Id = activiteitId++ };
-             Act2 = new Activiteit("Testactiviteit twee", Formule.UITSTAP, new DateTime(2020, 9, 12), new DateTime(2020, 9, 13),
-               new DateTime(2020, 8, 15), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
-               "20", "5", 50)
+            Act2 = new Activiteit("Testactiviteit twee", Formule.UITSTAP, new DateTime(2020, 9, 12), new DateTime(2020, 9, 13),
+              new DateTime(2020, 8, 15), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
+              "20", "5", 50)
             { Id = activiteitId++ };
 
             Activiteiten = new[] { Act1, Act2 };
@@ -73,6 +75,9 @@ namespace PROJ20_G20_DOTNET.Tests
             Act1.AddInschrijving(Inschrijving1);
             Act2.AddInschrijving(Inschrijving2);
             Act1.AddInschrijving(Inschrijving3);
+
+            TimAct2 = new Aanwezigheid(Tim, Act2);
+            Aanwezigheden = new[] { TimAct2 };
 
         }
 
