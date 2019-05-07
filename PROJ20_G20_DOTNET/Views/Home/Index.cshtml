@@ -4,10 +4,12 @@
 @{
     ViewData["Title"] = "Startpagina";
 }
-<div class="container"><h3 class="title">Kies een optie!</h3></div>
-<hr />
-
 <div class="container">
+    <h2 class="titleAanwezigheden">Welkom bij <strong class="vetKleur">Taijitan Roshin Ryu!</strong></h2>
+    <hr />
+</div>
+
+<div class="container" style="padding-left:250px">
     <div class="row-flex">
         @if ((await AuthorizationService.AuthorizeAsync(User, "Beheerder")).Succeeded ||
 (await AuthorizationService.AuthorizeAsync(User, "Trainer")).Succeeded) {

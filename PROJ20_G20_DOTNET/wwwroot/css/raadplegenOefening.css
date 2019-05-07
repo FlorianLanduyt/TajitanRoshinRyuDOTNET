@@ -1,0 +1,50 @@
+﻿body {
+}
+
+.volledigePagina {
+    margin-top: -10rem;
+    padding: 10rem 3rem;
+}
+
+.filmBeschrijvingContainer {
+    margin-top: 0;
+    display: block;
+    margin-bottom: 50px;
+}
+
+.filmContainer {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    transition: all 0.2s linear 0s;
+}
+
+.filmpje {
+    position: relative;
+    width: 54%;
+    padding-left:1.5rem;
+    margin-right: 1.5rem;
+    
+    background: white;
+}
+
+
+.fBeschrijving {
+    width: 46%;
+    max-height: 39rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 7px;
+}
+
+.fTekstbeschrijving {
+    padding: 0% 10% 6%;
+    background: white;
+    transition: all 0.2s linear 0s;
+}
+
+.fTitel {
+    padding: 8% 10% 6%;
+}
+
+
+

@@ -6,40 +6,68 @@
     ViewData["Title"] = "Oefeningen";
 }
 
-<div>
-    <h2>Oefeningen voor @ViewData["LidNaam"]</h2>
+<div class="container">
+    <h2 class="titleAanwezigheden">Oefeningen voor <strong class="vetKleur">@ViewData["LidNaam"]</strong></h2>
     <hr />
-    <table class="table table-bordered table-striped">
-        <tr>
-            <th>Naam</th>
-            <th>Graad</th>
-            <th>Categorie</th>
-            <th></th>
-        </tr>
-
-        @foreach (var Oefening in Model) {
-            <tr>
-                <td>@Oefening.Titel</td>
-                <td>@Oefening.Graad</td>
-                <td>@Oefening.Thema.Naam</td>
-                <td class="text-right">
-                    <form>
-                        <a asp-action="RaadpleegOefening" asp-route-id="@Oefening.Id" asp-route-id2="@ViewData["LidId"]">Raadpleeg oefening</a>
-                    </form>
-                </td>
-            </tr>
-        }
-    </table>
-    @if ((await AuthorizationService.AuthorizeAsync(User, "Beheerder")).Succeeded ||
-               (await AuthorizationService.AuthorizeAsync(User, "Trainer")).Succeeded) {
-        <form>
-            <button asp-action="Leden" class="btn btn-default">Terug</button>
-        </form>}
-    else if ((await AuthorizationService.AuthorizeAsync(User, "Lid")).Succeeded ||
-        (await AuthorizationService.AuthorizeAsync(User, "Proeflid")).Succeeded ||
-        (await AuthorizationService.AuthorizeAsync(User, "Gast")).Succeeded) {
-        <form>
-            <button asp-controller="Home" asp-action="Index" class="btn btn-default">Terug</button>
-        </form>
-    }
 </div>
+
+<div class="alles">
+    <div class="oefeningen">
+        @foreach (var Oefening in Model) {
+            <div class="oefening">
+                <div class="oefeningContainer">
+                    <div class="informatie">
+                        <div class="tekstContainer">
+                            <p class="oGraad">@Oefening.Graad</p>
+                            <h2 class="oTitel">@Oefening.Titel</h2>
+                            <p class="oBeschrijving">(Hier beschrijving) sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Velit scelerisque in dictum non consectetur a erat. Tincidunt augue interdum velit euismod ....</p>
+                            <a asp-action="RaadpleegOefening" asp-route-id="@Oefening.Id" asp-route-id2="@ViewData["LidId"]" class="oFilmpje">Bekijk het filmpje</a>
+                        </div>
+                    </div>
+                    <div class="tnFilmpje">
+                        <img class="tn" src="~/images/Oefeningen/@(Oefening.Titel).png" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@*<div>
+        <h2>Oefeningen voor @ViewData["LidNaam"]</h2>
+        <hr />
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>Naam</th>
+                <th>Graad</th>
+                <th>Categorie</th>
+                <th></th>
+            </tr>
+
+            @foreach (var Oefening in Model) {
+                <tr>
+                    <td>@Oefening.Titel</td>
+                    <td>@Oefening.Graad</td>
+                    <td>@Oefening.Thema.Naam</td>
+                    <td class="text-right">
+                        <form>
+                            <a asp-action="RaadpleegOefening" asp-route-id="@Oefening.Id" asp-route-id2="@ViewData["LidId"]">Raadpleeg oefening</a>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </table>
+        @if ((await AuthorizationService.AuthorizeAsync(User, "Beheerder")).Succeeded ||
+                   (await AuthorizationService.AuthorizeAsync(User, "Trainer")).Succeeded) {
+            <form>
+                <button asp-action="Leden" class="btn btn-default">Terug</button>
+            </form>}
+        else if ((await AuthorizationService.AuthorizeAsync(User, "Lid")).Succeeded ||
+            (await AuthorizationService.AuthorizeAsync(User, "Proeflid")).Succeeded ||
+            (await AuthorizationService.AuthorizeAsync(User, "Gast")).Succeeded) {
+            <form>
+                <button asp-controller="Home" asp-action="Index" class="btn btn-default">Terug</button>
+            </form>
+        }
+    </div>*@

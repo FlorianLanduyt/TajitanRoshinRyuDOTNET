@@ -13,8 +13,10 @@
     @foreach (var Lid in Model) {
         <a style="text-decoration: none;" asp-action="ToonOefeningenLid" asp-route-id="@Lid.Id" class="kaartLid">
             <div class="center">
+                <p class="pGraad"> @Lid.Graad</p>
                 <h3 class="naamLid">@Lid.Achternaam @Lid.Voornaam</h3>
                 <p class="pLid">@Lid.GeboorteDatum.ToLongDateString()</p>
+
             </div>
         </a>
     }

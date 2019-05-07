@@ -1,13 +1,4 @@
 ﻿/* /////////////ALGEMEEN////////////// */
-@font-face {
-    font-family: Poppins-Regular;
-    src: url('../fonts/Poppins/Poppins-Regular.ttf');
-}
-
-@font-face {
-    font-family: Poppins-Bold;
-    src: url('../fonts/Poppins/Poppins-Bold.ttf');
-}
 
 @font-face {
     font-family: Lato;
@@ -149,6 +140,9 @@ a {
 .titleAanwezigheden {
     text-align: center;
     padding-bottom: 0px;
+    font-family: Lato;
+    font-weight: 900;
+    
 }
 
 .vetKleur {

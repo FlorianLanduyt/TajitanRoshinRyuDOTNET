@@ -29,7 +29,7 @@
 /*Knop en afbeelding*/
 .icoon {
     display: table-cell;
-    height: 500px;
+    height: 400px;
     vertical-align: middle;
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0.2em 0.7em;
@@ -53,6 +53,7 @@
 /*Knop */
 
 .knop {
+    padding-top: 13px; 
     text-align: center;
     background-color: #996888;
     display: inline-block;

@@ -7,19 +7,28 @@ body {
 
 }
 
-.pLid {
+.pGraad {
+    font-weight: 600;
     text-decoration: none;
     color: grey;
+    padding-top: 5rem;
 }
 
 .naamLid {
     font-weight: 900;
     font-size: 2.1rem;
     color: rgb(14, 14, 14);
-    margin: auto auto 2rem auto;
+    margin: auto auto 1.5rem auto;
     vertical-align: middle;
-    padding-top: 7rem;
+    padding-top: 0.5rem;
 }
+
+.pLid {
+    text-decoration: none;
+    color: grey;
+}
+
+
 
 center {
 }
