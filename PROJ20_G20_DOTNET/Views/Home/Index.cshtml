@@ -21,7 +21,7 @@
 <div class="col-md-3 kaart">
     <div class="well icoon">
         <img class="lijstImg centerDiv" src="~/images/Lesmateriaal.png" />
-        <a asp-controller="Oefening" asp-action="Leden" class="btn btn-default knop">Lesmateriaal</a>
+        <a asp-controller="Oefening" asp-action="BepaalAdminLid" class="btn btn-default knop">Lesmateriaal</a>
     </div>
 </div>
 <div class="col-md-3 kaart">
@@ -42,7 +42,7 @@ else if ((await AuthorizationService.AuthorizeAsync(User, "Lid")).Succeeded ||
 <div class="col-md-3 kaart">
     <div class="well icoon">
         <img class="lijstImg centerDiv" src="~/images/Lesmateriaal.png" />
-        <a asp-controller="Oefening" asp-action="Leden" class="btn btn-default knop">Lesmateriaal</a>
+        <a asp-controller="Oefening" asp-action="BepaalAdminLid" class="btn btn-default knop">Lesmateriaal</a>
     </div>
 </div>
 }

@@ -249,9 +249,11 @@ namespace PROJ20_G20_DOTNET.Data
             await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, lid.Functie.ToString().ToLower()));
             await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "viewPersonalDetails"));
             await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "viewHome"));
+            await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "viewExercisesOwn"));
 
             if (lid.Functie.Equals(Functie.BEHEERDER) || lid.Functie.Equals(Functie.TRAINER)) {
                 await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "viewAttendings"));
+                await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "viewExercisesAllMembers"));
             }
 
             _dbContext.SaveChanges();

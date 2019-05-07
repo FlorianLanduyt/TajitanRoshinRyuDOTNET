@@ -55,6 +55,8 @@ namespace PROJ20_G20_DOTNET
                 options.AddPolicy("ViewHome", policy => policy.RequireClaim(ClaimTypes.Role, "viewHome"));
                 options.AddPolicy("ViewAttendings", policy => policy.RequireClaim(ClaimTypes.Role, "viewAttendings"));
                 options.AddPolicy("ViewPersonalDetails", policy => policy.RequireClaim(ClaimTypes.Role, "viewPersonalDetails"));
+                options.AddPolicy("ViewExercisesAllMembers", policy => policy.RequireClaim(ClaimTypes.Role, "viewExercisesAllMembers"));
+                options.AddPolicy("ViewExercisesOwn", policy => policy.RequireClaim(ClaimTypes.Role, "viewExercisesOwn"));
             });
             #endregion
 

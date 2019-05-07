@@ -42,13 +42,13 @@
                 <ul class="nav navbar-nav">
                     @if ((await AuthorizationService.AuthorizeAsync(User, "Beheerder")).Succeeded ||
                         (await AuthorizationService.AuthorizeAsync(User,"Trainer")).Succeeded) {
-                        <li><a asp-area="" asp-controller="Oefening" asp-action="Leden">Lesmateriaal</a></li>
+                        <li><a asp-area="" asp-controller="Oefening" asp-action="BepaalAdminLid">Lesmateriaal</a></li>
                         <li><a asp-area="" asp-controller="Aanwezigheid" asp-action="Index">Aanwezigheid</a></li>
                     }
                     else if ((await AuthorizationService.AuthorizeAsync(User, "Lid")).Succeeded ||
                     (await AuthorizationService.AuthorizeAsync(User, "Proeflid")).Succeeded ||
                     (await AuthorizationService.AuthorizeAsync(User, "Gast")).Succeeded) {
-                        <li><a asp-area="" asp-controller="Oefening" asp-action="Leden">Lesmateriaal</a></li>
+                        <li><a asp-area="" asp-controller="Oefening" asp-action="BepaalAdminLid">Lesmateriaal</a></li>
                     }
                 </ul>
                 <partial name="_LoginPartial" />
