@@ -13,14 +13,16 @@ namespace PROJ20_G20_DOTNET.Controllers
     {
         private IOefeningRepository _oefeningRepository;
         private ILidRepository _lidRepository;
+        private IRaadplegingRepository _raadplegingRepository;
         private UserManager<IdentityUser> _userManager;
         private SignInManager<IdentityUser> _signInManager;
 
-        public OefeningController(IOefeningRepository oefeningRepository, ILidRepository lidRepository,
+        public OefeningController(IOefeningRepository oefeningRepository, ILidRepository lidRepository, IRaadplegingRepository raadplegingRepository,
             UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _oefeningRepository = oefeningRepository;
             _lidRepository = lidRepository;
+            _raadplegingRepository = raadplegingRepository;
             _userManager = userManager;
             _signInManager = signInManager;
         }
@@ -64,10 +66,30 @@ namespace PROJ20_G20_DOTNET.Controllers
 
         public IActionResult RaadpleegOefening(int id, int id2)
         {
+            //id = oefeningId | id2 = lidId
             Oefening oefening = _oefeningRepository.GetById(id);
-            //id2 dient louter om een lidid te kunnen doorgeven zodat de 'terug' knop naar toonoefeningenlid werkt :p
+            UpdateRaadpleging(id, id2);
             ViewData["LidId"] = id2;
             return View(oefening);
+        }
+
+        private void UpdateRaadpleging(int oefeningId, int lidId)
+        {
+            Raadpleging raadpleging = _raadplegingRepository.GetAll().SingleOrDefault(r => r.OefeningId == oefeningId && r.LidId == lidId);
+            if (raadpleging != null) {
+                raadpleging.AantalRaadplegingen++;
+                raadpleging.VoegRaadplegingsTijdstipToe();
+                _raadplegingRepository.SaveChanges();
+            }
+            else {
+                Lid lid = _lidRepository.GetBy(lidId);
+                Oefening oefening = _oefeningRepository.GetById(oefeningId);
+                Raadpleging raadplegingNew = new Raadpleging(lid, oefening);
+                raadplegingNew.AantalRaadplegingen++;
+                raadplegingNew.VoegRaadplegingsTijdstipToe();
+                _raadplegingRepository.Add(raadplegingNew);
+                _raadplegingRepository.SaveChanges();
+            }
         }
 
         #region User async methods

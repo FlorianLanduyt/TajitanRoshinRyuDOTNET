@@ -4,8 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PROJ20_G20_DOTNET.Models.Domain {
-    public class Raadpleging {
+namespace PROJ20_G20_DOTNET.Models.Domain
+{
+    public class Raadpleging
+    {
 
         #region Properties
         public int Id { get; set; }
@@ -19,16 +21,27 @@ namespace PROJ20_G20_DOTNET.Models.Domain {
         #endregion
 
         #region Constructors
-        public Raadpleging() {
+        public Raadpleging()
+        {
             Tijdstippen = new List<RaadplegingsTijdstip>();
         }
 
-        public Raadpleging(Lid lid, Oefening oefening) : this(){
+        public Raadpleging(Lid lid, Oefening oefening) : this()
+        {
             Lid = lid;
             LidId = lid.Id;
             Oefening = oefening;
             OefeningId = oefening.Id;
             AantalRaadplegingen = 0;
+        }
+        #endregion
+
+        #region Methods
+        public void VoegRaadplegingsTijdstipToe()
+        {
+            RaadplegingsTijdstip raadplegingsTijdstip = new RaadplegingsTijdstip(DateTime.Now);
+            raadplegingsTijdstip.RaadplegingId = Id;
+            Tijdstippen.Add(raadplegingsTijdstip);
         }
         #endregion
 
