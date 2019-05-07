@@ -4,13 +4,13 @@
     ViewData["Title"] = "Aanwezigheden";
 }
 
-    @*@if (TempData["Success"] != null) {
-            <br />
-            <p class="alert alert-success">@TempData["Success"]</p>
-        } else if (TempData["Error"] != null) {
-            <br />
-            <p class="alert alert-danger">@TempData["Error"]</p>
-        }*@
+@*@if (TempData["Success"] != null) {
+        <br />
+        <p class="alert alert-success">@TempData["Success"]</p>
+    } else if (TempData["Error"] != null) {
+        <br />
+        <p class="alert alert-danger">@TempData["Error"]</p>
+    }*@
 <div class="aanwezighedenWrap">
     <div class="container">
         <h2 class="titleAanwezigheden">Wie is er aanwezig voor <strong class="vetKleur">@Model.Naam?</strong></h2>
@@ -52,7 +52,7 @@
                 <div class="volledigeForm">
                     <div class="body">
                         <div class="wrapper">
-                            <input class="search" type="text" name="Naam" id="Naam" />
+                            <input class="search" type="text" name="Naam" id="Naam" value="@ViewBag.Naam" />
                             <button class="submit" type="submit" asp-action="Aanwezigheden">Zoek</button>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
         <div class="text-center">
             <button class="gastLidKnop" onclick="toggleShow()">Gastlid toevoegen</button>
         </div>
-        <div  id="voegGastToe">
+        <div id="voegGastToe">
             <form class="ongewoonLidForm" method="post" asp-action="VoegGastToe" asp-route-id="@Model.Id">
                 <div class="ongewoonLidVeld">
                     <label for="Voornaam" class="gastlid-label">Voornaam</label>
@@ -122,17 +122,21 @@
                 </div>
             </form>
         </div>
+        <a asp-action="NietIngeschrevenLeden" asp-route-id="@Model.Id">Voeg niet ingeschreven lid toe</a>
     </div>
+
 </div>
 
-    <script>
-        function toggleShow() {
-            var x = document.getElementById("voegGastToe");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
+<script>
+    function toggleShow() {
+        var x = document.getElementById("voegGastToe");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
         }
-    </script>
+    }
+</script>
+
+
 

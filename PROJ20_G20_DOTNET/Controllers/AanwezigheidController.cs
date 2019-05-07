@@ -31,6 +31,7 @@ namespace PROJ20_G20_DOTNET.Controllers
         public IActionResult Index()
         {
             IEnumerable<Activiteit> activiteiten = _activiteitRepository.GetAll().OrderBy(a => a.BeginDatum).ToList();
+            ViewBag.Naam = "Naam";
             return View(activiteiten);
         }
 
@@ -47,7 +48,7 @@ namespace PROJ20_G20_DOTNET.Controllers
                     ac => ac.BeginDatum >= start &&
                     ac.BeginDatum <= eind &&
                     ac.Naam.Contains(activiteitNaam, StringComparison.CurrentCultureIgnoreCase)).ToList();
-
+            ViewBag.Naam = Naam;
             return View(activiteiten);
         }
 
@@ -111,11 +112,54 @@ namespace PROJ20_G20_DOTNET.Controllers
         }
         [HttpPost]
         public IActionResult VoegGastToe(int id, AddGastOfProeflidViewModel viewModel) {
-            Lid lid = new Lid(viewModel.Voornaam, viewModel.Achternaam, viewModel.Email, viewModel.Gsm, Functie.GAST);
-            _lidRepository.Add(lid);
-            _lidRepository.SaveChanges();
+            try {
+                Lid lid = new Lid(viewModel.Voornaam, viewModel.Achternaam, viewModel.Email, viewModel.Gsm, Functie.GAST);
+                _lidRepository.Add(lid);
+                _lidRepository.SaveChanges();
 
+                Activiteit activiteit = _activiteitRepository.GetBy(id);
+                Inschrijving inschrijving = new Inschrijving(lid, activiteit.Formule, DateTime.Now);
+                _inschrijvingRepository.Add(inschrijving);
+                _inschrijvingRepository.SaveChanges();
+                ActiviteitInschrijving activiteitInschrijving = new ActiviteitInschrijving(activiteit, inschrijving);
+                activiteitInschrijving.IsAanwezig = true;
+                _activiteitInschrijvingRepository.Add(activiteitInschrijving);
+                _activiteitInschrijvingRepository.SaveChanges();
+
+                return RedirectToAction(nameof(Aanwezigheden), activiteit);
+            } catch(Exception ex) { }
+            TempData["Error"] = "Gast toevoegen is mislukt!";
+            return View(nameof(Aanwezigheden), _activiteitRepository.GetBy(id));
+
+        }
+        public IActionResult NietIngeschrevenLeden(int id) {
             Activiteit activiteit = _activiteitRepository.GetBy(id);
+            IEnumerable<Lid> reedsIngeschrevenLeden = activiteit.ActiviteitInschrijvingen.Select(ai => ai.Inschrijving).Select(i => i.Lid);
+            IEnumerable<Lid> nietIngeschrevenLeden = _lidRepository.GetAll().Except(reedsIngeschrevenLeden);
+            LedenActiviteitViewModel ledenActiviteitViewModel = new LedenActiviteitViewModel(activiteit, nietIngeschrevenLeden);
+            return View(ledenActiviteitViewModel);
+        }
+        [HttpPost]
+        public IActionResult NietIngeschrevenLedenGefilterd(int id, string Naam) {
+            string naamFilter = Naam ?? "";
+            Activiteit activiteit = _activiteitRepository.GetBy(id);
+            IEnumerable<Lid> reedsIngeschrevenLeden = activiteit.ActiviteitInschrijvingen.Select(ai => ai.Inschrijving).Select(i => i.Lid);
+            IEnumerable<Lid> nietIngeschrevenLeden = _lidRepository.GetAll().Except(reedsIngeschrevenLeden).Where(
+                    lid => lid.Voornaam.Contains(naamFilter, StringComparison.CurrentCultureIgnoreCase)
+                    || lid.Achternaam.Contains(naamFilter, StringComparison.CurrentCultureIgnoreCase))
+                .ToList(); ;
+            LedenActiviteitViewModel ledenActiviteitViewModel = new LedenActiviteitViewModel(activiteit, nietIngeschrevenLeden);
+            return View(nameof(NietIngeschrevenLeden),ledenActiviteitViewModel);
+            //.Where(
+            //ai => ai.Inschrijving.Lid.Voornaam.Contains(naamFilter, StringComparison.CurrentCultureIgnoreCase)
+            // || ai.Inschrijving.Lid.Achternaam.Contains(naamFilter, StringComparison.CurrentCultureIgnoreCase))
+            //    .ToList();
+        }
+
+        [HttpPost]
+        public IActionResult NietIngeschrevenLeden(int id, int id2) {
+            Activiteit activiteit = _activiteitRepository.GetBy(id);
+            Lid lid = _lidRepository.GetBy(id2);
             Inschrijving inschrijving = new Inschrijving(lid, activiteit.Formule, DateTime.Now);
             _inschrijvingRepository.Add(inschrijving);
             _inschrijvingRepository.SaveChanges();
@@ -126,5 +170,6 @@ namespace PROJ20_G20_DOTNET.Controllers
 
             return RedirectToAction(nameof(Aanwezigheden), activiteit);
         }
+
     }
 }
