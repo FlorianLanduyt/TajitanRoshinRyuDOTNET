@@ -7,7 +7,7 @@ body {
 
 }
 
-p {
+.pLid {
     text-decoration: none;
     color: grey;
 }
@@ -36,7 +36,7 @@ center {
     align-items: center;
     flex-direction: column;
     min-width: 200px;
-    width: 22%;
+    width: 22.9%;
     height: 200px;
     background: rgb(240, 241, 243);
     border: 1px solid rgba(118, 114, 110, 0.1);

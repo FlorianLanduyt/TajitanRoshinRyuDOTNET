@@ -49,94 +49,98 @@
 
     <div class="left-container">
         <div class="aanwezighedenWrap">
-            
-                <div class="zoek">
-                    <form method="post">
-                        <div class="volledigeForm">
-                            <div class="body">
-                                <div class="wrapper">
-                                    <input class="search" type="text" name="Naam" id="Naam" value="@ViewBag.Naam" />
-                                    <button class="submit" type="submit" asp-action="Aanwezigheden">Zoek</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="gastlid">
-                    <div>
-                        <button class="gastLidKnop" onclick="toggleShow()">Gastlid</button>
-                    </div>
-                    <div id="voegGastToe" style="display: none;">
-                        <div class="container">
-                            <form class="ongewoonLidForm" method="post" asp-action="VoegGastToe" asp-route-id="@Model.Id">
-                                <div class="ongewoonLidVeld">
-                                    <label for="Voornaam" class="gastlid-label">Voornaam</label>
-                                    <input class="gastlid-input" type="text" name="Voornaam" id="Voornaam" />
-                                </div>
-                                <div class="ongewoonLidVeld">
-                                    <label for="Achternaam" class="gastlid-label">Achternaam</label>
-                                    <input class="gastlid-input" type="text" name="Achternaam" id="Achternaam" />
-                                </div>
-                                <div class="ongewoonLidVeld">
-                                    <label for="Email" class="gastlid-label">E-mail</label>
-                                    <input class="gastlid-input" type="text" name="Email" id="Email" />
-                                </div>
-                                <div class="ongewoonLidVeld">
-                                    <label for="Gsm" class="gastlid-label">Gsm nummer</label>
-                                    <input class="gastlid-input" type="text" name="Gsm" id="Gsm" />
-                                </div>
-                                <div>
-                                    <button class="btn btn-primary" type="submit">
-                                        Voeg Gast Toe
-                                    </button>
-                                </div>
+
+            <div class="zoek">
+
+                <div class="volledigeForm">
+                    <div class="body">
+                        <div class="wrapper">
+                            <form method="post">
+                                <input class="search" type="text" name="Naam" id="Naam" value="@ViewBag.Naam" />
+                                <button class="submit" type="submit" asp-action="Aanwezigheden">Zoek</button>
                             </form>
                         </div>
                     </div>
-               
-                <form method="get" class="geenlid">
-                    <button type="submit" class="gastLidKnop" asp-action="NietIngeschrevenLeden" asp-route-id="@Model.Id">Nog geen lid</button>
-                </form>
-            </div>
-            <div class="row-flex">
-                @foreach (var ActiviteitInschrijving in Model.ActiviteitInschrijvingen) {
-                    @if (!ActiviteitInschrijving.IsAanwezig) {
-                        <form method="post" class="aanwezigFalse aanwezigKaart">
-                            @*<div>
-                                    <a onclick="document.getElementById('myform').id.submit();">
-                                        <img class="foto" src="~/images/@(@ActiviteitInschrijving.Inschrijving.Lid.Geslacht.ToString()).png" />
-                                    </a>
-                                </div>*@
-                            <button class="knopKaart" type="submit" asp-action="VoegAanwezigheidToe"
-                                    asp-route-id="@ActiviteitInschrijving.Activiteit.Id"
-                                    asp-route-id2="@ActiviteitInschrijving.Inschrijving.Lid.Id">
-                                <p class="aanwezigLidName">@ActiviteitInschrijving.Inschrijving.Lid.Achternaam @ActiviteitInschrijving.Inschrijving.Lid.Voornaam</p>
-                            </button>
-                        </form>
+                </div>
 
-                    } else {
-                        <form method="post" class="aanwezigTrue aanwezigKaart">
-                            @*<div>
-                                    <a onclick="document.getElementById('myform').submit();">
-                                        <img class="foto" src="~/images/@(@ActiviteitInschrijving.Inschrijving.Lid.Geslacht.ToString()) .png" />
-                                    </a>
-                                </div>*@
-                            <button class="knopKaart" type="submit" asp-action="VerwijderActiviteit"
-                                    asp-route-id="@ActiviteitInschrijving.Activiteit.Id"
-                                    asp-route-id2="@ActiviteitInschrijving.Inschrijving.Lid.Id">
-                                <p class="aanwezigLidName">@ActiviteitInschrijving.Inschrijving.Lid.Achternaam @ActiviteitInschrijving.Inschrijving.Lid.Voornaam</p>
-                            </button>
-                        </form>
-                    }
-                }
+
             </div>
+
+        </div>
+        <div class="row-flex">
+            @foreach (var ActiviteitInschrijving in Model.ActiviteitInschrijvingen) {
+                @if (!ActiviteitInschrijving.IsAanwezig) {
+                    <form method="post" class="aanwezigFalse aanwezigKaart">
+                        @*<div>
+                                <a onclick="document.getElementById('myform').id.submit();">
+                                    <img class="foto" src="~/images/@(@ActiviteitInschrijving.Inschrijving.Lid.Geslacht.ToString()).png" />
+                                </a>
+                            </div>*@
+                        <button class="knopKaart" type="submit" asp-action="VoegAanwezigheidToe"
+                                asp-route-id="@ActiviteitInschrijving.Activiteit.Id"
+                                asp-route-id2="@ActiviteitInschrijving.Inschrijving.Lid.Id">
+                            <p class="aanwezigLidName">@ActiviteitInschrijving.Inschrijving.Lid.Achternaam @ActiviteitInschrijving.Inschrijving.Lid.Voornaam</p>
+                        </button>
+                    </form>
+
+                } else {
+                    <form method="post" class="aanwezigTrue aanwezigKaart">
+                        @*<div>
+                                <a onclick="document.getElementById('myform').submit();">
+                                    <img class="foto" src="~/images/@(@ActiviteitInschrijving.Inschrijving.Lid.Geslacht.ToString()) .png" />
+                                </a>
+                            </div>*@
+                        <button class="knopKaart" type="submit" asp-action="VerwijderActiviteit"
+                                asp-route-id="@ActiviteitInschrijving.Activiteit.Id"
+                                asp-route-id2="@ActiviteitInschrijving.Inschrijving.Lid.Id">
+                            <p class="aanwezigLidName">@ActiviteitInschrijving.Inschrijving.Lid.Achternaam @ActiviteitInschrijving.Inschrijving.Lid.Voornaam</p>
+                        </button>
+                    </form>
+                }
+            }
+        </div>
+    </div>
+</div>
+<hr />
+
+<div class="container">
+        <button class="gastLidKnop" onclick="toggleShow()">Gastlid</button>
+    <div id="voegGastToe" style="display: none;">
+        <div class="container">
+            <form class="ongewoonLidForm" method="post" asp-action="VoegGastToe" asp-route-id="@Model.Id">
+                <div class="ongewoonLidVeld">
+                    <label for="Voornaam" class="gastlid-label">Voornaam</label>
+                    <input class="gastlid-input" type="text" name="Voornaam" id="Voornaam" />
+                </div>
+                <div class="ongewoonLidVeld">
+                    <label for="Achternaam" class="gastlid-label">Achternaam</label>
+                    <input class="gastlid-input" type="text" name="Achternaam" id="Achternaam" />
+                </div>
+                <div class="ongewoonLidVeld">
+                    <label for="Email" class="gastlid-label">E-mail</label>
+                    <input class="gastlid-input" type="text" name="Email" id="Email" />
+                </div>
+                <div class="ongewoonLidVeld">
+                    <label for="Gsm" class="gastlid-label">Gsm nummer</label>
+                    <input class="gastlid-input" type="text" name="Gsm" id="Gsm" />
+                </div>
+                <div>
+                    <button class="btn btn-primary" type="submit">
+                        Voeg Gast Toe
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 
-    <div class="right-container">
+    <form method="get" class="geenlid">
+        <button type="submit" class="gastLidKnop" asp-action="NietIngeschrevenLeden" asp-route-id="@Model.Id">Nog geen lid</button>
+    </form>
 
-    </div>
 </div>
+
+
+
 
 
 

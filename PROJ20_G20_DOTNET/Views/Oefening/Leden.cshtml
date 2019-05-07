@@ -5,16 +5,16 @@
 }
 
 <div class="container">
-    <h2 class="titleAanwezigheden">Van welk lid wilt u de <strong class="vetKleur">oefening zien?</strong></h2>
+    <h2 class="titleAanwezigheden">Van welk lid wilt u de <strong class="vetKleur">oefeningen raadplegen?</strong></h2>
     <hr />
 </div>
 
 <div class="container">
     @foreach (var Lid in Model) {
         <a style="text-decoration: none;" asp-action="ToonOefeningenLid" asp-route-id="@Lid.Id" class="kaartLid">
-            <div class="text-center">
+            <div class="center">
                 <h3 class="naamLid">@Lid.Achternaam @Lid.Voornaam</h3>
-                <p>@Lid.GeboorteDatum.ToLongDateString()</p>
+                <p class="pLid">@Lid.GeboorteDatum.ToLongDateString()</p>
             </div>
         </a>
     }

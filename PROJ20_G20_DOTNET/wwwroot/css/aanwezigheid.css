@@ -46,7 +46,7 @@ a {
 
 .limiter {
     width: 100%;
-    margin-top: 0 auto;
+    margin: 0 auto;
 }
 
 .tableContainer {
@@ -68,6 +68,7 @@ a {
     width: 990px;
     border-radius: 6px;
     overflow: hidden;
+    margin: 0 auto;
 }
 
 .tabel {
@@ -314,7 +315,7 @@ input {
     align-items: center;
     flex-direction: column;
     min-width: 200px;
-    width: 22%;
+    width: 22.9%;
     height: 200px;
     background: rgb(240, 241, 243);
     border: 1px solid rgba(118, 114, 110, 0.1);
@@ -417,11 +418,11 @@ input {
 
 #voegGastToe {
     
-    padding-bottom: 40px;
 }
 
 .ongewoonLidForm {
-    /*padding-left: 100px;*/
+    margin-top: -10px;
+    margin-bottom: 20px;
 }
 
 .gastlid-input {
@@ -443,7 +444,6 @@ input {
 }
 
 .knoppen {
-    display: inline-block;
 }
 
 .zoek {
