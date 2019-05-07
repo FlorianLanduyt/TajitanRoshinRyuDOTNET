@@ -23,6 +23,7 @@ namespace PROJ20_G20_DOTNET.Data
         {
             _dbContext.Database.EnsureDeleted();
             if (_dbContext.Database.EnsureCreated()) {
+
                 #region Leden
                 Lid lid1 = new Lid("Tim", "Geldof", new DateTime(1997, 07, 17),
         "97.07.17-001.23",
@@ -62,10 +63,7 @@ namespace PROJ20_G20_DOTNET.Data
                 Lid lid9 = new Lid("Siska", "Schoeters", new DateTime(1998, 05, 2),
                     "98.05.02-002.91", "0477441465", "051303054", "Gent", "Korenmarkt", "21", "9000", "siska.pieters@outlook.com",
                     "P@ssword1", "Gent", "Vrouw", "Belg", Graad.KYU1, Functie.LID);
-
-
-
-
+                
 
                 _dbContext.Leden.Add(lid1);
                 _dbContext.Leden.Add(lid2);
@@ -230,11 +228,11 @@ namespace PROJ20_G20_DOTNET.Data
                 _dbContext.Oefeningen.Add(oefening7);
                 #endregion
 
-
                 #region Raadplegingen
                 Raadpleging raadpleging1 = new Raadpleging(lid1, oefening1);
                 _dbContext.Raadplegingen.Add(raadpleging1);
                 #endregion
+
                 _dbContext.SaveChanges();
 
             }
