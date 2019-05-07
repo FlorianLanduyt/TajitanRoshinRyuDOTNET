@@ -97,6 +97,20 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
         }
         #endregion
 
+        #region Testen Edit - POST
+        [Fact]
+        public void Edit_POST_GaatNaarIndex()
+        {
+            _lidRepository.Setup(m => m.GetBy(1)).Returns(_dummyContext.Rob);
+            _userManager.Setup(m => m.GetUserAsync(user)).ReturnsAsync(identityUser);
+            _userManager.Setup(m => m.FindByEmailAsync(_dummyContext.Rob.Email)).ReturnsAsync(identityUser);
+            RedirectToActionResult redirectToActionResult = _controller.Edit(1, new LidEditViewModel(_dummyContext.Rob) { Achternaam = "De Puttah" }) as RedirectToActionResult;
+            Assert.Equal("De Puttah", _dummyContext.Rob.Achternaam);
+            //Assert.Equal("Index", redirectToActionResult?.ActionName);
+            _lidRepository.Verify(m => m.SaveChanges(), Times.Once);
+        }
+        #endregion
+
     }
 
 }
