@@ -4,30 +4,48 @@
     ViewData["Title"] = "Leden";
 }
 
-<div>
-    <h2>Leden</h2>
+<div class="container">
+    <h2 class="titleAanwezigheden">Van welk lid wilt u de <strong class="vetKleur">oefening zien?</strong></h2>
     <hr />
-    <table class="table table-bordered table-striped">
-        <tr>
-            <th>Familienaam</th>
-            <th>Voornaam</th>
-            <th>Geboortedatum</th>
-            <th></th>
-        </tr>
-
-        @foreach (var Lid in Model) {
-            <tr>
-                <td>@Lid.Achternaam</td>
-                <td>@Lid.Voornaam</td>
-                <td>@Lid.GeboorteDatum.ToShortDateString()</td>
-                <td class="text-right">
-                    <form>
-                        <a asp-action="ToonOefeningenLid" asp-route-id="@Lid.Id">Bekijk oefeningen</a>
-                    </form>
-                </td>
-            </tr>
-        }
-    </table>
 </div>
+
+<div class="container">
+    @foreach (var Lid in Model) {
+        <a style="text-decoration: none;" asp-action="ToonOefeningenLid" asp-route-id="@Lid.Id" class="kaartLid">
+            <div class="text-center">
+                <h3 class="naamLid">@Lid.Achternaam @Lid.Voornaam</h3>
+                <p>@Lid.GeboorteDatum.ToLongDateString()</p>
+            </div>
+        </a>
+    }
+</div>
+
+
+
+@*<div>
+        <h2>Leden</h2>
+        <hr />
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>Familienaam</th>
+                <th>Voornaam</th>
+                <th>Geboortedatum</th>
+                <th></th>
+            </tr>
+
+            @foreach (var Lid in Model) {
+                <tr>
+                    <td>@Lid.Achternaam</td>
+                    <td>@Lid.Voornaam</td>
+                    <td>@Lid.GeboorteDatum.ToShortDateString()</td>
+                    <td class="text-right">
+                        <form>
+                            <a asp-action="ToonOefeningenLid" asp-route-id="@Lid.Id">Bekijk oefeningen</a>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>*@
 
 

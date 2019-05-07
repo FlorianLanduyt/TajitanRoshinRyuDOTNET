@@ -11,6 +11,7 @@
         <br />
         <p class="alert alert-danger">@TempData["Error"]</p>
     }*@
+
 <div class="aanwezighedenWrap">
     <div class="container">
         <h2 class="titleAanwezigheden">Wie is er aanwezig voor <strong class="vetKleur">@Model.Naam?</strong></h2>
@@ -46,18 +47,57 @@
             </div>
         </div>*@
 
-    <div class="aanwezighedencontainer">
+    <div class="left-container">
         <div class="aanwezighedenWrap">
-            <form method="post">
-                <div class="volledigeForm">
-                    <div class="body">
-                        <div class="wrapper">
-                            <input class="search" type="text" name="Naam" id="Naam" value="@ViewBag.Naam" />
-                            <button class="submit" type="submit" asp-action="Aanwezigheden">Zoek</button>
+            
+                <div class="zoek">
+                    <form method="post">
+                        <div class="volledigeForm">
+                            <div class="body">
+                                <div class="wrapper">
+                                    <input class="search" type="text" name="Naam" id="Naam" value="@ViewBag.Naam" />
+                                    <button class="submit" type="submit" asp-action="Aanwezigheden">Zoek</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="gastlid">
+                    <div>
+                        <button class="gastLidKnop" onclick="toggleShow()">Gastlid</button>
+                    </div>
+                    <div id="voegGastToe" style="display: none;">
+                        <div class="container">
+                            <form class="ongewoonLidForm" method="post" asp-action="VoegGastToe" asp-route-id="@Model.Id">
+                                <div class="ongewoonLidVeld">
+                                    <label for="Voornaam" class="gastlid-label">Voornaam</label>
+                                    <input class="gastlid-input" type="text" name="Voornaam" id="Voornaam" />
+                                </div>
+                                <div class="ongewoonLidVeld">
+                                    <label for="Achternaam" class="gastlid-label">Achternaam</label>
+                                    <input class="gastlid-input" type="text" name="Achternaam" id="Achternaam" />
+                                </div>
+                                <div class="ongewoonLidVeld">
+                                    <label for="Email" class="gastlid-label">E-mail</label>
+                                    <input class="gastlid-input" type="text" name="Email" id="Email" />
+                                </div>
+                                <div class="ongewoonLidVeld">
+                                    <label for="Gsm" class="gastlid-label">Gsm nummer</label>
+                                    <input class="gastlid-input" type="text" name="Gsm" id="Gsm" />
+                                </div>
+                                <div>
+                                    <button class="btn btn-primary" type="submit">
+                                        Voeg Gast Toe
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                </div>
-            </form>
+               
+                <form method="get" class="geenlid">
+                    <button type="submit" class="gastLidKnop" asp-action="NietIngeschrevenLeden" asp-route-id="@Model.Id">Nog geen lid</button>
+                </form>
+            </div>
             <div class="row-flex">
                 @foreach (var ActiviteitInschrijving in Model.ActiviteitInschrijvingen) {
                     @if (!ActiviteitInschrijving.IsAanwezig) {
@@ -93,39 +133,12 @@
         </div>
     </div>
 
-    <div class="ongewoonLid">
-        <div class="text-center">
-            <button class="gastLidKnop" onclick="toggleShow()">Gastlid toevoegen</button>
-        </div>
-        <div id="voegGastToe">
-            <form class="ongewoonLidForm" method="post" asp-action="VoegGastToe" asp-route-id="@Model.Id">
-                <div class="ongewoonLidVeld">
-                    <label for="Voornaam" class="gastlid-label">Voornaam</label>
-                    <input class="gastlid-input" type="text" name="Voornaam" id="Voornaam" />
-                </div>
-                <div class="ongewoonLidVeld">
-                    <label for="Achternaam" class="gastlid-label">Achternaam</label>
-                    <input class="gastlid-input" type="text" name="Achternaam" id="Achternaam" />
-                </div>
-                <div class="ongewoonLidVeld">
-                    <label for="Email" class="gastlid-label">E-mail</label>
-                    <input class="gastlid-input" type="text" name="Email" id="Email" />
-                </div>
-                <div class="ongewoonLidVeld">
-                    <label for="Gsm" class="gastlid-label">Gsm nummer</label>
-                    <input class="gastlid-input" type="text" name="Gsm" id="Gsm" />
-                </div>
-                <div>
-                    <button class="btn btn-primary" type="submit">
-                        Voeg Gast Toe
-                    </button>
-                </div>
-            </form>
-        </div>
-        <a asp-action="NietIngeschrevenLeden" asp-route-id="@Model.Id">Voeg niet ingeschreven lid toe</a>
-    </div>
+    <div class="right-container">
 
+    </div>
 </div>
+
+
 
 <script>
     function toggleShow() {

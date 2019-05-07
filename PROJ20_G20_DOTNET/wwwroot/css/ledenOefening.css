@@ -1,0 +1,55 @@
+﻿@font-face {
+    font-family: Lato;
+    src: url('../fonts/Lato/Lato-Regular.ttf');
+}
+
+body {
+
+}
+
+p {
+    text-decoration: none;
+    color: grey;
+}
+
+.naamLid {
+    font-weight: 900;
+    font-size: 2.1rem;
+    color: rgb(14, 14, 14);
+    margin: auto auto 2rem auto;
+    vertical-align: middle;
+    padding-top: 7rem;
+}
+
+center {
+}
+
+.kaartLid {
+    text-align: center;
+    font-family: Lato;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    box-shadow: rgba(0,0,0,0.1) 0px 2px 7px;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: column;
+    min-width: 200px;
+    width: 22%;
+    height: 200px;
+    background: rgb(240, 241, 243);
+    border: 1px solid rgba(118, 114, 110, 0.1);
+    border-image: initial;
+    border-radius: 1rem;
+    margin: 1rem;
+    transition: ease 0.4s;
+    position: relative;
+    border-top: 0.4rem solid #996888;
+}
+
+    .kaartLid:hover {
+        transform: scale(1.03,1.03);
+        border-top: 0.4rem solid #B6C8C0;
+    }
+
