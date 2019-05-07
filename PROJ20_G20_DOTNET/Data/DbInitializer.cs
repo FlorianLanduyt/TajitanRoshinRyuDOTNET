@@ -26,19 +26,16 @@ namespace PROJ20_G20_DOTNET.Data
 
                 #region Leden
                 Lid lid1 = new Lid("Tim", "Geldof", new DateTime(1997, 07, 17),
-        "97.07.17-001.23",
-        "0479330959", "051303050", "Izegem", "Winkelhoekstraat",
-        "52", "8870", "tim.geldof@outlook.com",
-        "P@ssword1", "Izegem", "Man",
-        "Belg", Graad.DAN5, Functie.BEHEERDER);
+                     "97.07.17-001.23", "0479330959", "051303050", "Izegem", "Winkelhoekstraat",
+                     "52", "8870", "tim.geldof@outlook.com", "P@ssword1", "Izegem", "Man", "Belg", Graad.DAN5, Functie.BEHEERDER);
 
                 Lid lid2 = new Lid("Tybo", "Vanderstraeten", new DateTime(1999, 12, 8),
                     "99.12.08-173.04", "0477441465", "051303054", "Gent", "Korenmarkt", "21", "9000", "tybo.vanderstraeten@outlook.com",
-                    "P@ssword1", "Gent", "Man", "Belg", Graad.DAN3, Functie.LID);
+                    "P@ssword1", "Gent", "Man", "Belg", Graad.KYU3, Functie.LID);
 
                 Lid lid3 = new Lid("Paul", "Pieters", new DateTime(1990, 05, 3),
                     "90.05.03-001.88", "0477441465", "051303054", "Gent", "Korenmarkt", "21", "9000", "paul.pieters@outlook.com",
-                    "P@ssword1", "Gent", "Man", "Belg", Graad.DAN3, Functie.LID);
+                    "P@ssword1", "Gent", "Man", "Belg", Graad.DAN5, Functie.TRAINER);
 
                 Lid lid4 = new Lid("Sarah", "De Bakker", new DateTime(1990, 04, 4),
                     "90.04.04-002.50", "0477441465", "051303054", "Gent", "Korenmarkt", "21", "9000", "sarah.pieters@outlook.com",
@@ -52,17 +49,17 @@ namespace PROJ20_G20_DOTNET.Data
                     "97.06.06-001.55", "0477441465", "051303054", "Gent", "Korenmarkt", "21", "9000", "jasper.pieters@outlook.com",
                     "P@ssword1", "Gent", "Man", "Belg", Graad.DAN2, Functie.LID);
 
-                Lid lid7 = new Lid("Lisa", "Simpson", new DateTime(1994, 08, 8),
+                Lid lid7 = new Lid("Lisa", "Baekelandt", new DateTime(1994, 08, 8),
                     "94.08.08-002.42", "0477441465", "051303054", "Gent", "Korenmarkt", "21", "9000", "lisa.pieters@outlook.com",
                     "P@ssword1", "Gent", "Vrouw", "Belg", Graad.KYU3, Functie.LID);
 
                 Lid lid8 = new Lid("Jonas", "Vangogh", new DateTime(1993, 02, 2),
                     "93.02.02-001.63", "0477441465", "051303054", "Gent", "Korenmarkt", "21", "9000", "jonas.pieters@outlook.com",
-                    "P@ssword1", "Gent", "Man", "Belg", Graad.DAN3, Functie.LID);
+                    "P@ssword1", "Gent", "Man", "Belg", Graad.KYU6, Functie.LID);
 
                 Lid lid9 = new Lid("Siska", "Schoeters", new DateTime(1998, 05, 2),
                     "98.05.02-002.91", "0477441465", "051303054", "Gent", "Korenmarkt", "21", "9000", "siska.pieters@outlook.com",
-                    "P@ssword1", "Gent", "Vrouw", "Belg", Graad.KYU1, Functie.LID);
+                    "P@ssword1", "Gent", "Vrouw", "Belg", Graad.DAN5, Functie.TRAINER);
 
 
                 _dbContext.Leden.Add(lid1);
@@ -88,30 +85,35 @@ namespace PROJ20_G20_DOTNET.Data
                 #endregion
 
                 #region Activiteiten
-                Activiteit act1 = new Activiteit("Eindexamen", Formule.EXAMEN, new DateTime(2020, 8, 12), new DateTime(2020, 8, 13),
+                Activiteit act1 = new Activiteit("Eindexamen", Formule.EXAMEN, new DateTime(2020, 8, 12, 12, 00, 00), new DateTime(2020, 8, 13,13,00,00),
                     new DateTime(2020, 7, 15), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
                     "20", "5", 50);
-                Activiteit act2 = new Activiteit("Bobejaanland", Formule.UITSTAP, new DateTime(2020, 9, 12), new DateTime(2020, 9, 12),
+                Activiteit act2 = new Activiteit("Bobejaanland", Formule.UITSTAP, new DateTime(2020, 9, 12, 7, 00, 00), new DateTime(2020, 9, 12,20,00,00),
                    new DateTime(2020, 8, 15), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
                    "20", "5", 50);
 
-                Activiteit act3 = new Activiteit("Stage Polen", Formule.STAGE, new DateTime(2020, 10, 09), new DateTime(2020, 10, 17),
+                Activiteit act3 = new Activiteit("Stage Polen", Formule.STAGE, new DateTime(2020, 10, 09, 10, 00, 00), new DateTime(2020, 10, 17,20,00,00),
                    new DateTime(2020, 9, 01), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
                    "20", "5", 50);
 
-                Activiteit act4 = new Activiteit("Dinsdag Training", Formule.DI_DO, new DateTime(2019, 07, 09), new DateTime(2019, 07, 09),
+                Activiteit act4 = new Activiteit("Dinsdag Training", Formule.DI_DO, new DateTime(2019, 07, 09, 18, 00, 00), new DateTime(2019, 07, 09,20,00,00),
                    new DateTime(2019, 07, 01), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
                    "20", "5", 50);
 
-                Activiteit act5 = new Activiteit("Teambuilding Ardennen", Formule.UITSTAP, new DateTime(2019, 10, 09), new DateTime(2019, 10, 11),
+                Activiteit act5 = new Activiteit("Teambuilding Ardennen", Formule.UITSTAP, new DateTime(2019, 10, 09, 6, 30, 00), new DateTime(2019, 10, 11,22,00,00),
                    new DateTime(2019, 09, 01), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
                    "20", "5", 50);
+
+                Activiteit act6 = new Activiteit("Examen Kyu naar Dan", Formule.EXAMEN, new DateTime(2019, 08, 12, 8, 30, 00), new DateTime(2019, 08, 12,10,30,00),
+                    new DateTime(2019, 08, 01), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
+                    "20", "5", 50);
 
                 _dbContext.Activiteiten.Add(act1);
                 _dbContext.Activiteiten.Add(act2);
                 _dbContext.Activiteiten.Add(act3);
                 _dbContext.Activiteiten.Add(act4);
                 _dbContext.Activiteiten.Add(act5);
+                _dbContext.Activiteiten.Add(act6);
 
                 #endregion
 
@@ -161,6 +163,9 @@ namespace PROJ20_G20_DOTNET.Data
 
                 #endregion
 
+                #region Activiteit 6
+                Inschrijving inschrijving27 = new Inschrijving(lid8, act6.Formule, DateTime.Now);
+                #endregion
 
 
 
@@ -207,16 +212,17 @@ namespace PROJ20_G20_DOTNET.Data
                 act5.AddInschrijving(inschrijving24);
                 act5.AddInschrijving(inschrijving25);
                 act5.AddInschrijving(inschrijving26);
+
+                act6.AddInschrijving(inschrijving27);
                 #endregion
 
                 #region Oefeningen
-                Oefening oefening1 = new Oefening("Salto", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Test tekst", DateTime.Now, Graad.KYU1, new Thema("Testthema"));
-                Oefening oefening2 = new Oefening("Blokken", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Test tekst", DateTime.Now, Graad.DAN5, new Thema("Testthema"));
-                Oefening oefening3 = new Oefening("Vallen", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Test tekst", DateTime.Now, Graad.DAN4, new Thema("Testthema"));
-                Oefening oefening4 = new Oefening("Aanvallen", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Test tekst", DateTime.Now, Graad.DAN1, new Thema("Testthema"));
-                Oefening oefening5 = new Oefening("Verdedigen", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Test tekst", DateTime.Now, Graad.DAN2, new Thema("Testthema"));
-                Oefening oefening6 = new Oefening("Passieve agressieve aanval", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Test tekst", DateTime.Now, Graad.DAN2, new Thema("Testthema"));
-                Oefening oefening7 = new Oefening("noscopethreesixty", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Test tekst", DateTime.Now, Graad.DAN2, new Thema("Testthema"));
+                Oefening oefening1 = new Oefening("Salto", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Een perfecte salto", DateTime.Now, Graad.KYU1, new Thema("Techniek"));
+                Oefening oefening2 = new Oefening("Blokken", "https://www.youtube.com/embed/dQw4w9WgXcQ", "", DateTime.Now, Graad.DAN5, new Thema("Defensief"));
+                Oefening oefening3 = new Oefening("Vallen", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Test tekst", DateTime.Now, Graad.DAN4, new Thema("Techniek"));
+                Oefening oefening4 = new Oefening("Aanvallen", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Test tekst", DateTime.Now, Graad.DAN1, new Thema("Offensief"));
+                Oefening oefening5 = new Oefening("Verdedigend terugtrekken", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Test tekst", DateTime.Now, Graad.DAN2, new Thema("Defensief"));
+                Oefening oefening6 = new Oefening("Stretchen", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Test tekst", DateTime.Now, Graad.DAN2, new Thema("Algemeen"));
 
 
                 _dbContext.Oefeningen.Add(oefening1);
@@ -225,12 +231,6 @@ namespace PROJ20_G20_DOTNET.Data
                 _dbContext.Oefeningen.Add(oefening4);
                 _dbContext.Oefeningen.Add(oefening5);
                 _dbContext.Oefeningen.Add(oefening6);
-                _dbContext.Oefeningen.Add(oefening7);
-                #endregion
-
-                #region Raadplegingen
-                Raadpleging raadpleging1 = new Raadpleging(lid1, oefening1);
-                _dbContext.Raadplegingen.Add(raadpleging1);
                 #endregion
 
                 _dbContext.SaveChanges();

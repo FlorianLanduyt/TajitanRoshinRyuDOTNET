@@ -92,14 +92,14 @@ namespace PROJ20_G20_DOTNET.Controllers
             return View(nameof(Aanwezigheden), _activiteitRepository.GetBy(id));
         }
         [HttpPost]
-        public IActionResult VerwijderActiviteit(int id, int id2) {
+        public IActionResult VerwijderAanwezigheid(int id, int id2) {
             try {
                 Lid lid = _lidRepository.GetBy(id2);
                 Activiteit activiteit = _activiteitRepository.GetBy(id);
                 ActiviteitInschrijving activiteitInschrijving =
-                    activiteit.ActiviteitInschrijvingen.SingleOrDefault(ai => ai.ActiviteitId == id && ai.Inschrijving.LidId == id2);
+                    activiteit.ActiviteitInschrijvingen.SingleOrDefault(ai => ai.Activiteit.Id == id && ai.Inschrijving.Lid.Id == id2);
                 activiteitInschrijving.IsAanwezig = false;
-                Aanwezigheid aanwezigheid = _aanwezigheidRepository.GetAll().Where(aw => aw.LidId == id2 && aw.ActiviteitId == id).SingleOrDefault();
+                Aanwezigheid aanwezigheid = _aanwezigheidRepository.GetAll().Where(aw => aw.Lid.Id == id2 && aw.Activiteit.Id == id).SingleOrDefault();
                 _aanwezigheidRepository.Delete(aanwezigheid);
                 _aanwezigheidRepository.SaveChanges();
                 TempData["Success"] = $"{lid.Voornaam} {lid.Achternaam} is succesvol afwezig geplaatst!";

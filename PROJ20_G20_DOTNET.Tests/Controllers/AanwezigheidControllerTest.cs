@@ -60,7 +60,7 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
             string beginDatum = "2020/08/11";
             string eindDatum = "2020/08/14";
             string naam = "Testactiviteit een";
-            IActionResult actionResult = _controller.Index(beginDatum,eindDatum,naam);
+            IActionResult actionResult = _controller.Index(beginDatum, eindDatum, naam);
             IList<Activiteit> activiteitenInModel = (actionResult as ViewResult)?.Model as IList<Activiteit>;
             Assert.Equal(1, activiteitenInModel?.Count);
             Assert.Equal("Testactiviteit een", activiteitenInModel?[0].Naam);
@@ -173,25 +173,42 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
             _activiteitRepository.Setup(m => m.GetBy(activiteitId)).Returns(_dummyContext.Act1);
             RedirectToActionResult redirectToActionResult = _controller.VoegAanwezigheidToe(activiteitId, lidId)
                 as RedirectToActionResult;
+            _aanwezigheidRepository.Verify(m => m.SaveChanges(), Times.Once());
             Assert.Equal("Aanwezigheden", redirectToActionResult?.ActionName);
             Assert.Null(redirectToActionResult?.ControllerName);
         }
 
-        //[Fact]
-        //public void VoegAanwezigheidToe_IdLidEnIdActiviteitBestaatniet()
-        //{
-        //    int lidId = 1000; //Rob
-        //    int activiteitId = 1000; //Act1
-        //    _lidRepository.Setup(m => m.GetBy(lidId)).Returns((Lid)null);
-        //    _activiteitRepository.Setup(m => m.GetBy(activiteitId)).Returns((Activiteit)null);
-        //    ViewResult viewResult = _controller.VoegAanwezigheidToe(activiteitId, lidId)
-        //        as ViewResult;
-        //    Assert.Equal("Testactiviteit een", viewResult?.Model);
-        //}
+        [Fact]
+        public void VoegAanwezigheidToe_IdLidEnIdActiviteitBestaatniet()
+        {
+            int lidId = 1000; //Rob
+            int activiteitId = 1000; //Act1
+            _lidRepository.Setup(m => m.GetBy(lidId)).Returns((Lid)null);
+            _activiteitRepository.Setup(m => m.GetBy(activiteitId)).Returns((Activiteit)null);
+            ViewResult viewResult = _controller.VoegAanwezigheidToe(activiteitId, lidId)
+                as ViewResult;
+            _aanwezigheidRepository.Verify(m => m.SaveChanges(), Times.Never());
+        }
         #endregion
 
+        #region Verwijder aanwezigheid
+        [Fact]
+        public void VerwijderAanwezigheid_MetLidIdEnActiviteitId()
+        {
+            int lidId = 2; //Tim
+            int activiteitId = 2; //Act2
 
+            _lidRepository.Setup(m => m.GetBy(lidId)).Returns(_dummyContext.Tim);
+            _activiteitRepository.Setup(m => m.GetBy(activiteitId)).Returns(_dummyContext.Act2);
+            _aanwezigheidRepository.Setup(m => m.GetAll()).Returns(_dummyContext.Aanwezigheden);
+            _aanwezigheidRepository.Setup(m => m.Delete(It.IsAny<Aanwezigheid>()));
+            RedirectToActionResult redirectToActionResult = _controller.VerwijderAanwezigheid(activiteitId, lidId)
+                as RedirectToActionResult;
 
-
+            _lidRepository.Verify(m => m.GetBy(2), Times.Once());
+            _activiteitRepository.Verify(m => m.GetBy(2), Times.Once());
+            _aanwezigheidRepository.Verify(m => m.SaveChanges(), Times.Once());
+        }
+        #endregion
     }
 }
