@@ -84,6 +84,18 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
         }
         #endregion
 
+        #region Testen Edit - GET
+        [Fact]
+        public async Task Edit_GET_GeeftViewResultMetLidEditViewModel()
+        {
+            _lidRepository.Setup(m => m.GetBy(1)).Returns(_dummyContext.Rob);
+            _userManager.Setup(m => m.GetUserAsync(user)).ReturnsAsync(identityUser);
+            _userManager.Setup(m => m.FindByEmailAsync(_dummyContext.Rob.Email)).ReturnsAsync(identityUser);
+            IActionResult actionResult = await _controller.Edit(1);
+            LidEditViewModel lidEditViewModel = (actionResult as ViewResult)?.Model as LidEditViewModel;
+            Assert.Equal(_dummyContext.Rob.Email, lidEditViewModel.Email);
+        }
+        #endregion
 
     }
 
