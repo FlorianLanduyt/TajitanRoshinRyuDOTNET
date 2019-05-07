@@ -68,7 +68,23 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
             };
         }
 
-        
+        #region Testen Index
+        [Fact]
+        public async Task Index_GeeftAangemeldLid()
+        {
+            Lid Rob = _dummyContext.Rob; // aangemeld lid
+            _userManager.Setup(m => m.GetUserAsync(user)).ReturnsAsync(identityUser);
+            _userManager.Setup(m => m.FindByEmailAsync(_dummyContext.Rob.Email)).ReturnsAsync(identityUser);
+            _lidRepository.Setup(m => m.GetAll()).Returns(_dummyContext.Leden);
+
+            IActionResult actionResult = await _controller.Index();
+            Lid lid = (actionResult as ViewResult)?.Model as Lid;
+
+            Assert.Equal(Rob.Email, lid.Email);
+        }
+        #endregion
+
+
     }
 
 }
