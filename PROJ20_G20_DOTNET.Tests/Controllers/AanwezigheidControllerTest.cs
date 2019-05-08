@@ -248,5 +248,53 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
         }
         #endregion
 
+        #region Testen NietIngeschrevenLeden
+        [Fact]
+        public void NietIngeschrevenLeden_GeeftLedenActiviteitViewModel()
+        {
+            int activiteitId = 1; // Act1
+            IEnumerable<Lid> nietIngeschrevenLeden = new List<Lid>() { _dummyContext.Tybo };
+            _activiteitRepository.Setup(m => m.GetBy(activiteitId)).Returns(_dummyContext.Act1);
+            _lidRepository.Setup(m => m.GetAll()).Returns(_dummyContext.Leden);
+
+            ViewResult actionResult = _controller.NietIngeschrevenLeden(activiteitId) as ViewResult;
+            LedenActiviteitViewModel ledenActiviteitViewModel = (actionResult?.Model) as LedenActiviteitViewModel;
+            Assert.Equal(_dummyContext.Act1, ledenActiviteitViewModel.Activiteit);
+            Assert.Equal(nietIngeschrevenLeden, ledenActiviteitViewModel.Leden);
+        }
+
+        [Fact]
+        public void NietIngeschrevenLedenMetFilter_GeeftLedenActiviteitViewModel()
+        {
+            int activiteitId = 1; // Act1
+            string naamFilter = "Tybo";
+            IEnumerable<Lid> nietIngeschrevenLeden = new List<Lid>() { _dummyContext.Tybo };
+            _activiteitRepository.Setup(m => m.GetBy(activiteitId)).Returns(_dummyContext.Act1);
+            _lidRepository.Setup(m => m.GetAll()).Returns(_dummyContext.Leden);
+
+            ViewResult actionResult = _controller.NietIngeschrevenLedenGefilterd(activiteitId, naamFilter) as ViewResult;
+            LedenActiviteitViewModel ledenActiviteitViewModel = (actionResult?.Model) as LedenActiviteitViewModel;
+            Assert.Equal(_dummyContext.Act1, ledenActiviteitViewModel.Activiteit);
+            Assert.Equal(nietIngeschrevenLeden, ledenActiviteitViewModel.Leden);
+        }
+
+        [Fact]
+        public void NietIngeschrevenLedenMetFilter_GeeftGeenLeden()
+        {
+            int activiteitId = 1; // Act1
+            string naamFilter = "Rob"; // wel al ingeschreven
+            IEnumerable<Lid> nietIngeschrevenLeden = new List<Lid>(); // lege lijst
+            _activiteitRepository.Setup(m => m.GetBy(activiteitId)).Returns(_dummyContext.Act1);
+            _lidRepository.Setup(m => m.GetAll()).Returns(_dummyContext.Leden);
+
+            ViewResult actionResult = _controller.NietIngeschrevenLedenGefilterd(activiteitId, naamFilter) as ViewResult;
+            LedenActiviteitViewModel ledenActiviteitViewModel = (actionResult?.Model) as LedenActiviteitViewModel;
+            Assert.Equal(_dummyContext.Act1, ledenActiviteitViewModel.Activiteit);
+            Assert.Equal(nietIngeschrevenLeden, ledenActiviteitViewModel.Leden);
+        }
+        #endregion
+
+
+
     }
 }
