@@ -1,0 +1,83 @@
+﻿@font-face {
+    font-family: Lato;
+    src: url('../fonts/Lato/Lato-Regular.ttf');
+}
+
+body {
+    font-family: Lato;
+}
+
+.indexLid {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.indexCenter {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.indexContainer {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #F4F4F4;
+    border-radius: 10px;
+    padding: 30px 0;
+}
+
+.kolom {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.flexrij {
+    width: 400px;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.flexItem {
+    flex: 1 0 50%;
+    line-height: 3rem;
+
+}
+
+.flexItem:nth-child(odd){
+    font-weight: 800;
+}
+
+.flexItem:nth-child(even) {
+    font-size: 16px;
+}
+
+
+.wijzigenKnop {
+    margin: 15px;
+    text-align: center;
+    color: white;
+    border: none;
+    font-size: 15px;
+    border-radius: 10px;
+    width: 250px;
+    color: white;
+    height: 40px;
+    background-size: 35px 35px;
+    outline-width: 0;
+    transition: ease 0.4s;
+    color: white;
+    background-color: #996888;
+}
+
+    .wijzigenKnop:hover {
+        transform: scale(0.96, 0.96);
+        background-color: #B6C8C0;
+        color: black;
+    }
