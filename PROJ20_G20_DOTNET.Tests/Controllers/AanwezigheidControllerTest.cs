@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Moq;
 using PROJ20_G20_DOTNET.Controllers;
 using PROJ20_G20_DOTNET.Models.Domain;
+using PROJ20_G20_DOTNET.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using Xunit;
@@ -210,5 +211,103 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
             _aanwezigheidRepository.Verify(m => m.SaveChanges(), Times.Once());
         }
         #endregion
+
+        #region Testene VoegGastToe
+        [Fact]
+        public void VoegGastToe_GaatNaarOverzichtAanwezigheden()
+        {
+            int activiteitId = 1;
+            AddGastOfProeflidViewModel addGastOfProeflidViewModel = new AddGastOfProeflidViewModel()
+            { Voornaam = "Rob", Achternaam = "De Putter", Email = "robdeputter@hotmail.com", Gsm = "0476456851" };
+
+            _activiteitRepository.Setup(m => m.GetBy(activiteitId)).Returns(_dummyContext.Act1);
+
+            RedirectToActionResult actionResult = _controller.VoegGastToe(activiteitId, addGastOfProeflidViewModel) as RedirectToActionResult;
+
+            _lidRepository.Verify(m => m.SaveChanges(), Times.Once);
+            _inschrijvingRepository.Verify(m => m.SaveChanges(), Times.Once);
+            _activiteitInschrijvingRepository.Verify(m => m.SaveChanges(), Times.Once);
+            Assert.Equal("Aanwezigheden", actionResult?.ActionName);
+        }
+
+        [Fact]
+        public void VoegGastToe_ERROR_GaatNaarLijstVanAanwezigheden()
+        {
+            int activiteitId = 1;
+            AddGastOfProeflidViewModel addGastOfProeflidViewModel = new AddGastOfProeflidViewModel()
+            { Voornaam = "Rob", Achternaam = null, Email = "robdeputter@hotmail.com", Gsm = "0476456851" };
+
+            _activiteitRepository.Setup(m => m.GetBy(activiteitId)).Returns(_dummyContext.Act1);
+
+            ViewResult actionResult = _controller.VoegGastToe(activiteitId, addGastOfProeflidViewModel) as ViewResult;
+
+            _lidRepository.Verify(m => m.SaveChanges(), Times.Never);
+            _inschrijvingRepository.Verify(m => m.SaveChanges(), Times.Never);
+            _activiteitInschrijvingRepository.Verify(m => m.SaveChanges(), Times.Never);
+            Assert.Equal("Aanwezigheden", actionResult?.ViewName);
+        }
+        #endregion
+
+        #region Testen NietIngeschrevenLeden
+        [Fact]
+        public void NietIngeschrevenLeden_GeeftLedenActiviteitViewModel()
+        {
+            int activiteitId = 1; // Act1
+            IEnumerable<Lid> nietIngeschrevenLeden = new List<Lid>() { _dummyContext.Tybo };
+            _activiteitRepository.Setup(m => m.GetBy(activiteitId)).Returns(_dummyContext.Act1);
+            _lidRepository.Setup(m => m.GetAll()).Returns(_dummyContext.Leden);
+
+            ViewResult actionResult = _controller.NietIngeschrevenLeden(activiteitId) as ViewResult;
+            LedenActiviteitViewModel ledenActiviteitViewModel = (actionResult?.Model) as LedenActiviteitViewModel;
+            Assert.Equal(_dummyContext.Act1, ledenActiviteitViewModel.Activiteit);
+            Assert.Equal(nietIngeschrevenLeden, ledenActiviteitViewModel.Leden);
+        }
+
+        [Fact]
+        public void NietIngeschrevenLedenMetFilter_GeeftLedenActiviteitViewModel()
+        {
+            int activiteitId = 1; // Act1
+            string naamFilter = "Tybo";
+            IEnumerable<Lid> nietIngeschrevenLeden = new List<Lid>() { _dummyContext.Tybo };
+            _activiteitRepository.Setup(m => m.GetBy(activiteitId)).Returns(_dummyContext.Act1);
+            _lidRepository.Setup(m => m.GetAll()).Returns(_dummyContext.Leden);
+
+            ViewResult actionResult = _controller.NietIngeschrevenLedenGefilterd(activiteitId, naamFilter) as ViewResult;
+            LedenActiviteitViewModel ledenActiviteitViewModel = (actionResult?.Model) as LedenActiviteitViewModel;
+            Assert.Equal(_dummyContext.Act1, ledenActiviteitViewModel.Activiteit);
+            Assert.Equal(nietIngeschrevenLeden, ledenActiviteitViewModel.Leden);
+        }
+
+        [Fact]
+        public void NietIngeschrevenLedenMetFilter_GeeftGeenLeden()
+        {
+            int activiteitId = 1; // Act1
+            string naamFilter = "Rob"; // wel al ingeschreven
+            IEnumerable<Lid> nietIngeschrevenLeden = new List<Lid>(); // lege lijst
+            _activiteitRepository.Setup(m => m.GetBy(activiteitId)).Returns(_dummyContext.Act1);
+            _lidRepository.Setup(m => m.GetAll()).Returns(_dummyContext.Leden);
+
+            ViewResult actionResult = _controller.NietIngeschrevenLedenGefilterd(activiteitId, naamFilter) as ViewResult;
+            LedenActiviteitViewModel ledenActiviteitViewModel = (actionResult?.Model) as LedenActiviteitViewModel;
+            Assert.Equal(_dummyContext.Act1, ledenActiviteitViewModel.Activiteit);
+            Assert.Equal(nietIngeschrevenLeden, ledenActiviteitViewModel.Leden);
+        }
+
+        [Fact]
+        public void NietIngeschrevenLeden_SchrijftBestaandLidIn()
+        {
+            int lidId = 3; //Tybo
+            int activiteitId = 1; //Act1
+            _lidRepository.Setup(m => m.GetBy(lidId)).Returns(_dummyContext.Rob);
+            _activiteitRepository.Setup(m => m.GetBy(activiteitId)).Returns(_dummyContext.Act1);
+            RedirectToActionResult actionResult = _controller.NietIngeschrevenLeden(activiteitId, lidId) as RedirectToActionResult;
+            _inschrijvingRepository.Verify(m => m.SaveChanges(), Times.Once);
+            _activiteitInschrijvingRepository.Verify(m => m.SaveChanges(), Times.Once);
+            Assert.Equal("Aanwezigheden", actionResult?.ActionName);
+        }
+        #endregion
+
+
+
     }
 }

@@ -15,12 +15,28 @@ namespace PROJ20_G20_DOTNET.Tests
         public Inschrijving Inschrijving2 { get; }
         public Inschrijving Inschrijving3 { get; }
 
+        public Oefening Oefening1 { get; }
+        public Oefening Oefening2 { get; }
+        public Oefening Oefening3 { get; }
+        public Oefening Oefening4 { get; }
+        public Oefening Oefening5 { get; }
+        public Oefening Oefening6 { get; }
+
+        public Raadpleging Oefn1Rob { get; }
+        public Raadpleging Oefn2Tim{ get; }
+        public Raadpleging Oefn1Tim { get; }
+        public Raadpleging Oefn3Rob { get; }
+        public Raadpleging Oefn4Rob { get; }
+
         public Aanwezigheid TimAct2 { get; }
 
         public IEnumerable<Lid> Leden { get; }
         public IEnumerable<Activiteit> Activiteiten { get; }
         public IEnumerable<Inschrijving> Inschrijvingen { get; }
         public IEnumerable<Aanwezigheid> Aanwezigheden { get; }
+        public IEnumerable<Oefening> Oefeningen { get; }
+        public IEnumerable<Raadpleging> Raadplegingen { get; }
+
 
 
 
@@ -32,7 +48,7 @@ namespace PROJ20_G20_DOTNET.Tests
             #region Leden
             Rob = new Lid("Rob", "De Putter", new DateTime(1999, 5, 11), "99.05.11-313.16",
                     "0476456851", "053833670", "Kerksken", "Boekentstraat", "115", "9451", "robdeputter@hotmail.com",
-                    "P@ssword1", "Aalst", "Man", "Belg", Graad.KYU6, Functie.BEHEERDER)
+                    "P@ssword1", "Aalst", "Man", "Belg", Graad.DAN5, Functie.BEHEERDER)
             { Id = lidId++ };
             Tim = new Lid("Tim", "Geldof", new DateTime(1997, 07, 17),
                    "97.07.17-001.23",
@@ -70,6 +86,29 @@ namespace PROJ20_G20_DOTNET.Tests
             Inschrijving3 = new Inschrijving(Tim, Act1.Formule, DateTime.Now);
 
             Inschrijvingen = new[] { Inschrijving1, Inschrijving2, Inschrijving3 };
+            #endregion
+
+            #region Oefeningen
+            int oefeningId = 1;
+            Oefening1 = new Oefening("Salto", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Een perfecte salto", DateTime.Now, Graad.KYU1, new Thema("Techniek")) { Id = oefeningId++};
+            Oefening2 = new Oefening("Blokken", "https://www.youtube.com/embed/dQw4w9WgXcQ", "", DateTime.Now, Graad.DAN5, new Thema("Defensief")) { Id = oefeningId++ };
+            Oefening3 = new Oefening("Vallen", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Test tekst", DateTime.Now, Graad.DAN4, new Thema("Techniek")) { Id = oefeningId++ };
+            Oefening4 = new Oefening("Aanvallen", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Test tekst", DateTime.Now, Graad.DAN1, new Thema("Offensief")) { Id = oefeningId++ };
+            Oefening5 = new Oefening("Verdedigend terugtrekken", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Test tekst", DateTime.Now, Graad.DAN2, new Thema("Defensief")) { Id = oefeningId++ };
+            Oefening6 = new Oefening("Stretchen", "https://www.youtube.com/embed/dQw4w9WgXcQ", "Test tekst", DateTime.Now, Graad.DAN2, new Thema("Algemeen")) { Id = oefeningId++ };
+
+            Oefeningen = new List<Oefening>() { Oefening1, Oefening2, Oefening3, Oefening4, Oefening5, Oefening6 };
+
+
+            #endregion
+
+            #region Raadplegingen
+            Oefn1Rob = new Raadpleging(Rob, Oefening1);
+            Oefn1Tim = new Raadpleging(Tim, Oefening2);
+            Oefn2Tim = new Raadpleging(Tim, Oefening1);
+            Oefn3Rob = new Raadpleging(Rob, Oefening3);
+            Oefn4Rob = new Raadpleging(Rob, Oefening4);
+            Raadplegingen = new List<Raadpleging>() { Oefn1Rob, Oefn1Tim, Oefn2Tim, Oefn3Rob, Oefn4Rob };
             #endregion
 
             Act1.AddInschrijving(Inschrijving1);
