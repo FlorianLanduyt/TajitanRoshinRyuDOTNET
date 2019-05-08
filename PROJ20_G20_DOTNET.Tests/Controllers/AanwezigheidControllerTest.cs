@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Moq;
 using PROJ20_G20_DOTNET.Controllers;
 using PROJ20_G20_DOTNET.Models.Domain;
+using PROJ20_G20_DOTNET.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using Xunit;
@@ -210,5 +211,42 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
             _aanwezigheidRepository.Verify(m => m.SaveChanges(), Times.Once());
         }
         #endregion
+
+        #region Testene VoegGastToe
+        [Fact]
+        public void VoegGastToe_GaatNaarOverzichtAanwezigheden()
+        {
+            int activiteitId = 1;
+            AddGastOfProeflidViewModel addGastOfProeflidViewModel = new AddGastOfProeflidViewModel()
+            { Voornaam = "Rob", Achternaam = "De Putter", Email = "robdeputter@hotmail.com", Gsm = "0476456851" };
+
+            _activiteitRepository.Setup(m => m.GetBy(activiteitId)).Returns(_dummyContext.Act1);
+
+            RedirectToActionResult actionResult = _controller.VoegGastToe(activiteitId, addGastOfProeflidViewModel) as RedirectToActionResult;
+
+            _lidRepository.Verify(m => m.SaveChanges(), Times.Once);
+            _inschrijvingRepository.Verify(m => m.SaveChanges(), Times.Once);
+            _activiteitInschrijvingRepository.Verify(m => m.SaveChanges(), Times.Once);
+            Assert.Equal("Aanwezigheden", actionResult?.ActionName);
+        }
+
+        [Fact]
+        public void VoegGastToe_ERROR_GaatNaarLijstVanAanwezigheden()
+        {
+            int activiteitId = 1;
+            AddGastOfProeflidViewModel addGastOfProeflidViewModel = new AddGastOfProeflidViewModel()
+            { Voornaam = "Rob", Achternaam = null, Email = "robdeputter@hotmail.com", Gsm = "0476456851" };
+
+            _activiteitRepository.Setup(m => m.GetBy(activiteitId)).Returns(_dummyContext.Act1);
+
+            ViewResult actionResult = _controller.VoegGastToe(activiteitId, addGastOfProeflidViewModel) as ViewResult;
+
+            _lidRepository.Verify(m => m.SaveChanges(), Times.Never);
+            _inschrijvingRepository.Verify(m => m.SaveChanges(), Times.Never);
+            _activiteitInschrijvingRepository.Verify(m => m.SaveChanges(), Times.Never);
+            Assert.Equal("Aanwezigheden", actionResult?.ViewName);
+        }
+        #endregion
+
     }
 }
