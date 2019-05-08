@@ -292,6 +292,19 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
             Assert.Equal(_dummyContext.Act1, ledenActiviteitViewModel.Activiteit);
             Assert.Equal(nietIngeschrevenLeden, ledenActiviteitViewModel.Leden);
         }
+
+        [Fact]
+        public void NietIngeschrevenLeden_SchrijftBestaandLidIn()
+        {
+            int lidId = 3; //Tybo
+            int activiteitId = 1; //Act1
+            _lidRepository.Setup(m => m.GetBy(lidId)).Returns(_dummyContext.Rob);
+            _activiteitRepository.Setup(m => m.GetBy(activiteitId)).Returns(_dummyContext.Act1);
+            RedirectToActionResult actionResult = _controller.NietIngeschrevenLeden(activiteitId, lidId) as RedirectToActionResult;
+            _inschrijvingRepository.Verify(m => m.SaveChanges(), Times.Once);
+            _activiteitInschrijvingRepository.Verify(m => m.SaveChanges(), Times.Once);
+            Assert.Equal("Aanwezigheden", actionResult?.ActionName);
+        }
         #endregion
 
 
