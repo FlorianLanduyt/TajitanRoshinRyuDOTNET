@@ -22,6 +22,12 @@ namespace PROJ20_G20_DOTNET.Tests
         public Oefening Oefening5 { get; }
         public Oefening Oefening6 { get; }
 
+        public Raadpleging Oefn1Rob { get; }
+        public Raadpleging Oefn2Tim{ get; }
+        public Raadpleging Oefn1Tim { get; }
+        public Raadpleging Oefn3Rob { get; }
+        public Raadpleging Oefn4Rob { get; }
+
         public Aanwezigheid TimAct2 { get; }
 
         public IEnumerable<Lid> Leden { get; }
@@ -29,8 +35,9 @@ namespace PROJ20_G20_DOTNET.Tests
         public IEnumerable<Inschrijving> Inschrijvingen { get; }
         public IEnumerable<Aanwezigheid> Aanwezigheden { get; }
         public IEnumerable<Oefening> Oefeningen { get; }
+        public IEnumerable<Raadpleging> Raadplegingen { get; }
 
-       
+
 
 
         public DummyJiuJitsuDbContext()
@@ -92,8 +99,17 @@ namespace PROJ20_G20_DOTNET.Tests
 
             Oefeningen = new List<Oefening>() { Oefening1, Oefening2, Oefening3, Oefening4, Oefening5, Oefening6 };
 
+
             #endregion
 
+            #region Raadplegingen
+            Oefn1Rob = new Raadpleging(Rob, Oefening1);
+            Oefn1Tim = new Raadpleging(Tim, Oefening2);
+            Oefn2Tim = new Raadpleging(Tim, Oefening1);
+            Oefn3Rob = new Raadpleging(Rob, Oefening3);
+            Oefn4Rob = new Raadpleging(Rob, Oefening4);
+            Raadplegingen = new List<Raadpleging>() { Oefn1Rob, Oefn1Tim, Oefn2Tim, Oefn3Rob, Oefn4Rob };
+            #endregion
 
             Act1.AddInschrijving(Inschrijving1);
             Act2.AddInschrijving(Inschrijving2);

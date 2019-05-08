@@ -127,7 +127,21 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
         }
         #endregion
 
-        
+        #region Testen RaadpleegOefening
+        [Fact]
+        public void RaadpleegOefening()
+        {
+            int oefeningId = 1; //Oefening1
+            int lidId = 1; //Rob
+            _oefeningRepository.Setup(m => m.GetById(oefeningId)).Returns(_dummyContext.Oefening1);
+            _raadpleegRepository.Setup(m => m.GetAll()).Returns(_dummyContext.Raadplegingen);
+            ViewResult viewResult = _controller.RaadpleegOefening(oefeningId, lidId) as ViewResult;
+
+            Assert.Equal(_dummyContext.Oefening1, viewResult?.Model);
+        }
+        #endregion
+
+
 
     }
 }

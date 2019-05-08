@@ -75,7 +75,7 @@ namespace PROJ20_G20_DOTNET.Controllers
 
         private void UpdateRaadpleging(int oefeningId, int lidId)
         {
-            Raadpleging raadpleging = _raadplegingRepository.GetAll().SingleOrDefault(r => r.OefeningId == oefeningId && r.LidId == lidId);
+            Raadpleging raadpleging = _raadplegingRepository.GetAll().SingleOrDefault(r => r.Oefening.Id == oefeningId && r.Lid.Id == lidId);
             if (raadpleging != null) {
                 raadpleging.AantalRaadplegingen++;
                 raadpleging.VoegRaadplegingsTijdstipToe();
