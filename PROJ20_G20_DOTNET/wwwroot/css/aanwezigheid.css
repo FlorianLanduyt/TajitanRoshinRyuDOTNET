@@ -1,14 +1,15 @@
 ﻿/* /////////////ALGEMEEN////////////// */
 
-    @font-face {
-        font-family: Lato;
-        src: url('../fonts/Lato/Lato-Regular.ttf');
-    }
+@font-face {
+    font-family: Lato;
+    src: url('../fonts/Lato/Lato-Regular.ttf');
+}
 
 
 * {
     margin: 0px;
     padding: 0px;
+    font-family: Lato;
 }
 
 body, html {
@@ -25,16 +26,118 @@ a {
     cursor: pointer;
 }
 
-.test {
-    padding-bottom: 10px;
-}
+
 
 /*////////////////INDEX////////////////*/
 
+
+
+forms {
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 100rem;
+}
+
+.centerForm {
+    width: 1000px;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.filters {
+    width: 100%;
+}
+
+.okKnop {
+    text-align: center;
+    color: white;
+    border: none;
+    font-size: 15px;
+    background-color: #996888;
+    color: black;
+    border-radius: 10px;
+    width: 70px;
+    color: white;
+    height: 40px;
+    background-size: 35px 35px;
+    outline-width: 0;
+    transition: ease 0.4s;
+}
+
+    .okKnop:hover {
+        transform: scale(0.96, 0.96);
+        background-color: #B6C8C0;
+        color: black;
+    }
+
+.inputLabel {
+    padding-top: 10px;
+    padding-left: 10px;
+    font-family: Lato;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.inp {
+    display: flex;
+    position: relative;
+    margin: auto;
+    width: 24%;
+    min-width: 100px;
+    max-width: 180px;
+    align-items: center;
+}
+
+    .inp .border {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        background: #996888;
+        transform: scaleX(0);
+        transform-origin: 0 0;
+        transition: all 0.35s ease;
+    }
+
+    .inp input {
+        -webkit-appearance: none;
+        width: 100%;
+        border: 0;
+        padding: 12px 0;
+        height: 48px;
+        font-size: 16px;
+        font-weight: 500;
+        border-bottom: 2px solid #B6C8C0;
+        background: none;
+        border-radius: 0;
+        color: black;
+        transition: all 0.15s ease;
+    }
+
+        .inp input:focus {
+            background-color: none;
+            outline: none;
+            border-bottom: #B6C8C0;
+        }
+
+        .inp input:hover {
+            background: rgba(34,50,84,0.03);
+        }
+
+        .inp input:focus + span + .border {
+            transform: scaleX(1);
+        }
+
+
 /*------ Tabel ---------*/
-
 /*Tabel zelf*/
-
 .limiter {
     width: 100%;
     margin: 0 auto;
@@ -87,6 +190,7 @@ a {
 
     .rij:not(.header):hover {
         background-color: #ececff;
+        /*background-color: ##B6C8C0; -----> voor als het standaard groen beter is */
         cursor: pointer;
     }
 
@@ -221,91 +325,6 @@ input {
         background-color: #B6C8C0;
     }
 
-.inp {
-    position: relative;
-    float: left;
-    margin: auto;
-    width: 24%;
-    min-width: 200px;
-    max-width: 280px;
-}
-
-    .inp .label {
-        position: absolute;
-        top: 16px;
-        left: 0;
-        font-size: 15px;
-        color: #9098a9;
-        font-weight: 500;
-        transform-origin: 0 0;
-        transition: all 0.3s ease;
-    }
-
-    .inp .border {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        height: 2px;
-        width: 100%;
-        background: #07f;
-        transform: scaleX(0);
-        transform-origin: 0 0;
-        transition: all 0.35s ease;
-    }
-
-    .inp input {
-        -webkit-appearance: none;
-        width: 100%;
-        border: 0;
-        padding: 12px 0;
-        height: 48px;
-        font-size: 16px;
-        font-weight: 500;
-        border-bottom: 2px solid #c8ccd4;
-        background: none;
-        border-radius: 0;
-        color: black;
-        transition: all 0.15s ease;
-    }
-
-        .inp input:focus {
-            background-color: none;
-            outline: none;
-            border-bottom: #B6C8C0;
-        }
-
-            .inp input:focus + span {
-                transform: translateY(-26px) scale(0.75);
-            }
-
-            .inp input::selection + span {
-                transform: translateY(-26px) scale(0.75);
-            }
-
-        .inp input:hover {
-            background: rgba(34,50,84,0.03);
-        }
-
-        .inp input:focus + span + .border {
-            transform: scaleX(1);
-        }
-
-input[type="date"]:before {
-    content: attr(placeholder) !important;
-    color: #aaa;
-    margin-right: 0.5em;
-}
-
-input[type="date"]:focus:before,
-input[type="date"]:valid:before {
-    content: "";
-}
-
-forms {
-    width: 100%;
-    margin: 0 auto;
-    padding-bottom: 100rem;
-}
 
 
 /*------- Aanwezigheidkaart ---------*/
@@ -431,8 +450,6 @@ forms {
         color: black;
     }
 
-#voegGastToe {
-}
 
 .ongewoonLidForm {
     margin-top: -10px;
@@ -472,7 +489,3 @@ forms {
 .aanwezigTrue .status {
     color: #A5D0A8;
 }
-
-
-
-

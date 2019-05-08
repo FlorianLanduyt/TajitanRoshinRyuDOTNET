@@ -5,65 +5,68 @@
     ViewData["Title"] = "Aanwezigheden";
 }
 
-<div>
-    <h2>Activiteiten</h2>
+<div class="container">
+    <h2 class="titleAanwezigheden">Kies een activiteit om de <strong class="vetKleur">@ViewData["Title"]</strong> te zien</h2>
     <hr />
-    <div class="forms">
-        <form method="post" class="test">
+</div>
 
-            <label for="BeginDatum" class="inp">
-                
-                <input type="date" id="inp" placeholder="Begindatum">
+
+<div class="forms">
+    <div class="centerForm">
+        <form method="post" class="centerForm">
+            <label class="inputLabel">Naam: </label>
+            <div for="Naam" class="inp">
+                <input type="text" name="Naam" id="naam" placeholder="">
                 <span class="label"></span>
                 <span class="border"></span>
-            </label>
-
-            <label for="BeginDatum" class="inp">
-                <input type="date" id="inp" placeholder="Einddatum">
+            </div>
+            <label class="inputLabel">Begindatum:</label>
+            <div for="BeginDatum" class="inp">
+                <input type="date" name="BeginDatum" id="BeginDatum" placeholder="Begindatum">
                 <span class="label"></span>
                 <span class="border"></span>
-            </label>
-
-            <label for="BeginDatum" class="inp">
-               
-                <input type="text" id="inp" placeholder="Naam">
+            </div>
+            <label class="inputLabel">Einddatum:</label>
+            <div for="Einddatum" class="inp">
+                <input type="date" name="EindDatum" id="EindDatum" placeholder="Einddatum">
                 <span class="label"></span>
                 <span class="border"></span>
-            </label>
+            </div>
 
+            @*  <label for="BeginDatum" class="control-label">Begindatum</label>
+        <input type="date" name="BeginDatum" id="BeginDatum" />
 
-            @*<label for="BeginDatum" class="control-label">Begindatum</label>
-        <input type="date" name="BeginDatum" id="BeginDatum" />*@
-
-            @*<label for="EindDatum" class="control-label">Einddatum</label>
+        <label for="EindDatum" class="control-label">Einddatum</label>
         <input type="date" name="EindDatum" id="EindDatum" />
+
         <label for="Naam" class="control-label">Naam</label>
         <input type="text" name="Naam" id="Naam" />*@
-            <button class="btn btn-primary" type="submit" asp-action="Index">
-                Filter
+
+            <button class="okKnop" type="submit" asp-action="Index">
+                Zoek
             </button>
         </form>
     </div>
-    <div class="limiter">
-            <div class="tabelWrap">
-                <table class="tabel">
-                    <tr class="rij header">
-                        <th class="cell">Naam activiteit</th>
-                        <th class="cell">Datum</th>
-                        <th class="cell">Tijdstip</th>
-                        <th class="cell">Formule</th>
-                    </tr>
-                    @foreach (var Activiteit in Model) {
-                        <tr onclick="location.href = '@(Url.Action("Aanwezigheden", "Aanwezigheid", new { Id = Activiteit.Id }))'" class="rij">
-                            <td class="cell">@Activiteit.Naam</td>
-                            <td class="cell">@Activiteit.BeginDatum.ToShortDateString()</td>
-                            <td class="cell">@Activiteit.BeginDatum.ToShortTimeString()</td>
-                            <td class="cell">@Activiteit.Formule</td>
+</div>
+<div class="limiter">
+    <div class="tabelWrap">
+        <table class="tabel">
+            <tr class="rij header">
+                <th class="cell">Naam activiteit</th>
+                <th class="cell">Datum</th>
+                <th class="cell">Tijdstip</th>
+                <th class="cell">Formule</th>
+            </tr>
+            @foreach (var Activiteit in Model) {
+                <tr onclick="location.href = '@(Url.Action("Aanwezigheden", "Aanwezigheid", new { Id = Activiteit.Id }))'" class="rij">
+                    <td class="cell">@Activiteit.Naam</td>
+                    <td class="cell">@Activiteit.BeginDatum.ToShortDateString()</td>
+                    <td class="cell">@Activiteit.BeginDatum.ToShortTimeString()</td>
+                    <td class="cell">@Activiteit.Formule</td>
 
-                        </tr>
-                    }
-                </table>
-            </div>
+                </tr>
+            }
+        </table>
     </div>
 </div>
 
