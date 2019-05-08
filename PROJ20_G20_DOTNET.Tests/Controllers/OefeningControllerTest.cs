@@ -112,5 +112,22 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
         }
         #endregion
 
+        #region Testen ToonOefeningenLid
+        [Fact]
+        public void ToonOefeningLid_GeeftOverzichtVanOefeningen()
+        {
+            int lidId = 1; //Rob zit in de hoogste graad ==> hij kan alle oefeningen zien
+            _lidRepository.Setup(m => m.GetBy(lidId)).Returns(_dummyContext.Rob);
+            _oefeningRepository.Setup(m => m.GetAll()).Returns(_dummyContext.Oefeningen);
+
+            ViewResult viewResult = _controller.ToonOefeningenLid(lidId) as ViewResult;
+            IList<Oefening> oefeningenViewResult = viewResult?.Model as IList<Oefening>;
+            IList<Oefening> dummyOefeningen = _dummyContext.Oefeningen as IList<Oefening>;
+            Assert.Equal(dummyOefeningen.Count, oefeningenViewResult.Count);
+        }
+        #endregion
+
+        
+
     }
 }
