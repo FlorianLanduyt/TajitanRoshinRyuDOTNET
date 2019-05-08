@@ -4,107 +4,168 @@
     ViewData["Title"] = "Wijzigen";
 }
 
-<div>
-    <h2>Wijzigen @Model.Voornaam @Model.Achternaam</h2>
+<div class="container">
+    <h2 class="titleAanwezigheden">Wijzigen van <strong class="vetKleur">@Model.Voornaam @Model.Achternaam</strong></h2>
     <hr />
+</div>
+
+<div class="wijzigPagina">
     <form method="post">
-        <div class="col-lg-6">
-            <div class="form-group">
-                <label asp-for="Voornaam"></label>
-                <input asp-for="Voornaam" class="form-control" />
-                <span asp-validation-for="Voornaam" class="text text-danger"></span>
+        <div class="tussenTitelContainer">
+            <h4>Persoonlijke informatie</h4>
+        </div>
+        <div class="editContainer">
+            <div class="deelContainer">
+                <div class="form-group">
+                    <label asp-for="Voornaam" class="editLabel"></label>
+                    <input asp-for="Voornaam" class="editInput" />
+                    <span asp-validation-for="Voornaam" class="text text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RijksregisterNummer" class="editLabel"></label>
+                    <input asp-for="RijksregisterNummer" class="editInput" />
+                    <span asp-validation-for="RijksregisterNummer" class="text text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="GeboortePlaats" class="editLabel"></label>
+                    <input asp-for="GeboortePlaats" class="editInput" />
+                    <span asp-validation-for="GeboortePlaats" class="text text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="GeboorteDatum"></label>
-                <input asp-for="GeboorteDatum" class="form-control" />
-                <span asp-validation-for="GeboorteDatum" class="text text-danger"></span>
+            <div class="deelContainer">
+                <div class="form-group">
+                    <label asp-for="Achternaam" class="editLabel"></label>
+                    <input asp-for="Achternaam" class="editInput" />
+                    <span asp-validation-for="Achternaam" class="text text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Geslacht" class="editLabel"></label>
+                    <input asp-for="Geslacht" class="editInput" />
+                    <span asp-validation-for="Geslacht" class="text text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Beroep" class="editLabel"></label>
+                    <input asp-for="Beroep" class="editInput" />
+                    <span asp-validation-for="Beroep" class="text text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="RijksregisterNummer"></label>
-                <input asp-for="RijksregisterNummer" class="form-control" />
-                <span asp-validation-for="RijksregisterNummer" class="text text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="GsmNr"></label>
-                <input asp-for="GsmNr" class="form-control" />
-                <span asp-validation-for="GsmNr" class="text text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmailMoeder"></label>
-                <input asp-for="EmailMoeder" class="form-control" />
-                <span asp-validation-for="EmailMoeder" class="text text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Straat"></label>
-                <input asp-for="Straat" class="form-control" />
-                <span asp-validation-for="Straat" class="text text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HuisNr"></label>
-                <input asp-for="HuisNr" class="form-control" />
-                <span asp-validation-for="HuisNr" class="text text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Bus"></label>
-                <input asp-for="Bus" class="form-control" />
-                <span asp-validation-for="Bus" class="text text-danger"></span>
+
+            <div class="deelContainer">
+                <div class="form-group">
+                    <label asp-for="GeboorteDatum" class="editLabel"></label>
+                    <input asp-for="GeboorteDatum" class="editInput" />
+                    <span asp-validation-for="GeboorteDatum" class="text text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Nationaliteit" class="editLabel"></label>
+                    <input asp-for="Nationaliteit" class="editInput" />
+                    <span asp-validation-for="Nationaliteit" class="text text-danger"></span>
+                </div>
             </div>
         </div>
-        <div class="col-lg-6">
-            <div class="form-group">
-                <label asp-for="Achternaam"></label>
-                <input asp-for="Achternaam" class="form-control" />
-                <span asp-validation-for="Achternaam" class="text text-danger"></span>
+        <div class="tussenTitelContainer">
+            <h4>Adres</h4>
+        </div>
+        <div class="editContainer">
+            <div class="deelContainer">
+                <div class="form-group">
+                    <label asp-for="Straat" class="editLabel"></label>
+                    <input asp-for="Straat" class="editInput" />
+                    <span asp-validation-for="Straat" class="text text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PostCode" class="editLabel"></label>
+                    <input asp-for="PostCode" class="editInput" />
+                    <span asp-validation-for="PostCode" class="text text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Geslacht"></label>
-                <input asp-for="Geslacht" class="form-control" />
-                <span asp-validation-for="Geslacht" class="text text-danger"></span>
+            <div class="deelContainer">
+                <div class="form-group">
+                    <label asp-for="HuisNr"class="editLabel"></label>
+                    <input asp-for="HuisNr" class="editInput" />
+                    <span asp-validation-for="HuisNr" class="text text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Stad"class="editLabel"></label>
+                    <input asp-for="Stad" class="editInput" />
+                    <span asp-validation-for="Stad" class="text text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Nationaliteit"></label>
-                <input asp-for="Nationaliteit" class="form-control" />
-                <span asp-validation-for="Nationaliteit" class="text text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="GeboortePlaats"></label>
-                <input asp-for="GeboortePlaats" class="form-control" />
-                <span asp-validation-for="GeboortePlaats" class="text text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="VasteTelefoonNr"></label>
-                <input asp-for="VasteTelefoonNr" class="form-control" />
-                <span asp-validation-for="VasteTelefoonNr" class="text text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmailVader"></label>
-                <input asp-for="EmailVader" class="form-control" />
-                <span asp-validation-for="EmailVader" class="text text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Stad"></label>
-                <input asp-for="Stad" class="form-control" />
-                <span asp-validation-for="Stad" class="text text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PostCode"></label>
-                <input asp-for="PostCode" class="form-control" />
-                <span asp-validation-for="PostCode" class="text text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Beroep"></label>
-                <input asp-for="Beroep" class="form-control" />
-                <span asp-validation-for="Beroep" class="text text-danger"></span>
+            <div class="deelContainer">
+                <div class="form-group">
+                    <label asp-for="Bus"class="editLabel"></label>
+                    <input asp-for="Bus" class="editInput" />
+                    <span asp-validation-for="Bus" class="text text-danger"></span>
+                </div>
+
             </div>
         </div>
-        <div>
-            <button type="submit" class="btn btn-primary">Opslaan</button>
-            <button asp-action="Index" class="btn btn-default">Annuleren</button>
+        <div class="tussenTitelContainer">
+            <h4>Contact gegevens</h4>
+        </div>
+        <div class="editContainer">
+            <div class="deelContainer">
+                <div class="form-group">
+                    <label asp-for="Email" class="editLabel"></label>
+                    <input asp-for="Email" class="editInput" />
+                    <span asp-validation-for="Email" class="text text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="GsmNr" class="editLabel"></label>
+                    <input asp-for="GsmNr" class="editInput" />
+                    <span asp-validation-for="GsmNr" class="text text-danger"></span>
+                </div>
+                
+            </div>
+            <div class="deelContainer">
+                <div class="form-group">
+                    <label asp-for="EmailMoeder" class="editLabel"></label>
+                    <input asp-for="EmailMoeder" class="editInput" />
+                    <span asp-validation-for="EmailMoeder" class="text text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="VasteTelefoonNr" class="editLabel"></label>
+                    <input asp-for="VasteTelefoonNr" class="editInput" />
+                    <span asp-validation-for="VasteTelefoonNr" class="text text-danger"></span>
+                </div>
+            </div>
+            <div class="deelContainer">
+                <div class="form-group">
+                    <label asp-for="EmailVader" class="editLabel"></label>
+                    <input asp-for="EmailVader" class="editInput" />
+                    <span asp-validation-for="EmailVader" class="text text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="editKnoppen">
+                <button asp-action="Index" class="submitKnop annuleren">Annuleren</button>
+                <button type="submit" class="submitKnop opslaan">Opslaan</button>
         </div>
     </form>
+
 </div>
+
+@*
+    <div>
+        <h2>Wijzigen @Model.Voornaam @Model.Achternaam</h2>
+        <hr />
+        <form method="post">
+            <div class="col-lg-6">
+
+
+
+
+
+
+            </div>
+            <div class="col-lg-6">
+
+
+
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Opslaan</button>
+                <button asp-action="Index" class="btn btn-default">Annuleren</button>
+            </div>
+        </form>
+    </div>*@
