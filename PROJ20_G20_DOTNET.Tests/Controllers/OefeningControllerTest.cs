@@ -140,8 +140,5 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
             Assert.Equal(_dummyContext.Oefening1, viewResult?.Model);
         }
         #endregion
-
-
-
     }
 }
