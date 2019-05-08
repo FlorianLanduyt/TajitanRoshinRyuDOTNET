@@ -89,7 +89,8 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
             Assert.Equal("Leden", actionResult?.ActionName);
         }
 
-        [Fact] async Task BepaalAdminLid_GaatNaarToonOefeningLid()
+        [Fact]
+        public async Task BepaalAdminLid_GaatNaarToonOefeningLid()
         {
             _userManager.Setup(m => m.GetUserAsync(user)).ReturnsAsync(wrongIdentityUser); // geen BEHEERDER  of TRAINER
             _userManager.Setup(m => m.FindByEmailAsync(_dummyContext.Tybo.Email)).ReturnsAsync(wrongIdentityUser); // geen BEHEERDER  of TRAINER
@@ -97,6 +98,17 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
 
             RedirectToActionResult actionResult = await _controller.BepaalAdminLid() as RedirectToActionResult;
             Assert.Equal("ToonOefeningenLid", actionResult?.ActionName);
+        }
+        #endregion
+
+        #region Testen Leden
+        [Fact]
+        public void Leden_GeeftOverzichtVanLeden()
+        {
+            _lidRepository.Setup(m => m.GetAll()).Returns(_dummyContext.Leden);
+            ViewResult viewResult = _controller.Leden() as ViewResult;
+
+            Assert.Equal(_dummyContext.Leden, viewResult?.Model);
         }
         #endregion
 
