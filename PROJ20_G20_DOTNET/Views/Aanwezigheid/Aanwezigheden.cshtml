@@ -17,41 +17,11 @@
         <h2 class="titleAanwezigheden">Wie is er aanwezig voor <strong class="vetKleur">@Model.Naam?</strong></h2>
         <hr />
     </div>
-    @*<div>
-            <form method="post">
-                <div class="lab">
-                    <label for="Naam inp" class="inp">
-                        <input type="text" name="Naam" id="Naam id" />
-                        <span class="label">Naam</span>
-                        <span class="border"></span>
-                    </label>
-                    <button class="btn btn-primary" type="submit" asp-action="Aanwezigheden">
-                        Filter
-                    </button>
-                </div>
-            </form>
-        </div>*@
 
-    @*<div class="volledigeForm">
-            <div>
-                <label for="BeginDatum" class="inp">
-                    <input type="text" id="inp" placeholder="&nbsp;">
-                    <span class="label">Naam</span>
-                    <span class="border"></span>
-                </label>
-            </div>
-            <div>
-                <button class="filterKnop" type="submit" asp-action="Index">
-                    Filter
-                </button>
-            </div>
-        </div>*@
 
     <div class="left-container">
         <div class="aanwezighedenWrap">
-
             <div class="zoek">
-
                 <div class="volledigeForm">
                     <div class="body">
                         <div class="wrapper">
@@ -65,7 +35,6 @@
 
 
             </div>
-
         </div>
         <div class="row-flex">
             @foreach (var ActiviteitInschrijving in Model.ActiviteitInschrijvingen) {
@@ -107,33 +76,39 @@
 
 <div class="container">
     <button class="gastLidKnop" onclick="toggleShow()">Gastlid</button>
+
     <div id="voegGastToe" style="display: none;">
-        <div class="container">
+
             <form class="ongewoonLidForm" method="post" asp-action="VoegGastToe" asp-route-id="@Model.Id">
-                <div class="ongewoonLidVeld">
-                    <label for="Voornaam" class="gastlid-label">Voornaam</label>
-                    <input class="gastlid-input" type="text" name="Voornaam" id="Voornaam" />
+                <div class="gastLidFlexRij">
+                    <div class="ongewoonLidVeld flexItem">
+                        <label for="Voornaam" class="editLabel">Voornaam</label>
+                        <input class="editInput" type="text" name="Voornaam" id="Voornaam" />
+                        
+                    </div>
+                    <div class="ongewoonLidVeld flexItem">
+                        <label for="Achternaam" class="editLabel">Achternaam</label>
+                        <input class="editInput" type="text" name="Achternaam" id="Achternaam" />
+                    </div>
+                    <div class="ongewoonLidVeld flexItem">
+                        <label for="Email" class="editLabel">E-mail</label>
+                        <input class="editInput" type="text" name="Email" id="Email" />
+                    </div>
+                    <div class="ongewoonLidVeld flexItem">
+                        <label for="Gsm" class="editLabel">Gsm nummer</label>
+                        <input class="editInput" type="text" name="Gsm" id="Gsm" />
+                    </div>
+
                 </div>
-                <div class="ongewoonLidVeld">
-                    <label for="Achternaam" class="gastlid-label">Achternaam</label>
-                    <input class="gastlid-input" type="text" name="Achternaam" id="Achternaam" />
-                </div>
-                <div class="ongewoonLidVeld">
-                    <label for="Email" class="gastlid-label">E-mail</label>
-                    <input class="gastlid-input" type="text" name="Email" id="Email" />
-                </div>
-                <div class="ongewoonLidVeld">
-                    <label for="Gsm" class="gastlid-label">Gsm nummer</label>
-                    <input class="gastlid-input" type="text" name="Gsm" id="Gsm" />
-                </div>
-                <div>
-                    <button class="btn btn-primary" type="submit">
-                        Voeg Gast Toe
+                <div class="gastKnopCenter">
+                    <button class="gastKnop" type="submit">
+                        Voeg Toe
                     </button>
                 </div>
             </form>
-        </div>
+        
     </div>
+
 
     <form method="get" class="geenlid">
         <button type="submit" class="gastLidKnop" asp-action="NietIngeschrevenLeden" asp-route-id="@Model.Id">Nog geen lid</button>

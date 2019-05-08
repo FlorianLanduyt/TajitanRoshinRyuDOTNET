@@ -4,6 +4,13 @@
     ViewData["Title"] = "Gegevens";
 }
 
+@if (TempData["Success"] != null) {
+    <br />
+    <p class="alert alert-success">@TempData["Success"]</p>
+} else if (TempData["Error"] != null) {
+    <br />
+    <p class="alert alert-danger">@TempData["Error"]</p>
+}
 
 <div class="container">
     <h2 class="titleAanwezigheden"><strong class="vetKleur">@Model.Voornaam @Model.Achternaam</strong></h2>
@@ -56,20 +63,13 @@
 
 
 @*<div>
-        @if (TempData["Success"] != null) {
-            <br />
-            <p class="alert alert-success">@TempData["Success"]</p>
-        }
-        else if (TempData["Error"] != null) {
-            <br />
-            <p class="alert alert-danger">@TempData["Error"]</p>
-        }
+
         <h2>@Model.Voornaam @Model.Achternaam</h2>
         <hr />
         <div>
             <h3>@Model.Functie | @Model.Graad | @Model.PuntenAantal punten</h3>
             <div>
-             
+
         </div>
     </div>*@
 
