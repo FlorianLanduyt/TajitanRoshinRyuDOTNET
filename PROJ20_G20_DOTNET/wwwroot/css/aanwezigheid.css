@@ -1,9 +1,9 @@
 ﻿/* /////////////ALGEMEEN////////////// */
 
-@font-face {
-    font-family: Lato;
-    src: url('../fonts/Lato/Lato-Regular.ttf');
-}
+    @font-face {
+        font-family: Lato;
+        src: url('../fonts/Lato/Lato-Regular.ttf');
+    }
 
 
 * {
@@ -142,7 +142,6 @@ a {
     padding-bottom: 0px;
     font-family: Lato;
     font-weight: 900;
-    
 }
 
 .vetKleur {
@@ -279,6 +278,10 @@ input {
                 transform: translateY(-26px) scale(0.75);
             }
 
+            .inp input::selection + span {
+                transform: translateY(-26px) scale(0.75);
+            }
+
         .inp input:hover {
             background: rgba(34,50,84,0.03);
         }
@@ -286,6 +289,23 @@ input {
         .inp input:focus + span + .border {
             transform: scaleX(1);
         }
+
+input[type="date"]:before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-right: 0.5em;
+}
+
+input[type="date"]:focus:before,
+input[type="date"]:valid:before {
+    content: "";
+}
+
+forms {
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 100rem;
+}
 
 
 /*------- Aanwezigheidkaart ---------*/
@@ -332,7 +352,7 @@ input {
 
         .aanwezigKaart.aanwezigFalse:hover {
             border-top: 0.5rem solid #923030;
-            color: #923030;
+            /*color: #923030;*/
         }
 
     .aanwezigKaart.aanwezigTrue {
@@ -341,7 +361,7 @@ input {
 
         .aanwezigKaart.aanwezigTrue:hover {
             border-top: 0.5rem solid #6A856B;
-            color: #6A856B;
+            /*color: #6A856B;*/
         }
 
 .aanwezigFalse {
@@ -353,7 +373,8 @@ input {
 }
 
 .aanwezigLidName {
-    font-size: 1.5em;
+    font-weight: 900;
+    font-size: 2.1rem;
 }
 
 /*Alles in de kaart*/
@@ -411,7 +432,6 @@ input {
     }
 
 #voegGastToe {
-    
 }
 
 .ongewoonLidForm {
@@ -437,15 +457,22 @@ input {
     overflow: hidden;
 }
 
-.knoppen {
-}
-
-.zoek {
-}
-
 .gastlid {
     padding-left: 10px
 }
 
-.geenLid {
+.status {
+    font-weight: 900;
 }
+
+.aanwezigFalse .status {
+    color: #923030;
+}
+
+.aanwezigTrue .status {
+    color: #A5D0A8;
+}
+
+
+
+

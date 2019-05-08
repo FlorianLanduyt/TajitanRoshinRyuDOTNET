@@ -80,6 +80,7 @@
                                 asp-route-id="@ActiviteitInschrijving.Activiteit.Id"
                                 asp-route-id2="@ActiviteitInschrijving.Inschrijving.Lid.Id">
                             <p class="aanwezigLidName">@ActiviteitInschrijving.Inschrijving.Lid.Achternaam @ActiviteitInschrijving.Inschrijving.Lid.Voornaam</p>
+                            <p class="status">Afwezig</p>
                         </button>
                     </form>
 
@@ -90,10 +91,11 @@
                                     <img class="foto" src="~/images/@(@ActiviteitInschrijving.Inschrijving.Lid.Geslacht.ToString()) .png" />
                                 </a>
                             </div>*@
-                        <button class="knopKaart" type="submit" asp-action="VerwijderActiviteit"
+                        <button class="knopKaart" type="submit" asp-action="VerwijderAanwezigheid"
                                 asp-route-id="@ActiviteitInschrijving.Activiteit.Id"
                                 asp-route-id2="@ActiviteitInschrijving.Inschrijving.Lid.Id">
                             <p class="aanwezigLidName">@ActiviteitInschrijving.Inschrijving.Lid.Achternaam @ActiviteitInschrijving.Inschrijving.Lid.Voornaam</p>
+                            <p class="status">Aanwezig</p>
                         </button>
                     </form>
                 }
@@ -104,7 +106,7 @@
 <hr />
 
 <div class="container">
-        <button class="gastLidKnop" onclick="toggleShow()">Gastlid</button>
+    <button class="gastLidKnop" onclick="toggleShow()">Gastlid</button>
     <div id="voegGastToe" style="display: none;">
         <div class="container">
             <form class="ongewoonLidForm" method="post" asp-action="VoegGastToe" asp-route-id="@Model.Id">

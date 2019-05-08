@@ -1,0 +1,115 @@
+﻿@font-face {
+    font-family: Lato;
+    src: url('../fonts/Lato/Lato-Regular.ttf');
+}
+
+
+body {
+    font-family: Lato;
+}
+
+.loginPagina {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.loginContainer {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 15px;
+    align-items: center;
+}
+
+.loginVlak {
+    width: 500px;
+    background: #F4F4F4;
+    border-radius: 10px;
+    position: relative;
+    padding: 70px 110px 33px 110px;
+}
+
+.loginForm {
+    width: 100%;
+}
+
+.loginTitel {
+    width: 100%;
+    display: block;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.loginLabel {
+    padding: 30px 0 5px 0;
+    font-weight: 400;
+}
+
+.loginInput {
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    line-height: 1.2;
+    height: 50px;
+    padding: 0 20px;
+    border-radius: 5px;
+    border: 1px solid #e6e6e6;
+    outline: none;
+}
+
+.knopContainer {
+    width: 100%;
+    display:flex;
+    flex-wrap: wrap;
+    margin-top:20px;
+}
+
+.loginButton {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #996888;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-size: 17px;
+    line-height: 1.2;
+    transition: 0.3s all ease;
+}
+
+    .loginButton:hover {
+        background-color: #B6C8C0;
+        color: black;
+        transform: scale(0.98,0.98)
+    }
+
+.loginCheckbox {
+    display: block;
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    -webkit-appearance: none;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #AEAEAE;
+}
+
+    .loginCheckbox:checked {
+        outline: none;
+        background-color: rgb(232, 240, 254) !important;
+    }
+
+.validatie {
+    color: #923030;
+    padding-left: 3px;
+}
+
+
+
+

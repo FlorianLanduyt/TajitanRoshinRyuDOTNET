@@ -4,7 +4,7 @@
 }
 
 body {
-
+    font-family: Lato;
 }
 
 .pGraad {
@@ -29,9 +29,6 @@ body {
 }
 
 
-
-center {
-}
 
 .kaartLid {
     text-align: center;
