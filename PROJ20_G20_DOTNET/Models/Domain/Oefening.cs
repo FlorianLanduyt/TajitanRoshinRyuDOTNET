@@ -6,7 +6,7 @@ namespace PROJ20_G20_DOTNET.Models.Domain {
         #region Fields
         // fields voor makkelijk aanpassing setters
         private readonly int _maxLengteTitel = 30;
-        private readonly int _maxLengteTekst = 200;
+        private readonly int _maxLengteTekst = 1000;
         private readonly int _maxLengteUrl = 100;
 
         private string _titel;
