@@ -42,19 +42,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand" style="color:black;">Taijitan Roshin Ryu</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand" style="color:white;">Taijitan Roshin Ryu</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @if ((await AuthorizationService.AuthorizeAsync(User, "Beheerder")).Succeeded ||
                         (await AuthorizationService.AuthorizeAsync(User,"Trainer")).Succeeded) {
-                        <li><a asp-area="" asp-controller="Oefening" asp-action="BepaalAdminLid" style="color:black;">Lesmateriaal</a></li>
-                        <li><a asp-area="" asp-controller="Aanwezigheid" asp-action="Index" style="color:black;">Aanwezigheid</a></li>
+                        <li><a asp-area="" asp-controller="Oefening" asp-action="BepaalAdminLid" style="color:white;">Lesmateriaal</a></li>
+                        <li><a asp-area="" asp-controller="Aanwezigheid" asp-action="Index" style="color:white;">Aanwezigheid</a></li>
                     }
                     else if ((await AuthorizationService.AuthorizeAsync(User, "Lid")).Succeeded ||
                     (await AuthorizationService.AuthorizeAsync(User, "Proeflid")).Succeeded ||
                     (await AuthorizationService.AuthorizeAsync(User, "Gast")).Succeeded) {
-                        <li><a asp-area="" asp-controller="Oefening" asp-action="BepaalAdminLid" style="color:black;">Lesmateriaal</a></li>
+                        <li><a asp-area="" asp-controller="Oefening" asp-action="BepaalAdminLid" style="color:white;">Lesmateriaal</a></li>
                     }
                 </ul>
                 <partial name="_LoginPartial" />
