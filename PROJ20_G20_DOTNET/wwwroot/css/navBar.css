@@ -1,0 +1,34 @@
+﻿body {
+}
+
+.cutomNavbarContainer {
+    position: fixed;
+    top: 0px;
+    width: 105%;
+    height: 5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin: 0px auto;
+    background: #B6C8C0;
+}
+
+.customNavbar {
+    position: relative;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    max-width: 90%;
+    height: 100%;
+    margin: 0px auto;
+}
+
+.kleurNav {
+    background-color: #996888;
+    color: black;
+    border-bottom-color: #996888;
+}
+
+.zwart:link{
+    color: black;
+
+}

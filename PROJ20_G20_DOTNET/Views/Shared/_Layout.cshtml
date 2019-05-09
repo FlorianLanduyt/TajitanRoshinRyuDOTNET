@@ -22,6 +22,7 @@
         <link href="~/css/login.css" rel="stylesheet" />
         <link href="~/css/raadplegenOefening.css" rel="stylesheet" />
         <link href="~/css/indexLid.css" rel="stylesheet" />
+        <link href="~/css/navBar.css" rel="stylesheet" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -47,7 +48,7 @@
                 <ul class="nav navbar-nav">
                     @if ((await AuthorizationService.AuthorizeAsync(User, "Beheerder")).Succeeded ||
                         (await AuthorizationService.AuthorizeAsync(User,"Trainer")).Succeeded) {
-                        <li><a asp-area="" asp-controller="Oefening" asp-action="BepaalAdminLid">Lesmateriaal</a></li>
+                        <li><a asp-area="" asp-controller="Oefening" asp-action="BepaalAdminLid" class="zwart">Lesmateriaal</a></li>
                         <li><a asp-area="" asp-controller="Aanwezigheid" asp-action="Index">Aanwezigheid</a></li>
                     }
                     else if ((await AuthorizationService.AuthorizeAsync(User, "Lid")).Succeeded ||
@@ -60,6 +61,12 @@
             </div>
         </div>
     </nav>
+
+    @*<div class="cutomNavbarContainer">
+        <div class="customNavbar">
+
+        </div>
+    </div>*@
 
     <partial name="_CookieConsentPartial" />
 
