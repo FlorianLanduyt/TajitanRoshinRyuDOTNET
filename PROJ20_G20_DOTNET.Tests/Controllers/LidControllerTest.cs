@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Moq;
@@ -59,12 +60,12 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
             wrongIdentityUser = new IdentityUser() { Email = _dummyContext.Tim.Email };
 
 
-            _controller = new LidController(_lidRepository.Object, _userManager.Object, _signInManager.Object)
-            {
-                ControllerContext = new ControllerContext()
-                {
+            _controller = new LidController(_lidRepository.Object, _userManager.Object, _signInManager.Object) {
+                ControllerContext = new ControllerContext() {
                     HttpContext = new DefaultHttpContext() { User = user }
-                }
+                },
+                TempData = new Mock<ITempDataDictionary>().Object
+
             };
         }
 
@@ -94,6 +95,7 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
             IActionResult actionResult = await _controller.Edit(1);
             LidEditViewModel lidEditViewModel = (actionResult as ViewResult)?.Model as LidEditViewModel;
             Assert.Equal(_dummyContext.Rob.Email, lidEditViewModel.Email);
+            
         }
         #endregion
 
@@ -105,8 +107,9 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
             _userManager.Setup(m => m.GetUserAsync(user)).ReturnsAsync(identityUser);
             _userManager.Setup(m => m.FindByEmailAsync(_dummyContext.Rob.Email)).ReturnsAsync(identityUser);
             RedirectToActionResult redirectToActionResult = _controller.Edit(1, new LidEditViewModel(_dummyContext.Rob) { Achternaam = "De Puttah" }) as RedirectToActionResult;
+            Assert.IsType<RedirectToActionResult>(redirectToActionResult);
             Assert.Equal("De Puttah", _dummyContext.Rob.Achternaam);
-            //Assert.Equal("Index", redirectToActionResult?.ActionName);
+            Assert.Equal("Index", redirectToActionResult?.ActionName);
             _lidRepository.Verify(m => m.SaveChanges(), Times.Once);
         }
         #endregion

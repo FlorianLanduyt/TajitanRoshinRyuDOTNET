@@ -23,12 +23,15 @@
 }
 
 .kleurNav {
-    background-color: #996888;
+    background-color: #B6C8C0;
     color: black;
-    border-bottom-color: #996888;
+    border-bottom-color: #B6C8C0;
 }
 
 .zwart:link{
     color: black;
+}
 
+a {
+    color: black;
 }

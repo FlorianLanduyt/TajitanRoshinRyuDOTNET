@@ -20,7 +20,7 @@
                         <div class="tekstContainer">
                             <p class="oGraad">@Oefening.Graad</p>
                             <h2 class="oTitel">@Oefening.Titel</h2>
-                            <p class="oBeschrijving">@Oefening.Tekst</p>
+                            <p class="oBeschrijving">@Oefening.Tekst.Substring(0,230) ...</p>
                             <a asp-action="RaadpleegOefening" asp-route-id="@Oefening.Id" asp-route-id2="@ViewData["LidId"]" class="oFilmpje">Bekijk het filmpje</a>
                         </div>
                     </div>

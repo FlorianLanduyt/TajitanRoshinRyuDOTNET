@@ -59,6 +59,7 @@ namespace PROJ20_G20_DOTNET.Controllers
                 .ThenBy(oef => oef.Thema.Naam)
                 .ThenBy(oef => oef.Titel)
                 .ToList();
+
             ViewData["LidNaam"] = $"{lid.Voornaam} {lid.Achternaam}";
             ViewData["LidId"] = id;
             return View(oefeningen);
