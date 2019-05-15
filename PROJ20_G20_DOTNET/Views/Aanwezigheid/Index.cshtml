@@ -13,11 +13,11 @@
 
 <div class="forms">
     <div class="centerForm">
-        <form method="post" class="centerForm">
+        <form method="post" class="centerForm" id="filterSortForm">
             <label class="inputLabel">Naam: </label>
             <div for="Naam" class="inp">
-                <input type="text" name="Naam" id="naam" placeholder="">
-                <span class="label"></span>
+                <input type="text" name="Naam" id="naam" value="@ViewData["NaamFilter"]">
+<span class="label"></span>
                 <span class="border"></span>
             </div>
             <label class="inputLabel">Begindatum:</label>
@@ -42,7 +42,7 @@
         <label for="Naam" class="control-label">Naam</label>
         <input type="text" name="Naam" id="Naam" />*@
 
-            <button class="okKnop" type="submit" asp-action="Index">
+            <button class="okKnop" type="submit" name="submit" value="Datum" asp-action="Index">
                 Zoek
             </button>
         </form>
@@ -52,10 +52,10 @@
     <div class="tabelWrap">
         <table class="tabel">
             <tr class="rij header">
-                <th class="cell">Naam activiteit</th>
-                <th class="cell">Datum</th>
-                <th class="cell">Tijdstip</th>
-                <th class="cell">Formule</th>
+                <th class="cell"><input form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Naam activiteit"/></th>
+                <th class="cell"><input form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Datum" /></th>
+                <th class="cell"><input form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Tijdstip" /></th>
+                <th class="cell"><input form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Formule" /></th>
             </tr>
             @foreach (var Activiteit in Model) {
                 <tr onclick="location.href = '@(Url.Action("Aanwezigheden", "Aanwezigheid", new { Id = Activiteit.Id }))'" class="rij">

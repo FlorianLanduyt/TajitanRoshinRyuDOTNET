@@ -44,12 +44,12 @@ namespace PROJ20_G20_DOTNET.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(string BeginDatum, string EindDatum, string Naam) {
+        public IActionResult Index(string BeginDatum, string EindDatum, string Naam, string submit) {
             string activiteitNaam = Naam ?? "";
             DateTime start, eind;
             if (BeginDatum == null) { start = new DateTime(1970,1,1); } else { start = Convert.ToDateTime(BeginDatum); } // Als je niets ingeeft bij data zal hij de range tussen 1970(vaak gebruikte start defaultdate) en huidige datum + 50 jaar zetten
             if (EindDatum == null) { eind = DateTime.Today.AddYears(50); } else { eind = Convert.ToDateTime(EindDatum); }
-
+            ViewData["NaamFilter"] = Naam;
             IEnumerable<Activiteit> activiteiten = _activiteitRepository
                 .GetAll()
                 .Where(
@@ -60,6 +60,22 @@ namespace PROJ20_G20_DOTNET.Controllers
                 .ToList();
             if (activiteiten == null) {
                 return NotFound();
+            }
+            switch (submit) {
+                case "Naam activiteit":
+                    activiteiten = activiteiten.OrderBy(a => a.Naam);
+                    break;
+                case "Datum":
+                    activiteiten = activiteiten.OrderBy(a => a.BeginDatum);
+                    break;
+                case "Tijdstip":
+                    activiteiten = activiteiten.OrderBy(a => a.BeginDatum.TimeOfDay);
+                    break;
+                case "Formule":
+                    activiteiten = activiteiten.OrderBy(a => a.Formule);
+                    break;
+                default:
+                    break;
             }
             ViewBag.Naam = Naam;
             return View(activiteiten);
