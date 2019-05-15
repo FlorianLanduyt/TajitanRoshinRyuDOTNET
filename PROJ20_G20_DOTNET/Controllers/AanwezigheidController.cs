@@ -30,7 +30,12 @@ namespace PROJ20_G20_DOTNET.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Activiteit> activiteiten = _activiteitRepository.GetAll().OrderBy(a => a.BeginDatum).ToList();
+            IEnumerable<Activiteit> activiteiten 
+                = _activiteitRepository
+                .GetAll()
+                .Where(ac => ac.BeginDatum.AddDays(3) > DateTime.Today && DateTime.Today.AddDays(3) > ac.BeginDatum) //geeft enkel activiteiten +- 3 dagen == range van een week
+                .OrderBy(ac => ac.BeginDatum)
+                .ToList();
             if (activiteiten == null) {
                 return NotFound();
             }
@@ -50,7 +55,9 @@ namespace PROJ20_G20_DOTNET.Controllers
                 .Where(
                     ac => ac.BeginDatum >= start &&
                     ac.BeginDatum <= eind &&
-                    ac.Naam.Contains(activiteitNaam, StringComparison.CurrentCultureIgnoreCase)).ToList();
+                    ac.Naam.Contains(activiteitNaam, StringComparison.CurrentCultureIgnoreCase))
+                .OrderBy(ac => ac.BeginDatum)
+                .ToList();
             if (activiteiten == null) {
                 return NotFound();
             }
