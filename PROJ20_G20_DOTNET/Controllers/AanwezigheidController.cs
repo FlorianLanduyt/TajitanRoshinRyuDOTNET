@@ -114,6 +114,15 @@ namespace PROJ20_G20_DOTNET.Controllers
         public IActionResult VoegGastToe(int id, AddGastOfProeflidViewModel viewModel) {
             try {
                 Lid lid = new Lid(viewModel.Voornaam, viewModel.Achternaam, viewModel.Email, viewModel.Gsm, Functie.GAST);
+                if(_lidRepository.GetByEmail(lid.Email) != null)
+                {
+                    int aantalAanwezigheden = _aanwezigheidRepository.GetAll().Where(aanwezigheid => aanwezigheid.Lid.Email == lid.Email).Count();
+                    if (aantalAanwezigheden > 3)
+                    {
+                        TempData["Error"] = "Gast heeft al meer dan 3 aanwezigheden!";
+                        return View(nameof(Aanwezigheden), _activiteitRepository.GetBy(id));
+                    }
+                }
                 _lidRepository.Add(lid);
                 _lidRepository.SaveChanges();
 
