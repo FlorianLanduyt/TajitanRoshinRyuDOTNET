@@ -44,12 +44,18 @@ namespace PROJ20_G20_DOTNET.Controllers
         public IActionResult Leden()
         {
             IEnumerable<Lid> leden = _lidRepository.GetAll();
+            if (leden == null) {
+                return NotFound();
+            }
             return View(leden);
         }
 
         public IActionResult ToonOefeningenLid(int id)
         {
             Lid lid = _lidRepository.GetBy(id);
+            if (lid == null) {
+                return NotFound();
+            }
             Graad graadLid = lid.Graad;
 
             IEnumerable<Oefening> oefeningen =
@@ -69,6 +75,9 @@ namespace PROJ20_G20_DOTNET.Controllers
         {
             //id = oefeningId | id2 = lidId
             Oefening oefening = _oefeningRepository.GetById(id);
+            if (oefening == null) {
+                return NotFound();
+            }
             UpdateRaadpleging(id, id2);
             ViewData["LidId"] = id2;
             return View(oefening);
