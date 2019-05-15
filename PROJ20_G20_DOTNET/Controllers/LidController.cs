@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -100,6 +101,17 @@ namespace PROJ20_G20_DOTNET.Controllers
             IdentityUser user = await _userManager.FindByEmailAsync(lid.Email);
             user.Email = lidEditViewModel.Email;
             user.UserName = lidEditViewModel.Email;
+        }
+        #endregion
+
+        #region Validators
+        public static ValidationResult EmailExists(object value, ILidRepository lidRepository)
+        {
+            ILidRepository _lidRepository = lidRepository;
+            if (_lidRepository.GetAll().Any(l => l.Email.Equals(value))) {
+                return ValidationResult.Success;
+            }
+            return new ValidationResult("E-mail bestaat niet");
         }
         #endregion
     }

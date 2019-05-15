@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using PROJ20_G20_DOTNET.Models.Domain;
+using PROJ20_G20_DOTNET.Controllers;
 
 namespace PROJ20_G20_DOTNET.Areas.Identity.Pages.Account
 {
@@ -18,11 +18,13 @@ namespace PROJ20_G20_DOTNET.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger,UserManager<IdentityUser> userManager)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _userManager = userManager;
         }
 
         [BindProperty]
@@ -39,6 +41,7 @@ namespace PROJ20_G20_DOTNET.Areas.Identity.Pages.Account
         {
             [Required(ErrorMessage = "E-mail is verplicht")]
             [EmailAddress]
+            [CustomValidation(typeof(LidController),"EmailExists")]
             [Display(Name = "E-mail")]
             public string Email { get; set; }
 
