@@ -61,7 +61,8 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
             string beginDatum = "2020/08/11";
             string eindDatum = "2020/08/14";
             string naam = "Testactiviteit een";
-            IActionResult actionResult = _controller.Index(beginDatum, eindDatum, naam);
+            string submit = "Datum";
+            IActionResult actionResult = _controller.Index(beginDatum, eindDatum, naam,submit);
             IList<Activiteit> activiteitenInModel = (actionResult as ViewResult)?.Model as IList<Activiteit>;
             Assert.Equal(1, activiteitenInModel?.Count);
             Assert.Equal("Testactiviteit een", activiteitenInModel?[0].Naam);
@@ -73,7 +74,8 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
             string beginDatum = null;
             string eindDatum = null;
             string naam = "";
-            IActionResult actionResult = _controller.Index(beginDatum, eindDatum, naam);
+            string submit = "Datum";
+            IActionResult actionResult = _controller.Index(beginDatum, eindDatum, naam, submit);
             IList<Activiteit> activiteitenInModel = (actionResult as ViewResult)?.Model as IList<Activiteit>;
             Assert.Equal(2, activiteitenInModel?.Count);
             Assert.Equal("Testactiviteit een", activiteitenInModel?[0].Naam);
@@ -87,7 +89,8 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
             string beginDatum = "2020/08/11";
             string eindDatum = "2020/08/14";
             string naam = "";
-            IActionResult actionResult = _controller.Index(beginDatum, eindDatum, naam);
+            string submit = "Datum";
+            IActionResult actionResult = _controller.Index(beginDatum, eindDatum, naam, submit);
             IList<Activiteit> activiteitenInModel = (actionResult as ViewResult)?.Model as IList<Activiteit>;
             Assert.Equal(1, activiteitenInModel?.Count);
             Assert.Equal("Testactiviteit een", activiteitenInModel?[0].Naam);
@@ -99,7 +102,7 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
             string beginDatum = null;
             string eindDatum = null;
             string naam = "Testactiviteit een";
-            IActionResult actionResult = _controller.Index(beginDatum, eindDatum, naam);
+            IActionResult actionResult = _controller.Index(beginDatum, eindDatum, naam, "Datum");
             IList<Activiteit> activiteitenInModel = (actionResult as ViewResult)?.Model as IList<Activiteit>;
             Assert.Equal(1, activiteitenInModel?.Count);
             Assert.Equal("Testactiviteit een", activiteitenInModel?[0].Naam);
@@ -112,7 +115,7 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
             string beginDatum = "2020/08/11";
             string eindDatum = null;
             string naam = "";
-            IActionResult actionResult = _controller.Index(beginDatum, eindDatum, naam);
+            IActionResult actionResult = _controller.Index(beginDatum, eindDatum, naam, "Datum");
             IList<Activiteit> activiteitenInModel = (actionResult as ViewResult)?.Model as IList<Activiteit>;
             Assert.Equal(2, activiteitenInModel?.Count);
             Assert.Equal("Testactiviteit een", activiteitenInModel?[0].Naam);
@@ -126,7 +129,7 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
             string beginDatum = null;
             string eindDatum = "2020/09/15";
             string naam = "";
-            IActionResult actionResult = _controller.Index(beginDatum, eindDatum, naam);
+            IActionResult actionResult = _controller.Index(beginDatum, eindDatum, naam, "Datum");
             IList<Activiteit> activiteitenInModel = (actionResult as ViewResult)?.Model as IList<Activiteit>;
             Assert.Equal(2, activiteitenInModel?.Count);
             Assert.Equal("Testactiviteit een", activiteitenInModel?[0].Naam);

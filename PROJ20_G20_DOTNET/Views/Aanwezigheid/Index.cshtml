@@ -52,10 +52,10 @@
     <div class="tabelWrap">
         <table class="tabel">
             <tr class="rij header">
-                <th class="cell"><input form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Naam activiteit"/></th>
-                <th class="cell"><input form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Datum" /></th>
-                <th class="cell"><input form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Tijdstip" /></th>
-                <th class="cell"><input form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Formule" /></th>
+                <th class="cell"><input class="sortKnop" form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Naam activiteit"/></th>
+                <th class="cell"><input class="sortKnop" form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Datum" /></th>
+                <th class="cell"><input class="sortKnop" form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Tijdstip" /></th>
+                <th class="cell"><input class="sortKnop" form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Formule" /></th>
             </tr>
             @foreach (var Activiteit in Model) {
                 <tr onclick="location.href = '@(Url.Action("Aanwezigheden", "Aanwezigheid", new { Id = Activiteit.Id }))'" class="rij">

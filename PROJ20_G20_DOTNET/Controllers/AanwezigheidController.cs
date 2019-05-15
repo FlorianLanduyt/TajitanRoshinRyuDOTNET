@@ -75,6 +75,8 @@ namespace PROJ20_G20_DOTNET.Controllers
                     activiteiten = activiteiten.OrderBy(a => a.Formule);
                     break;
                 default:
+                    activiteiten = activiteiten.OrderBy(a => a.BeginDatum);
+
                     break;
             }
             ViewBag.Naam = Naam;
