@@ -20,7 +20,7 @@ namespace PROJ20_G20_DOTNET.Areas.Identity.Pages.Account
         private readonly ILogger<LoginModel> _logger;
         private readonly UserManager<IdentityUser> _userManager;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger,UserManager<IdentityUser> userManager)
+        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger, UserManager<IdentityUser> userManager)
         {
             _signInManager = signInManager;
             _logger = logger;
@@ -41,7 +41,6 @@ namespace PROJ20_G20_DOTNET.Areas.Identity.Pages.Account
         {
             [Required(ErrorMessage = "E-mail is verplicht")]
             [EmailAddress]
-            [CustomValidation(typeof(LidController),"EmailExists")]
             [Display(Name = "E-mail")]
             public string Email { get; set; }
 
@@ -79,6 +78,11 @@ namespace PROJ20_G20_DOTNET.Areas.Identity.Pages.Account
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
 
                 if (ModelState.IsValid) {
+                    var identityUser = await _userManager.FindByEmailAsync(Input.Email);
+                    if (identityUser == null) {
+                        ModelState.AddModelError("Input.Email", "E-mail bestaat niet");
+                        return Page();
+                    }
                     // This doesn't count login failures towards account lockout
                     // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                     var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
@@ -94,7 +98,7 @@ namespace PROJ20_G20_DOTNET.Areas.Identity.Pages.Account
                         return RedirectToPage("./Lockout");
                     }
                     else {
-                        ModelState.AddModelError(string.Empty, "Ongeldige aanmeldpoging.");
+                        ModelState.AddModelError("Input.Password", "Wachtwoord klopt niet");
                         return Page();
                     }
                 }
