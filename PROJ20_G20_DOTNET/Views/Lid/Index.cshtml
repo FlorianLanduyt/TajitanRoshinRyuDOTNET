@@ -4,17 +4,16 @@
     ViewData["Title"] = "Gegevens";
 }
 
-@if (TempData["Success"] != null) {
+@*@if (TempData["Success"] != null) {
     <br />
     <p class="alert alert-success">@TempData["Success"]</p>
 } else if (TempData["Error"] != null) {
     <br />
     <p class="alert alert-danger">@TempData["Error"]</p>
-}
+}*@
 
 <div class="container">
     <h2 class="titleAanwezigheden"><strong class="vetKleur">@Model.Voornaam @Model.Achternaam</strong></h2>
-    <hr />
 </div>
 
 <div class="indexLid">

@@ -7,7 +7,6 @@
 
 <div class="container">
     <h2 class="titleAanwezigheden">Kies een activiteit om de <strong class="vetKleur">@ViewData["Title"]</strong> te zien</h2>
-    <hr />
 </div>
 
 
@@ -52,10 +51,10 @@
     <div class="tabelWrap">
         <table class="tabel">
             <tr class="rij header">
-                <th class="cell"><input class="sortKnop" form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Naam activiteit"/></th>
-                <th class="cell"><input class="sortKnop" form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Datum" /></th>
-                <th class="cell"><input class="sortKnop" form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Tijdstip" /></th>
-                <th class="cell"><input class="sortKnop" form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Formule" /></th>
+                <th class="cell"><a class="sortKnop" form="filterSortForm" name="submit" asp-action="Index" value="Naam activiteit"><p>Naam</p></a></th>
+                <th class="cell"><a class="sortKnop" form="filterSortForm" name="submit"  asp-action="Index" value="Datum">Datum</a></th>
+                <th class="cell"><a class="sortKnop" form="filterSortForm" name="submit" asp-action="Index" value="Tijdstip">Tijdstip</a></th>
+                <th class="cell"><a class="sortKnop" form="filterSortForm" name="submit"  asp-action="Index" value="Formule">Formule</a></th>
             </tr>
             @foreach (var Activiteit in Model) {
                 <tr onclick="location.href = '@(Url.Action("Aanwezigheden", "Aanwezigheid", new { Id = Activiteit.Id }))'" class="rij">

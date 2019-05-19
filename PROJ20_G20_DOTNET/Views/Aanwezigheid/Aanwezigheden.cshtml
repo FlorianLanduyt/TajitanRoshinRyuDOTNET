@@ -15,7 +15,6 @@
 <div class="aanwezighedenWrap">
     <div class="container">
         <h2 class="titleAanwezigheden">Wie is er aanwezig voor <strong class="vetKleur">@Model.Naam?</strong></h2>
-        <hr />
     </div>
 
 
@@ -111,14 +110,10 @@
 
 
     <form method="get" class="geenlid">
-        <button type="submit" class="gastLidKnop" asp-action="NietIngeschrevenLeden" asp-route-id="@Model.Id">Nog geen lid</button>
+        <button type="submit" class="gastLidKnop" asp-action="NietIngeschrevenLeden" asp-route-id="@Model.Id">Nog niet ingeschreven</button>
     </form>
 
 </div>
-
-
-
-
 
 
 <script>

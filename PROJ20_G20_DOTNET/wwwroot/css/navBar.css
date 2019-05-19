@@ -3,26 +3,170 @@
 
 .cutomNavbarContainer {
     position: fixed;
-    top: 0px;
-    width: 105%;
-    height: 5rem;
+    top: 0;
+    left: 2.5%;
+    right: 2.5%;
+    height: 5.5rem;
     font-weight: 900;
+    z-index: 999;
     text-transform: uppercase;
-    margin: 0px auto;
-    background: #B6C8C0;
+    margin: 0 auto;
+    background: white;
+    border-radius: 1rem;
 }
+
 
 .customNavbar {
     position: relative;
     display: flex;
     -webkit-box-align: center;
+    z-index: 999;
     align-items: center;
     max-width: 90%;
     height: 100%;
     margin: 0px auto;
 }
 
-.kleurNav {
+    .customNavbar:before {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        box-shadow: rgba(0, 0, 0, 0.1) -2px 2px 4px;
+        border-radius: 0px 5px 5px;
+        transform: skew(10deg, 0deg);
+        transform-origin: left bottom;
+    }
+
+    .customNavbar:after {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        box-shadow: rgba(0, 0, 0, 0.1) 2px 2px 4px;
+        transform: skew(-10deg, 0deg);
+        transform-origin: right bottom;
+        border-radius: 5px 0px 5px 5px;
+    }
+
+.contentNavbar {
+    position: relative;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    max-width: 95%;
+    height: 100%;
+    margin: 0px auto
+}
+
+.grow {
+    visibility: hidden;
+    display: flex;
+    flex: 1 1 0%;
+    justify-content: space-around;
+}
+
+.navLijst {
+    display: flex;
+    flex: 1 1 0%;
+    width: 100%;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+}
+
+    .navLijst:last-child > * {
+        margin-left: auto;
+    }
+
+
+.lijst {
+    -webkit-box-align: center;
+    align-items: center;
+    display: table;
+    height: 100%;
+    margin-bottom: -2px;
+}
+
+    .lijst:first-child > * {
+        margin-left: auto;
+    }
+
+.lijstItem {
+    font-size: 0.8em;
+    margin-left: 4rem;
+    letter-spacing: 0.5px;
+    height: 100%;
+    vertical-align: middle;
+    line-height: 1;
+    display: table-cell;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 0.3rem;
+    position: relative;
+    transition: all 0.2s linear 0s;
+    border-bottom: 0.3rem solid transparent;
+}
+
+    .lijstItem:target {
+        border-bottom: red;
+    }
+
+    .lijstItem:first-child {
+        margin-left: 0px;
+    }
+
+.navLink {
+    color: rgb(14, 14, 14);
+    text-decoration: none;
+    transition: all 0.2s ease 0s;
+    padding: 2rem;
+}
+
+    .navLink:hover {
+        color: #996888;
+        text-decoration: none;
+        border-bottom: 0.3rem solid #996888;
+    }
+
+.navTitel {
+    font-size: 20px;
+    text-transform: initial;
+    text-decoration: none; 
+    color: black;
+}
+
+.navTitel:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.navButton {
+    height: 100%;
+    display: block;
+    background: none;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: none;
+    border-bottom: 0.3rem solid transparent;
+    
+}
+
+.navForm {
+    margin-left: 0 !important;
+}
+
+.navlogo {
+    height: 40px;
+    padding-right: 10px;
+}
+
+/*.kleurNav {
     background-color: #996888;
     color: black;
     border-bottom-color: #996888;
@@ -34,4 +178,4 @@
 
 a {
     color: black;
-}
+}*/

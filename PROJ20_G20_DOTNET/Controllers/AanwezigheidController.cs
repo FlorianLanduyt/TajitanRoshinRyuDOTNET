@@ -33,7 +33,7 @@ namespace PROJ20_G20_DOTNET.Controllers
             IEnumerable<Activiteit> activiteiten 
                 = _activiteitRepository
                 .GetAll()
-                .Where(ac => ac.BeginDatum > DateTime.Today.AddDays(-3) && DateTime.Today.AddDays(3) > ac.BeginDatum) //geeft enkel activiteiten +- 3 dagen == range van een week
+                //.Where(ac => ac.BeginDatum > DateTime.Today.AddDays(-3) && DateTime.Today.AddDays(3) > ac.BeginDatum) //geeft enkel activiteiten +- 3 dagen == range van een week
                 .OrderBy(ac => ac.BeginDatum)
                 .ToList();
             if (activiteiten == null) {

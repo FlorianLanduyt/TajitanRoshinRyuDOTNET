@@ -49,6 +49,7 @@
     line-height: 125%;
     padding: 8% 10% 6%;
     background: white;
+    height: 100%;
     transition: all 0.2s linear 0s;
 }
 

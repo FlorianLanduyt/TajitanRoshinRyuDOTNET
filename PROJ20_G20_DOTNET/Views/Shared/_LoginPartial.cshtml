@@ -5,20 +5,18 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a asp-controller="Lid" asp-action="Index" style="color:white;">Welkom, @UserManager.GetUserName(User)!</a>
-            </li>
-            <li>
-                <button type="submit" class="btn btn-link navbar-btn navbar-link" style="color:white;">Afmelden</button>
-            </li>
+    <form class="navForm" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm">
+        <ul class="lijst">
+            <li class="lijstItem"><a class="navLink" asp-controller="Lid" asp-action="Index">Profiel</a></li>
+            <li class="lijstItem"><div class="grow lijstItem">verstopt hihi</div></li>
+            <li class="lijstItem"><button class="navLink navButton" type="submit">Afmelden</button></li>
         </ul>
+
     </form>
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li><a asp-area="Identity" asp-page="/Account/Login"  style="color:white;">Aanmelden</a></li>
+    <ul class="lijst">
+        <li class="lijstItem"><a asp-area="Identity" asp-page="/Account/Login" class="navLink">Aanmelden</a></li>
     </ul>
 }

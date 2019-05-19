@@ -6,7 +6,7 @@
 }
 <div class="container">
     <h2 class="titleAanwezigheden">Welkom bij <strong class="vetKleur">Taijitan Yoshin Ryu!</strong></h2>
-    <hr />
+    
 </div>
 
 <div class="container">
@@ -36,16 +36,18 @@
 } else if ((await AuthorizationService.AuthorizeAsync(User, "Lid")).Succeeded ||
 (await AuthorizationService.AuthorizeAsync(User, "Proeflid")).Succeeded ||
 (await AuthorizationService.AuthorizeAsync(User, "Gast")).Succeeded) {
-<div class="col-md-3 kaart">
-    <div class="well icoon">
-        <img class="lijstImg centerDiv" src="~/images/Profiel.png" />
-        <a asp-controller="Lid" asp-action="Index" class="btn btn-default knop">Profiel</a>
+<div class="flexContainer">
+    <div class="kaart">
+        <div class="content">
+            <img class="lijstImg flexI" src="~/images/Profiel.png" />
+            <a asp-controller="Lid" asp-action="Index" class="knop flexI">Profiel</a>
+        </div>
     </div>
-</div>
-<div class="col-md-3 kaart">
-    <div class="well icoon">
-        <img class="lijstImg centerDiv" src="~/images/Lesmateriaal.png" />
-        <a asp-controller="Oefening" asp-action="BepaalAdminLid" class="btn btn-default knop">Lesmateriaal</a>
+    <div class="kaart">
+        <div class="content">
+            <img class="lijstImg flexI" src="~/images/Lesmateriaal.png" />
+            <a asp-controller="Oefening" asp-action="BepaalAdminLid" class="knop flexI">Lesmateriaal</a>
+        </div>
     </div>
 </div>
 }

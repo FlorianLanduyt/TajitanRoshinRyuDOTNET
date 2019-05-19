@@ -33,40 +33,62 @@
 
 </head>
 <body>
-    <nav class="kleurNav navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand" style="color:white;">Taijitan Yoshin Ryu</a>
+    @*<nav class="kleurNav navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand" style="color:white;">Taijitan Yoshin Ryu</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        @if ((await AuthorizationService.AuthorizeAsync(User, "Beheerder")).Succeeded ||
+                           (await AuthorizationService.AuthorizeAsync(User, "Trainer")).Succeeded) {
+                            <li><a asp-area="" asp-controller="Oefening" asp-action="BepaalAdminLid" style="color:white;">Lesmateriaal</a></li>
+                            <li><a asp-area="" asp-controller="Aanwezigheid" asp-action="Index" style="color:white;">Aanwezigheid</a></li>
+                        } else if ((await AuthorizationService.AuthorizeAsync(User, "Lid")).Succeeded ||
+                          (await AuthorizationService.AuthorizeAsync(User, "Proeflid")).Succeeded ||
+                          (await AuthorizationService.AuthorizeAsync(User, "Gast")).Succeeded) {
+                            <li><a asp-area="" asp-controller="Oefening" asp-action="BepaalAdminLid" style="color:white;">Lesmateriaal</a></li>
+                        }
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    @if ((await AuthorizationService.AuthorizeAsync(User, "Beheerder")).Succeeded ||
-                        (await AuthorizationService.AuthorizeAsync(User,"Trainer")).Succeeded) {
-                        <li><a asp-area="" asp-controller="Oefening" asp-action="BepaalAdminLid" style="color:white;">Lesmateriaal</a></li>
-                        <li><a asp-area="" asp-controller="Aanwezigheid" asp-action="Index" style="color:white;">Aanwezigheid</a></li>
-                    }
-                    else if ((await AuthorizationService.AuthorizeAsync(User, "Lid")).Succeeded ||
-                    (await AuthorizationService.AuthorizeAsync(User, "Proeflid")).Succeeded ||
-                    (await AuthorizationService.AuthorizeAsync(User, "Gast")).Succeeded) {
-                        <li><a asp-area="" asp-controller="Oefening" asp-action="BepaalAdminLid" style="color:white;">Lesmateriaal</a></li>
-                    }
-                </ul>
-                <partial name="_LoginPartial" />
-            </div>
-        </div>
-    </nav>
+        </nav>*@
 
-    @*<div class="cutomNavbarContainer">
+    <div class="cutomNavbarContainer">
         <div class="customNavbar">
+            <div class="contentNavbar">
+                <a>
+                    <img class="navlogo" src="~/images/logo.png" />
+                    <a class="navTitel" asp-controller="Home" asp-action="Index">Taijitan Yoshin Ryu</a>
+                </a>
+                <div class="grow">verstopt hihi</div>
+                <nav class="navLijst">
+                    <ul class="lijst">
+                        @if ((await AuthorizationService.AuthorizeAsync(User, "Beheerder")).Succeeded ||
+(await AuthorizationService.AuthorizeAsync(User, "Trainer")).Succeeded) {
+                    <li class="lijstItem"><a class="navLink" asp-controller="Home" asp-action="Index">home</a></li>
+                    <li class="lijstItem"><a class="navLink" asp-area="" asp-controller="Oefening" asp-action="BepaalAdminLid">Lesmateriaal</a></li>
+                    <li class="lijstItem"><a class="navLink" asp-area="" asp-controller="Aanwezigheid" asp-action="Index">Aanwezigheid</a></li>
 
+                } else if ((await AuthorizationService.AuthorizeAsync(User, "Lid")).Succeeded ||
+                  (await AuthorizationService.AuthorizeAsync(User, "Proeflid")).Succeeded ||
+                  (await AuthorizationService.AuthorizeAsync(User, "Gast")).Succeeded) {
+                    <li class="lijstItem"><a class="navLink" asp-controller="Home" asp-action="Index">home</a></li>
+                    <li class="lijstItem"><a class="navLink" asp-area="" asp-controller="Oefening" asp-action="BepaalAdminLid">Lesmateriaal</a></li>
+                }
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </nav>
+            </div>
         </div>
-    </div>*@
+    </div>
 
     <partial name="_CookieConsentPartial" />
 
@@ -74,7 +96,7 @@
         @RenderBody()
         <hr />
         <footer class="text-center">
-            <p>&copy; 2019 - Taijitan Roshin Ryu - All rights reserved.</p>
+            <p>&copy; 2019 - Taijitan Yoshin Ryu - All rights reserved.</p>
         </footer>
     </div>
 
