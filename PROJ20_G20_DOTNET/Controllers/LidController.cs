@@ -33,6 +33,7 @@ namespace PROJ20_G20_DOTNET.Controllers
             return View(lid);
         }
 
+
         public async Task<IActionResult> Edit(int id)
         {
             Lid lid = _lidRepository.GetBy(id);

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -6,11 +7,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PROJ20_G20_DOTNET.Models.Domain;
 
-namespace PROJ20_G20_DOTNET.Controllers
-{
+namespace PROJ20_G20_DOTNET.Controllers {
     [Authorize(Policy = "ViewExercisesOwn")]
-    public class OefeningController : Controller
-    {
+    public class OefeningController : Controller {
         private IOefeningRepository _oefeningRepository;
         private ILidRepository _lidRepository;
         private IRaadplegingRepository _raadplegingRepository;
@@ -18,8 +17,7 @@ namespace PROJ20_G20_DOTNET.Controllers
         private SignInManager<IdentityUser> _signInManager;
 
         public OefeningController(IOefeningRepository oefeningRepository, ILidRepository lidRepository, IRaadplegingRepository raadplegingRepository,
-            UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
-        {
+            UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager) {
             _oefeningRepository = oefeningRepository;
             _lidRepository = lidRepository;
             _raadplegingRepository = raadplegingRepository;
@@ -27,8 +25,7 @@ namespace PROJ20_G20_DOTNET.Controllers
             _signInManager = signInManager;
         }
 
-        public async Task<IActionResult> BepaalAdminLid()
-        {
+        public async Task<IActionResult> BepaalAdminLid() {
             IdentityUser signedInUser = await GetSignedInUserAsync();
             Lid lid = _lidRepository.GetAll().SingleOrDefault(l => l.Email.Equals(signedInUser.Email));
             if (lid == null) {
@@ -41,8 +38,7 @@ namespace PROJ20_G20_DOTNET.Controllers
         }
 
         [Authorize(Policy = "ViewExercisesAllMembers")]
-        public IActionResult Leden()
-        {
+        public IActionResult Leden() {
             IEnumerable<Lid> leden = _lidRepository.GetAll();
             if (leden == null) {
                 return NotFound();
@@ -50,8 +46,22 @@ namespace PROJ20_G20_DOTNET.Controllers
             return View(leden);
         }
 
-        public IActionResult ToonOefeningenLid(int id)
-        {
+        [HttpPost]
+        public IActionResult Leden(string Naam) {
+            string naamFilter = Naam ?? "";
+            IEnumerable<Lid> leden = _lidRepository.GetAll()
+                .Where(
+                l => l.Voornaam.StartsWith(naamFilter, StringComparison.CurrentCultureIgnoreCase)
+                || l.Achternaam.StartsWith(naamFilter, StringComparison.CurrentCultureIgnoreCase))
+                .ToList();
+            if (leden == null) {
+                return NotFound();
+            }
+            ViewData["NaamFilter"] = naamFilter;
+            return View(leden);
+        }
+
+        public IActionResult ToonOefeningenLid(int id) {
             Lid lid = _lidRepository.GetBy(id);
             if (lid == null) {
                 return NotFound();
@@ -71,8 +81,7 @@ namespace PROJ20_G20_DOTNET.Controllers
             return View(oefeningen);
         }
 
-        public IActionResult RaadpleegOefening(int id, int id2)
-        {
+        public IActionResult RaadpleegOefening(int id, int id2) {
             //id = oefeningId | id2 = lidId
             Oefening oefening = _oefeningRepository.GetById(id);
             if (oefening == null) {
@@ -83,15 +92,13 @@ namespace PROJ20_G20_DOTNET.Controllers
             return View(oefening);
         }
 
-        private void UpdateRaadpleging(int oefeningId, int lidId)
-        {
+        private void UpdateRaadpleging(int oefeningId, int lidId) {
             Raadpleging raadpleging = _raadplegingRepository.GetAll().SingleOrDefault(r => r.OefeningId == oefeningId && r.LidId == lidId);
             if (raadpleging != null) {
                 raadpleging.AantalRaadplegingen++;
                 raadpleging.VoegRaadplegingsTijdstipToe();
                 _raadplegingRepository.SaveChanges();
-            }
-            else {
+            } else {
                 Lid lid = _lidRepository.GetBy(lidId);
                 Oefening oefening = _oefeningRepository.GetById(oefeningId);
                 Raadpleging raadplegingNew = new Raadpleging(lid, oefening);
@@ -103,8 +110,7 @@ namespace PROJ20_G20_DOTNET.Controllers
         }
 
         #region User async methods
-        private async Task<IdentityUser> GetSignedInUserAsync()
-        {
+        private async Task<IdentityUser> GetSignedInUserAsync() {
             return await _userManager.GetUserAsync(HttpContext.User);
         }
         #endregion

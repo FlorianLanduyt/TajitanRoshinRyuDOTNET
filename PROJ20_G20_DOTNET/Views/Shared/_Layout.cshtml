@@ -73,7 +73,7 @@
                     <ul class="lijst">
                         @if ((await AuthorizationService.AuthorizeAsync(User, "Beheerder")).Succeeded ||
 (await AuthorizationService.AuthorizeAsync(User, "Trainer")).Succeeded) {
-                    <li class="lijstItem"><a class="navLink" asp-controller="Home" asp-action="Index">home</a></li>
+                    <li class="lijstItem @(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")"><a class="navLink" asp-controller="Home" asp-action="Index">home</a></li>
                     <li class="lijstItem"><a class="navLink" asp-area="" asp-controller="Oefening" asp-action="BepaalAdminLid">Lesmateriaal</a></li>
                     <li class="lijstItem"><a class="navLink" asp-area="" asp-controller="Aanwezigheid" asp-action="Index">Aanwezigheden</a></li>
 
@@ -125,3 +125,4 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+

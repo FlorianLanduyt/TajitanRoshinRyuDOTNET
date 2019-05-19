@@ -47,15 +47,15 @@ namespace PROJ20_G20_DOTNET.Controllers
         public IActionResult Index(string BeginDatum, string EindDatum, string Naam, string submit) {
             string activiteitNaam = Naam ?? "";
             DateTime start, eind;
-            if (BeginDatum == null) { start = DateTime.Today.AddDays(-3); } else { start = Convert.ToDateTime(BeginDatum); } // Als je niets ingeeft bij data zal hij de range tussen 1970(vaak gebruikte start defaultdate) en huidige datum + 50 jaar zetten
-            if (EindDatum == null) { eind = DateTime.Today.AddDays(3); } else { eind = Convert.ToDateTime(EindDatum); }
+            if (BeginDatum == null) { start = DateTime.Today.AddDays(-1000); } else { start = Convert.ToDateTime(BeginDatum); } // Als je niets ingeeft bij data zal hij de range tussen 1970(vaak gebruikte start defaultdate) en huidige datum + 50 jaar zetten
+            if (EindDatum == null) { eind = DateTime.Today.AddDays(1000); } else { eind = Convert.ToDateTime(EindDatum); }
             ViewData["NaamFilter"] = Naam;
             IEnumerable<Activiteit> activiteiten = _activiteitRepository
                 .GetAll()
                 .Where(
                     ac => ac.BeginDatum >= start &&
                     ac.BeginDatum <= eind &&
-                    ac.Naam.Contains(activiteitNaam, StringComparison.CurrentCultureIgnoreCase))
+                    ac.Naam.StartsWith(activiteitNaam, StringComparison.CurrentCultureIgnoreCase))
                 .OrderBy(ac => ac.BeginDatum)
                 .ToList();
             if (activiteiten == null) {
@@ -101,10 +101,10 @@ namespace PROJ20_G20_DOTNET.Controllers
             }
             activiteit.ActiviteitInschrijvingen = activiteit.ActiviteitInschrijvingen
                 .Where(
-                    ai => ai.Inschrijving.Lid.Voornaam.Contains(naamFilter, StringComparison.CurrentCultureIgnoreCase) 
-                    || ai.Inschrijving.Lid.Achternaam.Contains(naamFilter, StringComparison.CurrentCultureIgnoreCase))
+                    ai => ai.Inschrijving.Lid.Voornaam.StartsWith(naamFilter, StringComparison.CurrentCultureIgnoreCase) 
+                    || ai.Inschrijving.Lid.Achternaam.StartsWith(naamFilter, StringComparison.CurrentCultureIgnoreCase))
                 .ToList();
-
+            ViewData["NaamFilter"] = naamFilter;
             return View(activiteit);
         }
 

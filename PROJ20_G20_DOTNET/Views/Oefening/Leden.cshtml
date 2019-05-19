@@ -7,6 +7,22 @@
 <div class="container">
     <h2 class="titleAanwezigheden">Van welk lid wilt u de <strong class="vetKleur">oefeningen raadplegen?</strong></h2>
 </div>
+<div class="aanwezighedenWrap">
+    <div class="zoek">
+        <div class="volledigeForm">
+            <div class="body">
+                <div class="wrapper">
+                    <form method="post">
+                        <input class="search" type="text" name="Naam" id="Naam" value="@ViewData["NaamFilter"]" />
+                        <button class="submit" type="submit" asp-action="Leden">Zoek</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
 
 <div class="container">
     @foreach (var Lid in Model) {

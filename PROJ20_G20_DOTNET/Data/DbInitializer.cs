@@ -88,7 +88,7 @@ namespace PROJ20_G20_DOTNET.Data
                 Activiteit act1 = new Activiteit("Eindexamen", Formule.EXAMEN, new DateTime(2020, 5, 17, 12, 00, 00), new DateTime(2020, 5, 17,13,00,00),
                     new DateTime(2020, 5, 17), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
                     "20", "5", 50);
-                Activiteit act2 = new Activiteit("Bobejaanland", Formule.UITSTAP, new DateTime(2020, 9, 12, 7, 00, 00), new DateTime(2020, 9, 12,20,00,00),
+                Activiteit act2 = new Activiteit("Bobbejaanland", Formule.UITSTAP, new DateTime(2020, 9, 12, 7, 00, 00), new DateTime(2020, 9, 12,20,00,00),
                    new DateTime(2020, 8, 15), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
                    "20", "5", 50);
 
