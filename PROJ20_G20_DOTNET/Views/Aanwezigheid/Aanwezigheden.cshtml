@@ -12,6 +12,10 @@
         <p class="alert alert-danger">@TempData["Error"]</p>
     }*@
 
+@if (TempData["Error"] != null) {
+<p class="alert alert-danger" style="margin-top:10px;">@TempData["Error"]</p>
+}
+
 <div class="aanwezighedenWrap">
     <div class="container">
         <h2 class="titleAanwezigheden">Wie is er aanwezig voor <strong class="vetKleur">@Model.Naam?</strong></h2>
@@ -78,34 +82,34 @@
 
     <div id="voegGastToe" style="display: none;">
 
-            <form class="ongewoonLidForm" method="post" asp-action="VoegGastToe" asp-route-id="@Model.Id">
-                <div class="gastLidFlexRij">
-                    <div class="ongewoonLidVeld flexItem">
-                        <label for="Voornaam" class="editLabel">Voornaam</label>
-                        <input class="editInput" type="text" name="Voornaam" id="Voornaam" />
-                        
-                    </div>
-                    <div class="ongewoonLidVeld flexItem">
-                        <label for="Achternaam" class="editLabel">Achternaam</label>
-                        <input class="editInput" type="text" name="Achternaam" id="Achternaam" />
-                    </div>
-                    <div class="ongewoonLidVeld flexItem">
-                        <label for="Email" class="editLabel">E-mail</label>
-                        <input class="editInput" type="text" name="Email" id="Email" />
-                    </div>
-                    <div class="ongewoonLidVeld flexItem">
-                        <label for="Gsm" class="editLabel">Gsm nummer</label>
-                        <input class="editInput" type="text" name="Gsm" id="Gsm" />
-                    </div>
+        <form class="ongewoonLidForm" method="post" asp-action="VoegGastToe" asp-route-id="@Model.Id">
+            <div class="gastLidFlexRij">
+                <div class="ongewoonLidVeld flexItem">
+                    <label for="Voornaam" class="editLabel">Voornaam</label>
+                    <input class="editInput" type="text" name="Voornaam" id="Voornaam" />
 
                 </div>
-                <div class="gastKnopCenter">
-                    <button class="gastKnop" type="submit">
-                        Voeg Toe
-                    </button>
+                <div class="ongewoonLidVeld flexItem">
+                    <label for="Achternaam" class="editLabel">Achternaam</label>
+                    <input class="editInput" type="text" name="Achternaam" id="Achternaam" />
                 </div>
-            </form>
-        
+                <div class="ongewoonLidVeld flexItem">
+                    <label for="Email" class="editLabel">E-mail</label>
+                    <input class="editInput" type="text" name="Email" id="Email" />
+                </div>
+                <div class="ongewoonLidVeld flexItem">
+                    <label for="Gsm" class="editLabel">Gsm nummer</label>
+                    <input class="editInput" type="text" name="Gsm" id="Gsm" />
+                </div>
+
+            </div>
+            <div class="gastKnopCenter">
+                <button class="gastKnop" type="submit">
+                    Voeg Toe
+                </button>
+            </div>
+        </form>
+
     </div>
 
 

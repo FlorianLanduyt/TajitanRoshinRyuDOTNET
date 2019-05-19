@@ -23,6 +23,7 @@
     z-index: 999;
     align-items: center;
     max-width: 90%;
+    min-width: 835px;
     height: 100%;
     margin: 0px auto;
 }
@@ -159,6 +160,10 @@
 
 .navForm {
     margin-left: 0 !important;
+}
+
+.navdiv {
+    min-width: 220px;
 }
 
 .navlogo {

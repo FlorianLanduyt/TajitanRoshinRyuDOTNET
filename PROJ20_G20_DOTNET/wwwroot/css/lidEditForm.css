@@ -26,9 +26,10 @@
 }
 
 .deelContainer {
-    margin: 0 15px;
+    width: 30%;
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
 }
 
 .editLabel {
@@ -39,7 +40,7 @@
 
 .editInput {
     display: block;
-    width: 300px;
+    width: 95%;
     font-size: 14px;
     line-height: 1.2;
     height: 40px;
