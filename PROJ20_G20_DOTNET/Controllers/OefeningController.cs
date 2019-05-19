@@ -61,7 +61,7 @@ namespace PROJ20_G20_DOTNET.Controllers
             IEnumerable<Oefening> oefeningen =
                 _oefeningRepository.GetAll()
                 .Where(oef => oef.Graad.CompareTo(graadLid) <= 0)
-                .OrderBy(oef => oef.Graad)
+                .OrderByDescending(oef => oef.Graad)
                 .ThenBy(oef => oef.Thema.Naam)
                 .ThenBy(oef => oef.Titel)
                 .ToList();

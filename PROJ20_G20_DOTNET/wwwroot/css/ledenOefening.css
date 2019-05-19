@@ -54,6 +54,18 @@ body {
     border-top: 0.4rem solid #996888;
 }
 
+@media screen and (max-width: 1280px) {
+    .kaartLid {
+        width:30%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .kaartLid {
+        width: 45%;
+    }
+}
+
     .kaartLid:hover {
         transform: scale(1.03,1.03);
         border-top: 0.4rem solid #B6C8C0;

@@ -379,6 +379,18 @@ input {
     align-items: center;
 }
 
+@media screen and (max-width: 1280px) {
+    .aanwezigKaart {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .aanwezigKaart {
+        width: 45%;
+    }
+}
+
     .aanwezigKaart:hover {
         transform: scale(1.03,1.03);
     }

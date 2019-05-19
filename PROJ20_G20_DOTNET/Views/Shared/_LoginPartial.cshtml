@@ -9,6 +9,7 @@
         <ul class="lijst">
             <li class="lijstItem"><div class="grow lijstItem">hallooo</div></li>
             <li class="lijstItem"><a class="navLink" asp-controller="Lid" asp-action="Index">Profiel</a></li>
+            <li class="lijstItem">@*<a class="navLink" asp-controller="Lid" asp-action="Index">@UserManager.GetUserName(User)</a>*@</li>
             <li class="lijstItem"><button class="navLink navButton" type="submit">Afmelden</button></li>
         </ul>
 
