@@ -81,6 +81,32 @@ namespace PROJ20_G20_DOTNET.Controllers {
             return View(oefeningen);
         }
 
+        [HttpPost]
+        public IActionResult Oefeningen(int id, string Naam) {
+            string naamFilter = Naam ?? "";
+            Lid lid = _lidRepository.GetBy(id);
+            if (lid == null) {
+                return NotFound();
+            }
+
+            Graad graad = lid.Graad;
+
+            IEnumerable<Oefening> oefeningen = _oefeningRepository.GetAll()
+                .Where(
+                    o => o.Graad.CompareTo(graad) <= 0 &&
+                    o.Titel.Contains(naamFilter))
+                .OrderByDescending(o => o.Titel)
+                .ThenBy(o => o.Graad)
+                .ToList();
+            if (oefeningen == null) {
+                return NotFound();
+            }
+            ViewData["NaamFilter"] = naamFilter;
+            ViewData["LidNaam"] = $"{lid.Voornaam} {lid.Achternaam}";
+            ViewData["LidId"] = id;
+            return View(oefeningen);
+        }
+
         public IActionResult RaadpleegOefening(int id, int id2) {
             //id = oefeningId | id2 = lidId
             Oefening oefening = _oefeningRepository.GetById(id);

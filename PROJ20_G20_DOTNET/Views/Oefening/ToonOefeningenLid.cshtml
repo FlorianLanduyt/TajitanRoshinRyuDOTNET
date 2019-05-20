@@ -12,6 +12,18 @@
 
 <div class="alles">
     <div class="oefeningen">
+        <div class="volledigeForm">
+            <div class="body">
+                <div class="wrapper">
+                    <form method="post">
+                        <input class="search" type="text" name="Naam" id="Naam" value=@ViewData["NaamFilter"] />
+                        <button class="submit" type="submit" asp-action="Oefeningen" asp-route-id="@ViewData["LidId"]">Zoek</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
         @foreach (var Oefening in Model) {
             <div class="oefening">
                 <div class="oefeningContainer">
@@ -19,7 +31,7 @@
                         <div class="tekstContainer">
                             <p class="oGraad">@Oefening.Graad</p>
                             <h2 class="oTitel">@Oefening.Titel</h2>
-                            <p class="oBeschrijving">@Oefening.Tekst.Substring(0,230) ...</p>
+                            <p class="oBeschrijving">@Oefening.Tekst.Substring(0, 230) ...</p>
                             <a asp-action="RaadpleegOefening" asp-route-id="@Oefening.Id" asp-route-id2="@ViewData["LidId"]" class="oFilmpje">Bekijk het filmpje</a>
                         </div>
                     </div>
