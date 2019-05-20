@@ -82,7 +82,7 @@ namespace PROJ20_G20_DOTNET.Controllers {
         }
 
         [HttpPost]
-        public IActionResult Oefeningen(int id, string Naam) {
+        public IActionResult ToonOefeningenLid(int id, string Naam) {
             string naamFilter = Naam ?? "";
             Lid lid = _lidRepository.GetBy(id);
             if (lid == null) {
