@@ -14,10 +14,9 @@
     <div class="oefeningen">
         <div class="volledigeForm">
             <div class="body">
-                <div class="wrapper">
-                    <form method="post">
-                        <input class="search" type="text" name="Naam" id="Naam" value="@ViewData["NaamFilter"]" />
-                        <button class="submit" type="submit" asp-action="ToonOefeningenLid" asp-route-id="@ViewData["LidId"]">Zoek</button>
+                <div class="zoekWrapper">
+                    <form method="post" asp-action="ToonOefeningenLid" asp-route-id="@ViewData["LidId"]">
+                        <input class="zoekOefening" type="text" name="Naam" id="Naam" value="@ViewData["NaamFilter"]" placeholder="Zoek oefening" />
                     </form>
                 </div>
             </div>

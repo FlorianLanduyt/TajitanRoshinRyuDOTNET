@@ -64,15 +64,19 @@ namespace PROJ20_G20_DOTNET.Controllers
             switch (submit) {
                 case "Naam activiteit":
                     activiteiten = activiteiten.OrderBy(a => a.Naam);
+                    ViewData["naamStyle"] = "visible";
                     break;
                 case "Datum":
                     activiteiten = activiteiten.OrderBy(a => a.BeginDatum);
+                    ViewData["begindatumStyle"] = "visible";
                     break;
                 case "Tijdstip":
                     activiteiten = activiteiten.OrderBy(a => a.BeginDatum.TimeOfDay);
+                    ViewData["einddatumStyle"] = "visible";
                     break;
                 case "Formule":
                     activiteiten = activiteiten.OrderBy(a => a.Formule);
+                    ViewData["fornuleStyle"] = "visible";
                     break;
                 default:
                     activiteiten = activiteiten.OrderBy(a => a.BeginDatum);

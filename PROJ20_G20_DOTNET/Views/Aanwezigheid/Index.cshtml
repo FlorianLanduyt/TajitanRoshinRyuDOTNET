@@ -6,7 +6,7 @@
 }
 
 <div class="container">
-    <h2 class="titleAanwezigheden">Kies een activiteit om de <strong class="vetKleur">@ViewData["Title"]</strong> te zien</h2>
+    <h2 class="titleAanwezigheden">Kies een activiteit om de <strong class="vetKleur">@ViewData["Title"]</strong> te zien.</h2>
 </div>
 
 
@@ -16,30 +16,21 @@
             <label class="inputLabel">Naam:</label>
             <div for="Naam" class="inp">
                 <input type="text" name="Naam" id="naam" value="@ViewData["NaamFilter"]">
-<span class="label"></span>
+                <span class="label"></span>
                 <span class="border"></span>
             </div>
             <label class="inputLabel">Begindatum:</label>
             <div for="BeginDatum" class="inp">
-                <input type="date" name="BeginDatum" id="BeginDatum" placeholder="Begindatum">
+                <input type="date" name="BeginDatum" id="BeginDatum">
                 <span class="label"></span>
                 <span class="border"></span>
             </div>
             <label class="inputLabel">Einddatum:</label>
             <div for="Einddatum" class="inp">
-                <input type="date" name="EindDatum" id="EindDatum" placeholder="Einddatum">
+                <input type="date" name="EindDatum" id="EindDatum">
                 <span class="label"></span>
                 <span class="border"></span>
             </div>
-
-            @*  <label for="BeginDatum" class="control-label">Begindatum</label>
-        <input type="date" name="BeginDatum" id="BeginDatum" />
-
-        <label for="EindDatum" class="control-label">Einddatum</label>
-        <input type="date" name="EindDatum" id="EindDatum" />
-
-        <label for="Naam" class="control-label">Naam</label>
-        <input type="text" name="Naam" id="Naam" />*@
 
             <button class="okKnop" type="submit" name="submit" value="Datum" asp-action="Index">
                 Zoek
@@ -51,10 +42,14 @@
     <div class="tabelWrap">
         <table class="tabel">
             <tr class="rij header">
-                <th class="cell"><a class="sortKnop" form="filterSortForm" name="submit" asp-action="Index" value="Naam activiteit"><p>Naam</p></a></th>
-                <th class="cell"><a class="sortKnop" form="filterSortForm" name="submit"  asp-action="Index" value="Datum">Datum</a></th>
-                <th class="cell"><a class="sortKnop" form="filterSortForm" name="submit" asp-action="Index" value="Tijdstip">Tijdstip</a></th>
-                <th class="cell"><a class="sortKnop" form="filterSortForm" name="submit"  asp-action="Index" value="Formule">Formule</a></th>
+                <th class="cell"><input class="sortKnop" form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Naam activiteit" />
+                <i class="glyphicon glyphicon-triangle-bottom orderIcon" style="visibility:@ViewData["naamStyle"];"></i></th>
+                <th class="cell"><input class="sortKnop" form="filterSortForm" name="submit" type="submit"  asp-action="Index" value="Datum" />
+                                 <i class="glyphicon glyphicon-triangle-bottom orderIcon" style="visibility:@ViewData["begindatumStyle"];"></i></th>
+                <th class="cell"><input class="sortKnop" form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Tijdstip" />
+                                 <i class="glyphicon glyphicon-triangle-bottom orderIcon" style="visibility:@ViewData["einddatumstyle"];"></i></th>
+                <th class="cell"><input class="sortKnop" form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Formule" />
+                                 <i class="glyphicon glyphicon-triangle-bottom orderIcon" style="visibility:@ViewData["fornuleStyle"];"></i></th>
             </tr>
             @foreach (var Activiteit in Model) {
                 <tr onclick="location.href = '@(Url.Action("Aanwezigheden", "Aanwezigheid", new { Id = Activiteit.Id }))'" class="rij">

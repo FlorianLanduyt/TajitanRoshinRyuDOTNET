@@ -94,9 +94,9 @@ namespace PROJ20_G20_DOTNET.Controllers {
             IEnumerable<Oefening> oefeningen = _oefeningRepository.GetAll()
                 .Where(
                     o => o.Graad.CompareTo(graad) <= 0 &&
-                    o.Titel.Contains(naamFilter))
-                .OrderByDescending(o => o.Titel)
-                .ThenBy(o => o.Graad)
+                    o.Titel.Contains(naamFilter, StringComparison.CurrentCultureIgnoreCase))
+                .OrderByDescending(o => o.Graad)
+                .ThenBy(o => o.Titel)
                 .ToList();
             if (oefeningen == null) {
                 return NotFound();

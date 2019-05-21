@@ -58,13 +58,13 @@ forms {
     text-align: center;
     color: white;
     border: none;
-    font-size: 15px;
+    font-size: 14px;
     background-color: #996888;
     color: black;
-    border-radius: 10px;
+    border-radius: 5px;
     color: white;
     width: 70px;
-    height: 40px;
+    height: 37px;
     background-size: 35px 35px;
     outline-width: 0;
     transition: ease 0.4s;
@@ -142,18 +142,23 @@ forms {
     font-size: 15px;
     background-color: #996888;
     color: black;
-    border-radius: 10px;
+    
     color: white;
-    height: 40px;
     background-size: 35px 35px;
     outline-width: 0;
     transition: ease 0.4s;
 }
     .sortKnop:hover {
-        transform: scale(0.96, 0.96);
+        text-decoration: underline;
+        color: white;
         
-        color: black;
     }
+
+.orderIcon {
+    visibility: hidden;
+    margin-left: 5px;
+    height: 2px;
+}
 /*------ Tabel ---------*/
 /*Tabel zelf*/
 .limiter {
@@ -202,9 +207,9 @@ forms {
         background: #996888;
     }
 
-        .rij.header > .cell:hover {
+        /*.rij.header > .cell:hover {
             background-color: #ececff;
-        }
+        }*/
 
 .table, .rij {
     width: 100% !important;
