@@ -65,23 +65,23 @@ namespace PROJ20_G20_DOTNET.Controllers
             }
             switch (submit) {
                 case "Naam activiteit":
-                    activiteiten = activiteiten.OrderBy(a => a.Naam);
+                    activiteiten = activiteiten.OrderBy(a => a.Naam).ToList();
                     ViewData["naamStyle"] = "visible";
                     break;
                 case "Datum":
-                    activiteiten = activiteiten.OrderBy(a => a.BeginDatum);
+                    activiteiten = activiteiten.OrderBy(a => a.BeginDatum).ToList();
                     ViewData["begindatumStyle"] = "visible";
                     break;
                 case "Tijdstip":
-                    activiteiten = activiteiten.OrderBy(a => a.BeginDatum.TimeOfDay);
+                    activiteiten = activiteiten.OrderBy(a => a.BeginDatum.TimeOfDay).ToList();
                     ViewData["einddatumStyle"] = "visible";
                     break;
                 case "Formule":
-                    activiteiten = activiteiten.OrderBy(a => a.Formule);
+                    activiteiten = activiteiten.OrderBy(a => a.Formule).ToList();
                     ViewData["fornuleStyle"] = "visible";
                     break;
                 default:
-                    activiteiten = activiteiten.OrderBy(a => a.BeginDatum);
+                    activiteiten = activiteiten.OrderBy(a => a.BeginDatum).ToList();
                     break;
             }
             ViewBag.Naam = Naam;

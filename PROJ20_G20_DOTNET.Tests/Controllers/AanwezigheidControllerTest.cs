@@ -46,7 +46,7 @@ namespace PROJ20_G20_DOTNET.Tests.Controllers
         public void Index_GeeftOrderedListVanActiviteitenInViewResultModel()
         {
             _activiteitRepository.Setup(m => m.GetAll()).Returns(_dummyContext.Activiteiten);
-            IActionResult actionResult = _controller.Index();
+            IActionResult actionResult = _controller.Index(null,null,"","");
             IList<Activiteit> activiteitenInModel = (actionResult as ViewResult)?.Model as IList<Activiteit>;
             Assert.Equal(2, activiteitenInModel.Count);
             Assert.Equal("Testactiviteit een", activiteitenInModel?[0].Naam);
