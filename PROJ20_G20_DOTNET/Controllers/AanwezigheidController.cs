@@ -153,7 +153,7 @@ namespace PROJ20_G20_DOTNET.Controllers
                 ActiviteitInschrijving activiteitInschrijving =
                     activiteit.ActiviteitInschrijvingen.SingleOrDefault(ai => ai.Activiteit.Id == id && ai.Inschrijving.Lid.Id == id2);
                 activiteitInschrijving.IsAanwezig = false;
-                Aanwezigheid aanwezigheid = _aanwezigheidRepository.GetAll().Where(aw => aw.Lid.Id == id2 && aw.Activiteit.Id == id).SingleOrDefault();
+                Aanwezigheid aanwezigheid = _aanwezigheidRepository.GetAll().SingleOrDefault(aw => aw.Lid.Id == id2 && aw.Activiteit.Id == id);
                 _aanwezigheidRepository.Delete(aanwezigheid);
                 _aanwezigheidRepository.SaveChanges();
                 TempData["Success"] = $"{lid.Voornaam} {lid.Achternaam} is succesvol afwezig geplaatst!";
@@ -170,7 +170,7 @@ namespace PROJ20_G20_DOTNET.Controllers
                 Lid lid = new Lid(viewModel.Voornaam, viewModel.Achternaam, viewModel.Email, viewModel.Gsm, Functie.GAST);
                 if(_lidRepository.GetByEmail(lid.Email) != null)
                 {
-                    int aantalAanwezigheden = _aanwezigheidRepository.GetAll().Where(aanwezigheid => aanwezigheid.Lid.Email == lid.Email).Count();
+                    int aantalAanwezigheden = _aanwezigheidRepository.GetAll().Where(a => a.Lid.Email == lid.Email).Count();
                     if (aantalAanwezigheden > 3)
                     {
                         TempData["Error"] = "Gast heeft al meer dan 3 aanwezigheden!";
@@ -188,7 +188,9 @@ namespace PROJ20_G20_DOTNET.Controllers
                 activiteitInschrijving.IsAanwezig = true;
                 _activiteitInschrijvingRepository.Add(activiteitInschrijving);
                 _activiteitInschrijvingRepository.SaveChanges();
-
+                Aanwezigheid aanwezigheid = new Aanwezigheid(lid, activiteit);
+                _aanwezigheidRepository.Add(aanwezigheid);
+                _aanwezigheidRepository.SaveChanges();
                 return RedirectToAction(nameof(Aanwezigheden), activiteit);
             } catch(Exception ex) { }
             TempData["Error"] = "Gast toevoegen is mislukt!";
