@@ -33,7 +33,7 @@ namespace PROJ20_G20_DOTNET.Controllers
             IEnumerable<Activiteit> activiteiten 
                 = _activiteitRepository
                 .GetAll()
-                //.Where(ac => ac.BeginDatum > DateTime.Today.AddDays(-3) && DateTime.Today.AddDays(3) > ac.BeginDatum) //geeft enkel activiteiten +- 3 dagen == range van een week
+                .Where(ac => ac.BeginDatum > DateTime.Today.AddDays(-3) && DateTime.Today.AddDays(12) > ac.BeginDatum) //geeft enkel activiteiten +- 3 dagen == range van een week
                 .OrderBy(ac => ac.BeginDatum)
                 .ToList();
             if (activiteiten == null) {
@@ -47,9 +47,11 @@ namespace PROJ20_G20_DOTNET.Controllers
         public IActionResult Index(string BeginDatum, string EindDatum, string Naam, string submit) {
             string activiteitNaam = Naam ?? "";
             DateTime start, eind;
-            if (BeginDatum == null) { start = DateTime.Today.AddDays(-1000); } else { start = Convert.ToDateTime(BeginDatum); } // Als je niets ingeeft bij data zal hij de range tussen 1970(vaak gebruikte start defaultdate) en huidige datum + 50 jaar zetten
-            if (EindDatum == null) { eind = DateTime.Today.AddDays(1000); } else { eind = Convert.ToDateTime(EindDatum); }
+            if (BeginDatum == null) { start = DateTime.Today.AddDays(-3); } else { start = Convert.ToDateTime(BeginDatum); } // Als je niets ingeeft bij data zal hij de range tussen 1970(vaak gebruikte start defaultdate) en huidige datum + 50 jaar zetten
+            if (EindDatum == null) { eind = DateTime.Today.AddDays(1000000); } else { eind = Convert.ToDateTime(EindDatum); }
             ViewData["NaamFilter"] = Naam;
+            ViewData["Begindatum"] = BeginDatum;
+            ViewData["Einddatum"] = EindDatum;
             IEnumerable<Activiteit> activiteiten = _activiteitRepository
                 .GetAll()
                 .Where(

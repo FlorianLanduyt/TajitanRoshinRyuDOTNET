@@ -34,16 +34,10 @@
                     </div>
                 </div>
 
-
         <div class="row-flex">
             @foreach (var ActiviteitInschrijving in Model.ActiviteitInschrijvingen) {
                 @if (!ActiviteitInschrijving.IsAanwezig) {
                     <form method="post" class="aanwezigFalse aanwezigKaart">
-                        @*<div>
-                                <a onclick="document.getElementById('myform').id.submit();">
-                                    <img class="foto" src="~/images/@(@ActiviteitInschrijving.Inschrijving.Lid.Geslacht.ToString()).png" />
-                                </a>
-                            </div>*@
                         <button class="knopKaart" type="submit" asp-action="VoegAanwezigheidToe"
                                 asp-route-id="@ActiviteitInschrijving.Activiteit.Id"
                                 asp-route-id2="@ActiviteitInschrijving.Inschrijving.Lid.Id">
@@ -51,14 +45,8 @@
                             <p class="status">Afwezig</p>
                         </button>
                     </form>
-
                 } else {
                     <form method="post" class="aanwezigTrue aanwezigKaart">
-                        @*<div>
-                                <a onclick="document.getElementById('myform').submit();">
-                                    <img class="foto" src="~/images/@(@ActiviteitInschrijving.Inschrijving.Lid.Geslacht.ToString()) .png" />
-                                </a>
-                            </div>*@
                         <button class="knopKaart" type="submit" asp-action="VerwijderAanwezigheid"
                                 asp-route-id="@ActiviteitInschrijving.Activiteit.Id"
                                 asp-route-id2="@ActiviteitInschrijving.Inschrijving.Lid.Id">

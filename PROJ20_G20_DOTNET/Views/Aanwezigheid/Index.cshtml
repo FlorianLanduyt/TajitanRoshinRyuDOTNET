@@ -21,13 +21,13 @@
             </div>
             <label class="inputLabel">Begindatum:</label>
             <div for="BeginDatum" class="inp">
-                <input type="date" name="BeginDatum" id="BeginDatum">
+                <input type="date" name="BeginDatum" id="BeginDatum" value="@ViewData["Begindatum"]">
                 <span class="label"></span>
                 <span class="border"></span>
             </div>
             <label class="inputLabel">Einddatum:</label>
             <div for="Einddatum" class="inp">
-                <input type="date" name="EindDatum" id="EindDatum">
+                <input type="date" name="EindDatum" id="EindDatum" value="@ViewData["Einddatum"]">
                 <span class="label"></span>
                 <span class="border"></span>
             </div>
@@ -42,14 +42,22 @@
     <div class="tabelWrap">
         <table class="tabel">
             <tr class="rij header">
-                <th class="cell"><input class="sortKnop" form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Naam activiteit" />
-                <i class="glyphicon glyphicon-triangle-bottom orderIcon" style="visibility:@ViewData["naamStyle"];"></i></th>
-                <th class="cell"><input class="sortKnop" form="filterSortForm" name="submit" type="submit"  asp-action="Index" value="Datum" />
-                                 <i class="glyphicon glyphicon-triangle-bottom orderIcon" style="visibility:@ViewData["begindatumStyle"];"></i></th>
-                <th class="cell"><input class="sortKnop" form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Tijdstip" />
-                                 <i class="glyphicon glyphicon-triangle-bottom orderIcon" style="visibility:@ViewData["einddatumstyle"];"></i></th>
-                <th class="cell"><input class="sortKnop" form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Formule" />
-                                 <i class="glyphicon glyphicon-triangle-bottom orderIcon" style="visibility:@ViewData["fornuleStyle"];"></i></th>
+                <th class="cell">
+                    <input class="sortKnop" form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Naam activiteit" />
+                    <i class="glyphicon glyphicon-triangle-bottom orderIcon" style="visibility:@ViewData["naamStyle"];"></i>
+                </th>
+                <th class="cell">
+                    <input class="sortKnop" form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Datum" />
+                    <i class="glyphicon glyphicon-triangle-bottom orderIcon" style="visibility:@ViewData["begindatumStyle"];"></i>
+                </th>
+                <th class="cell">
+                    <input class="sortKnop" form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Tijdstip" />
+                    <i class="glyphicon glyphicon-triangle-bottom orderIcon" style="visibility:@ViewData["einddatumstyle"];"></i>
+                </th>
+                <th class="cell">
+                    <input class="sortKnop" form="filterSortForm" name="submit" type="submit" asp-action="Index" value="Formule" />
+                    <i class="glyphicon glyphicon-triangle-bottom orderIcon" style="visibility:@ViewData["fornuleStyle"];"></i>
+                </th>
             </tr>
             @foreach (var Activiteit in Model) {
                 <tr onclick="location.href = '@(Url.Action("Aanwezigheden", "Aanwezigheid", new { Id = Activiteit.Id }))'" class="rij">

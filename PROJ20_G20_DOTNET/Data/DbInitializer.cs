@@ -85,27 +85,27 @@ namespace PROJ20_G20_DOTNET.Data
                 #endregion
 
                 #region Activiteiten
-                Activiteit act1 = new Activiteit("Eindexamen", Formule.EXAMEN, new DateTime(2020, 5, 17, 12, 00, 00), new DateTime(2020, 5, 17,13,00,00),
-                    new DateTime(2020, 5, 17), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
+                Activiteit act1 = new Activiteit("Eindexamen", Formule.EXAMEN, new DateTime(2019, 5, 31, 12, 00, 00), new DateTime(2019, 5, 31,13,00,00),
+                    new DateTime(2019, 5, 30), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
                     "20", "5", 50);
-                Activiteit act2 = new Activiteit("Bobbejaanland", Formule.UITSTAP, new DateTime(2020, 9, 12, 7, 00, 00), new DateTime(2020, 9, 12,20,00,00),
-                   new DateTime(2020, 8, 15), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
+                Activiteit act2 = new Activiteit("Bobbejaanland", Formule.UITSTAP, new DateTime(2019, 6, 01, 7, 00, 00), new DateTime(2019, 6, 01,20,00,00),
+                   new DateTime(2019, 5, 24), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
                    "20", "5", 50);
 
                 Activiteit act3 = new Activiteit("Stage Polen", Formule.STAGE, new DateTime(2020, 5, 18, 10, 00, 00), new DateTime(2020, 5, 21,20,00,00),
                    new DateTime(2020, 5, 16), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
                    "20", "5", 50);
 
-                Activiteit act4 = new Activiteit("Dinsdag Training", Formule.DI_DO, new DateTime(2019, 07, 09, 18, 00, 00), new DateTime(2019, 07, 09,20,00,00),
-                   new DateTime(2019, 07, 01), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
+                Activiteit act4 = new Activiteit("Dinsdag Training", Formule.DI_DO, new DateTime(2019, 05, 28, 18, 00, 00), new DateTime(2019, 05, 28,20,00,00),
+                   new DateTime(2019, 05, 27), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
                    "20", "5", 50);
 
-                Activiteit act5 = new Activiteit("Teambuilding Ardennen", Formule.UITSTAP, new DateTime(2019, 10, 09, 6, 30, 00), new DateTime(2019, 10, 11,22,00,00),
-                   new DateTime(2019, 09, 01), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
+                Activiteit act5 = new Activiteit("Teambuilding Ardennen", Formule.UITSTAP, new DateTime(2020, 10, 09, 6, 30, 00), new DateTime(2020, 10, 11,22,00,00),
+                   new DateTime(2020, 09, 01), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
                    "20", "5", 50);
 
-                Activiteit act6 = new Activiteit("Examen Kyu naar Dan", Formule.EXAMEN, new DateTime(2019, 08, 12, 8, 30, 00), new DateTime(2019, 08, 12,10,30,00),
-                    new DateTime(2019, 08, 01), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
+                Activiteit act6 = new Activiteit("Examen Kyu naar Dan", Formule.EXAMEN, new DateTime(2019, 05, 30, 8, 30, 00), new DateTime(2019, 05, 30,10,30,00),
+                    new DateTime(2019, 05, 24), "0477441462", "act@act.act", "Rokerspaviljoen", "Korenmarkt", "Gent", "9000",
                     "20", "5", 50);
 
                 _dbContext.Activiteiten.Add(act1);
