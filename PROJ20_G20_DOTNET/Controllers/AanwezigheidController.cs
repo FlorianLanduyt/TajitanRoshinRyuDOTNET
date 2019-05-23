@@ -250,7 +250,9 @@ namespace PROJ20_G20_DOTNET.Controllers
             activiteitInschrijving.IsAanwezig = true;
             _activiteitInschrijvingRepository.Add(activiteitInschrijving);
             _activiteitInschrijvingRepository.SaveChanges();
-
+            Aanwezigheid aanwezigheid = new Aanwezigheid(lid, activiteit);
+            _aanwezigheidRepository.Add(aanwezigheid);
+            _aanwezigheidRepository.SaveChanges();
             return RedirectToAction(nameof(Aanwezigheden), activiteit);
         }
 
